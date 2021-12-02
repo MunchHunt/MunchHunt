@@ -1,13 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '../styles/Navbar/navbar.module.css';
 
 const Navbar = () => {
   return (
-    <nav>
-      <Link href="/"><a>Landing</a></Link>
-      <Link href="/Find"><a>Find</a></Link>
-      <Link href="/Results"><a>Results</a></Link>
-    </nav>
+    <div className={styles.navOutterContainer }>
+      <nav className={styles.navbar}>
+        <div className={styles.navbarLogoContainer}>
+          Logo
+        </div>
+        <div className={styles.navbarLinkContainer}>
+          <Link href="/"><a>Landing</a></Link>
+          <Link href="/find"><a>Find</a></Link>
+          <Link href="/results"><a>Results</a></Link>
+        </div>
+      </nav>
+    </div>
   );
 };
 
