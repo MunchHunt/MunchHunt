@@ -1,0 +1,26 @@
+
+.outterBox {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.innerBox {
+  width: 90%;
+  height: 100%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultsColumns {
+  width: 45%;
+  border: 1px solid blue;
+}
+
+.mapBox {
+  width: 45%;
+  border: 1px solid green;
+}

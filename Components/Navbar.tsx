@@ -7,12 +7,12 @@ const Navbar = () => {
     <div className={styles.navOutterContainer }>
       <nav className={styles.navbar}>
         <div className={styles.navbarLogoContainer}>
-          Logo
+          Munch Hunt
         </div>
         <div className={styles.navbarLinkContainer}>
-          <Link href="/"><a>Landing</a></Link>
-          <Link href="/find"><a>Find</a></Link>
-          <Link href="/results"><a>Results</a></Link>
+          <Link href="/find"><a className={styles.navLinks}>Find</a></Link>
+          <Link href="/results"><a className={styles.navLinks}>Results</a></Link>
+          <Link href="/"><a className={styles.navLinks}>Logout</a></Link>
         </div>
       </nav>
     </div>
