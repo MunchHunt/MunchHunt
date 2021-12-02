@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <nav>
       <Link href="/"><a>Landing</a></Link>
-      <Link href="/Find"><a>Find</a></Link>
-      <Link href="/Results"><a>Results</a></Link>
+      <Link href="/find"><a>Find</a></Link>
+      <Link href="/results"><a>Results</a></Link>
     </nav>
   );
 };
