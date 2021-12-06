@@ -16,7 +16,6 @@ const Landing: NextPage = () => {
       <h1>Munch Hunt</h1>
       {/* If logged in, then show contents of this page */}
       {/* If not logged in, redirect to Find */}
-
     </div>
   )
 }
