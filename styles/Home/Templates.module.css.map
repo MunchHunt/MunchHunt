@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,eAAe;EACvB,aAAa,EAAE,IAAI;EACnB,YAAY,EAAE,IAAI;CACnB;;AAED,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,IAAI;CACd",
+    "sources": [
+        "Templates.module.scss"
+    ],
+    "names": [],
+    "file": "Templates.module.css"
+}
