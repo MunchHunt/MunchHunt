@@ -6,43 +6,65 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 import { resultData } from './dummyData';
 import styles from '../../styles/Results/FoodResults.module.css';
 
-const FoodResults: React.FC = () => {
+interface FoodProps {
+  foods: any
+}
+
+const FoodResults: React.FC = ({ foods }) => {
+
+  const getMiles = (i: number) => {
+    const miles = (i * 0.000621371192).toFixed(2);
+    return miles;
+  }
   return (
     <div>
-      <Grid container spacing={1}>
-        {resultData.businesses.map((rest) => (
-          <Grid key={rest.name} item xs={6} sm={6} md={6}>
-            <Card sx={{ maxWidth: 280}}>
-              <CardMedia
-                component="img"
-                height="140"
-                image={rest.image_url}
-                alt="yelp restaurant result"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  {rest.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {rest.alias}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {rest.distance}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {rest.rating}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">See more details</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <Box p={1}>
+        <Grid container spacing={5}>
+          {foods.map((rest: any, index: number) => (
+            <Grid key={index} item xs={12} sm={12} md={6} lg={6} xl={4}>
+              <Card sx={{ maxWidth: 280 }}>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={rest.image_url}
+                  alt="yelp restaurant result"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {rest.name}
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    {rest.location.address1}
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    {rest.location.city}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {getMiles(rest.distance)} miles away
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    <Rating
+                      name="read-only"
+                      size="small"
+                      precision={0.5}
+                      value={rest.rating}
+                      readOnly
+                    />
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button variant="text" size="small">See more details</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </div>
   );
 };

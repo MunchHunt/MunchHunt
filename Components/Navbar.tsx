@@ -7,7 +7,6 @@ const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
 }
 
-
 const Navbar = () => {
   return (
     <div className={styles.navOutterContainer }>
@@ -15,7 +14,7 @@ const Navbar = () => {
         <div className={styles.navbarLogoContainer}>
           <Image
           loader={myLoader}
-          src="/e1L61T3.png"
+          src="/Y8KaQBX.png"
           alt="Munch Hunt logo"
           width={60}
           height={60}
