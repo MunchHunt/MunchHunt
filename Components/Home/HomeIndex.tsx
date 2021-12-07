@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>}
       <div className={styles.findContainer}>
         <Templates isLoggedIn={isLoggedIn} />
-        <Form isLoggedIn={isLoggedIn} currLocation={currLocation} setCurrLocation={setCurrLocation} />
+        <Form currLocation={currLocation} setCurrLocation={setCurrLocation} />
       </div>
     </div>
   );

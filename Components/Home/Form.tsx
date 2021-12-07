@@ -1,58 +1,156 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../../styles/Home/Form.module.css';
-// import Button from '@mui/material/Button';
-// import ButtonGroup from '@mui/material/ButtonGroup';
+import React, { useEffect, useState, useRef } from "react";
+import styles from "../../styles/Home/Form.module.css";
+import Location from './Location';
 
 interface Props {
-  isLoggedIn: boolean;
   currLocation: string;
   setCurrLocation: Function;
 }
 
-const Form: React.FC<Props> = ({ isLoggedIn, currLocation, setCurrLocation }) => {
-  const [input1, setInput1] = useState<string>('');
-  const [input2, setInput2] = useState<string>('');
-  const [input3, setInput3] = useState<string>('');
-  const [input4, setInput4] = useState<string>('');
-  const [input5, setInput5] = useState<string>('');
-  const [input6, setInput6] = useState<string>('');
-  const [locationInput, setLocationInput] = useState<string>('');
+const Form: React.FC<Props> = ({
+  currLocation,
+  setCurrLocation,
+}) => {
+  const [input1, setInput1] = useState<string>("");
+  const [input2, setInput2] = useState<string>("");
+  const [input3, setInput3] = useState<string>("");
+  const [input4, setInput4] = useState<string>("");
+  const [input5, setInput5] = useState<string>("");
+  const [input6, setInput6] = useState<string>("");
 
-  const [randomResult, setResult] = useState<string>('');
+  const [randomResult, setResult] = useState<string>("");
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
+  const inputRef3 = useRef(null);
+  const inputRef4 = useRef(null);
+  const inputRef5 = useRef(null);
+  const inputRef6 = useRef(null);
 
   const submitHandler = (e: any) => {
     e.preventDefault();
-    let arr = [input1, input2, input3, input4, input5, input6];
-    arr = arr.filter(input => input !== '');
+    let arr = [inputRef1.current?.['value'], inputRef2.current?.['value'], inputRef3.current?.['value'], inputRef4.current?.['value'], inputRef5.current?.['value'], inputRef6.current?.['value']];
+    arr = arr.filter((input) => input !== "");
     let randIndex = Math.floor(Math.random() * arr.length);
-    setResult(arr[randIndex]);
+    setResult(arr[randIndex]!);
+  };
+
+  const randomAutoFill = () => {
+    console.log("Auto-filling input fields!");
+    let choices = [
+      'American',
+      'Japanese',
+      'Chinese',
+      'Korean',
+      'Sushi',
+      'Ramen',
+      'Burgers',
+      'Takeout',
+      'Pizza',
+      'Greek',
+      'Italian',
+      'Pasta',
+      'BBQ',
+      'Vietnamese',
+      'Pho',
+      'Thai',
+      'Mediterranean',
+      'Restaurants',
+      'Korean BBQ',
+      'Dessert',
+      'Ice Cream',
+      'Vegan',
+      'Vegetarian',
+      'Healthy',
+      'Salad',
+      'Asian',
+      'Jamaican'
+    ]
+    let index = Math.floor(Math.random() * choices.length);
+    setInput1(choices[index]);
+    choices.splice(choices.indexOf(choices[index]), 1);
+
+    index = Math.floor(Math.random() * choices.length);
+    setInput2(choices[index])
+    choices.splice(choices.indexOf(choices[index]), 1);
+
+    index = Math.floor(Math.random() * choices.length);
+    setInput3(choices[index])
+    choices.splice(choices.indexOf(choices[index]), 1);
+
+    index = Math.floor(Math.random() * choices.length);
+    setInput4(choices[index])
+    choices.splice(choices.indexOf(choices[index]), 1);
+
+    index = Math.floor(Math.random() * choices.length);
+    setInput5(choices[index])
+    choices.splice(choices.indexOf(choices[index]), 1);
+
+    index = Math.floor(Math.random() * choices.length);
+    setInput6(choices[index])
+    choices.splice(choices.indexOf(choices[index]), 1);
+
   };
 
   useEffect(() => {
-    if (randomResult !== '') {
-      window.open('/results', '_self');
+    if (randomResult !== "") {
+      // window.open("/results", "_self");
+      console.log(randomResult)
     }
-  }, [randomResult])
+  }, [randomResult]);
 
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
         <h3>Lets get started!</h3>
-        <div>List up to 6 possible cuisines or categories you would want to eat.</div>
+        <div>
+          List up to 6 possible cuisines or categories you would want to eat.
+        </div>
+        <button onClick={randomAutoFill}>Choose for me!</button>
         <form onSubmit={(e: any) => submitHandler(e)}>
-          <input type="text" placeholder="Enter cuisine/category" onChange={(e: any) => { setInput1(e.target.value) }} />
-          <input type="text" placeholder="Enter cuisine/category" onChange={(e: any) => { setInput2(e.target.value) }} />
-          <input type="text" placeholder="Enter cuisine/category" onChange={(e: any) => { setInput3(e.target.value) }} />
-          <input type="text" placeholder="Enter cuisine/category" onChange={(e: any) => { setInput4(e.target.value) }} />
-          <input type="text" placeholder="Enter cuisine/category" onChange={(e: any) => { setInput5(e.target.value) }} />
-          <input type="text" placeholder="Enter cuisine/category" onChange={(e: any) => { setInput6(e.target.value) }} />
+          <input
+            ref={inputRef1}
+            type="text"
+            placeholder="Enter cuisine/category"
+            defaultValue={input1}
+          />
+          <input
+            ref={inputRef2}
+            type="text"
+            placeholder="Enter cuisine/category"
+            defaultValue={input2}
+          />
+          <input
+            ref={inputRef3}
+            type="text"
+            placeholder="Enter cuisine/category"
+            defaultValue={input3}
+          />
+          <input
+            ref={inputRef4}
+            type="text"
+            placeholder="Enter cuisine/category"
+            defaultValue={input4}
+          />
+          <input
+            ref={inputRef5}
+            type="text"
+            placeholder="Enter cuisine/category"
+            defaultValue={input5}
+          />
+          <input
+            ref={inputRef6}
+            type="text"
+            placeholder="Enter cuisine/category"
+            defaultValue={input6}
+          />
           <br />
-          <label>
-            Change location
-            <input type="text" placeholder="Enter location" defaultValue={currLocation} onChange={(e: any) => { setLocationInput(e.target.value) }} />
-          </label>
+          <Location currLocation={currLocation} setCurrLocation={setCurrLocation} />
           <br />
-          <input type="submit" value="Find!" onClick={(e: any) => submitHandler(e)} />
+          <input
+            type="submit"
+            value="Find!"
+            onClick={(e: any) => submitHandler(e)}
+          />
         </form>
       </div>
     </div>
