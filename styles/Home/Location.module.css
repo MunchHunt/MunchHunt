@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.input {
+  width: 220px;
+  height: 15px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 3px;
+}
+/*# sourceMappingURL=Location.module.css.map */

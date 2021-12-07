@@ -88,13 +88,12 @@ const Form: React.FC<Props> = ({
     index = Math.floor(Math.random() * choices.length);
     setInput6(choices[index])
     choices.splice(choices.indexOf(choices[index]), 1);
-
   };
 
   useEffect(() => {
-    if (randomResult !== "") {
+    if (randomResult && randomResult !== "") {
       // window.open("/results", "_self");
-      console.log(randomResult)
+      console.log('Result:', randomResult)
     }
   }, [randomResult]);
 
