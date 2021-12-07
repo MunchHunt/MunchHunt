@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 
 const Landing: NextPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
