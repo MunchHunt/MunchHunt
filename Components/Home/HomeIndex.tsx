@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Form from './Form';
-import Templates from './Templates';
+import Form from './Form/Form';
+import Templates from './Templates/Templates';
 import styles from '../../styles/Home/Home.module.css'
 
 const Home: React.FC = () => {
