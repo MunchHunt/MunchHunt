@@ -33,6 +33,7 @@ const Form: React.FC<Props> = ({
   const [input4, setInput4] = useState<string>("");
   const [input5, setInput5] = useState<string>("");
   const [input6, setInput6] = useState<string>("");
+
   const [randomResult, setResult] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
@@ -194,7 +195,7 @@ const Form: React.FC<Props> = ({
         <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Can{"'"}t Decide? Let us decide</Button>
         {loading ?
           <div className={styles.loading}>
-            <div className={styles.loadingText}>Picking 6 random choices</div>
+            <div className={styles.loadingText}>Auto-filling with random choices</div>
             <CircularProgress size={20} />
           </div> : null}
         <div className={styles.formContainer}>
@@ -204,7 +205,8 @@ const Form: React.FC<Props> = ({
               inputRef={inputRef1}
               placeholder="Enter cuisine"
               value={input1}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput1(e.target.value)}
               variant="outlined"
             />
             <TextField
@@ -212,7 +214,8 @@ const Form: React.FC<Props> = ({
               inputRef={inputRef2}
               placeholder="Enter cuisine"
               value={input2}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput2(e.target.value)}
               variant="outlined"
             />
             <TextField
@@ -220,7 +223,8 @@ const Form: React.FC<Props> = ({
               inputRef={inputRef3}
               placeholder="Enter cuisine"
               value={input3}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput3(e.target.value)}
               variant="outlined"
             />
             <TextField
@@ -228,7 +232,8 @@ const Form: React.FC<Props> = ({
               inputRef={inputRef4}
               placeholder="Enter cuisine"
               value={input4}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput4(e.target.value)}
               variant="outlined"
             />
             <TextField
@@ -236,7 +241,8 @@ const Form: React.FC<Props> = ({
               inputRef={inputRef5}
               placeholder="Enter cuisine"
               value={input5}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput5(e.target.value)}
               variant="outlined"
             />
             <TextField
@@ -244,7 +250,8 @@ const Form: React.FC<Props> = ({
               inputRef={inputRef6}
               placeholder="Enter cuisine"
               value={input6}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput6(e.target.value)}
               variant="outlined"
             />
           </form>
