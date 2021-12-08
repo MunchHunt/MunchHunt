@@ -6,8 +6,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
-import { Button, IconButton } from '@mui/material';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { Button, List, ListItem, Divider } from '@mui/material';
+import CurrentLocation from './CurrentLocation';
 
 interface Coords {
   lat: string;
@@ -79,7 +79,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   }, [locationUpdated])
 
   return (
-    <div>
+    <div className={styles.locationContainer}>
       <br />
       <section className={styles.container}>
         <PlacesAutocomplete
@@ -93,38 +93,36 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                 <div className={styles.inputTop}>
                   <div className={styles.inputRow}>
                     <div className={styles.inputRowInner}>
-                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} defaultValue={locationInput} />
-                      <IconButton color="primary" className={styles.currLocationBtn} onClick={getCurrentPosition}>
-                        <MyLocationIcon color="primary" />
-                      </IconButton>
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
                   </div>
                   <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button>
                 </div>
               </span>
               {loading ? <div>...loading</div> : null}
-              <div className={styles.suggestions}>
+              <List className={styles.suggestions}>
                 {suggestions.map((suggestion) => {
                   const style = {
-                    backgroundColor: suggestion.active ? "#76b1c9" : "#fff",
-                    border: "0.5px solid #a7a7a79d",
-                    padding: "3px",
-                    width: "100%",
-                    innerWidth: "300px",
+                    backgroundColor: suggestion.active ? '#f3f3f3' : '#fff',
                     cursor: "pointer",
                   }
-
                   return (
-                    <div {...getSuggestionItemProps(suggestion, { style })} key={suggestion.description}>{suggestion.description}</div>
+                    <div key={suggestion.description}>
+                      <ListItem {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description}</ListItem>
+                      <Divider />
+                    </div>
                   )
                 })}
-              </div>
+              </List>
             </div>
           )}
         </PlacesAutocomplete>
       </section>
-      {locationUpdated ? <h3>Location successfully updated!</h3> : null}
-      {showLoad ? <h3>Loading...</h3> : null}
+      <div className={styles.messagesDiv}>
+        {locationUpdated ? <div className={styles.message}>Location successfully updated!</div> : null}
+        {showLoad ? <div className={styles.message}>Finding current location...</div> : null}
+      </div>
     </div >
   );
 };

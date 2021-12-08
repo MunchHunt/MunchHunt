@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button } from "@mui/material";
 import styles from '../../../styles/Home/Templates.module.css';
 
@@ -8,7 +8,7 @@ interface Coords {
 }
 
 interface Props {
-  tempTemplates: string[];
+  tempTemplates: any;
   setTempTemplates: Function;
   currChoices: string[];
   currCoords: Coords;
@@ -16,7 +16,7 @@ interface Props {
 
 const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, currChoices, currCoords }) => {
   const [typed, setTyped] = useState<string>('');
-  const formRef = useRef<any>(null);
+  const [isValid, setIsValid] = useState<boolean>(true);
 
   const changeHandler = (e: any): void => {
     e.preventDefault();
@@ -24,9 +24,14 @@ const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, curr
   };
 
   const validator = (): boolean => {
-    if (tempTemplates.includes(typed)) {
-      return false;
+    for (let i = 0; i < tempTemplates.length; i++) {
+      if (tempTemplates[i].name.toLowerCase() === typed.toLowerCase()) {
+        setIsValid(false);
+        return false;
+      }
     }
+
+    setIsValid(true);
     return true;
   };
 
@@ -42,19 +47,21 @@ const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, curr
       }
       temp.push(data);
       setTempTemplates(temp);
-    } else {
-      window.alert('Template name already exists.');
+      setTyped('');
     }
-    formRef.current?.reset();
   };
 
 
   return (
     <div>
       <h3>Create Template</h3>
-      <form ref={formRef} onSubmit={(e: any) => addTemplate(e)}>
-        <TextField className={styles.inputField} type="text" placeholder="Enter template name" onChange={(e: any) => changeHandler(e)} />
-        <Button variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
+      <form onSubmit={(e: any) => addTemplate(e)}>
+        {isValid ? (
+          <TextField className={styles.inputField} type="text" label="Template name" value={typed} autoComplete="off" onChange={(e: any) => changeHandler(e)} />
+        ) : (
+          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Template name already exists." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
+        )}
+        <Button className={styles.createBtn} variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
       </form>
     </div >
   );

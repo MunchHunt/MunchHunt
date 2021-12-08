@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 300px;
-  border: 1px solid black;
-  border-radius: 10px;
   margin-right: 30px;
   padding: 0 5px 15px 5px;
   height: 100%;
@@ -29,4 +27,18 @@
 
 .inputField {
   margin: -10px 0 10px;
+}
+
+.loginText {
+  margin-right: 5px;
+}
+
+.createBtn {
+  background-color: rgb(255, 115, 0);
+  color: white;
+  &:hover {
+    background-color: rgb(238, 107, 0);
+    border: none;
+    outline: none;
+  }
 }
