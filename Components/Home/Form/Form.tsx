@@ -54,12 +54,23 @@ const Form: React.FC<Props> = ({
     }
   }, [currChoices])
 
+  const isValid = (arr: string[]): boolean => {
+    if (!arr.length || !currLocation) {
+      return false;
+    }
+    return true;
+  }
+
   const submitHandler = (e: any) => {
     e.preventDefault();
     let arr = [inputRef1.current?.['value'], inputRef2.current?.['value'], inputRef3.current?.['value'], inputRef4.current?.['value'], inputRef5.current?.['value'], inputRef6.current?.['value']];
     arr = arr.filter((input) => input !== "");
-    let randIndex = Math.floor(Math.random() * arr.length);
-    setResult(arr[randIndex]!);
+    if (isValid(arr)) {
+      let randIndex = Math.floor(Math.random() * arr.length);
+      setResult(arr[randIndex]!);
+    } else {
+      window.alert('No search criteria entered!')
+    }
   };
 
   const changeHandler = () => {
@@ -165,7 +176,7 @@ const Form: React.FC<Props> = ({
     <Card className={styles.container}>
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? <h3 className={styles.formTitle}>{selectedTemplate}</h3> : <h3 className={styles.formTitle}>Lets get started!</h3>}
-        <div>
+        <div className={styles.desc}>
           List up to 6 possible cuisines or categories you would want to eat.
         </div>
         <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Choose for me!</Button>

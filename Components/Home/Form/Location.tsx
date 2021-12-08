@@ -26,8 +26,8 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
 
-  const updateAddress = (e: any) => {
-    e.preventDefault();
+  const updateAddress = () => {
+    // e.preventDefault();
     setCurrLocation({ lat: currCoords.lat, long: currCoords.long });
     setUpdated(true);
   };
@@ -68,6 +68,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
     setLocationInput(value);
     const latLng = await getLatLng(results[0]);
     setCoords({ lat: latLng.lat.toString(), long: latLng.lng.toString() });
+    updateAddress();
   }
 
   useEffect(() => {
@@ -97,9 +98,13 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                       <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
                   </div>
-                  <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button>
+                  {/* <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button> */}
                 </div>
               </span>
+              <div className={styles.messagesDiv}>
+                {showLoad ? <div className={styles.message}>Finding current location...</div> : null}
+                {locationUpdated ? <div className={styles.message}>Location successfully updated!</div> : null}
+              </div>
               {loading ? <div>...loading</div> : null}
               <List className={styles.suggestions}>
                 {suggestions.map((suggestion) => {
@@ -119,10 +124,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
           )}
         </PlacesAutocomplete>
       </section>
-      <div className={styles.messagesDiv}>
-        {locationUpdated ? <div className={styles.message}>Location successfully updated!</div> : null}
-        {showLoad ? <div className={styles.message}>Finding current location...</div> : null}
-      </div>
+
     </div >
   );
 };

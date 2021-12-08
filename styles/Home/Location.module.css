@@ -21,15 +21,16 @@
 
 .inputDiv {
   position: relative;
+  width: 100%;
 }
 
 .inputGroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -45,6 +46,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   margin-top: 7px;
 }
@@ -143,7 +147,7 @@
 
 .message {
   position: absolute;
-  bottom: 5px;
+  bottom: -10px;
   left: 5px;
 }
 /*# sourceMappingURL=Location.module.css.map */
