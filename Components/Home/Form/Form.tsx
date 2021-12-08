@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from './Location';
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Card } from "@mui/material";
 
 interface Coords {
   lat: string;
@@ -164,7 +164,7 @@ const Form: React.FC<Props> = ({
   }, [randomResult]);
 
   return (
-    <div className={styles.container}>
+    <Card className={styles.container}>
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? <h3 className={styles.formTitle}>{selectedTemplate}</h3> : <h3 className={styles.formTitle}>Lets get started!</h3>}
         <div>
@@ -172,73 +172,75 @@ const Form: React.FC<Props> = ({
         </div>
         <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Choose for me!</Button>
         {loading ? <div>Picking 6 random categories...</div> : null}
-        <form className={styles.form} onSubmit={(e: any) => submitHandler(e)}>
-          <TextField
-            className={styles.inputField}
-            inputRef={inputRef1}
-            placeholder="Enter cuisine"
-            type="text"
-            value={input1}
-            onChange={changeHandler}
-            variant="outlined"
-          />
-          <TextField
-            className={styles.inputField}
-            inputRef={inputRef2}
-            placeholder="Enter cuisine"
-            type="text"
-            value={input2}
-            onChange={changeHandler}
-            variant="outlined"
-          />
-          <TextField
-            className={styles.inputField}
-            inputRef={inputRef3}
-            placeholder="Enter cuisine"
-            type="text"
-            value={input3}
-            onChange={changeHandler}
-            variant="outlined"
-          />
-          <TextField
-            className={styles.inputField}
-            inputRef={inputRef4}
-            placeholder="Enter cuisine"
-            type="text"
-            value={input4}
-            onChange={changeHandler}
-            variant="outlined"
-          />
-          <TextField
-            className={styles.inputField}
-            inputRef={inputRef5}
-            placeholder="Enter cuisine"
-            type="text"
-            value={input5}
-            onChange={changeHandler}
-            variant="outlined"
-          />
-          <TextField
-            className={styles.inputField}
-            inputRef={inputRef6}
-            placeholder="Enter cuisine"
-            type="text"
-            value={input6}
-            onChange={changeHandler}
-            variant="outlined"
-          />
+        <div className={styles.formContainer}>
+          <form className={styles.form} onSubmit={(e: any) => submitHandler(e)}>
+            <TextField
+              className={styles.inputField}
+              inputRef={inputRef1}
+              placeholder="Enter cuisine"
+              type="text"
+              value={input1}
+              onChange={changeHandler}
+              variant="outlined"
+            />
+            <TextField
+              className={styles.inputField}
+              inputRef={inputRef2}
+              placeholder="Enter cuisine"
+              type="text"
+              value={input2}
+              onChange={changeHandler}
+              variant="outlined"
+            />
+            <TextField
+              className={styles.inputField}
+              inputRef={inputRef3}
+              placeholder="Enter cuisine"
+              type="text"
+              value={input3}
+              onChange={changeHandler}
+              variant="outlined"
+            />
+            <TextField
+              className={styles.inputField}
+              inputRef={inputRef4}
+              placeholder="Enter cuisine"
+              type="text"
+              value={input4}
+              onChange={changeHandler}
+              variant="outlined"
+            />
+            <TextField
+              className={styles.inputField}
+              inputRef={inputRef5}
+              placeholder="Enter cuisine"
+              type="text"
+              value={input5}
+              onChange={changeHandler}
+              variant="outlined"
+            />
+            <TextField
+              className={styles.inputField}
+              inputRef={inputRef6}
+              placeholder="Enter cuisine"
+              type="text"
+              value={input6}
+              onChange={changeHandler}
+              variant="outlined"
+            />
+          </form>
           <br />
-          <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} />
-          <br />
-          <div className={styles.submitDiv}>
-            <Button
-              variant="contained"
-              type="submit"
-              onClick={(e: any) => submitHandler(e)}>Find!</Button>
-          </div>
-        </form>
+        </div>
+        <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} />
+        <br />
+        <div className={styles.submitDiv}>
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={(e: any) => submitHandler(e)}>Find!</Button>
+        </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
