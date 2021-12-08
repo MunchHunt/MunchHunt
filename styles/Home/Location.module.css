@@ -4,6 +4,19 @@
 
 .container {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .inputDiv {
@@ -56,11 +69,17 @@
   border: 1px solid rgba(80, 80, 80, 0.377);
   border-radius: 5px;
   margin: 0 10px 10px 0;
-  width: 100%;
+  width: 300px;
 }
 
 .inputRow:focus-within {
   outline: 2px solid #156ff5;
+}
+
+@media screen and (max-width: 878px) {
+  .inputRow {
+    width: 100%;
+  }
 }
 
 .inputRowInner {
@@ -75,16 +94,10 @@
 }
 
 .input {
-  width: 300px;
+  width: 100%;
   font-size: 16px;
   border: none;
   outline: none;
-}
-
-@media screen and (max-width: 878px) {
-  .input {
-    width: 100%;
-  }
 }
 
 .suggestions {

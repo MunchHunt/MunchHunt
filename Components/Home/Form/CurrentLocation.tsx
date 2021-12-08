@@ -28,8 +28,8 @@ const CurrentLocation: React.FC<Props> = ({ getCurrentPosition }) => {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
       >
-        <IconButton color="primary" className={styles.currLocationBtn} onClick={getCurrentPosition}>
-          <MyLocationIcon color="primary" />
+        <IconButton className={styles.currLocationBtn} onClick={getCurrentPosition}>
+          <MyLocationIcon />
         </IconButton>
       </Typography>
       <Popover

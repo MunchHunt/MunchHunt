@@ -4,6 +4,10 @@
 
 .container {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputDiv {
@@ -33,9 +37,12 @@
   border: 1px solid rgba(80, 80, 80, 0.377);
   border-radius: 5px;
   margin: 0 10px 10px 0;
-  width: 100%;
+  width: 300px;
   &:focus-within {
     outline: 2px solid rgb(21, 111, 245);
+  }
+  @media screen and (max-width: 878px) {
+    width: 100%;
   }
 }
 
@@ -47,13 +54,10 @@
 }
 
 .input {
-  width: 300px;
+  width: 100%;
   font-size: 16px;
   border: none;
   outline: none;
-  @media screen and (max-width: 878px) {
-    width: 100%;
-  }
 }
 
 .suggestions {
