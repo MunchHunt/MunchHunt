@@ -9,7 +9,7 @@ const myLoader = ({ src, width, quality }: any) => {
 
 const Navbar = () => {
   return (
-    <div className={styles.navOutterContainer }>
+    <div className={styles.navOutterContainer}>
       <nav className={styles.navbar}>
         <div className={styles.navbarLogoContainer}>
           <Image

@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.findContainer {
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 950px) {
+    width: 95%;
+  }
+}

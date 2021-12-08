@@ -1,0 +1,41 @@
+.container {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.innerContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.formTitle {
+  font-size: 25px;
+  margin-top: 0px;
+}
+
+.chooseBtn {
+  margin-top: 10px;
+}
+
+.inputField {
+  margin: 0 5px 10px 0;
+  @media screen and (max-width: 704px) {
+    width: 100%;
+  }
+}
+
+.submitDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
