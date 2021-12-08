@@ -4,13 +4,14 @@ import axios from 'axios';
 import type { NextPage } from 'next'
 import styles from '../styles/Results/results.module.css';
 import FoodResults from '../Components/Results/FoodResults';
+import Maps from '../Components/Results/Maps';
 import Head from 'next/head';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SortButtons from '../Components/Results/SortButtons';
-import { priceSort, distanceSort, ratingSort } from '../Components/Results/sortingFunc';
+import { priceSort, distanceSort, ratingSort, locationSort } from '../Components/Results/sortingFunc';
 
 
 type Foods = {
@@ -34,10 +35,14 @@ export async function getServerSideProps() {
 const Results: NextPage<Foods> = ({ foods }) => {
   const [yelpResult, setYelp] = React.useState<any>([]);
   const [original, setOriginal] = React.useState<any>([]);
+  const [location, setLocation] = React.useState<any>([37.786882, -122.399972]);
+  const [allLocs, setAllLocs] = React.useState<any>([]);
+
 
   React.useEffect(() => {
     setYelp(foods);
     setOriginal(foods);
+    setAllLocs(locationSort(foods));
   }, [foods])
 
   const sortingHat = (sortCategory: string, value: any) => {
@@ -64,7 +69,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
       </div>
       <div className={styles.sortBy}>
         <p className={styles.sortByText}>Sort by:</p>
-        <SortButtons sortingHat={sortingHat}/>
+        <SortButtons sortingHat={sortingHat} />
         <div className={styles.randomizeButtonContainer}>
           <Button className={styles.randomizeButton} variant="contained" size="small">Can't decide? Let us decide for you<ShuffleIcon /></Button>
         </div>
@@ -75,8 +80,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
             <FoodResults foods={yelpResult} />
           </div>
           <div className={styles.mapBox}>
-            map/ detail boxes
-            import map component
+            <Maps styleHeight={100} styleWidth={100} defaultZoom={14} localBirdsMarkers={allLocs} defaultCenter={{ lat: location[0], lng: location[1] }}/>
           </div>
         </div>
       </div>

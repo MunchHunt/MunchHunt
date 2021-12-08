@@ -48,7 +48,7 @@
   padding: 0.5em;
   border-radius: 20px;
   background-color: transparent;
-  outline: 1px solid orange;
+  outline: 2px solid orange;
   -webkit-box-shadow: rgba(255, 89, 0, 0.3) 0px 1px 2px 0px, rgba(254, 111, 1, 0.15) 0px 1px 3px 1px;
           box-shadow: rgba(255, 89, 0, 0.3) 0px 1px 2px 0px, rgba(254, 111, 1, 0.15) 0px 1px 3px 1px;
 }
@@ -92,7 +92,7 @@
 
 .mapBox {
   width: 45%;
-  border: 1px solid green;
+  margin-top: 15px;
 }
 
 .sortBy {

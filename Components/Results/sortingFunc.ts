@@ -1,4 +1,3 @@
-import { LargeNumberLike } from "crypto";
 
 const priceSort = (cost: string, arr: any) => {
   if (cost === 'all') {
@@ -34,5 +33,15 @@ const ratingSort = (star: number, arr: any) => {
   return newArr;
 }
 
+const locationSort = (arr: any) => {
+  const newArr: any= [];
 
-export { priceSort, distanceSort, ratingSort };
+  arr.forEach((rest: any) => {
+    newArr.push({lat: rest.coordinates.latitude, lng: rest.coordinates.longitude})
+  })
+
+  return newArr;
+}
+
+
+export { priceSort, distanceSort, ratingSort, locationSort };
