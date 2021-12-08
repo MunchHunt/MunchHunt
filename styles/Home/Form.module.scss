@@ -5,6 +5,7 @@
 }
 
 .innerContainer {
+  position: relative;
   margin: 50px;
   display: flex;
   justify-content: center;
@@ -37,6 +38,19 @@
   }
 }
 
+.loading {
+  position: absolute;
+  top: 130px;
+  display: flex;
+  @media screen and (max-width: 878px) {
+    top: 150px;
+  }
+}
+
+.loadingText {
+  margin-right: 5px;
+}
+
 .formContainer {
   width: 100%;
   display: flex;
@@ -53,6 +67,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 878px) {
+    margin-top: 30px;
+  }
 }
 
 .inputField {

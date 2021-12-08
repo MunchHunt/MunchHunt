@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from './Location';
-import { TextField, Button, Card } from "@mui/material";
+import { TextField, Button, Card, CircularProgress } from "@mui/material";
 
 interface Coords {
   lat: string;
@@ -179,8 +179,12 @@ const Form: React.FC<Props> = ({
         <div className={styles.desc}>
           List up to 6 possible cuisines or categories you would want to eat.
         </div>
-        <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Choose for me!</Button>
-        {loading ? <div>Picking 6 random categories...</div> : null}
+        <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Can{"'"}t Decide? Let us decide</Button>
+        {loading ?
+          <div className={styles.loading}>
+            <div className={styles.loadingText}>Picking 6 random choices</div>
+            <CircularProgress size={20} />
+          </div> : null}
         <div className={styles.formContainer}>
           <form className={styles.form} onSubmit={(e: any) => submitHandler(e)}>
             <TextField

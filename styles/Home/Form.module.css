@@ -3,6 +3,7 @@
 }
 
 .innerContainer {
+  position: relative;
   margin: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -48,6 +49,24 @@
   outline: none;
 }
 
+.loading {
+  position: absolute;
+  top: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 878px) {
+  .loading {
+    top: 150px;
+  }
+}
+
+.loadingText {
+  margin-right: 5px;
+}
+
 .formContainer {
   width: 100%;
   display: -webkit-box;
@@ -83,6 +102,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (max-width: 878px) {
+  .form {
+    margin-top: 30px;
+  }
 }
 
 .inputField {

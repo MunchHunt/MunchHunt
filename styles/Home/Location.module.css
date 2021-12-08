@@ -113,7 +113,7 @@
 
 @media screen and (max-width: 878px) {
   .suggestions {
-    bottom: 65px;
+    bottom: 15px;
     width: 100%;
   }
 }
@@ -147,7 +147,17 @@
 
 .message {
   position: absolute;
-  bottom: -10px;
+  bottom: -20px;
   left: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.message .text {
+  margin-right: 5px;
 }
 /*# sourceMappingURL=Location.module.css.map */

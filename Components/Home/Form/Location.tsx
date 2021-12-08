@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
-import { Button, List, ListItem, Divider } from '@mui/material';
+import { CircularProgress, List, ListItem, Divider } from '@mui/material';
 import CurrentLocation from './CurrentLocation';
 
 interface Coords {
@@ -102,7 +102,12 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                 </div>
               </span>
               <div className={styles.messagesDiv}>
-                {showLoad ? <div className={styles.message}>Finding current location...</div> : null}
+                {showLoad ? (
+                  <div className={styles.message}>
+                    <div className={styles.text}>Finding current location</div>
+                    <CircularProgress size={20} />
+                  </div>
+                ) : null}
                 {locationUpdated ? <div className={styles.message}>Location successfully updated!</div> : null}
               </div>
               {loading ? <div>...loading</div> : null}
