@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
-import { Button } from '@mui/material';
+import { Button, List, ListItem, Divider } from '@mui/material';
 import CurrentLocation from './CurrentLocation';
 
 interface Coords {
@@ -79,7 +79,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   }, [locationUpdated])
 
   return (
-    <div>
+    <div className={styles.locationContainer}>
       <br />
       <section className={styles.container}>
         <PlacesAutocomplete
@@ -101,22 +101,20 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                 </div>
               </span>
               {loading ? <div>...loading</div> : null}
-              <div className={styles.suggestions}>
+              <List className={styles.suggestions}>
                 {suggestions.map((suggestion) => {
                   const style = {
-                    backgroundColor: suggestion.active ? "#76b1c9" : "#fff",
-                    border: "0.5px solid #a7a7a79d",
-                    padding: "3px",
-                    width: "100%",
-                    innerWidth: "300px",
+                    backgroundColor: suggestion.active ? '#f3f3f3' : '#fff',
                     cursor: "pointer",
                   }
-
                   return (
-                    <div {...getSuggestionItemProps(suggestion, { style })} key={suggestion.description}>{suggestion.description}</div>
+                    <div key={suggestion.description}>
+                      <ListItem {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description}</ListItem>
+                      <Divider />
+                    </div>
                   )
                 })}
-              </div>
+              </List>
             </div>
           )}
         </PlacesAutocomplete>

@@ -61,7 +61,7 @@ const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, curr
         ) : (
           <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Template name already exists." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         )}
-        <Button variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
+        <Button className={styles.createBtn} variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
       </form>
     </div >
   );

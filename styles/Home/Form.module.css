@@ -33,6 +33,14 @@
 
 .chooseBtn {
   margin-top: 10px;
+  background-color: #ff7300;
+  color: white;
+}
+
+.chooseBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
 }
 
 .formContainer {
@@ -92,5 +100,16 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.findBtn {
+  background-color: #ff7300;
+  color: white;
+}
+
+.findBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
 }
 /*# sourceMappingURL=Form.module.css.map */

@@ -32,3 +32,13 @@
 .loginText {
   margin-right: 5px;
 }
+
+.createBtn {
+  background-color: rgb(255, 115, 0);
+  color: white;
+  &:hover {
+    background-color: rgb(238, 107, 0);
+    border: none;
+    outline: none;
+  }
+}

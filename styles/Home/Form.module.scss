@@ -23,6 +23,13 @@
 
 .chooseBtn {
   margin-top: 10px;
+  background-color: rgb(255, 115, 0);
+  color: white;
+  &:hover {
+    background-color: rgb(238, 107, 0);
+    border: none;
+    outline: none;
+  }
 }
 
 .formContainer {
@@ -56,4 +63,14 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.findBtn {
+  background-color: rgb(255, 115, 0);
+  color: white;
+  &:hover {
+    background-color: rgb(238, 107, 0);
+    border: none;
+    outline: none;
+  }
 }

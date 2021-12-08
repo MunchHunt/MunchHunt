@@ -233,6 +233,7 @@ const Form: React.FC<Props> = ({
         <br />
         <div className={styles.submitDiv}>
           <Button
+            className={styles.findBtn}
             variant="contained"
             type="submit"
             onClick={(e: any) => submitHandler(e)}>Find!</Button>

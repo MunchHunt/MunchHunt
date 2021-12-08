@@ -43,4 +43,15 @@
 .loginText {
   margin-right: 5px;
 }
+
+.createBtn {
+  background-color: #ff7300;
+  color: white;
+}
+
+.createBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
+}
 /*# sourceMappingURL=Templates.module.css.map */
