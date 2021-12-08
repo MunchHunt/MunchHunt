@@ -82,12 +82,10 @@ const Form: React.FC<Props> = ({
     if (inputRef6.current?.value.length) {
       temp.push(inputRef6.current?.value);
     }
-    console.log(temp);
     setCurrChoices(temp);
   }
 
   const randomAutoFill = () => {
-    console.log("Auto-filling input fields!");
     let choices = [
       'American',
       'Japanese',

@@ -93,7 +93,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                 <div className={styles.inputTop}>
                   <div className={styles.inputRow}>
                     <div className={styles.inputRowInner}>
-                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} defaultValue={locationInput} />
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
                       <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
                   </div>
