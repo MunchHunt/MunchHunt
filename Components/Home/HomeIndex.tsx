@@ -6,6 +6,7 @@ import styles from '../../styles/Home/Home.module.css'
 const Home: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [currLocation, setCurrLocation] = useState<string>('');
+  const [currChoices, setCurrChoices] = useState<string[]>();
 
   return (
     <div className={styles.container}>
