@@ -40,7 +40,7 @@
   border: 1px solid rgba(80, 80, 80, 0.377);
   border-radius: 5px;
   margin: 0 10px 10px 0;
-  width: 300px;
+  width: 400px;
   &:hover {
     border: 1px solid black;
   }
@@ -58,7 +58,7 @@
   border: 1px solid rgba(255, 59, 59, 0.377);
   border-radius: 5px;
   margin: 0 10px 10px 0;
-  width: 300px;
+  width: 400px;
   &:focus-within {
     border: 1px solid rgb(250, 82, 82);
   }
@@ -91,7 +91,7 @@
 .suggestions {
   position: relative;
   z-index: 1;
-  width: 300px;
+  width: 400px;
   bottom: 15px;
   margin-left: -10px;
   @media screen and (max-width: 878px) {
