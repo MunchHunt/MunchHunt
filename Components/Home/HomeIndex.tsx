@@ -23,7 +23,7 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>}
+      {/* {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>} */}
       <div className={styles.findContainer}>
         <Templates isLoggedIn={isLoggedIn} currChoices={currChoices} setCurrChoices={setCurrChoices} setCoords={setCoords} tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} currCoords={currCoords} setSelectedTemplate={setSelectedTemplate} />
         <Form currLocation={currLocation} setCurrLocation={setCurrLocation} currChoices={currChoices} setCurrChoices={setCurrChoices} currCoords={currCoords} setCoords={setCoords} selectedTemplate={selectedTemplate} />
