@@ -25,4 +25,10 @@
       -ms-flex-direction: row;
           flex-direction: row;
 }
+
+@media screen and (max-width: 950px) {
+  .findContainer {
+    width: 95%;
+  }
+}
 /*# sourceMappingURL=Home.module.css.map */

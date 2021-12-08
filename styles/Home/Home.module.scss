@@ -10,4 +10,7 @@
   width: 900px;
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 950px) {
+    width: 95%;
+  }
 }

@@ -40,7 +40,7 @@ const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, s
         {isLoggedIn ? (
           <div>
             {tempTemplates.length ? tempTemplates.map((temp: any) => (
-              <div key={temp.name} onClick={(e: any) => selectTemplate(e)}>{temp.name}</div>
+              <div key={temp.name} className={styles.template} onClick={(e: any) => selectTemplate(e)}>{temp.name}</div>
             )) :
               <div>No templates! Create a new template below</div>}
             <CreateTemplate tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} currChoices={currChoices} currCoords={currCoords} />

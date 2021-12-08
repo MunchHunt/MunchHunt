@@ -6,6 +6,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
+import { TextField, Button, IconButton } from '@mui/material';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 interface Coords {
   lat: string;
@@ -85,16 +87,29 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
           onChange={setLocationInput}
           onSelect={handleSelect} >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div className={styles.inputDiv} id="location-input-section">
-              <input className={styles.input} {...getInputProps({ placeholder: "Enter Your Address" })} defaultValue={locationInput} />
-              <div>
-                {loading ? <div>...loading</div> : null}
+            <div className={styles.inputDiv}>
+              <span className={styles.inputGroup}>
+                <label>Update Location</label>
+                <div className={styles.inputTop}>
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputRowInner}>
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} defaultValue={locationInput} />
+                      <IconButton color="primary" className={styles.currLocationBtn} onClick={getCurrentPosition}>
+                        <MyLocationIcon color="primary" />
+                      </IconButton>
+                    </div>
+                  </div>
+                  <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button>
+                </div>
+              </span>
+              {loading ? <div>...loading</div> : null}
+              <div className={styles.suggestions}>
                 {suggestions.map((suggestion) => {
                   const style = {
                     backgroundColor: suggestion.active ? "#76b1c9" : "#fff",
                     border: "0.5px solid #a7a7a79d",
                     padding: "3px",
-                    width: "315px",
+                    width: "100%",
                     innerWidth: "300px",
                     cursor: "pointer",
                   }
@@ -107,9 +122,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
             </div>
           )}
         </PlacesAutocomplete>
-        <input type="submit" onClick={updateAddress} value="Update" />
       </section>
-      <button className={styles.currLocationBtn} onClick={getCurrentPosition}>Current location</button>
       {locationUpdated ? <h3>Location successfully updated!</h3> : null}
       {showLoad ? <h3>Loading...</h3> : null}
     </div >

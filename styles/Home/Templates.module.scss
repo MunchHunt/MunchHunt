@@ -10,3 +10,13 @@
 .innerContainer {
   padding: 10px;
 }
+
+.template {
+  cursor: pointer;
+  width: fit-content;
+  padding-bottom: 5px;
+  transition: 0.2s ease-in;
+  &:hover {
+    font-weight: bold;
+  }
+}

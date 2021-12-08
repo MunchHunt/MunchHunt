@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from './Location';
+import { TextField } from "@mui/material";
+import { Button } from '@mui/material';
 
 interface Coords {
   lat: string;
@@ -79,6 +81,7 @@ const Form: React.FC<Props> = ({
     if (inputRef6.current?.value.length) {
       temp.push(inputRef6.current?.value);
     }
+    console.log(temp);
     setCurrChoices(temp);
   }
 
@@ -162,63 +165,76 @@ const Form: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <h3>Lets get started!</h3>
+        <h3 className={styles.formTitle}>Lets get started!</h3>
         <div>
           List up to 6 possible cuisines or categories you would want to eat.
         </div>
-        <button onClick={randomAutoFill}>Choose for me!</button>
+        <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Choose for me!</Button>
         {loading ? <div>Picking 6 random categories...</div> : null}
-        <form onSubmit={(e: any) => submitHandler(e)}>
-          <input
-            ref={inputRef1}
+        <form className={styles.form} onSubmit={(e: any) => submitHandler(e)}>
+          <TextField
+            className={styles.inputField}
+            inputRef={inputRef1}
+            placeholder="Enter cuisine"
             type="text"
-            placeholder="Enter cuisine/category"
-            defaultValue={input1}
+            value={input1}
             onChange={changeHandler}
+            variant="outlined"
           />
-          <input
-            ref={inputRef2}
+          <TextField
+            className={styles.inputField}
+            inputRef={inputRef2}
+            placeholder="Enter cuisine"
             type="text"
-            placeholder="Enter cuisine/category"
-            defaultValue={input2}
+            value={input2}
             onChange={changeHandler}
+            variant="outlined"
           />
-          <input
-            ref={inputRef3}
+          <TextField
+            className={styles.inputField}
+            inputRef={inputRef3}
+            placeholder="Enter cuisine"
             type="text"
-            placeholder="Enter cuisine/category"
-            defaultValue={input3}
+            value={input3}
             onChange={changeHandler}
+            variant="outlined"
           />
-          <input
-            ref={inputRef4}
+          <TextField
+            className={styles.inputField}
+            inputRef={inputRef4}
+            placeholder="Enter cuisine"
             type="text"
-            placeholder="Enter cuisine/category"
-            defaultValue={input4}
+            value={input4}
             onChange={changeHandler}
+            variant="outlined"
           />
-          <input
-            ref={inputRef5}
+          <TextField
+            className={styles.inputField}
+            inputRef={inputRef5}
+            placeholder="Enter cuisine"
             type="text"
-            placeholder="Enter cuisine/category"
-            defaultValue={input5}
+            value={input5}
             onChange={changeHandler}
+            variant="outlined"
           />
-          <input
-            ref={inputRef6}
+          <TextField
+            className={styles.inputField}
+            inputRef={inputRef6}
+            placeholder="Enter cuisine"
             type="text"
-            placeholder="Enter cuisine/category"
-            defaultValue={input6}
+            value={input6}
             onChange={changeHandler}
+            variant="outlined"
           />
           <br />
           <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} />
           <br />
-          <input
-            type="submit"
-            value="Find!"
-            onClick={(e: any) => submitHandler(e)}
-          />
+          <div className={styles.submitDiv}>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={(e: any) => submitHandler(e)}>Find!</Button>
+          </div>
         </form>
       </div>
     </div>

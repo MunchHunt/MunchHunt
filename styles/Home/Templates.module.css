@@ -15,4 +15,18 @@
 .innerContainer {
   padding: 10px;
 }
+
+.template {
+  cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-bottom: 5px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.template:hover {
+  font-weight: bold;
+}
 /*# sourceMappingURL=Templates.module.css.map */
