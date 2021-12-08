@@ -21,25 +21,20 @@ interface Props {
 
 const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, setCoords }) => {
   const [locationInput, setLocationInput] = useState<string>("");
-  const [long, setLong] = useState<string>('');
-  const [lat, setLat] = useState<string>('');
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
 
   const updateAddress = (e: any) => {
     e.preventDefault();
-    setCurrLocation({ lat: lat, long: long });
+    setCurrLocation({ lat: currCoords.lat, long: currCoords.long });
     setUpdated(true);
   };
 
   const getCurrentPosition = () => {
     if (navigator.geolocation) {
       setShowLoad(true);
-      setLong('');
-      setLat('');
       navigator.geolocation.getCurrentPosition(function (position) {
-        setLong(position.coords.longitude.toString());
-        setLat(position.coords.latitude.toString());
+        setCoords({ lat: position.coords.latitude.toString(), long: position.coords.longitude.toString() })
       });
     } else {
       alert("Sorry, your browser does not support HTML5 geolocation.");
@@ -47,7 +42,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   };
 
   const convertToAddress = (): void => {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.NEXT_PUBLIC_GOOGLE_API}`;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${currCoords.lat},${currCoords.long}&key=${process.env.NEXT_PUBLIC_GOOGLE_API}`;
     axios.get(url)
       .then((res) => {
         const address = res.data.results[0].formatted_address;
@@ -59,27 +54,18 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   }
 
   useEffect(() => {
-    if (currCoords) {
-      setLat(currCoords.lat);
-      setLong(currCoords.long);
-    }
-  }, [currCoords])
-
-  useEffect(() => {
-    if (long.length, lat.length) {
+    if (currCoords.long.length, currCoords.lat.length) {
       setShowLoad(false);
       convertToAddress();
-      setCoords({ lat: lat, long: long });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [long, lat]);
+  }, [currCoords]);
 
   const handleSelect = async (value: string) => {
     const results = await geocodeByAddress(value);
     setLocationInput(value);
     const latLng = await getLatLng(results[0]);
-    setLong(latLng.lng.toString());
-    setLat(latLng.lat.toString());
+    setCoords({ lat: latLng.lat.toString(), long: latLng.lng.toString() });
   }
 
   useEffect(() => {
