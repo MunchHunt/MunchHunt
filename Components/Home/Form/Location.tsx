@@ -19,17 +19,17 @@ interface Props {
   setCurrLocation: Function;
   currCoords: Coords;
   setCoords: Function;
+  invalidLocation: boolean;
+  setInvalidLocation: Function;
 }
 
-const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, setCoords }) => {
+const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, setCoords, invalidLocation, setInvalidLocation }) => {
   const [locationInput, setLocationInput] = useState<string>("");
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
 
   const updateAddress = () => {
-    // e.preventDefault();
     setCurrLocation({ lat: currCoords.lat, long: currCoords.long });
-    setUpdated(true);
   };
 
   const getCurrentPosition = () => {
@@ -38,6 +38,11 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
       navigator.geolocation.getCurrentPosition(function (position) {
         setCoords({ lat: position.coords.latitude.toString(), long: position.coords.longitude.toString() })
       });
+      updateAddress();
+      setInvalidLocation(false);
+      setTimeout(() => {
+        setUpdated(true);
+      }, 4000)
     } else {
       alert("Sorry, your browser does not support HTML5 geolocation.");
     }
@@ -69,6 +74,8 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
     const latLng = await getLatLng(results[0]);
     setCoords({ lat: latLng.lat.toString(), long: latLng.lng.toString() });
     updateAddress();
+    setInvalidLocation(false);
+    setUpdated(true);
   }
 
   useEffect(() => {
@@ -92,12 +99,21 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
               <span className={styles.inputGroup}>
                 <label>Update Location</label>
                 <div className={styles.inputTop}>
-                  <div className={styles.inputRow}>
-                    <div className={styles.inputRowInner}>
-                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
-                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
+                  {!invalidLocation ? (
+                    <div className={styles.inputRow}>
+                      <div className={styles.inputRowInner}>
+                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                        <CurrentLocation getCurrentPosition={getCurrentPosition} />
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className={styles.inputRowInvalid}>
+                      <div className={styles.inputRowInner}>
+                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                        <CurrentLocation getCurrentPosition={getCurrentPosition} />
+                      </div>
+                    </div>
+                  )}
                   {/* <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button> */}
                 </div>
               </span>
@@ -110,21 +126,22 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                 ) : null}
                 {locationUpdated ? <div className={styles.message}>Location successfully updated!</div> : null}
               </div>
-              {loading ? <div>...loading</div> : null}
-              <List className={styles.suggestions}>
-                {suggestions.map((suggestion) => {
-                  const style = {
-                    backgroundColor: suggestion.active ? '#f3f3f3' : '#fff',
-                    cursor: "pointer",
-                  }
-                  return (
-                    <div key={suggestion.description}>
-                      <ListItem {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description}</ListItem>
-                      <Divider />
-                    </div>
-                  )
-                })}
-              </List>
+              <div className={styles.suggestionBox}>
+                <List className={styles.suggestions}>
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? '#f3f3f3' : '#fff',
+                      cursor: "pointer",
+                    }
+                    return (
+                      <div key={suggestion.description}>
+                        <ListItem {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description}</ListItem>
+                        <Divider />
+                      </div>
+                    )
+                  })}
+                </List>
+              </div>
             </div>
           )}
         </PlacesAutocomplete>

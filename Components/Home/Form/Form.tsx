@@ -35,6 +35,7 @@ const Form: React.FC<Props> = ({
   const [input6, setInput6] = useState<string>("");
   const [randomResult, setResult] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
 
   const inputRef1 = useRef<any>(null);
   const inputRef2 = useRef<any>(null);
@@ -54,22 +55,33 @@ const Form: React.FC<Props> = ({
     }
   }, [currChoices])
 
-  const isValid = (arr: string[]): boolean => {
-    if (!arr.length || !currLocation) {
+  const choicesValid = (arr: string[]): boolean => {
+    if (arr.length) {
+      return true;
+    } else {
+      window.alert('No choices entered!');
       return false;
     }
-    return true;
-  }
+  };
+
+  const locationValid = (): boolean => {
+    if (currLocation) {
+      setInvalidLocation(false);
+      return true;
+    } else {
+      setInvalidLocation(true);
+      window.alert('No location entered!');
+      return false;
+    }
+  };
 
   const submitHandler = (e: any) => {
     e.preventDefault();
     let arr = [inputRef1.current?.['value'], inputRef2.current?.['value'], inputRef3.current?.['value'], inputRef4.current?.['value'], inputRef5.current?.['value'], inputRef6.current?.['value']];
     arr = arr.filter((input) => input !== "");
-    if (isValid(arr)) {
+    if (choicesValid(arr) && locationValid()) {
       let randIndex = Math.floor(Math.random() * arr.length);
       setResult(arr[randIndex]!);
-    } else {
-      window.alert('No search criteria entered!')
     }
   };
 
@@ -177,7 +189,7 @@ const Form: React.FC<Props> = ({
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? <h3 className={styles.formTitle}>{selectedTemplate}</h3> : <h3 className={styles.formTitle}>Lets get started!</h3>}
         <div className={styles.desc}>
-          List up to 6 possible cuisines or categories you would want to eat.
+          List up to 6 possible cuisines or categories you would want to eat. (At least 1 required)
         </div>
         <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Can{"'"}t Decide? Let us decide</Button>
         {loading ?
@@ -191,7 +203,6 @@ const Form: React.FC<Props> = ({
               className={styles.inputField}
               inputRef={inputRef1}
               placeholder="Enter cuisine"
-              type="text"
               value={input1}
               onChange={changeHandler}
               variant="outlined"
@@ -200,7 +211,6 @@ const Form: React.FC<Props> = ({
               className={styles.inputField}
               inputRef={inputRef2}
               placeholder="Enter cuisine"
-              type="text"
               value={input2}
               onChange={changeHandler}
               variant="outlined"
@@ -209,7 +219,6 @@ const Form: React.FC<Props> = ({
               className={styles.inputField}
               inputRef={inputRef3}
               placeholder="Enter cuisine"
-              type="text"
               value={input3}
               onChange={changeHandler}
               variant="outlined"
@@ -218,7 +227,6 @@ const Form: React.FC<Props> = ({
               className={styles.inputField}
               inputRef={inputRef4}
               placeholder="Enter cuisine"
-              type="text"
               value={input4}
               onChange={changeHandler}
               variant="outlined"
@@ -227,7 +235,6 @@ const Form: React.FC<Props> = ({
               className={styles.inputField}
               inputRef={inputRef5}
               placeholder="Enter cuisine"
-              type="text"
               value={input5}
               onChange={changeHandler}
               variant="outlined"
@@ -236,7 +243,6 @@ const Form: React.FC<Props> = ({
               className={styles.inputField}
               inputRef={inputRef6}
               placeholder="Enter cuisine"
-              type="text"
               value={input6}
               onChange={changeHandler}
               variant="outlined"
@@ -244,7 +250,7 @@ const Form: React.FC<Props> = ({
           </form>
           <br />
         </div>
-        <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} />
+        <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} invalidLocation={invalidLocation} setInvalidLocation={setInvalidLocation} />
         <br />
         <div className={styles.submitDiv}>
           <Button
