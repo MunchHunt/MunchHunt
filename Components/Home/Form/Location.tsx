@@ -6,8 +6,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
-import { Button, IconButton } from '@mui/material';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { Button } from '@mui/material';
+import CurrentLocation from './CurrentLocation';
 
 interface Coords {
   lat: string;
@@ -94,9 +94,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
                   <div className={styles.inputRow}>
                     <div className={styles.inputRowInner}>
                       <input className={styles.input} {...getInputProps({ label: "Update Address" })} defaultValue={locationInput} />
-                      <IconButton color="primary" className={styles.currLocationBtn} onClick={getCurrentPosition}>
-                        <MyLocationIcon color="primary" />
-                      </IconButton>
+                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
                   </div>
                   <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button>
@@ -123,8 +121,10 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
           )}
         </PlacesAutocomplete>
       </section>
-      {locationUpdated ? <h3>Location successfully updated!</h3> : null}
-      {showLoad ? <h3>Loading...</h3> : null}
+      <div className={styles.messagesDiv}>
+        {locationUpdated ? <div className={styles.message}>Location successfully updated!</div> : null}
+        {showLoad ? <div className={styles.message}>Finding current location...</div> : null}
+      </div>
     </div >
   );
 };
