@@ -32,13 +32,6 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
     setUpdated(true);
   };
 
-  useEffect(() => {
-    if (currCoords) {
-      setLong(currCoords.long);
-      setLat(currCoords.lat);
-    }
-  }, [currCoords])
-
   const getCurrentPosition = () => {
     if (navigator.geolocation) {
       setShowLoad(true);
@@ -66,6 +59,13 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   }
 
   useEffect(() => {
+    if (currCoords) {
+      setLat(currCoords.lat);
+      setLong(currCoords.long);
+    }
+  }, [currCoords])
+
+  useEffect(() => {
     if (long.length, lat.length) {
       setShowLoad(false);
       convertToAddress();
@@ -77,7 +77,6 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
   const handleSelect = async (value: string) => {
     const results = await geocodeByAddress(value);
     setLocationInput(value);
-
     const latLng = await getLatLng(results[0]);
     setLong(latLng.lng.toString());
     setLat(latLng.lat.toString());
@@ -125,7 +124,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
         <input type="submit" onClick={updateAddress} value="Update" />
       </section>
       <button className={styles.currLocationBtn} onClick={getCurrentPosition}>Current location</button>
-      {locationUpdated ? <h3>Location updated!</h3> : null}
+      {locationUpdated ? <h3>Location successfully updated!</h3> : null}
       {showLoad ? <h3>Loading...</h3> : null}
     </div >
   );
