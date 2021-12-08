@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from '../../../styles/Home/Templates.module.css';
-import { Card } from "@mui/material";
+import { Card, Button } from "@mui/material";
+import GoogleIcon from '@mui/icons-material/Google';
 
 interface Coords {
   lat: string;
@@ -44,7 +45,10 @@ const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, s
         ) : (
           <div>
             <p>Login to create and use templates.</p>
-            <button>Login with Google</button>
+            <Button>
+              <div className={styles.loginText}>Login with Google</div>
+              <GoogleIcon />
+            </Button>
           </div>
         )}
       </div>
