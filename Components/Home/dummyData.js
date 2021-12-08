@@ -2,8 +2,8 @@ export const templates = [
   {
     name: "Date night",
     location: {
-      lat: '-73.9947448',
-      long: '40.925604'
+      lat: '40.9255759',
+      long: '-73.9947334'
     },
     choices: [
       'American',
@@ -16,8 +16,8 @@ export const templates = [
   }, {
     name: "Family",
     location: {
-      lat: '-73.9947448',
-      long: '40.925604'
+      lat: '40.9255759',
+      long: '-73.9947334'
     },
     choices: [
       'American',
@@ -30,8 +30,8 @@ export const templates = [
   }, {
     name: "Friends",
     location: {
-      lat: '-73.9947448',
-      long: '40.925604'
+      lat: '40.9255759',
+      long: '-73.9947334'
     },
     choices: [
       'American',
@@ -40,8 +40,8 @@ export const templates = [
   }, {
     name: "Munchies",
     location: {
-      lat: '-73.9947448',
-      long: '40.925604'
+      lat: '40.9255759',
+      long: '-73.9947334'
     },
     choices: [
       'American',

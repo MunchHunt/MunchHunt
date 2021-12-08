@@ -28,14 +28,12 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
 
   const updateAddress = (e: any) => {
     e.preventDefault();
-    // setLocationInput(currLocation);
     setCurrLocation({ lat: lat, long: long });
     setUpdated(true);
   };
 
   useEffect(() => {
     if (currCoords) {
-      console.log('CurrCoords:', currCoords);
       setLong(currCoords.long);
       setLat(currCoords.lat);
     }
