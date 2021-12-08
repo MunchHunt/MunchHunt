@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from '../../../styles/Home/Templates.module.css';
+import { Card } from "@mui/material";
 
 interface Coords {
   lat: string;
@@ -29,7 +30,7 @@ const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, s
   };
 
   return (
-    <div className={styles.container}>
+    <Card className={styles.container}>
       <div className={styles.innerContainer}>
         <h2>My Templates</h2>
         {isLoggedIn ? (
@@ -47,7 +48,7 @@ const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, s
           </div>
         )}
       </div>
-    </div>
+    </Card>
   );
 };
 
