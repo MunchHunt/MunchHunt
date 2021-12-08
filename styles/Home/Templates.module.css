@@ -7,8 +7,6 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 300px;
-  border: 1px solid black;
-  border-radius: 10px;
   margin-right: 30px;
   padding: 0 5px 15px 5px;
   height: 100%;
@@ -40,5 +38,20 @@
 
 .inputField {
   margin: -10px 0 10px;
+}
+
+.loginText {
+  margin-right: 5px;
+}
+
+.createBtn {
+  background-color: #ff7300;
+  color: white;
+}
+
+.createBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
 }
 /*# sourceMappingURL=Templates.module.css.map */
