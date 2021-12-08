@@ -7,23 +7,39 @@ import PlacesAutocomplete, {
   getLatLng
 } from 'react-places-autocomplete';
 
+interface Coords {
+  lat: string;
+  long: string;
+}
+
 interface Props {
   currLocation: string;
   setCurrLocation: Function;
+  currCoords: Coords;
+  setCoords: Function;
 }
 
-const Location: React.FC<Props> = ({ currLocation, setCurrLocation }) => {
+const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, setCoords }) => {
   const [locationInput, setLocationInput] = useState<string>("");
   const [long, setLong] = useState<string>('');
   const [lat, setLat] = useState<string>('');
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
 
+  const updateAddress = (e: any) => {
+    e.preventDefault();
+    // setLocationInput(currLocation);
+    setCurrLocation({ lat: lat, long: long });
+    setUpdated(true);
+  };
+
   useEffect(() => {
-    if (currLocation) {
-      setLocationInput(currLocation);
+    if (currCoords) {
+      console.log('CurrCoords:', currCoords);
+      setLong(currCoords.long);
+      setLat(currCoords.lat);
     }
-  }, [currLocation])
+  }, [currCoords])
 
   const getCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -43,7 +59,8 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation }) => {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.NEXT_PUBLIC_GOOGLE_API}`;
     axios.get(url)
       .then((res) => {
-        setLocationInput(res.data.results[0].formatted_address);
+        const address = res.data.results[0].formatted_address;
+        setLocationInput(address);
       })
       .catch((err) => {
         console.log(err);
@@ -54,8 +71,9 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation }) => {
     if (long.length, lat.length) {
       setShowLoad(false);
       convertToAddress();
-      setUpdated(true);
+      setCoords({ lat: lat, long: long });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [long, lat]);
 
   const handleSelect = async (value: string) => {
@@ -65,7 +83,6 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation }) => {
     const latLng = await getLatLng(results[0]);
     setLong(latLng.lng.toString());
     setLat(latLng.lat.toString());
-    setUpdated(true);
   }
 
   useEffect(() => {
@@ -107,6 +124,7 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation }) => {
             </div>
           )}
         </PlacesAutocomplete>
+        <input type="submit" onClick={updateAddress} value="Update" />
       </section>
       <button className={styles.currLocationBtn} onClick={getCurrentPosition}>Current location</button>
       {locationUpdated ? <h3>Location updated!</h3> : null}

@@ -2,8 +2,8 @@ export const templates = [
   {
     name: "Date night",
     location: {
-      lat: '-70',
-      long: '-.04'
+      lat: '-73.9947448',
+      long: '40.925604'
     },
     choices: [
       'American',
@@ -16,8 +16,8 @@ export const templates = [
   }, {
     name: "Family",
     location: {
-      lat: '-70',
-      long: '-.04'
+      lat: '-73.9947448',
+      long: '40.925604'
     },
     choices: [
       'American',
@@ -30,22 +30,18 @@ export const templates = [
   }, {
     name: "Friends",
     location: {
-      lat: '-70',
-      long: '-.04'
+      lat: '-73.9947448',
+      long: '40.925604'
     },
     choices: [
       'American',
       'Sushi',
-      'Burgers',
-      'Indian',
-      'Gyro',
-      'Healthy'
     ]
   }, {
     name: "Munchies",
     location: {
-      lat: '-70',
-      long: '-.04'
+      lat: '-73.9947448',
+      long: '40.925604'
     },
     choices: [
       'American',

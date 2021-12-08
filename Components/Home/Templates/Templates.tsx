@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from '../../../styles/Home/Templates.module.css';
-import { templates } from '../dummyData';
+// import { templates } from '../dummyData';
+
+interface Coords {
+  lat: string;
+  long: string;
+}
 
 interface Props {
   isLoggedIn: boolean;
+  currChoices: string[];
+  setCurrChoices: Function;
+  setCoords: Function;
+  tempTemplates: any;
+  setTempTemplates: Function;
+  currCoords: Coords;
 }
 
-const Templates: React.FC<Props> = ({ isLoggedIn }) => {
-  const [tempTemplates, setTempTemplates] = useState<any>([]);
+const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, setCoords, tempTemplates, setTempTemplates, currCoords }) => {
+  // const [tempTemplates, setTempTemplates] = useState<any>([]);
 
-  useEffect(() => {
-    setTempTemplates(templates);
-  }, [])
+  // useEffect(() => {
+  //   setTempTemplates(templates);
+  // }, [])
 
   const selectTemplate = (e: any) => {
     e.preventDefault();
-    console.log(e.target.innerHTML)
+    const templateName = e.target.innerHTML;
+    let newChoices = tempTemplates.filter((each: any) => each.name === templateName);
+    setCurrChoices(newChoices[0].choices);
+    setCoords(newChoices[0].location);
   };
 
   return (
@@ -29,7 +43,7 @@ const Templates: React.FC<Props> = ({ isLoggedIn }) => {
               <div key={temp.name} onClick={(e: any) => selectTemplate(e)}>{temp.name}</div>
             )) :
               <div>No templates! Create a new template below</div>}
-            <CreateTemplate tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} />
+            <CreateTemplate tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} currChoices={currChoices} currCoords={currCoords} />
           </div>
         ) : (
           <div>

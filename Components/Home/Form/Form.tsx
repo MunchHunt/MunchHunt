@@ -2,14 +2,27 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from './Location';
 
+interface Coords {
+  lat: string;
+  long: string;
+}
+
 interface Props {
   currLocation: string;
   setCurrLocation: Function;
+  currChoices: string[];
+  setCurrChoices: Function;
+  currCoords: Coords;
+  setCoords: Function;
 }
 
 const Form: React.FC<Props> = ({
   currLocation,
   setCurrLocation,
+  currChoices,
+  setCurrChoices,
+  currCoords,
+  setCoords
 }) => {
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
@@ -20,12 +33,23 @@ const Form: React.FC<Props> = ({
   const [randomResult, setResult] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const inputRef1 = useRef(null);
-  const inputRef2 = useRef(null);
-  const inputRef3 = useRef(null);
-  const inputRef4 = useRef(null);
-  const inputRef5 = useRef(null);
-  const inputRef6 = useRef(null);
+  const inputRef1 = useRef<any>(null);
+  const inputRef2 = useRef<any>(null);
+  const inputRef3 = useRef<any>(null);
+  const inputRef4 = useRef<any>(null);
+  const inputRef5 = useRef<any>(null);
+  const inputRef6 = useRef<any>(null);
+
+  useEffect(() => {
+    if (currChoices.length) {
+      setInput1(currChoices[0]);
+      setInput2(currChoices[1]);
+      setInput3(currChoices[2]);
+      setInput4(currChoices[3]);
+      setInput5(currChoices[4]);
+      setInput6(currChoices[5]);
+    }
+  }, [currChoices])
 
   const submitHandler = (e: any) => {
     e.preventDefault();
@@ -34,6 +58,29 @@ const Form: React.FC<Props> = ({
     let randIndex = Math.floor(Math.random() * arr.length);
     setResult(arr[randIndex]!);
   };
+
+  const changeHandler = () => {
+    let temp = [];
+    if (inputRef1.current?.value.length) {
+      temp.push(inputRef1.current?.value);
+    }
+    if (inputRef2.current?.value.length) {
+      temp.push(inputRef2.current?.value);
+    }
+    if (inputRef3.current?.value.length) {
+      temp.push(inputRef3.current?.value);
+    }
+    if (inputRef4.current?.value.length) {
+      temp.push(inputRef4.current?.value);
+    }
+    if (inputRef5.current?.value.length) {
+      temp.push(inputRef5.current?.value);
+    }
+    if (inputRef6.current?.value.length) {
+      temp.push(inputRef6.current?.value);
+    }
+    setCurrChoices(temp);
+  }
 
   const randomAutoFill = () => {
     console.log("Auto-filling input fields!");
@@ -99,7 +146,10 @@ const Form: React.FC<Props> = ({
       index = Math.floor(Math.random() * choices.length);
       setInput6(choices[index])
       choices.splice(choices.indexOf(choices[index]), 1);
+
+      changeHandler();
     }, 2000);
+
   };
 
   useEffect(() => {
@@ -124,39 +174,45 @@ const Form: React.FC<Props> = ({
             type="text"
             placeholder="Enter cuisine/category"
             defaultValue={input1}
+            onChange={changeHandler}
           />
           <input
             ref={inputRef2}
             type="text"
             placeholder="Enter cuisine/category"
             defaultValue={input2}
+            onChange={changeHandler}
           />
           <input
             ref={inputRef3}
             type="text"
             placeholder="Enter cuisine/category"
             defaultValue={input3}
+            onChange={changeHandler}
           />
           <input
             ref={inputRef4}
             type="text"
             placeholder="Enter cuisine/category"
             defaultValue={input4}
+            onChange={changeHandler}
           />
           <input
             ref={inputRef5}
             type="text"
             placeholder="Enter cuisine/category"
             defaultValue={input5}
+            onChange={changeHandler}
           />
           <input
             ref={inputRef6}
             type="text"
             placeholder="Enter cuisine/category"
             defaultValue={input6}
+            onChange={changeHandler}
           />
           <br />
-          <Location currLocation={currLocation} setCurrLocation={setCurrLocation} />
+          <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} />
           <br />
           <input
             type="submit"
