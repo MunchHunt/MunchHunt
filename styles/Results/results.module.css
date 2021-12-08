@@ -1,9 +1,16 @@
 .foodChoiceDiv {
   width: 100%;
   height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .foodChoiceBox {
@@ -11,49 +18,144 @@
 }
 
 .foodChoiceTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ff7300;
+  font-weight: bold;
   width: 300px;
   height: 45px;
   margin-left: 10px;
-  display: flex;
-  justify-content: center;
 }
 
 .foodChoiceResult {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 300px;
   height: 30px;
+  font-size: 1.5em;
+  color: #323232;
   padding: 0.5em;
   border-radius: 20px;
-  background-color: rgb(199, 199, 199);
-  box-shadow: rgba(75, 75, 75, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: transparent;
+  outline: 1px solid orange;
+  -webkit-box-shadow: rgba(255, 89, 0, 0.3) 0px 1px 2px 0px, rgba(254, 111, 1, 0.15) 0px 1px 3px 1px;
+          box-shadow: rgba(255, 89, 0, 0.3) 0px 1px 2px 0px, rgba(254, 111, 1, 0.15) 0px 1px 3px 1px;
 }
 
 .outterBox {
   width: 100vw;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .innerBox {
   width: 90%;
   height: 100%;
-  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .resultsColumns {
   width: 52%;
   padding: 0.6em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .mapBox {
   width: 45%;
   border: 1px solid green;
 }
+
+.sortBy {
+  width: 100%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+.sortByText {
+  font-size: 1em;
+  font-weight: bold;
+  color: #616161;
+  margin-left: 6%;
+}
+
+.sortButtonContainer {
+  width: 30%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-left: 5px;
+}
+
+.sortButtons {
+  height: 30px;
+}
+
+.formControls {
+  height: 30px;
+}
+
+.randomizeButtonContainer {
+  position: absolute;
+  top: 1;
+  right: 0;
+  margin-right: 10%;
+  float: right;
+  height: 40px;
+}
+
+.randomizeButton {
+  height: 40px;
+  font-size: 1em;
+  background-color: #ff7300;
+  color: white;
+}
+
+.randomizeButton:hover {
+  background-color: #d56103;
+  border: none;
+  outline: none;
+}
+/*# sourceMappingURL=results.module.css.map */

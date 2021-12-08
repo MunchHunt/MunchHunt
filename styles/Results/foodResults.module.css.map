@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAc;EACrC,kBAAkB,EAAE,cAAc;EAClC,eAAe,EAAE,IAAI;EACrB,YAAY,EAAE,IAAI;CACnB",
+    "sources": [
+        "foodResults.module.scss"
+    ],
+    "names": [],
+    "file": "foodResults.module.css"
+}
