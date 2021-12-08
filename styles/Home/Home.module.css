@@ -16,7 +16,7 @@
 }
 
 .findContainer {
-  width: 900px;
+  width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,7 +26,7 @@
           flex-direction: row;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1250px) {
   .findContainer {
     width: 95%;
   }

@@ -1,11 +1,32 @@
 .container {
-  border: 1px solid black;
-  border-radius: 10px;
+  // border: 1px solid black;
+  // border-radius: 10px;
   width: 100%;
 }
 
 .innerContainer {
-  padding: 20px;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media screen and (max-width: 704px) {
+    margin: 40px;
+  }
+}
+
+.formTitle {
+  font-size: 40px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.chooseBtn {
+  margin-top: 10px;
+}
+
+.formContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,23 +34,21 @@
 }
 
 .form {
-  margin-top: 15px;
   width: 100%;
-}
-
-.formTitle {
-  font-size: 25px;
-  margin-top: 0px;
-}
-
-.chooseBtn {
-  margin-top: 10px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputField {
-  margin: 0 5px 10px 0;
-  @media screen and (max-width: 704px) {
+  width: 200px;
+  margin: 20px;
+  @media screen and (max-width: 878px) {
     width: 100%;
+    margin: 5px 0 5px 0;
   }
 }
 
@@ -37,5 +56,4 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: -10px;
 }
