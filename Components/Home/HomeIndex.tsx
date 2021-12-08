@@ -11,6 +11,7 @@ interface Coords {
 
 const Home: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const [currLocation, setCurrLocation] = useState<string>('');
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
   const [currChoices, setCurrChoices] = useState<string[]>([]);
@@ -24,8 +25,8 @@ const Home: React.FC = () => {
     <div className={styles.container}>
       {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>}
       <div className={styles.findContainer}>
-        <Templates isLoggedIn={isLoggedIn} currChoices={currChoices} setCurrChoices={setCurrChoices} setCoords={setCoords} tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} currCoords={currCoords} />
-        <Form currLocation={currLocation} setCurrLocation={setCurrLocation} currChoices={currChoices} setCurrChoices={setCurrChoices} currCoords={currCoords} setCoords={setCoords} />
+        <Templates isLoggedIn={isLoggedIn} currChoices={currChoices} setCurrChoices={setCurrChoices} setCoords={setCoords} tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} currCoords={currCoords} setSelectedTemplate={setSelectedTemplate} />
+        <Form currLocation={currLocation} setCurrLocation={setCurrLocation} currChoices={currChoices} setCurrChoices={setCurrChoices} currCoords={currCoords} setCoords={setCoords} selectedTemplate={selectedTemplate} />
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
-import { TextField, Button, IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 interface Coords {

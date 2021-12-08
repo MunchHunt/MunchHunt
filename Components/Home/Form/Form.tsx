@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from './Location';
-import { TextField } from "@mui/material";
-import { Button } from '@mui/material';
+import { TextField, Button } from "@mui/material";
 
 interface Coords {
   lat: string;
@@ -16,6 +15,7 @@ interface Props {
   setCurrChoices: Function;
   currCoords: Coords;
   setCoords: Function;
+  selectedTemplate: string;
 }
 
 const Form: React.FC<Props> = ({
@@ -24,7 +24,8 @@ const Form: React.FC<Props> = ({
   currChoices,
   setCurrChoices,
   currCoords,
-  setCoords
+  setCoords,
+  selectedTemplate
 }) => {
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
@@ -165,7 +166,7 @@ const Form: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <h3 className={styles.formTitle}>Lets get started!</h3>
+        {selectedTemplate.length ? <h3 className={styles.formTitle}>{selectedTemplate}</h3> : <h3 className={styles.formTitle}>Lets get started!</h3>}
         <div>
           List up to 6 possible cuisines or categories you would want to eat.
         </div>

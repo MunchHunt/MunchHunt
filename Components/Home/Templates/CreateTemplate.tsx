@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { TextField, Button } from "@mui/material";
+import styles from '../../../styles/Home/Templates.module.css';
 
 interface Coords {
   lat: string;
@@ -51,10 +53,10 @@ const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, curr
     <div>
       <h3>Create Template</h3>
       <form ref={formRef} onSubmit={(e: any) => addTemplate(e)}>
-        <input type="text" placeholder="Enter template name" onChange={(e: any) => changeHandler(e)} />
-        <input type="button" onClick={(e: any) => addTemplate(e)} value="Create" />
+        <TextField className={styles.inputField} type="text" placeholder="Enter template name" onChange={(e: any) => changeHandler(e)} />
+        <Button variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
       </form>
-    </div>
+    </div >
   );
 };
 
