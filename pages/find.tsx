@@ -5,7 +5,6 @@ import Home from '../Components/Home/HomeIndex';
 const Find: NextPage = () => {
   return (
     <div>
-      <h1>Find!</h1>
       <Home />
     </div>
   );
