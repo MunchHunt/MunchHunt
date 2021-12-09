@@ -13,11 +13,11 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarLogoContainer}>
           <Image
-          loader={myLoader}
-          src="/Y8KaQBX.png"
-          alt="Munch Hunt logo"
-          width={60}
-          height={60}
+            loader={myLoader}
+            src="/Y8KaQBX.png"
+            alt="Munch Hunt logo"
+            width={60}
+            height={60}
           />
           <h2>Munch Hunt</h2>
         </div>
