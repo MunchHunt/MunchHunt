@@ -20,10 +20,10 @@ const Navbar = () => {
             loader={myLoader}
             src="/Y8KaQBX.png"
             alt="Munch Hunt logo"
-            width={60}
-            height={60}
+            width={70}
+            height={70}
           />
-          <h2>Munch Hunt</h2>
+          <div className={styles.munchHuntTitle}>Munch Hunt</div>
         </div>
         <div className={styles.navbarLinkContainer}>
           <Link href="/find"><a className={styles.navLinks}>Find</a></Link>
