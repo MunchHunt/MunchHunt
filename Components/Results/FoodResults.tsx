@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import { resultData } from './dummyData';
 import styles from '../../styles/Results/FoodResults.module.css';
 
 type Foods = {
@@ -16,7 +15,6 @@ type Foods = {
 }
 
 const FoodResults: React.FC<Foods> = ({ foods }) => {
-  // console.log(foods);
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
     return miles;

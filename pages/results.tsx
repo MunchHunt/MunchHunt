@@ -11,7 +11,8 @@ import Grid from '@mui/material/Grid';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SortButtons from '../Components/Results/SortButtons';
-import { priceSort, distanceSort, ratingSort, locationSort } from '../Components/Results/sortingFunc';
+import RandomDecide from '../Components/Results/RandomDecide';
+import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt } from '../Components/Results/sortingFunc';
 
 
 type Foods = {
@@ -55,6 +56,13 @@ const Results: NextPage<Foods> = ({ foods }) => {
     }
   }
 
+  const randomeChoice = () => {
+    const randArr = [];
+    const rand = getRandomInt(yelpResult.length);
+    randArr.push(original[rand]);
+    setYelp(randArr);
+  }
+
   return (
     <div>
       <div className={styles.foodChoiceDiv}>
@@ -71,7 +79,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
         <p className={styles.sortByText}>Sort by:</p>
         <SortButtons sortingHat={sortingHat} />
         <div className={styles.randomizeButtonContainer}>
-          <Button className={styles.randomizeButton} variant="contained" size="small">Can't decide? Let us decide for you<ShuffleIcon /></Button>
+          <RandomDecide yelpResult={randomeChoice}/>
         </div>
       </div>
       <div className={styles.outterBox}>
@@ -80,7 +88,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
             <FoodResults foods={yelpResult} />
           </div>
           <div className={styles.mapBox}>
-            <Maps styleHeight={100} styleWidth={100} defaultZoom={14} localBirdsMarkers={allLocs} defaultCenter={{ lat: location[0], lng: location[1] }}/>
+            <Maps styleHeight={100} styleWidth={100} defaultZoom={14} localRestaurants={allLocs} defaultCenter={{ lat: location[0], lng: location[1] }}/>
           </div>
         </div>
       </div>

@@ -43,5 +43,9 @@ const locationSort = (arr: any) => {
   return newArr;
 }
 
+const getRandomInt = (max: number) => {
+  return Math.floor(Math.random() * max);
+}
 
-export { priceSort, distanceSort, ratingSort, locationSort };
+
+export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt };
