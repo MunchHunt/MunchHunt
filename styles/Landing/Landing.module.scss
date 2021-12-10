@@ -1,0 +1,39 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../public/stacked-waves-haikei.svg");
+  background-repeat: none;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 1000px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    .title {
+      font-size: 110px;
+      margin-right: 30px;
+    }
+  }
+  .mid {
+    margin-bottom: 50px;
+    font-size: 25px;
+    text-align: center;
+    width: 80%;
+  }
+  .bottom {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -73,6 +73,7 @@
           flex-direction: row;
   border: 1px solid rgba(80, 80, 80, 0.377);
   border-radius: 5px;
+  background-color: white;
   margin: 0 10px 10px 0;
   width: 400px;
 }
