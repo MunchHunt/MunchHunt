@@ -2,7 +2,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import styles from '../../styles/Results/results.module.css';
+import styles from '../../../styles/Results/results.module.css';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -77,7 +77,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
           </Select>
         </FormControl>
       </div>
-      <div>
+      <div className={styles.sortButtons}>
         <FormControl sx={{ minWidth: 120 }} size="small">
           <InputLabel id="select-helper-label-distance">Distance</InputLabel>
           <Select
@@ -96,7 +96,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
           </Select>
         </FormControl>
       </div>
-      <div>
+      <div className={styles.sortButtons}>
         <FormControl sx={{ minWidth: 120 }} size="small">
           <InputLabel id="select-helper-label-rating">Rating</InputLabel>
           <Select

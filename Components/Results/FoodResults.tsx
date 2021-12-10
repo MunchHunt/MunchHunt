@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -28,16 +28,18 @@ interface CardProps {
   distance: number,
   rating: number,
   handleClick: any,
+  current: string,
+  selected: any,
 }
 
-function Cards({ id, name, image, address, city, price, distance, rating, handleClick }: CardProps) {
+function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected }: CardProps) {
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
     return miles;
   }
   return (
     <div id={id} onClick={(id) => handleClick(id)}>
-      <Card className={styles2.cardResult} sx={{ minWidth: 280, minHeight: 200 }}>
+      <Card style={selected} className={styles2.cardResult} sx={{ minWidth: 280, minHeight: 200 }}>
         <CardActionArea >
           <CardMedia
             component="img"
@@ -80,18 +82,21 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
 }
 
 const FoodResults: React.FC<Foods> = ({ foods, select }) => {
+  const [current, setCurrent] = React.useState<string>('');
+  const [selected, setSelected] = React.useState<any>({});
 
   const handleClick = (event: any) => {
     const currentRest = event.currentTarget.id;
     select(currentRest);
   }
+
   return (
     <div>
       <Box p={0.5}>
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
             <Grid key={index} item xs={12} sm={12} md={6} lg={6} xl={4}>
-              <Cards id={rest.name} handleClick={handleClick} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} />
+              <Cards id={rest.name} handleClick={handleClick} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected}/>
             </Grid>
           ))}
         </Grid>
