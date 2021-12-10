@@ -28,7 +28,7 @@ const DisplayMap = (props: any) => {
         />
         ))}
         {currentFriendData &&
-        currentFriendData.map((bird, index) => (
+        currentFriendData.map((bird: any, index:any) => (
         <Marker
         key={index}
         position={{
