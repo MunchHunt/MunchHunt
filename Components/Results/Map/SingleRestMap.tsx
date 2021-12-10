@@ -3,8 +3,6 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "reac
 
 
 const DisplayMap = (props: any) => {
-  const [selectedBird, setSelectedBird] = useState(null);
-
   const currentZoom = props.props.zoom;
   const currentCenter = props.props.center;
   const currentUserData = props.props.userData;
@@ -14,15 +12,12 @@ const DisplayMap = (props: any) => {
       defaultZoom={currentZoom}
       defaultCenter={currentCenter}>
         { currentUserData &&
-        currentUserData.map((bird:any, index:any) => (
+        currentUserData.map((rest:any, index:any) => (
         <Marker
         key={index}
         position={{
-          lat: bird.lat,
-          lng: bird.lng
-        }}
-        onClick={() => {
-          setSelectedBird(bird);
+          lat: rest.lat,
+          lng: rest.lng
         }}
         />
         ))}
@@ -34,7 +29,7 @@ const WrappedMap = withScriptjs(withGoogleMap(props => (<DisplayMap props={props
 
 const Map = (props: any) => {
 
-  const defaultZoom = props.defaultZoom || 10;
+  const defaultZoom = props.defaultZoom || 13;
   const defaultCenter = props.defaultCenter || { lat: 39.8283, lng: -98.5795 };
   const userMarkers = props.userMarkers || null;
   const localRestaurants = props.localRestaurants || null;
@@ -46,7 +41,7 @@ const Map = (props: any) => {
     <div style={{ width: `${styleWidth}%`, height: `${styleHeight}%` }}>
       <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,visualization,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_API}`}
         loadingElement={<div style={{ height: "50%" }} />}
-        containerElement={<div style={{ height: "50%" }} />}
+        containerElement={<div style={{ height: "100%" }} />}
         mapElement={<div style={{ height: "50%" }} />}
         zoom={defaultZoom}
         center={defaultCenter}

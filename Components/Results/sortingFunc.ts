@@ -7,6 +7,11 @@ const priceSort = (cost: string, arr: any) => {
   return newArr;
 }
 
+const nameFilter = (name: string, arr: any) => {
+  const newArr = arr.filter((item: any) => item.name === name);
+  return newArr;
+}
+
 const getMeters = (i: number) => {
   return i*1609.344;
 }
@@ -48,4 +53,4 @@ const getRandomInt = (max: number) => {
 }
 
 
-export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt };
+export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter };

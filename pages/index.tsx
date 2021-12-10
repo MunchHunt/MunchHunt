@@ -12,7 +12,7 @@ const Landing: NextPage = () => {
       <Head>
         <title>Munch Hunt</title>
         <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
       </Head>
       <Script src={places} />
       <h1>Munch Hunt</h1>

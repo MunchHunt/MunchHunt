@@ -1,0 +1,52 @@
+.cardResult:hover {
+  outline: 2px solid orange;
+  color: orange;
+}
+
+.cardResult .cardContent {
+  width: 90%;
+}
+
+.cardResult .cardContent .cardName {
+  text-align: left;
+}
+
+.cardResult .cardContent .cardText {
+  margin-bottom: 3px;
+}
+
+.cardResult .cardContent .cardStars {
+  text-align: right;
+}
+
+.cardResult .cardContent .cardPrice {
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.cardResult .cardContent .cardDistance {
+  margin-bottom: 3px;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.cardResult .cardContent .bottomCardBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Avenir";
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=cards.module.css.map */
