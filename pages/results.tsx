@@ -15,7 +15,6 @@ import RandomDecide from '../Components/Results/Buttons/RandomDecide';
 import GoogleMaps from '../Components/Results/Map/GoogleMaps';
 import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter } from '../Components/Results/sortingFunc';
 
-
 type Foods = {
   foods: any
 }
@@ -32,7 +31,6 @@ export async function getServerSideProps() {
     }
   }
 }
-
 
 const Results: NextPage<Foods> = ({ foods }) => {
   const [yelpResult, setYelp] = React.useState<any>([]);
