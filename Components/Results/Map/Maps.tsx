@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { locationSort } from '../sortingFunc';
 
 interface MapProps {
   zoom: number,
@@ -10,9 +11,23 @@ interface MapProps {
 
 const DisplayMap = (props: any) => {
   const [selectedRest, setSelectedRest] = useState<any>(null);
+  const [many, setMany] = useState<boolean>(true);
+  const [single, setSingle] = useState<boolean>(false);
   const currentZoom = props.props.zoom;
   const currentCenter = props.props.center;
   const currentUserData = props.props.userData;
+
+  // useEffect(() => {
+  //   if (currentUserData.length === 1) {
+  //     setMany(false);
+  //     setSingle(true);
+  //   } else if (currentUserData.length > 1) {
+  //     setMany(true);
+  //     setSingle(false);
+  //   }
+  // }, [currentUserData])
+
+  // console.log(currentUserData);
 
   return (
     <GoogleMap
@@ -21,7 +36,7 @@ const DisplayMap = (props: any) => {
       {currentUserData &&
         currentUserData.map((rest: any, index: any) => (
           <Marker
-            key={index}
+            key={new Date().getTime()}
             position={{
               lat: rest.lat,
               lng: rest.lng
@@ -55,14 +70,12 @@ const DisplayMap = (props: any) => {
 const WrappedMap = withScriptjs(withGoogleMap(props => (<DisplayMap props={props} />)));
 
 const Map = (props: any) => {
-
   const defaultZoom = props.defaultZoom || 10;
   const defaultCenter = props.defaultCenter || { lat: 39.8283, lng: -98.5795 };
   const userMarkers = props.userMarkers || null;
   const localRestaurants = props.localRestaurants || null;
   const styleWidth = props.styleWidth || 100;
   const styleHeight = props.styleHeight || 100;
-
 
   return (
     <div style={{ width: `${styleWidth}%`, height: `${styleHeight}%` }}>
