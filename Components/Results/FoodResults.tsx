@@ -16,6 +16,7 @@ import { CardActionArea } from '@mui/material';
 interface Foods {
   foods: any
   select: any
+  random: number
 }
 
 interface CardProps {
@@ -30,16 +31,17 @@ interface CardProps {
   handleClick: any,
   current: string,
   selected: any,
+  random: number
 }
 
-function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected }: CardProps) {
+function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random }: CardProps) {
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
     return miles;
   }
   return (
     <div id={id} onClick={(id) => handleClick(id)}>
-      <Card style={selected} className={styles2.cardResult} sx={{ minWidth: 280, minHeight: 200 }}>
+      <Card style={selected} className={styles2.cardResult} sx={{ minWidth: random, minHeight: 200 }}>
         <CardActionArea >
           <CardMedia
             component="img"
@@ -48,7 +50,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
             alt="yelp restaurant result"
           />
           <CardContent className={styles2.cardContent}>
-            <Typography className={styles2.cardName} gutterBottom variant="h6" component="div">
+            <Typography className={styles2.cardName} gutterBottom variant="body1" component="div">
               {name}
             </Typography>
             <Typography className={styles2.cardText} variant="body1" color="text.secondary">
@@ -81,7 +83,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
   )
 }
 
-const FoodResults: React.FC<Foods> = ({ foods, select }) => {
+const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
   const [current, setCurrent] = React.useState<string>('');
   const [selected, setSelected] = React.useState<any>({});
 
@@ -96,7 +98,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select }) => {
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
             <Grid key={index} item xs={12} sm={12} md={6} lg={6} xl={4}>
-              <Cards id={rest.name} handleClick={handleClick} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected}/>
+              <Cards id={rest.name} handleClick={handleClick} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random}/>
             </Grid>
           ))}
         </Grid>

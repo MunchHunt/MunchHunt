@@ -44,7 +44,8 @@
   width: 300px;
   height: 30px;
   font-size: 1.5em;
-  color: #323232;
+  font-weight: bold;
+  color: #3c3c3c;
   padding: 0.5em;
   border-radius: 20px;
   background-color: transparent;
@@ -139,7 +140,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Avenir";
-  width: 40%;
+  width: 47%;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -152,7 +153,7 @@
 }
 
 .sortButtonContainer {
-  width: 30%;
+  width: 40%;
   height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -166,6 +167,17 @@
 .sortButtonContainer .sortButtons {
   height: 30px;
   margin-right: 10px;
+}
+
+.sortButtonContainer .resetButton {
+  outline: 1px solid #ff8400;
+  color: orange;
+  border: none;
+}
+
+.sortButtonContainer .resetButton:hover {
+  background-color: orange;
+  color: white;
 }
 
 .formControls {

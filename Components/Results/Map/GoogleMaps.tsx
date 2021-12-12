@@ -7,7 +7,6 @@ const containerStyle = {
 };
 
 function GoogleMaps(props: any) {
-  // console.log(props);
   let token = process.env.NEXT_PUBLIC_GOOGLE_API || ''
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -21,13 +20,9 @@ function GoogleMaps(props: any) {
   const defaultCenter = props.defaultCenter || { lat: 39.8283, lng: -98.5795 };
 
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    const center = {
-      lat: defaultCenter.lat,
-      lng: defaultCenter.lng
-    };
-    setMap(map);
+    // const bounds = new window.google.maps.LatLngBounds();
+    // map.fitBounds(bounds);
+    // setMap(map);
   }, []);
 
   const onUnmount = React.useCallback(function callback(map) {

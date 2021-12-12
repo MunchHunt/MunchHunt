@@ -35,7 +35,8 @@
   width: 300px;
   height: 30px;
   font-size: 1.5em;
-  color: rgb(50, 50, 50);
+  font-weight: bold;
+  color: rgb(60, 60, 60);
   padding: 0.5em;
   border-radius: 20px;
   background-color: transparent;
@@ -84,7 +85,7 @@
 
   .sortByTextCont {
     @include flexCenter(row);
-    width: 40%;
+    width: 47%;
     justify-content: space-evenly;
 
     .sortByText {
@@ -97,7 +98,7 @@
 }
 
 .sortButtonContainer {
-  width: 30%;
+  width: 40%;
   height: 40px;
   display: flex;
   justify-content: space-evenly;
@@ -106,6 +107,17 @@
   .sortButtons {
     height: 30px;
     margin-right: 10px;
+  }
+
+  .resetButton {
+    outline: 1px solid rgb(255, 132, 0);
+    color: orange;
+    border: none;
+
+    &:hover {
+      background-color: orange;
+      color: white;
+    }
   }
 }
 

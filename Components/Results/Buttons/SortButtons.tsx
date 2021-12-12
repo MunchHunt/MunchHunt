@@ -12,9 +12,10 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 interface Sort {
   sortingHat: any
+  reset: any
 }
 
-const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
+const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
   const [price, setPrice] = React.useState('');
   const [dist, setDistance] = React.useState('');
   const [rate, setRate] = React.useState('');
@@ -114,6 +115,14 @@ const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
             <MenuItem value={6}>All</MenuItem>
           </Select>
         </FormControl>
+      </div>
+      <div>
+        <Button
+        variant="outlined"
+        size="large"
+        className={styles.resetButton}
+        onClick={() => reset()}
+        >Reset</Button>
       </div>
     </div>
   )
