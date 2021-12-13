@@ -63,8 +63,38 @@
   display: flex;
 }
 
+@media screen and (max-width: 560px) {
+  .contentContainer .bottom {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .contentContainer .bottom .findBtn {
   height: 56px;
   margin-top: 3px;
+  background-color: #ff7300;
+  color: white;
+}
+
+.contentContainer .bottom .findBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
+}
+
+@media screen and (max-width: 878px) {
+  .contentContainer .bottom .findBtn {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .contentContainer .bottom .findBtn {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 /*# sourceMappingURL=Landing.module.css.map */

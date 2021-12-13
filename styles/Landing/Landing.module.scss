@@ -36,9 +36,26 @@
   }
   .bottom {
     display: flex;
+    @media screen and (max-width: 560px) {
+      flex-direction: column;
+    }
     .findBtn {
       height: 56px;
       margin-top: 3px;
+      background-color: rgb(255, 115, 0);
+      color: white;
+      &:hover {
+        background-color: rgb(238, 107, 0);
+        border: none;
+        outline: none;
+      }
+      @media screen and (max-width: 878px) {
+        margin-left: 20px;
+      }
+      @media screen and (max-width: 560px) {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   }
 }
