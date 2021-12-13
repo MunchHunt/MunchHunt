@@ -44,7 +44,8 @@
   width: 300px;
   height: 30px;
   font-size: 1.5em;
-  color: #323232;
+  font-weight: bold;
+  color: #3c3c3c;
   padding: 0.5em;
   border-radius: 20px;
   background-color: transparent;
@@ -68,7 +69,7 @@
           justify-content: center;
 }
 
-.innerBox {
+.outterBox .innerBox {
   width: 90%;
   height: 100%;
   display: -webkit-box;
@@ -79,7 +80,7 @@
           justify-content: space-between;
 }
 
-.resultsColumns {
+.outterBox .innerBox .resultsColumns {
   width: 52%;
   padding: 0.6em;
   display: -webkit-box;
@@ -90,36 +91,69 @@
           justify-content: center;
 }
 
-.mapBox {
+.outterBox .innerBox .mapBox {
   width: 45%;
-  height: auto;
+  height: 100%;
   margin-top: 15px;
+  -webkit-box-shadow: rgba(92, 92, 92, 0.3) 0px 1px 2px 0px, rgba(67, 67, 67, 0.15) 0px 1px 3px 1px;
+          box-shadow: rgba(92, 92, 92, 0.3) 0px 1px 2px 0px, rgba(67, 67, 67, 0.15) 0px 1px 3px 1px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 40px;
 }
 
 .sortBy {
-  width: 100%;
+  width: 95%;
   height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Avenir";
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-bottom: 5px;
 }
 
-.sortByText {
+.sortBy .sortByTextCont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Avenir";
+  width: 47%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.sortBy .sortByTextCont .sortByText {
   font-size: 1em;
   font-weight: bold;
   color: #616161;
-  margin-left: 6%;
 }
 
 .sortButtonContainer {
-  width: 30%;
+  width: 40%;
   height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -127,11 +161,23 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin-left: 5px;
+  margin-left: 20px;
 }
 
-.sortButtons {
+.sortButtonContainer .sortButtons {
   height: 30px;
+  margin-right: 10px;
+}
+
+.sortButtonContainer .resetButton {
+  outline: 1px solid #ff8400;
+  color: orange;
+  border: none;
+}
+
+.sortButtonContainer .resetButton:hover {
+  background-color: orange;
+  color: white;
 }
 
 .formControls {
@@ -139,10 +185,6 @@
 }
 
 .randomizeButtonContainer {
-  position: absolute;
-  top: 1;
-  right: 0;
-  margin-right: 10%;
   height: 40px;
 }
 

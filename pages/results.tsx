@@ -1,19 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import axios from 'axios';
+import useSWR from 'swr';
 import type { NextPage } from 'next'
 import styles from '../styles/Results/results.module.css';
 import FoodResults from '../Components/Results/FoodResults';
-import Maps from '../Components/Results/Maps';
 import Head from 'next/head';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ShuffleIcon from '@mui/icons-material/Shuffle';
-import SortButtons from '../Components/Results/SortButtons';
-import RandomDecide from '../Components/Results/RandomDecide';
-import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt } from '../Components/Results/sortingFunc';
-
+import SortButtons from '../Components/Results/Buttons/SortButtons';
+import RandomDecide from '../Components/Results/Buttons/RandomDecide';
+import GoogleMaps from '../Components/Results/Map/GoogleMaps';
+import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
 
 type Foods = {
   foods: any
@@ -23,7 +19,7 @@ export async function getServerSideProps() {
     headers:
       { Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_API}` }
   }
-  const data = await axios.get('https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972', config)
+  const data = await axios.get('https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972&radius=40000&limit=50', config)
 
   return {
     props: {
@@ -32,39 +28,84 @@ export async function getServerSideProps() {
   }
 }
 
-
 const Results: NextPage<Foods> = ({ foods }) => {
   const [yelpResult, setYelp] = React.useState<any>([]);
   const [original, setOriginal] = React.useState<any>([]);
-  const [location, setLocation] = React.useState<any>([37.786882, -122.399972]);
+  const [location, setLocation] = React.useState<any>({lat: 37.786882, lng: -122.399972});
   const [allLocs, setAllLocs] = React.useState<any>([]);
-
+  const [showMap, setMap] = React.useState<boolean>(true);
+  const [random, setRandom] = React.useState<number>(280);
+  const [zoom, setZoom] = React.useState<number | undefined>(13);
+  const [shouldFetch, setFetch] = React.useState<boolean>(false);
+  const [id, setId] = React.useState<any>('');
 
   React.useEffect(() => {
     setYelp(foods);
     setOriginal(foods);
     setAllLocs(locationSort(foods));
-  }, [foods])
+  }, [foods]);
+
+  const config = {
+    headers:
+      { Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_API}` }
+  };
+
+  const fetcher = (url: any) => axios.get(url).then(res => res.data);
+  const token = process.env.NEXT_PUBLIC_YELP_API;
+
+  // const { data, error } = useSWR(shouldFetch ? [`https://api.yelp.com/v3/businesses/${id}`, token]: null, fetcher);
 
   const sortingHat = (sortCategory: string, value: any) => {
     if (sortCategory === 'price') {
-      setYelp(priceSort(value, original));
+      const result = priceSort(value, original);
+      setAllLocs(locationSort(result));
+      setYelp(result);
     } else if (sortCategory === 'distance') {
-      setYelp(distanceSort(value, original));
+      const zoomChange = sortZoom(value);
+      const result2 = distanceSort(value, original);
+      setAllLocs(locationSort(result2));
+      setZoom(zoomChange);
+      setYelp(result2);
     } else if (sortCategory === 'rating') {
-      setYelp(ratingSort(value, original));
-    }
+      const result3 = ratingSort(value, original);
+      setAllLocs(locationSort(result3));
+      setYelp(result3);
   }
+}
 
   const randomeChoice = () => {
     const randArr = [];
     const rand = getRandomInt(yelpResult.length);
     randArr.push(original[rand]);
+    setAllLocs(locationSort(randArr));
+    setLocation({lat: randArr[0].coordinates.latitude, lng: randArr[0].coordinates.longitude});
+    setRandom(650);
     setYelp(randArr);
+  }
+
+  const reset = () => {
+    setYelp(original);
+    setRandom(280);
+    setLocation({lat: original[0].coordinates.latitude, lng: original[0].coordinates.longitude});
+    setZoom(13);
+    setAllLocs(locationSort(original));
+  }
+
+  const currentSelect = (insert: any): void => {
+    const currentSelectedRestaurant = nameFilter(insert, original);
+    const currentLoc = currentSelectedRestaurant[0].coordinates;
+    setId(currentSelectedRestaurant[0].id);
+    setAllLocs(locationSort(currentSelectedRestaurant));
+    setLocation({lat: currentLoc.latitude, lng: currentLoc.longitude});
   }
 
   return (
     <div>
+      <Head>
+        <title>Munch Hunt: restaurant results</title>
+        <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
+        <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
+      </Head>
       <div className={styles.foodChoiceDiv}>
         <div className={styles.foodChoiceBox}>
           <div className={styles.foodChoiceTitle}>
@@ -76,19 +117,21 @@ const Results: NextPage<Foods> = ({ foods }) => {
         </div>
       </div>
       <div className={styles.sortBy}>
-        <p className={styles.sortByText}>Sort by:</p>
-        <SortButtons sortingHat={sortingHat} />
+        <div className={styles.sortByTextCont}>
+            <p className={styles.sortByText}>Sort by:</p>
+          <SortButtons sortingHat={sortingHat} reset={reset}/>
+        </div>
         <div className={styles.randomizeButtonContainer}>
-          <RandomDecide yelpResult={randomeChoice}/>
+          <RandomDecide yelpResult={randomeChoice} reset={reset}/>
         </div>
       </div>
       <div className={styles.outterBox}>
         <div className={styles.innerBox}>
           <div className={styles.resultsColumns}>
-            <FoodResults foods={yelpResult} />
+            <FoodResults foods={yelpResult} select={currentSelect} random={random} />
           </div>
           <div className={styles.mapBox}>
-            <Maps styleHeight={100} styleWidth={100} defaultZoom={14} localRestaurants={allLocs} defaultCenter={{ lat: location[0], lng: location[1] }}/>
+            {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
           </div>
         </div>
       </div>

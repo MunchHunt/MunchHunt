@@ -7,6 +7,12 @@ const priceSort = (cost: string, arr: any) => {
   return newArr;
 }
 
+
+const nameFilter = (name: string, arr: any) => {
+  const newArr = arr.filter((item: any) => item.name === name);
+  return newArr;
+}
+
 const getMeters = (i: number) => {
   return i*1609.344;
 }
@@ -23,6 +29,24 @@ const distanceSort = (miles: number, arr: any) => {
   return newArr;
 }
 
+const sortZoom = (miles: number) => {
+  if (miles < 1) {
+    return 13
+  } else if (miles === 1) {
+    return 14
+  } else if (miles === 5) {
+    return 11
+  } else if (miles === 10) {
+    return 10
+  } else if (miles === 25) {
+    return 9
+  } else if (miles === 30) {
+    return 13
+  } else if (miles === undefined) {
+    return 13
+  }
+}
+
 const ratingSort = (star: number, arr: any) => {
   if (star === 6) {
     return arr;
@@ -37,7 +61,7 @@ const locationSort = (arr: any) => {
   const newArr: any= [];
 
   arr.forEach((rest: any) => {
-    newArr.push({lat: rest.coordinates.latitude, lng: rest.coordinates.longitude})
+    newArr.push({lat: rest.coordinates.latitude, lng: rest.coordinates.longitude, name: rest.name, address: rest.location.address1, pic: rest.image_url})
   })
 
   return newArr;
@@ -48,4 +72,4 @@ const getRandomInt = (max: number) => {
 }
 
 
-export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt };
+export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom };

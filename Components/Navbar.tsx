@@ -23,7 +23,7 @@ const Navbar = () => {
             width={70}
             height={70}
           />
-          <div className={styles.munchHuntTitle}>Munch Hunt</div>
+          <div className={styles.munchHuntTitle}>MUNCH HUNT</div>
         </div>
         <div className={styles.navbarLinkContainer}>
           <Link href="/find"><a className={styles.navLinks}>Find</a></Link>

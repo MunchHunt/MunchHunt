@@ -25,7 +25,7 @@ class MyDocument extends Document {
           />
           <link
             rel="icon"
-            href=""
+            href="https://i.imgur.com/Y8KaQBX.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />

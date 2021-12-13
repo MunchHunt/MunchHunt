@@ -2,7 +2,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import styles from '../../styles/Results/results.module.css';
+import styles from '../../../styles/Results/results.module.css';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -12,9 +12,10 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 interface Sort {
   sortingHat: any
+  reset: any
 }
 
-const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
+const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
   const [price, setPrice] = React.useState('');
   const [dist, setDistance] = React.useState('');
   const [rate, setRate] = React.useState('');
@@ -77,7 +78,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
           </Select>
         </FormControl>
       </div>
-      <div>
+      <div className={styles.sortButtons}>
         <FormControl sx={{ minWidth: 120 }} size="small">
           <InputLabel id="select-helper-label-distance">Distance</InputLabel>
           <Select
@@ -96,7 +97,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
           </Select>
         </FormControl>
       </div>
-      <div>
+      <div className={styles.sortButtons}>
         <FormControl sx={{ minWidth: 120 }} size="small">
           <InputLabel id="select-helper-label-rating">Rating</InputLabel>
           <Select
@@ -114,6 +115,14 @@ const SortButtons: React.FC<Sort> = ({ sortingHat }) => {
             <MenuItem value={6}>All</MenuItem>
           </Select>
         </FormControl>
+      </div>
+      <div>
+        <Button
+        variant="outlined"
+        size="large"
+        className={styles.resetButton}
+        onClick={() => reset()}
+        >Reset</Button>
       </div>
     </div>
   )

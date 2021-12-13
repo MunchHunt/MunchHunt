@@ -1,0 +1,49 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  font-family: "Avenir";
+}
+
+.cardResult {
+
+  &:hover {
+    outline: 2px solid orange;
+    color: orange;
+  }
+
+  .cardContent {
+    width: 90%;
+
+    .cardName {
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .cardText {
+      margin-bottom: 3px;
+    }
+
+    .cardStars {
+      text-align: right;
+    }
+
+    .cardPrice {
+      margin-bottom: 3px;
+      font-weight: bold;
+    }
+
+    .cardDistance {
+      margin-bottom: 3px;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+
+    .bottomCardBox {
+      @include flexCenter(row);
+      justify-content: space-between;
+    }
+  }
+}
