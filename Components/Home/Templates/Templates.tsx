@@ -23,7 +23,7 @@ const Templates: React.FC<Props> = ({
 }) => {
   const { isLoggedIn, setCoords, tempTemplates } = useContext(MunchContext);
 
-  const selectTemplate = (e: any) => {
+  const selectTemplate = (e: any, i: number) => {
     e.preventDefault();
     const templateName = e.target.innerHTML;
     let newChoices: any = tempTemplates.filter(
@@ -32,6 +32,7 @@ const Templates: React.FC<Props> = ({
     setCurrChoices(newChoices[0].choices);
     setCoords(newChoices[0].location);
     setSelectedTemplate(newChoices[0].name);
+
   };
 
   const noTemplate = (e: any) => {
@@ -54,11 +55,12 @@ const Templates: React.FC<Props> = ({
                   onClick={(e: any) => noTemplate(e)}>
                   No template
                 </div>
-                {tempTemplates.map((temp: any) => (
+                {tempTemplates.map((temp: any, i: number) => (
                   <div
                     key={temp.name}
                     className={styles.template}
-                    onClick={(e: any) => selectTemplate(e)}
+                    onClick={(e: any) => selectTemplate(e, i)}
+                    id={'template' + i.toString()}
                   >
                     {temp.name}
                   </div>
