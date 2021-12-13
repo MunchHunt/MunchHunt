@@ -78,6 +78,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
     const rand = getRandomInt(yelpResult.length);
     randArr.push(original[rand]);
     setAllLocs(locationSort(randArr));
+    setLocation({lat: randArr[0].coordinates.latitude, lng: randArr[0].coordinates.longitude});
     setRandom(650);
     setYelp(randArr);
   }
@@ -85,6 +86,8 @@ const Results: NextPage<Foods> = ({ foods }) => {
   const reset = () => {
     setYelp(original);
     setRandom(280);
+    setLocation({lat: original[0].coordinates.latitude, lng: original[0].coordinates.longitude});
+    setZoom(13);
     setAllLocs(locationSort(original));
   }
 
