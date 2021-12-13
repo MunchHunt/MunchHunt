@@ -1,40 +1,31 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import styles from "../../../styles/Home/Form.module.css";
-import Location from './Location';
-import { TextField, Button, Card } from "@mui/material";
-
-interface Coords {
-  lat: string;
-  long: string;
-}
+import Location from "./Location";
+import { TextField, Button, Card, CircularProgress } from "@mui/material";
+import { MunchContext } from "../../Contexts/MunchContext";
+import { choices } from './Choices';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 
 interface Props {
-  currLocation: string;
-  setCurrLocation: Function;
   currChoices: string[];
   setCurrChoices: Function;
-  currCoords: Coords;
-  setCoords: Function;
   selectedTemplate: string;
 }
 
-const Form: React.FC<Props> = ({
-  currLocation,
-  setCurrLocation,
-  currChoices,
-  setCurrChoices,
-  currCoords,
-  setCoords,
-  selectedTemplate
-}) => {
+const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }) => {
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
   const [input3, setInput3] = useState<string>("");
   const [input4, setInput4] = useState<string>("");
   const [input5, setInput5] = useState<string>("");
   const [input6, setInput6] = useState<string>("");
-  const [randomResult, setResult] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
+  const {
+    result,
+    setResult,
+    currAddress,
+  } = useContext(MunchContext);
 
   const inputRef1 = useRef<any>(null);
   const inputRef2 = useRef<any>(null);
@@ -52,14 +43,43 @@ const Form: React.FC<Props> = ({
       setInput5(currChoices[4]);
       setInput6(currChoices[5]);
     }
-  }, [currChoices])
+  }, [currChoices]);
+
+  const choicesAreValid = (arr: string[]): boolean => {
+    if (arr.length) {
+      return true;
+    } else {
+      window.alert("No choices entered!");
+      return false;
+    }
+  };
+
+  const locationIsValid = (): boolean => {
+    if (currAddress.length) {
+      setInvalidLocation(false);
+      return true;
+    } else {
+      setInvalidLocation(true);
+      window.alert("No location entered!");
+      return false;
+    }
+  };
 
   const submitHandler = (e: any) => {
     e.preventDefault();
-    let arr = [inputRef1.current?.['value'], inputRef2.current?.['value'], inputRef3.current?.['value'], inputRef4.current?.['value'], inputRef5.current?.['value'], inputRef6.current?.['value']];
+    let arr = [
+      inputRef1.current?.["value"],
+      inputRef2.current?.["value"],
+      inputRef3.current?.["value"],
+      inputRef4.current?.["value"],
+      inputRef5.current?.["value"],
+      inputRef6.current?.["value"],
+    ];
     arr = arr.filter((input) => input !== "");
-    let randIndex = Math.floor(Math.random() * arr.length);
-    setResult(arr[randIndex]!);
+    if (choicesAreValid(arr) && locationIsValid()) {
+      let randIndex = Math.floor(Math.random() * arr.length);
+      setResult(arr[randIndex]!);
+    }
   };
 
   const changeHandler = () => {
@@ -83,41 +103,9 @@ const Form: React.FC<Props> = ({
       temp.push(inputRef6.current?.value);
     }
     setCurrChoices(temp);
-  }
+  };
 
   const randomAutoFill = () => {
-    let choices = [
-      'American',
-      'Japanese',
-      'Chinese',
-      'Korean',
-      'Sushi',
-      'Ramen',
-      'Burgers',
-      'Takeout',
-      'Pizza',
-      'Greek',
-      'Italian',
-      'Pasta',
-      'BBQ',
-      'Vietnamese',
-      'Pho',
-      'Thai',
-      'Mediterranean',
-      'Restaurants',
-      'Korean BBQ',
-      'Dessert',
-      'Ice Cream',
-      'Vegan',
-      'Vegetarian',
-      'Healthy',
-      'Salad',
-      'Asian',
-      'Jamaican',
-      'Indian',
-      'Halal',
-      'Mexican',
-    ]
     setLoading(true);
 
     setTimeout(() => {
@@ -130,113 +118,144 @@ const Form: React.FC<Props> = ({
       choices.splice(choices.indexOf(choices[index]), 1);
 
       index = Math.floor(Math.random() * choices.length);
-      setInput2(choices[index])
+      setInput2(choices[index]);
       choices.splice(choices.indexOf(choices[index]), 1);
 
       index = Math.floor(Math.random() * choices.length);
-      setInput3(choices[index])
+      setInput3(choices[index]);
       choices.splice(choices.indexOf(choices[index]), 1);
 
       index = Math.floor(Math.random() * choices.length);
-      setInput4(choices[index])
+      setInput4(choices[index]);
       choices.splice(choices.indexOf(choices[index]), 1);
 
       index = Math.floor(Math.random() * choices.length);
-      setInput5(choices[index])
+      setInput5(choices[index]);
       choices.splice(choices.indexOf(choices[index]), 1);
 
       index = Math.floor(Math.random() * choices.length);
-      setInput6(choices[index])
+      setInput6(choices[index]);
       choices.splice(choices.indexOf(choices[index]), 1);
 
       changeHandler();
     }, 2000);
-
   };
 
   useEffect(() => {
-    if (randomResult && randomResult !== "") {
+    if (result && result !== "") {
       // window.open("/results", "_self");
-      console.log('Result:', randomResult)
+      console.log("Result:", result);
     }
-  }, [randomResult]);
+  }, [result]);
 
   return (
     <Card className={styles.container}>
       <div className={styles.innerContainer}>
-        {selectedTemplate.length ? <h3 className={styles.formTitle}>{selectedTemplate}</h3> : <h3 className={styles.formTitle}>Lets get started!</h3>}
-        <div>
+        {selectedTemplate.length ? (
+          <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
+        ) : (
+          <h3 className={styles.formTitle}>Lets get started!</h3>
+        )}
+        <div className={styles.desc}>
           List up to 6 possible cuisines or categories you would want to eat.
+          (At least 1 required)
         </div>
-        <Button className={styles.chooseBtn} variant="contained" onClick={randomAutoFill}>Choose for me!</Button>
-        {loading ? <div>Picking 6 random categories...</div> : null}
+        <Button
+          className={styles.chooseBtn}
+          variant="contained"
+          onClick={randomAutoFill}
+        >
+          Can{"'"}t Decide? Let us decide
+          <ShuffleIcon className={styles.shuffle} />
+        </Button>
+        {loading ? (
+          <div className={styles.loading}>
+            <div className={styles.loadingText}>
+              Auto-filling with random choices
+            </div>
+            <CircularProgress size={20} />
+          </div>
+        ) : null}
         <div className={styles.formContainer}>
           <form className={styles.form} onSubmit={(e: any) => submitHandler(e)}>
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef1}
               placeholder="Enter cuisine"
-              type="text"
               value={input1}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput1(e.target.value)}
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef2}
               placeholder="Enter cuisine"
-              type="text"
               value={input2}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput2(e.target.value)}
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef3}
               placeholder="Enter cuisine"
-              type="text"
               value={input3}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput3(e.target.value)}
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef4}
               placeholder="Enter cuisine"
-              type="text"
               value={input4}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput4(e.target.value)}
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef5}
               placeholder="Enter cuisine"
-              type="text"
               value={input5}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput5(e.target.value)}
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef6}
               placeholder="Enter cuisine"
-              type="text"
               value={input6}
-              onChange={changeHandler}
+              // onChange={changeHandler}
+              onChange={(e: any) => setInput6(e.target.value)}
               variant="outlined"
             />
           </form>
           <br />
         </div>
-        <Location currLocation={currLocation} setCurrLocation={setCurrLocation} currCoords={currCoords} setCoords={setCoords} />
+        <label>Update Location</label>
+        <Location
+          invalidLocation={invalidLocation}
+          setInvalidLocation={setInvalidLocation}
+        />
         <br />
         <div className={styles.submitDiv}>
           <Button
             className={styles.findBtn}
             variant="contained"
             type="submit"
-            onClick={(e: any) => submitHandler(e)}>Find!</Button>
+            onClick={(e: any) => submitHandler(e)}
+          >
+            Find!
+          </Button>
         </div>
       </div>
     </Card>

@@ -16,7 +16,14 @@
   padding: 10px;
 }
 
-.template {
+.innerContainer .templateColumn {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.innerContainer .templateColumn .template {
+  margin-left: 6px;
   cursor: pointer;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -26,14 +33,20 @@
   transition: 0.2s ease-in;
 }
 
-.template:hover {
+.innerContainer .templateColumn .template:hover {
   font-weight: bold;
+  text-decoration: underline;
 }
 
-.templateColumn {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.innerContainer .createBtn {
+  background-color: #ff7300;
+  color: white;
+}
+
+.innerContainer .createBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
 }
 
 .inputField {
@@ -42,16 +55,5 @@
 
 .loginText {
   margin-right: 5px;
-}
-
-.createBtn {
-  background-color: #ff7300;
-  color: white;
-}
-
-.createBtn:hover {
-  background-color: #ee6b00;
-  border: none;
-  outline: none;
 }
 /*# sourceMappingURL=Templates.module.css.map */
