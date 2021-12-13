@@ -5,16 +5,7 @@ import styles from "../../styles/Home/Home.module.css";
 import { templates } from "./dummyData";
 import { MunchContext } from "../Contexts/MunchContext";
 
-// interface Coords {
-//   lat: string;
-//   long: string;
-// }
-
 const Home: React.FC = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  // const [currLocation, setCurrLocation] = useState<string>('');
-  // const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
-  // const [tempTemplates, setTempTemplates] = useState<any>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const [currChoices, setCurrChoices] = useState<string[]>([]);
 
@@ -24,6 +15,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     setTempTemplates(templates);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

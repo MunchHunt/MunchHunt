@@ -21,7 +21,7 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   const [locationUpdated, setUpdated] = useState<boolean>(false);
   const { currAddress, setCurrAddress, currCoords, setCoords } = useContext(MunchContext);
 
-  const getCurrentPosition = () => {
+  const getCurrentPosition = (): void => {
     if (navigator.geolocation) {
       setShowLoad(true);
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -78,6 +78,7 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
       setCurrAddress(locationInput);
       console.log('update address')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationInput]);
 
   useEffect(() => {
@@ -85,6 +86,7 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
       setLocationInput(currAddress);
       console.log(currAddress)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -115,7 +117,6 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
                       </div>
                     </div>
                   )}
-                  {/* <Button className={styles.updateBtn} variant="outlined" type="submit" onClick={updateAddress}>Update</Button> */}
                 </div>
               </span>
               <div className={styles.messagesDiv}>

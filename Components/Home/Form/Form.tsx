@@ -11,26 +11,20 @@ interface Props {
   selectedTemplate: string;
 }
 
-const Form: React.FC<Props> = ({
-  currChoices,
-  setCurrChoices,
-  selectedTemplate,
-}) => {
+const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }) => {
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
   const [input3, setInput3] = useState<string>("");
   const [input4, setInput4] = useState<string>("");
   const [input5, setInput5] = useState<string>("");
   const [input6, setInput6] = useState<string>("");
-
+  const [loading, setLoading] = useState<boolean>(false);
+  const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
   const {
     result,
     setResult,
     currAddress,
   } = useContext(MunchContext);
-
-  const [loading, setLoading] = useState<boolean>(false);
-  const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
 
   const inputRef1 = useRef<any>(null);
   const inputRef2 = useRef<any>(null);
@@ -50,7 +44,7 @@ const Form: React.FC<Props> = ({
     }
   }, [currChoices]);
 
-  const choicesValid = (arr: string[]): boolean => {
+  const choicesAreValid = (arr: string[]): boolean => {
     if (arr.length) {
       return true;
     } else {
@@ -59,7 +53,7 @@ const Form: React.FC<Props> = ({
     }
   };
 
-  const locationValid = (): boolean => {
+  const locationIsValid = (): boolean => {
     if (currAddress.length) {
       setInvalidLocation(false);
       return true;
@@ -81,7 +75,7 @@ const Form: React.FC<Props> = ({
       inputRef6.current?.["value"],
     ];
     arr = arr.filter((input) => input !== "");
-    if (choicesValid(arr) && locationValid()) {
+    if (choicesAreValid(arr) && locationIsValid()) {
       let randIndex = Math.floor(Math.random() * arr.length);
       setResult(arr[randIndex]!);
     }
