@@ -4,6 +4,7 @@ import Location from "./Location";
 import { TextField, Button, Card, CircularProgress } from "@mui/material";
 import { MunchContext } from "../../Contexts/MunchContext";
 import { choices } from './Choices';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 
 interface Props {
   currChoices: string[];
@@ -165,6 +166,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
           onClick={randomAutoFill}
         >
           Can{"'"}t Decide? Let us decide
+          <ShuffleIcon className={styles.shuffle} />
         </Button>
         {loading ? (
           <div className={styles.loading}>
