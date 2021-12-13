@@ -31,7 +31,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 1000px;
+  width: 1200px;
+  position: relative;
+  top: -30px;
 }
 
 .contentContainer .top {
@@ -44,7 +46,7 @@
 }
 
 .contentContainer .top .title {
-  font-size: 110px;
+  font-size: 150px;
   margin-right: 30px;
 }
 

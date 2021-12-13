@@ -23,7 +23,7 @@ const Landing: React.FC = () => {
             className={styles.logo}
           />
         </div>
-        <div className={styles.mid}>Struggling to choose a restaurant? Date night? Just hungry? Lets find the right place for you.</div>
+        <div className={styles.mid}>Struggling to choose a restaurant? Date night? Just hungry? <br /> Lets find the right place for you.</div>
         <div className={styles.bottom}>
           <Location />
         </div>

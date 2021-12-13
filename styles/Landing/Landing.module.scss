@@ -16,13 +16,15 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 1000px;
+  width: 1200px;
+  position: relative;
+  top: -30px;
 
   .top {
     display: flex;
     align-items: center;
     .title {
-      font-size: 110px;
+      font-size: 150px;
       margin-right: 30px;
     }
   }
