@@ -152,7 +152,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
     <Card className={styles.container}>
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? (
-          <h3 className={styles.formTitle}>{selectedTemplate}</h3>
+          <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
         ) : (
           <h3 className={styles.formTitle}>Lets get started!</h3>
         )}

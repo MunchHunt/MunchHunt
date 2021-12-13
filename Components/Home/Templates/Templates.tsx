@@ -21,7 +21,7 @@ const Templates: React.FC<Props> = ({
   setCurrChoices,
   setSelectedTemplate,
 }) => {
-  const { isLoggedIn, setCoords, tempTemplates, setTempTemplates, currCoords } = useContext(MunchContext);
+  const { isLoggedIn, setCoords, tempTemplates } = useContext(MunchContext);
 
   const selectTemplate = (e: any) => {
     e.preventDefault();
@@ -34,6 +34,13 @@ const Templates: React.FC<Props> = ({
     setSelectedTemplate(newChoices[0].name);
   };
 
+  const noTemplate = (e: any) => {
+    e.preventDefault();
+    setSelectedTemplate('');
+    setCurrChoices(['', '', '', '', '', '']);
+    setCoords({ lat: '', long: '' });
+  };
+
   return (
     <Card className={styles.container}>
       <div className={styles.innerContainer}>
@@ -41,15 +48,22 @@ const Templates: React.FC<Props> = ({
         {isLoggedIn ? (
           <div className={styles.templateColumn}>
             {tempTemplates.length ? (
-              tempTemplates.map((temp: any) => (
+              <>
                 <div
-                  key={temp.name}
                   className={styles.template}
-                  onClick={(e: any) => selectTemplate(e)}
-                >
-                  {temp.name}
+                  onClick={(e: any) => noTemplate(e)}>
+                  No template
                 </div>
-              ))
+                {tempTemplates.map((temp: any) => (
+                  <div
+                    key={temp.name}
+                    className={styles.template}
+                    onClick={(e: any) => selectTemplate(e)}
+                  >
+                    {temp.name}
+                  </div>
+                ))}
+              </>
             ) : (
               <div>No templates! Create a new template below</div>
             )}
