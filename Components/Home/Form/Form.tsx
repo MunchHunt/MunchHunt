@@ -3,6 +3,7 @@ import styles from "../../../styles/Home/Form.module.css";
 import Location from "./Location";
 import { TextField, Button, Card, CircularProgress } from "@mui/material";
 import { MunchContext } from "../../Contexts/MunchContext";
+import { choices } from './Choices';
 
 interface Props {
   currChoices: string[];
@@ -110,38 +111,6 @@ const Form: React.FC<Props> = ({
   };
 
   const randomAutoFill = () => {
-    let choices = [
-      "American",
-      "Japanese",
-      "Chinese",
-      "Korean",
-      "Sushi",
-      "Ramen",
-      "Burgers",
-      "Takeout",
-      "Pizza",
-      "Greek",
-      "Italian",
-      "Pasta",
-      "BBQ",
-      "Vietnamese",
-      "Pho",
-      "Thai",
-      "Mediterranean",
-      "Restaurants",
-      "Korean BBQ",
-      "Dessert",
-      "Ice Cream",
-      "Vegan",
-      "Vegetarian",
-      "Healthy",
-      "Salad",
-      "Asian",
-      "Jamaican",
-      "Indian",
-      "Halal",
-      "Mexican",
-    ];
     setLoading(true);
 
     setTimeout(() => {
