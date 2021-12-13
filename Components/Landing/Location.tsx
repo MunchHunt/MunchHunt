@@ -4,7 +4,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField } from '@mui/material';
 import Link from 'next/link';
 
 const Location: React.FC = () => {
