@@ -9,15 +9,20 @@ export const MunchContext = createContext(
   {
     isLoggedIn: false,
     setIsLoggedIn: (loggedIn: boolean) => { },
-    selectedTemplate: '',
-    setSelectedTemplate: (str: string) => { },
-    currLocation: '',
-    setCurrLocation: (location: string) => { },
+    currAddress: '',
+    setCurrAddress: (location: string) => { },
     currCoords: { lat: '', long: '' },
     setCoords: (coords: Coords) => { },
-    currChoices: [''],
-    setCurrChoices: (choices: string[]) => { },
-    tempTemplates: [],
+    tempTemplates: [{
+      name: '',
+      location: {
+        lat: '',
+        long: ''
+      },
+      choices: [
+        ''
+      ]
+    }],
     setTempTemplates: (templates: any) => { },
     result: '',
     setResult: (result: string) => { },
@@ -25,10 +30,8 @@ export const MunchContext = createContext(
 
 export const MunchProvider: React.FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
-  const [currLocation, setCurrLocation] = useState<string>('');
+  const [currAddress, setCurrAddress] = useState<string>('');
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
-  const [currChoices, setCurrChoices] = useState<string[]>(['']);
   const [tempTemplates, setTempTemplates] = useState<any>([]);
   const [result, setResult] = useState<string>("");
 
@@ -37,22 +40,14 @@ export const MunchProvider: React.FC = ({ children }) => {
     setIsLoggedIn: (loggedIn: boolean): void => {
       setIsLoggedIn(loggedIn);
     },
-    selectedTemplate: selectedTemplate,
-    setSelectedTemplate: (str: string): void => {
-      setSelectedTemplate(str);
-    },
-    currLocation: currLocation,
-    setCurrLocation: (location: string): void => {
-      setCurrLocation(location);
+    currAddress: currAddress,
+    setCurrAddress: (location: string): void => {
+      setCurrAddress(location);
     },
     currCoords: currCoords,
     setCoords: (coords: Coords): void => {
       setCoords(coords);
       localStorage.setItem('location', JSON.stringify(coords));
-    },
-    currChoices: currChoices,
-    setCurrChoices: (choices: string[]): void => {
-      setCurrChoices(choices);
     },
     tempTemplates: tempTemplates,
     setTempTemplates: (templates: any): void => {

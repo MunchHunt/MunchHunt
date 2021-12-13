@@ -12,23 +12,13 @@ import { MunchContext } from "../Contexts/MunchContext";
 
 const Home: React.FC = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-  // const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   // const [currLocation, setCurrLocation] = useState<string>('');
   // const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
-  // const [currChoices, setCurrChoices] = useState<string[]>([]);
   // const [tempTemplates, setTempTemplates] = useState<any>([]);
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
+  const [currChoices, setCurrChoices] = useState<string[]>([]);
 
   const {
-    isLoggedIn,
-    selectedTemplate,
-    setSelectedTemplate,
-    currLocation,
-    setCurrLocation,
-    currCoords,
-    setCoords,
-    currChoices,
-    setCurrChoices,
-    tempTemplates,
     setTempTemplates,
   } = useContext(MunchContext);
 
@@ -41,22 +31,13 @@ const Home: React.FC = () => {
       {/* {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>} */}
       <div className={styles.findContainer}>
         <Templates
-          isLoggedIn={isLoggedIn}
           currChoices={currChoices}
           setCurrChoices={setCurrChoices}
-          setCoords={setCoords}
-          tempTemplates={tempTemplates}
-          setTempTemplates={setTempTemplates}
-          currCoords={currCoords}
           setSelectedTemplate={setSelectedTemplate}
         />
         <Form
-          currLocation={currLocation}
-          setCurrLocation={setCurrLocation}
           currChoices={currChoices}
           setCurrChoices={setCurrChoices}
-          currCoords={currCoords}
-          setCoords={setCoords}
           selectedTemplate={selectedTemplate}
         />
       </div>

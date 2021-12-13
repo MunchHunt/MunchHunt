@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import styles from '../../../styles/Home/Location.module.css';
 import PlacesAutocomplete, {
@@ -8,29 +8,18 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { CircularProgress, List, ListItem, Divider } from '@mui/material';
 import CurrentLocation from './CurrentLocation';
-
-interface Coords {
-  lat: string;
-  long: string;
-}
+import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Props {
-  currLocation: string;
-  setCurrLocation: Function;
-  currCoords: Coords;
-  setCoords: Function;
   invalidLocation: boolean;
   setInvalidLocation: Function;
 }
 
-const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, setCoords, invalidLocation, setInvalidLocation }) => {
+const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   const [locationInput, setLocationInput] = useState<string>("");
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
-
-  const updateAddress = () => {
-    setCurrLocation({ lat: currCoords.lat, long: currCoords.long });
-  };
+  const { currAddress, setCurrAddress, currCoords, setCoords } = useContext(MunchContext);
 
   const getCurrentPosition = () => {
     if (navigator.geolocation) {
@@ -38,7 +27,6 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
       navigator.geolocation.getCurrentPosition(function (position) {
         setCoords({ lat: position.coords.latitude.toString(), long: position.coords.longitude.toString() })
       });
-      updateAddress();
       setInvalidLocation(false);
       setTimeout(() => {
         setUpdated(true);
@@ -73,7 +61,6 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
     setLocationInput(value);
     const latLng = await getLatLng(results[0]);
     setCoords({ lat: latLng.lat.toString(), long: latLng.lng.toString() });
-    updateAddress();
     setInvalidLocation(false);
     setUpdated(true);
   }
@@ -85,6 +72,20 @@ const Location: React.FC<Props> = ({ currLocation, setCurrLocation, currCoords, 
       }, 3000)
     }
   }, [locationUpdated])
+
+  useEffect(() => {
+    if (locationInput.length) {
+      setCurrAddress(locationInput);
+      console.log('update address')
+    }
+  }, [locationInput]);
+
+  useEffect(() => {
+    if (currAddress.length) {
+      setLocationInput(currAddress);
+      console.log(currAddress)
+    }
+  }, []);
 
   return (
     <div className={styles.locationContainer}>

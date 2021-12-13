@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import CreateTemplate from "./CreateTemplate";
-import styles from '../../../styles/Home/Templates.module.css';
+import styles from "../../../styles/Home/Templates.module.css";
 import { Card, Button } from "@mui/material";
-import GoogleIcon from '@mui/icons-material/Google';
+import GoogleIcon from "@mui/icons-material/Google";
+import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Coords {
   lat: string;
@@ -10,21 +11,24 @@ interface Coords {
 }
 
 interface Props {
-  isLoggedIn: boolean;
   currChoices: string[];
   setCurrChoices: Function;
-  setCoords: Function;
-  tempTemplates: any;
-  setTempTemplates: Function;
-  currCoords: Coords;
   setSelectedTemplate: Function;
 }
 
-const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, setCoords, tempTemplates, setTempTemplates, currCoords, setSelectedTemplate }) => {
+const Templates: React.FC<Props> = ({
+  currChoices,
+  setCurrChoices,
+  setSelectedTemplate,
+}) => {
+  const { isLoggedIn, setCoords, tempTemplates, setTempTemplates, currCoords } = useContext(MunchContext);
+
   const selectTemplate = (e: any) => {
     e.preventDefault();
     const templateName = e.target.innerHTML;
-    let newChoices = tempTemplates.filter((each: any) => each.name === templateName);
+    let newChoices: any = tempTemplates.filter(
+      (each: any) => each.name === templateName
+    );
     setCurrChoices(newChoices[0].choices);
     setCoords(newChoices[0].location);
     setSelectedTemplate(newChoices[0].name);
@@ -36,11 +40,20 @@ const Templates: React.FC<Props> = ({ isLoggedIn, currChoices, setCurrChoices, s
         <h2>My Templates</h2>
         {isLoggedIn ? (
           <div className={styles.templateColumn}>
-            {tempTemplates.length ? tempTemplates.map((temp: any) => (
-              <div key={temp.name} className={styles.template} onClick={(e: any) => selectTemplate(e)}>{temp.name}</div>
-            )) :
-              <div>No templates! Create a new template below</div>}
-            <CreateTemplate tempTemplates={tempTemplates} setTempTemplates={setTempTemplates} currChoices={currChoices} currCoords={currCoords} />
+            {tempTemplates.length ? (
+              tempTemplates.map((temp: any) => (
+                <div
+                  key={temp.name}
+                  className={styles.template}
+                  onClick={(e: any) => selectTemplate(e)}
+                >
+                  {temp.name}
+                </div>
+              ))
+            ) : (
+              <div>No templates! Create a new template below</div>
+            )}
+            <CreateTemplate currChoices={currChoices} />
           </div>
         ) : (
           <div>
