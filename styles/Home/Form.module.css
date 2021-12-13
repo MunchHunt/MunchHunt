@@ -32,7 +32,6 @@
           flex-direction: column;
   margin: 50px 0 50px;
   padding-bottom: 50px;
-  border: 1px solid red;
 }
 
 @media screen and (max-width: 704px) {
@@ -157,6 +156,9 @@
 }
 
 .findBtn {
+  height: 46px;
+  width: 200px;
+  margin-top: -13px;
   background-color: #ff7300;
   color: white;
 }
@@ -165,5 +167,18 @@
   background-color: #ee6b00;
   border: none;
   outline: none;
+}
+
+@media screen and (max-width: 878px) {
+  .findBtn {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .findBtn {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 /*# sourceMappingURL=Form.module.css.map */
