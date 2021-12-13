@@ -5,3 +5,8 @@ body {
   font-family: 'Mukta', sans-serif, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
+.active {
+  outline: 2px solid orange;
+  color: orange;
+}

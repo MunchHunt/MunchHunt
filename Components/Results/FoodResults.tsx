@@ -40,8 +40,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
     return miles;
   }
   return (
-    <div id={id} onClick={(id) => handleClick(id)}>
-      <Card style={selected} className={styles2.cardResult} sx={{ minWidth: random, minHeight: 200 }}>
+      <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: random, minHeight: 350 }} onClick={(id) => handleClick(id)}>
         <CardActionArea >
           <CardMedia
             component="img"
@@ -79,17 +78,23 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
           </CardContent>
         </CardActionArea>
       </Card>
-    </div>
   )
 }
 
 const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
   const [current, setCurrent] = React.useState<string>('');
-  const [selected, setSelected] = React.useState<any>({});
+  const [selected, setSelected] = React.useState<any>();
+  const [prevSelected, setCurrentSelected] = React.useState<string>('');
 
-  const handleClick = (event: any) => {
-    const currentRest = event.currentTarget.id;
-    select(currentRest);
+  const handleClick = (event: any, id: number, name: string) => {
+    let card = document.querySelector('#rest' + id);
+    card?.classList.add('active');
+    if(prevSelected.length) {
+      let prev = document.querySelector(prevSelected);
+      prev?.classList.remove('active');
+    }
+    setCurrentSelected('#rest' + id);
+    select(name);
   }
 
   return (
@@ -98,7 +103,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
             <Grid key={index} item xs={12} sm={12} md={6} lg={6} xl={4}>
-              <Cards id={rest.name} handleClick={handleClick} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random}/>
+              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random}/>
             </Grid>
           ))}
         </Grid>
