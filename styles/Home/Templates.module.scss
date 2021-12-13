@@ -9,20 +9,29 @@
 
 .innerContainer {
   padding: 10px;
-}
-
-.template {
-  cursor: pointer;
-  width: fit-content;
-  padding-bottom: 5px;
-  transition: 0.2s ease-in;
-  &:hover {
-    font-weight: bold;
+  .templateColumn {
+    justify-content: space-between;
+    .template {
+      margin-left: 6px;
+      cursor: pointer;
+      width: fit-content;
+      padding-bottom: 5px;
+      transition: 0.2s ease-in;
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
   }
-}
-
-.templateColumn {
-  justify-content: space-between;
+  .createBtn {
+    background-color: rgb(255, 115, 0);
+    color: white;
+    &:hover {
+      background-color: rgb(238, 107, 0);
+      border: none;
+      outline: none;
+    }
+  }
 }
 
 .inputField {
@@ -31,14 +40,4 @@
 
 .loginText {
   margin-right: 5px;
-}
-
-.createBtn {
-  background-color: rgb(255, 115, 0);
-  color: white;
-  &:hover {
-    background-color: rgb(238, 107, 0);
-    border: none;
-    outline: none;
-  }
 }

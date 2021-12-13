@@ -71,6 +71,12 @@
   outline: none;
 }
 
+.chooseBtn .shuffle {
+  margin-left: 5px;
+  position: relative;
+  top: -1px;
+}
+
 .loading {
   position: absolute;
   top: 130px;
