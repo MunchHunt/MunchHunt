@@ -16,23 +16,31 @@ const Landing: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.contentContainer}>
         <div className={styles.top}>
-          <div className={styles.title}>Munch Hunt</div>
-          <Image
-            loader={myLoader}
-            src="/Y8KaQBX.png"
-            alt="Munch Hunt logo"
-            width={300}
-            height={300}
-            className={styles.logo}
-          />
+          <div className={styles.leftSide}>
+            <div className={styles.title}>Munch Hunt</div>
+            <div className={styles.desc}>Struggling to choose a restaurant? Date night? Just hungry? Lets find the right place for you.</div>
+          </div>
+          <div className={styles.logo}>
+            <Image
+              loader={myLoader}
+              // src="/Y8KaQBX.png"
+              src="/iqrmXmz.png"
+              alt="Munch Hunt logo"
+              width={800}
+              height={800}
+            />
+          </div>
         </div>
-        <div className={styles.mid}>Struggling to choose a restaurant? Date night? Just hungry? <br /> Lets find the right place for you.</div>
         <div className={styles.bottom}>
-          <Location
-            invalidLocation={invalidLocation}
-            setInvalidLocation={setInvalidLocation}
-          />
-          <Button className={styles.findBtn} variant="contained" onClick={() => { window.open('/find', '_self') }}>Start</Button>
+          <div className={styles.start}>Get started now!</div>
+          <label htmlFor="Location">Enter Location</label>
+          <div className={styles.locationRow}>
+            <Location
+              invalidLocation={invalidLocation}
+              setInvalidLocation={setInvalidLocation}
+            />
+            <Button className={styles.findBtn} variant="contained" onClick={() => { window.open('/find', '_self') }}>Start</Button>
+          </div>
         </div>
       </div>
     </div>
