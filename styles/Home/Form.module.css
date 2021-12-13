@@ -1,9 +1,5 @@
 .container {
-  width: 100%;
-}
-
-.innerContainer {
-  margin: 50px;
+  width: 900px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,9 +15,36 @@
           flex-direction: column;
 }
 
+.innerContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 50px 0 50px;
+  padding-bottom: 50px;
+}
+
 @media screen and (max-width: 704px) {
   .innerContainer {
-    margin: 40px;
+    width: 90%;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .innerContainer {
+    width: 90%;
+    margin: 15px;
   }
 }
 
@@ -29,6 +52,11 @@
   font-size: 40px;
   margin-top: 0px;
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.desc {
+  text-align: center;
 }
 
 .chooseBtn {
@@ -41,6 +69,30 @@
   background-color: #ee6b00;
   border: none;
   outline: none;
+}
+
+.chooseBtn .shuffle {
+  margin-left: 5px;
+  position: relative;
+  top: -1px;
+}
+
+.loading {
+  position: absolute;
+  top: 130px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 878px) {
+  .loading {
+    top: 150px;
+  }
+}
+
+.loadingText {
+  margin-right: 5px;
 }
 
 .formContainer {
@@ -66,18 +118,25 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  align-items: center;
+}
+
+@media screen and (max-width: 878px) {
+  .form {
+    margin-top: 30px;
+  }
 }
 
 .inputField {
@@ -103,6 +162,9 @@
 }
 
 .findBtn {
+  height: 46px;
+  width: 200px;
+  margin-top: -3px;
   background-color: #ff7300;
   color: white;
 }
@@ -111,5 +173,18 @@
   background-color: #ee6b00;
   border: none;
   outline: none;
+}
+
+@media screen and (max-width: 878px) {
+  .findBtn {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .findBtn {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 /*# sourceMappingURL=Form.module.css.map */

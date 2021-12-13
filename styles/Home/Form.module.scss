@@ -1,17 +1,34 @@
-.container {
-  // border: 1px solid black;
-  // border-radius: 10px;
-  width: 100%;
-}
-
-.innerContainer {
-  margin: 50px;
+@mixin centerC() {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+@mixin centerR() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container {
+  width: 900px;
+  @include centerC();
+}
+
+.innerContainer {
+  position: relative;
+  @include centerC();
+  margin: 50px 0 50px;
+  padding-bottom: 50px;
   @media screen and (max-width: 704px) {
-    margin: 40px;
+    width: 90%;
+    padding-bottom: 100px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    margin: 15px;
   }
 }
 
@@ -19,6 +36,11 @@
   font-size: 40px;
   margin-top: 0px;
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.desc {
+  text-align: center;
 }
 
 .chooseBtn {
@@ -30,24 +52,40 @@
     border: none;
     outline: none;
   }
+  .shuffle {
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 130px;
+  display: flex;
+  @media screen and (max-width: 878px) {
+    top: 150px;
+  }
+}
+
+.loadingText {
+  margin-right: 5px;
 }
 
 .formContainer {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include centerC();
 }
 
 .form {
   width: 100%;
   margin-top: 15px;
-  display: flex;
-  flex-direction: row;
+  @include centerR();
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  @media screen and (max-width: 878px) {
+    margin-top: 30px;
+  }
 }
 
 .inputField {
@@ -66,11 +104,21 @@
 }
 
 .findBtn {
+  height: 46px;
+  width: 200px;
+  margin-top: -3px;
   background-color: rgb(255, 115, 0);
   color: white;
   &:hover {
     background-color: rgb(238, 107, 0);
     border: none;
     outline: none;
+  }
+  @media screen and (max-width: 878px) {
+    margin-left: 20px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    margin-left: 0;
   }
 }

@@ -8,16 +8,20 @@ const myLoader = ({ src, width, quality }: any) => {
 }
 
 const Navbar = () => {
+  const goHome = () => {
+    window.open('/', '_self');
+  }
+
   return (
     <div className={styles.navOutterContainer}>
       <nav className={styles.navbar}>
-        <div className={styles.navbarLogoContainer}>
+        <div className={styles.navbarLogoContainer} onClick={goHome}>
           <Image
-          loader={myLoader}
-          src="/Y8KaQBX.png"
-          alt="Munch Hunt logo"
-          width={70}
-          height={70}
+            loader={myLoader}
+            src="/Y8KaQBX.png"
+            alt="Munch Hunt logo"
+            width={70}
+            height={70}
           />
           <div className={styles.munchHuntTitle}>MUNCH HUNT</div>
         </div>

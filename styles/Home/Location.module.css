@@ -1,5 +1,6 @@
 .locationContainer {
   width: 100%;
+  margin-top: -30px;
 }
 
 .container {
@@ -21,15 +22,16 @@
 
 .inputDiv {
   position: relative;
+  width: 100%;
 }
 
 .inputGroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -45,6 +47,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   margin-top: 7px;
 }
@@ -68,16 +73,45 @@
           flex-direction: row;
   border: 1px solid rgba(80, 80, 80, 0.377);
   border-radius: 5px;
+  background-color: white;
   margin: 0 10px 10px 0;
-  width: 300px;
+  width: 400px;
+}
+
+.inputRow:hover {
+  border: 1px solid black;
 }
 
 .inputRow:focus-within {
-  outline: 2px solid #156ff5;
+  border: 1px solid #156ff5;
 }
 
 @media screen and (max-width: 878px) {
   .inputRow {
+    width: 100%;
+  }
+}
+
+.inputRowInvalid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 1px solid rgba(255, 59, 59, 0.377);
+  border-radius: 5px;
+  margin: 0 10px 10px 0;
+  width: 400px;
+}
+
+.inputRowInvalid:focus-within {
+  border: 1px solid #fa5252;
+}
+
+@media screen and (max-width: 878px) {
+  .inputRowInvalid {
     width: 100%;
   }
 }
@@ -100,16 +134,33 @@
   outline: none;
 }
 
-.suggestions {
+.suggestionBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
   position: relative;
-  z-index: 1;
-  width: 80%;
-  bottom: 15px;
+}
+
+.suggestionBox .suggestions {
+  position: absolute;
+  z-index: 2;
+  width: 400px;
+  top: -18px;
+  margin-left: -10px;
 }
 
 @media screen and (max-width: 878px) {
-  .suggestions {
-    bottom: 65px;
+  .suggestionBox .suggestions {
+    margin-left: 0;
+    bottom: 15px;
     width: 100%;
   }
 }
@@ -139,11 +190,38 @@
 
 .messagesDiv {
   position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .message {
   position: absolute;
-  bottom: 5px;
-  left: 5px;
+  top: -5px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.message .text {
+  margin-right: 5px;
 }
 /*# sourceMappingURL=Location.module.css.map */

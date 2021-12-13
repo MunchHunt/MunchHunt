@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { TextField, Button } from "@mui/material";
 import styles from '../../../styles/Home/Templates.module.css';
-
-interface Coords {
-  lat: string;
-  long: string;
-}
+import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Props {
-  tempTemplates: any;
-  setTempTemplates: Function;
   currChoices: string[];
-  currCoords: Coords;
 }
-
-const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, currChoices, currCoords }) => {
+const CreateTemplate: React.FC<Props> = ({ currChoices }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
+  const { tempTemplates, setTempTemplates, currCoords } = useContext(MunchContext);
 
   const changeHandler = (e: any): void => {
     e.preventDefault();
@@ -35,7 +28,6 @@ const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, curr
     return true;
   };
 
-
   const addTemplate = (e: any): void => {
     e.preventDefault();
     if (validator()) {
@@ -50,7 +42,6 @@ const CreateTemplate: React.FC<Props> = ({ tempTemplates, setTempTemplates, curr
       setTyped('');
     }
   };
-
 
   return (
     <div>
