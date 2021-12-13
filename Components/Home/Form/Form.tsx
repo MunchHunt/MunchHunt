@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from './Location';
 import { TextField, Button, Card, CircularProgress } from "@mui/material";
-
+import { MunchContext } from '../../Contexts/MunchContext';
 interface Coords {
   lat: string;
   long: string;
@@ -34,7 +34,8 @@ const Form: React.FC<Props> = ({
   const [input5, setInput5] = useState<string>("");
   const [input6, setInput6] = useState<string>("");
 
-  const [randomResult, setResult] = useState<string>("");
+  // const [randomResult, setResult] = useState<string>("");
+  const { result, setResult } = useContext(MunchContext);
   const [loading, setLoading] = useState<boolean>(false);
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
 
@@ -179,11 +180,11 @@ const Form: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (randomResult && randomResult !== "") {
+    if (result && result !== "") {
       // window.open("/results", "_self");
-      console.log('Result:', randomResult)
+      console.log('Result:', result)
     }
-  }, [randomResult]);
+  }, [result]);
 
   return (
     <Card className={styles.container}>
