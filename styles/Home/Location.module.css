@@ -146,18 +146,19 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  position: relative;
 }
 
-.suggestions {
-  position: relative;
-  z-index: 1;
+.suggestionBox .suggestions {
+  position: absolute;
+  z-index: 2;
   width: 400px;
-  bottom: 15px;
+  top: -18px;
   margin-left: -10px;
 }
 
 @media screen and (max-width: 878px) {
-  .suggestions {
+  .suggestionBox .suggestions {
     margin-left: 0;
     bottom: 15px;
     width: 100%;
@@ -207,10 +208,14 @@
 
 .message {
   position: absolute;
+  top: 5px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

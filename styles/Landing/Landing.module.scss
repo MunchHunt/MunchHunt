@@ -36,6 +36,9 @@
   }
   .bottom {
     display: flex;
-    align-items: center;
+    .findBtn {
+      height: 56px;
+      margin-top: 3px;
+    }
   }
 }

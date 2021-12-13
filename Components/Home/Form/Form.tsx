@@ -177,6 +177,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
         <div className={styles.formContainer}>
           <form className={styles.form} onSubmit={(e: any) => submitHandler(e)}>
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef1}
               placeholder="Enter cuisine"
@@ -186,6 +187,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef2}
               placeholder="Enter cuisine"
@@ -195,6 +197,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef3}
               placeholder="Enter cuisine"
@@ -204,6 +207,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef4}
               placeholder="Enter cuisine"
@@ -213,6 +217,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef5}
               placeholder="Enter cuisine"
@@ -222,6 +227,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
               variant="outlined"
             />
             <TextField
+              autoComplete="off"
               className={styles.inputField}
               inputRef={inputRef6}
               placeholder="Enter cuisine"
@@ -233,6 +239,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
           </form>
           <br />
         </div>
+        <label>Update Location</label>
         <Location
           invalidLocation={invalidLocation}
           setInvalidLocation={setInvalidLocation}

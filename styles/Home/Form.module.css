@@ -18,11 +18,19 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-bottom: 50px;
 }
 
 @media screen and (max-width: 704px) {
   .innerContainer {
     margin: 40px;
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .innerContainer {
+    margin: 15px;
   }
 }
 

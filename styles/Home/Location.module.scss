@@ -87,19 +87,18 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-}
-
-.suggestions {
   position: relative;
-  z-index: 1;
-  width: 400px;
-  bottom: 15px;
-  margin-left: -10px;
-  @media screen and (max-width: 878px) {
-    margin-left: 0;
-
-    bottom: 15px;
-    width: 100%;
+  .suggestions {
+    position: absolute;
+    z-index: 2;
+    width: 400px;
+    top: -18px;
+    margin-left: -10px;
+    @media screen and (max-width: 878px) {
+      margin-left: 0;
+      bottom: 15px;
+      width: 100%;
+    }
   }
 }
 
@@ -133,8 +132,10 @@
 
 .message {
   position: absolute;
+  top: 5px;
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
 
   .text {

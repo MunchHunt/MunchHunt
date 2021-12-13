@@ -61,8 +61,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+.contentContainer .bottom .findBtn {
+  height: 56px;
+  margin-top: 3px;
 }
 /*# sourceMappingURL=Landing.module.css.map */

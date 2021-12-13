@@ -3,6 +3,7 @@ import styles from '../../styles/Landing/Landing.module.css';
 import Image from 'next/Image';
 
 import Location from '../Home/Form/Location';
+import { Button } from '@mui/material';
 
 const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
@@ -31,6 +32,7 @@ const Landing: React.FC = () => {
             invalidLocation={invalidLocation}
             setInvalidLocation={setInvalidLocation}
           />
+          <Button className={styles.findBtn} variant="contained" onClick={() => { window.open('/find', '_self') }}>Start</Button>
         </div>
       </div>
     </div>

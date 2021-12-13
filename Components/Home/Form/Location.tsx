@@ -100,12 +100,11 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className={styles.inputDiv}>
               <span className={styles.inputGroup}>
-                <label>Update Location</label>
                 <div className={styles.inputTop}>
                   {!invalidLocation ? (
                     <div className={styles.inputRow}>
                       <div className={styles.inputRowInner}>
-                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} placeholder="Enter address or zip code" value={locationInput} />
                         <CurrentLocation getCurrentPosition={getCurrentPosition} />
                       </div>
                     </div>
@@ -136,9 +135,9 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
                       cursor: "pointer",
                     }
                     return (
-                      <div key={suggestion.description}>
+                      <div key={suggestion.description} className={styles.suggestion}>
                         <ListItem {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description}</ListItem>
-                        <Divider />
+                        {/* <Divider /> */}
                       </div>
                     )
                   })}
