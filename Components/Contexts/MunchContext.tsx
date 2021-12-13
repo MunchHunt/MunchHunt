@@ -22,7 +22,7 @@ export const MunchContext = createContext(
   });
 
 export const MunchProvider: React.FC = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const [currLocation, setCurrLocation] = useState<string>('');
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
@@ -45,6 +45,7 @@ export const MunchProvider: React.FC = ({ children }) => {
     currCoords: currCoords,
     setCoords: (coords: Coords): void => {
       setCoords(coords);
+      localStorage.setItem('location', JSON.stringify(coords));
     },
     currChoices: currChoices,
     setCurrChoices: (choices: string[]): void => {
@@ -55,6 +56,13 @@ export const MunchProvider: React.FC = ({ children }) => {
       setTempTemplates(templates);
     }
   };
+
+  useEffect(() => {
+    let cachedCoords = localStorage.getItem('location');
+    if (cachedCoords) {
+      setCoords(JSON.parse(cachedCoords));
+    }
+  }, [])
 
   return (
     <MunchContext.Provider value={store}>
