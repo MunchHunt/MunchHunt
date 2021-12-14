@@ -8,9 +8,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import styles from '../../styles/Results/FoodResults.module.css';
-import styles2 from '../../styles/Results/cards.module.css';
-import { AnyNsRecord } from 'dns';
+import styles2 from '../../../styles/Results/cards.module.css';
 import { CardActionArea } from '@mui/material';
 
 interface Foods {
@@ -40,18 +38,20 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
     return miles;
   }
   return (
-      <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: random, minHeight: 350 }} onClick={(id) => handleClick(id)}>
-        <CardActionArea >
-          <CardMedia
-            component="img"
-            height="140"
-            image={image}
-            alt="yelp restaurant result"
-          />
-          <CardContent className={styles2.cardContent}>
-            <Typography className={styles2.cardName} gutterBottom variant="body1" component="div">
-              {name}
-            </Typography>
+    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: random, minHeight: 350 }} onClick={(id) => handleClick(id)}>
+      <CardActionArea className={styles2.cardArea}>
+        <CardMedia
+          component="img"
+          height="140"
+          image={image}
+          alt="yelp restaurant result"
+        />
+        <CardContent className={styles2.cardContent}>
+          <Typography className={styles2.cardName} gutterBottom variant="body1" component="div">
+            {name}
+          </Typography>
+          <div className={styles2.cardOrganizer}>
+            <div>
             <Typography className={styles2.cardText} variant="body1" color="text.secondary">
               {address}
             </Typography>
@@ -61,6 +61,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
             <Typography className={styles2.cardPrice} variant="body1" color="text.secondary">
               {price}
             </Typography>
+            </div>
             <div className={styles2.bottomCardBox}>
               <Typography className={styles2.cardDistance} variant="body2" color="text.secondary">
                 {getMiles(distance)} miles away
@@ -75,9 +76,10 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
                 />
               </Typography>
             </div>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+          </div>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   )
 }
 
@@ -89,7 +91,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
   const handleClick = (event: any, id: number, name: string) => {
     let card = document.querySelector('#rest' + id);
     card?.classList.add('active');
-    if(prevSelected.length) {
+    if (prevSelected.length) {
       let prev = document.querySelector(prevSelected);
       prev?.classList.remove('active');
     }
@@ -103,7 +105,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
             <Grid key={index} item xs={12} sm={12} md={6} lg={6} xl={4}>
-              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random}/>
+              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
             </Grid>
           ))}
         </Grid>
