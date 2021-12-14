@@ -60,7 +60,7 @@ const Landing: React.FC = () => {
               invalidLocation={invalidLocation}
               setInvalidLocation={setInvalidLocation}
             />
-            <Button className={styles.findBtn} variant="contained" onClick={() => { window.open('/find', '_self') }}>Start</Button>
+            <Button className={styles.startBtn} variant="contained" onClick={() => { window.open('/find', '_self') }}>Start</Button>
           </div>
         </div>
       </div>

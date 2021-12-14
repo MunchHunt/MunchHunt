@@ -137,10 +137,12 @@
 
 .contentContainer .bottom .start {
   font-size: 40px;
+  margin-bottom: 15px;
 }
 
 .contentContainer .bottom label {
   font-size: 23px;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 560px) {
@@ -175,28 +177,28 @@
   }
 }
 
-.contentContainer .bottom .findBtn {
-  height: 56px;
-  margin-top: 3px;
+.contentContainer .bottom .locationRow .startBtn {
+  height: 53px;
   margin-left: 10px;
+  margin-top: -6px;
   background-color: #ff7300;
   color: white;
 }
 
-.contentContainer .bottom .findBtn:hover {
+.contentContainer .bottom .locationRow .startBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
 @media screen and (max-width: 878px) {
-  .contentContainer .bottom .findBtn {
+  .contentContainer .bottom .locationRow .startBtn {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .bottom .findBtn {
+  .contentContainer .bottom .locationRow .startBtn {
     width: 95%;
     margin-left: 0;
     margin-top: 30px;
