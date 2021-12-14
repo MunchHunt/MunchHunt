@@ -100,23 +100,21 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className={styles.inputDiv}>
               <span className={styles.inputGroup}>
-                <div className={styles.inputTop}>
-                  {!invalidLocation ? (
-                    <div className={styles.inputRow}>
-                      <div className={styles.inputRowInner}>
-                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} placeholder="Enter address or zip code" value={locationInput} />
-                        <CurrentLocation getCurrentPosition={getCurrentPosition} />
-                      </div>
+                {!invalidLocation ? (
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputRowInner}>
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} placeholder="Enter address or zip code" value={locationInput} />
+                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
-                  ) : (
-                    <div className={styles.inputRowInvalid}>
-                      <div className={styles.inputRowInner}>
-                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
-                        <CurrentLocation getCurrentPosition={getCurrentPosition} />
-                      </div>
+                  </div>
+                ) : (
+                  <div className={styles.inputRowInvalid}>
+                    <div className={styles.inputRowInner}>
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </span>
               <div className={styles.messagesDiv}>
                 {showLoad ? (

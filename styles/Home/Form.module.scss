@@ -23,12 +23,23 @@
   margin: 50px 0 50px;
   padding-bottom: 50px;
   @media screen and (max-width: 704px) {
-    width: 90%;
+    // width: 90%;
     padding-bottom: 100px;
   }
   @media screen and (max-width: 500px) {
-    width: 90%;
-    margin: 15px;
+    // width: 90%;
+    margin: 10px;
+  }
+  .loading {
+    position: absolute;
+    top: 155px;
+    display: flex;
+    @media screen and (max-width: 878px) {
+      top: 150px;
+    }
+    .loadingText {
+      margin-right: 5px;
+    }
   }
 }
 
@@ -59,19 +70,6 @@
   }
 }
 
-.loading {
-  position: absolute;
-  top: 130px;
-  display: flex;
-  @media screen and (max-width: 878px) {
-    top: 150px;
-  }
-}
-
-.loadingText {
-  margin-right: 5px;
-}
-
 .formContainer {
   width: 100%;
   @include centerC();
@@ -85,6 +83,7 @@
   align-items: center;
   @media screen and (max-width: 878px) {
     margin-top: 30px;
+    width: 95%;
   }
 }
 
@@ -118,7 +117,7 @@
     margin-left: 20px;
   }
   @media screen and (max-width: 700px) {
-    width: 100%;
+    width: 95%;
     margin-left: 0;
   }
 }

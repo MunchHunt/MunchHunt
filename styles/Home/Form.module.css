@@ -36,16 +36,32 @@
 
 @media screen and (max-width: 704px) {
   .innerContainer {
-    width: 90%;
     padding-bottom: 100px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .innerContainer {
-    width: 90%;
-    margin: 15px;
+    margin: 10px;
   }
+}
+
+.innerContainer .loading {
+  position: absolute;
+  top: 155px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 878px) {
+  .innerContainer .loading {
+    top: 150px;
+  }
+}
+
+.innerContainer .loading .loadingText {
+  margin-right: 5px;
 }
 
 .formTitle {
@@ -75,24 +91,6 @@
   margin-left: 5px;
   position: relative;
   top: -1px;
-}
-
-.loading {
-  position: absolute;
-  top: 130px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media screen and (max-width: 878px) {
-  .loading {
-    top: 150px;
-  }
-}
-
-.loadingText {
-  margin-right: 5px;
 }
 
 .formContainer {
@@ -136,6 +134,7 @@
 @media screen and (max-width: 878px) {
   .form {
     margin-top: 30px;
+    width: 95%;
   }
 }
 
@@ -183,7 +182,7 @@
 
 @media screen and (max-width: 700px) {
   .findBtn {
-    width: 100%;
+    width: 95%;
     margin-left: 0;
   }
 }
