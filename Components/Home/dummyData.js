@@ -36,6 +36,10 @@ export const templates = [
     choices: [
       'Halal',
       'Vegan',
+      '',
+      '',
+      '',
+      ''
     ]
   }, {
     name: "Munchies",
