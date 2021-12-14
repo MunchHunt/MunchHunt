@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from "../../../styles/Home/Templates.module.css";
 import { Card, Button } from "@mui/material";
@@ -8,33 +8,45 @@ import { MunchContext } from '../../Contexts/MunchContext';
 interface Props {
   currChoices: string[];
   setCurrChoices: Function;
+  selectedTemplate: string;
   setSelectedTemplate: Function;
 }
 
 const Templates: React.FC<Props> = ({
   currChoices,
   setCurrChoices,
+  selectedTemplate,
   setSelectedTemplate,
 }) => {
   const { isLoggedIn, setCoords, tempTemplates } = useContext(MunchContext);
+  const [active, setActive] = useState<string>('');
 
   const selectTemplate = (e: any, i: number) => {
     e.preventDefault();
     const templateName = e.target.innerHTML;
-    let newChoices: any = tempTemplates.filter(
-      (each: any) => each.name === templateName
-    );
-    setCurrChoices(newChoices[0].choices);
-    setCoords(newChoices[0].location);
-    setSelectedTemplate(newChoices[0].name);
+    if (templateName === 'No template') {
+      setSelectedTemplate('');
+      setCurrChoices(['', '', '', '', '', '']);
+      setCoords({ lat: '', long: '' });
+      let template = document.getElementById(active);
+      template?.classList.remove('activeTemplate');
+    } else {
+      let newChoices: any = tempTemplates.filter(
+        (each: any) => each.name === templateName
+      );
+      setCurrChoices(newChoices[0].choices);
+      setCoords(newChoices[0].location);
+      setSelectedTemplate(newChoices[0].name);
 
-  };
-
-  const noTemplate = (e: any) => {
-    e.preventDefault();
-    setSelectedTemplate('');
-    setCurrChoices(['', '', '', '', '', '']);
-    setCoords({ lat: '', long: '' });
+      if (selectedTemplate.length) {
+        let prev = document.getElementById(active);
+        prev?.classList.remove('activeTemplate');
+      }
+      setActive('template' + i.toString());
+      let template = document.getElementById('template' + i.toString());
+      template?.classList.add('activeTemplate');
+      setSelectedTemplate(templateName);
+    }
   };
 
   return (
@@ -47,7 +59,10 @@ const Templates: React.FC<Props> = ({
               <>
                 <div
                   className={styles.template}
-                  onClick={(e: any) => noTemplate(e)}>
+                  onClick={(e: any) => selectTemplate(e, 1)}
+                  id='noTemplate'
+                >
+
                   No template
                 </div>
                 {tempTemplates.map((temp: any, i: number) => (

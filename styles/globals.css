@@ -11,3 +11,8 @@ body {
   outline: 2px solid orange;
   color: orange;
 }
+
+.activeTemplate {
+  font-weight: bold;
+  text-decoration: underline;
+}
