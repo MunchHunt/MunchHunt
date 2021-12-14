@@ -79,7 +79,7 @@ const Templates: React.FC<Props> = ({
             ) : (
               <div>No templates! Create a new template below</div>
             )}
-            <CreateTemplate currChoices={currChoices} />
+            <CreateTemplate currChoices={currChoices} setSelectedTemplate={setSelectedTemplate} />
           </div>
         ) : (
           <div>
