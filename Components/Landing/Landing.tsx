@@ -15,6 +15,7 @@ const Landing: React.FC = () => {
   const [imageSize, setImageSize] = useState<number>(800);
 
   useEffect(() => {
+    setWidth(window.innerWidth);
     window.addEventListener('resize', () => {
       setWidth(window.innerWidth);
     })
