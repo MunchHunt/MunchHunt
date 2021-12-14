@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Landing/Landing.module.css';
 import Image from 'next/Image';
 
@@ -11,6 +11,24 @@ const myLoader = ({ src, width, quality }: any) => {
 
 const Landing: React.FC = () => {
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
+  const [width, setWidth] = useState<number>(0);
+  const [imageSize, setImageSize] = useState<number>(800);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth);
+    })
+  }, [])
+
+  useEffect(() => {
+    if (width < 400) {
+      setImageSize(180);
+    } else if (width < 700) {
+      setImageSize(250);
+    } else {
+      setImageSize(800);
+    }
+  }, [width])
 
   return (
     <div className={styles.container}>
@@ -26,8 +44,10 @@ const Landing: React.FC = () => {
               // src="/Y8KaQBX.png"
               src="/iqrmXmz.png"
               alt="Munch Hunt logo"
-              width={800}
-              height={800}
+              width={imageSize}
+              height={imageSize}
+              placeholder="blur"
+              blurDataURL="/iqrmXmz.png"
             />
           </div>
         </div>

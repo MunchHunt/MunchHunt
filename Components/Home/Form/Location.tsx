@@ -76,7 +76,6 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   useEffect(() => {
     if (locationInput.length) {
       setCurrAddress(locationInput);
-      console.log('update address')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationInput]);
@@ -84,7 +83,6 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   useEffect(() => {
     if (currAddress.length) {
       setLocationInput(currAddress);
-      console.log(currAddress)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
