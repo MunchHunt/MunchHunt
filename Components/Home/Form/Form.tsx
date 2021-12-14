@@ -87,22 +87,35 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
     let temp = [];
     if (inputRef1.current?.value.length) {
       temp.push(inputRef1.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef2.current?.value.length) {
       temp.push(inputRef2.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef3.current?.value.length) {
       temp.push(inputRef3.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef4.current?.value.length) {
       temp.push(inputRef4.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef5.current?.value.length) {
       temp.push(inputRef5.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef6.current?.value.length) {
       temp.push(inputRef6.current?.value);
+    } else {
+      temp.push('');
     }
+    temp = temp.sort((a, b) => (b.length - a.length));
     setCurrChoices(temp);
   };
 
@@ -141,6 +154,10 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
       changeHandler();
     }, 2000);
   };
+
+  useEffect(() => {
+    changeHandler();
+  }, [input1, input2, input3, input4, input5, input6]);
 
   useEffect(() => {
     if (result && result !== "") {
