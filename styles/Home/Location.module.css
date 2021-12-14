@@ -142,8 +142,7 @@
   position: absolute;
   z-index: 2;
   width: 400px;
-  top: -18px;
-  margin-left: -10px;
+  top: -10px;
 }
 
 @media screen and (max-width: 878px) {
@@ -152,6 +151,11 @@
     bottom: 15px;
     width: 100%;
   }
+}
+
+.locationContainer .container .inputDiv .suggestionBox .suggestions .suggestion {
+  border: 1px solid black;
+  margin-top: -1px;
 }
 
 .locationContainer .container .inputDiv .currLocationBtn {

@@ -83,12 +83,16 @@
           position: absolute;
           z-index: 2;
           width: 400px;
-          top: -18px;
-          margin-left: -10px;
+          top: -10px;
+          // margin-left: -10px;
           @media screen and (max-width: 878px) {
             margin-left: 0;
             bottom: 15px;
             width: 100%;
+          }
+          .suggestion {
+            border: 1px solid black;
+            margin-top: -1px;
           }
         }
       }

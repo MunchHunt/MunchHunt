@@ -81,6 +81,8 @@
   text-align: left;
   font-size: 150px;
   line-height: 85%;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
 }
 
 @media screen and (max-width: 900px) {
@@ -97,9 +99,12 @@
 }
 
 .contentContainer .top .leftSide .desc {
+  position: relative;
+  left: 10px;
   margin-bottom: 50px;
   font-size: 25px;
   text-align: left;
+  font-family: "Raleway", sans-serif;
 }
 
 @media screen and (max-width: 900px) {
@@ -112,6 +117,7 @@
   .contentContainer .top .leftSide .desc {
     text-align: center;
     margin-bottom: 10px;
+    left: 0;
   }
 }
 
@@ -148,6 +154,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  color: black;
 }
 
 @media screen and (max-width: 700px) {
@@ -162,6 +176,7 @@
 .contentContainer .bottom .findBtn {
   height: 56px;
   margin-top: 3px;
+  margin-left: 10px;
   background-color: #ff7300;
   color: white;
 }
@@ -180,8 +195,9 @@
 
 @media screen and (max-width: 700px) {
   .contentContainer .bottom .findBtn {
-    width: 100%;
+    width: 95%;
     margin-left: 0;
+    margin-top: 10px;
   }
 }
 /*# sourceMappingURL=Landing.module.css.map */
