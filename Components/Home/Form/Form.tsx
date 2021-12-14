@@ -157,6 +157,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
 
   useEffect(() => {
     changeHandler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input1, input2, input3, input4, input5, input6]);
 
   useEffect(() => {
