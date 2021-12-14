@@ -5,6 +5,7 @@ import { TextField, Button, Card, CircularProgress } from "@mui/material";
 import { MunchContext } from "../../Contexts/MunchContext";
 import { choices } from './Choices';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 interface Props {
   currChoices: string[];
@@ -241,7 +242,9 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
           </form>
           <br />
         </div>
-        <label>Update Location</label>
+        <label className={styles.updateLabel}>
+          Update Location
+        </label>
         <Location
           invalidLocation={invalidLocation}
           setInvalidLocation={setInvalidLocation}
@@ -255,6 +258,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
             onClick={(e: any) => submitHandler(e)}
           >
             Find!
+            <RestaurantIcon className={styles.icon} />
           </Button>
         </div>
       </div>

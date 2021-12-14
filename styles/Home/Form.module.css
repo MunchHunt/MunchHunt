@@ -46,33 +46,32 @@
   }
 }
 
+.innerContainer .formTitle {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.innerContainer .desc {
+  text-align: center;
+  font-size: 20px;
+}
+
 .innerContainer .loading {
-  position: absolute;
-  top: 155px;
+  position: relative;
+  top: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media screen and (max-width: 878px) {
-  .innerContainer .loading {
-    top: 150px;
-  }
 }
 
 .innerContainer .loading .loadingText {
   margin-right: 5px;
 }
 
-.formTitle {
-  font-size: 40px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.desc {
-  text-align: center;
+.innerContainer .updateLabel {
+  font-size: 20px;
 }
 
 .chooseBtn {
@@ -166,6 +165,7 @@
   margin-top: -3px;
   background-color: #ff7300;
   color: white;
+  font-size: 20px;
 }
 
 .findBtn:hover {
@@ -185,5 +185,9 @@
     width: 95%;
     margin-left: 0;
   }
+}
+
+.findBtn .icon {
+  margin-left: 5px;
 }
 /*# sourceMappingURL=Form.module.css.map */
