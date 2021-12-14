@@ -9,6 +9,7 @@ import PlacesAutocomplete, {
 import { CircularProgress, List, ListItem, Divider } from '@mui/material';
 import CurrentLocation from './CurrentLocation';
 import { MunchContext } from '../../Contexts/MunchContext';
+import Head from 'next/head'
 
 interface Props {
   invalidLocation: boolean;
@@ -89,6 +90,9 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
 
   return (
     <div className={styles.locationContainer}>
+      <Head>
+        <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API}&libraries=places`}></script>
+      </Head>
       <br />
       <section className={styles.container}>
         <PlacesAutocomplete
