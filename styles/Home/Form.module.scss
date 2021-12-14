@@ -20,7 +20,7 @@
 .innerContainer {
   position: relative;
   @include centerC();
-  margin: 50px 0 50px;
+  margin: 80px 0 80px;
   padding-bottom: 50px;
   @media screen and (max-width: 704px) {
     // width: 90%;
@@ -53,6 +53,7 @@
   }
   .updateLabel {
     font-size: 20px;
+    margin-bottom: 15px;
   }
 }
 
