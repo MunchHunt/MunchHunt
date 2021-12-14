@@ -7,28 +7,14 @@
 }
 
 .cardResult {
-  height: 100%;
 
   &:hover {
     outline: 2px solid orange;
     color: orange;
   }
 
-  .cardArea {
-    height: 45%;
-  }
-
   .cardContent {
     width: 90%;
-    height: 100%;
-
-    .cardOrganizer {
-      width: 100%;
-      height: 100%;
-      @include flexCenter(column);
-      justify-content: space-evenly;
-      align-items: flex-start;
-    }
 
     .cardName {
       text-align: left;
@@ -58,7 +44,6 @@
     .bottomCardBox {
       @include flexCenter(row);
       justify-content: space-between;
-      width: 100%;
     }
   }
 }

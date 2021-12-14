@@ -71,4 +71,5 @@ const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max);
 }
 
+
 export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom };

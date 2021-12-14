@@ -4,14 +4,12 @@ import axios from 'axios';
 import useSWR from 'swr';
 import type { NextPage } from 'next'
 import styles from '../styles/Results/results.module.css';
-import FoodResults from '../Components/Results/results/FoodResults';
+import FoodResults from '../Components/Results/FoodResults';
 import Head from 'next/head';
 import SortButtons from '../Components/Results/Buttons/SortButtons';
 import RandomDecide from '../Components/Results/Buttons/RandomDecide';
 import GoogleMaps from '../Components/Results/Map/GoogleMaps';
-import Details from '../Components/Results/results/Details';
 import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
-import  BasicTabs from '../Components/Results/results/Tab';
 
 type Foods = {
   foods: any
@@ -39,7 +37,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
   const [random, setRandom] = React.useState<number>(280);
   const [zoom, setZoom] = React.useState<number | undefined>(13);
   const [shouldFetch, setFetch] = React.useState<boolean>(false);
-  const [details, setDetails] = React.useState<any>([]);
+  const [id, setId] = React.useState<any>('');
 
   React.useEffect(() => {
     setYelp(foods);
@@ -52,16 +50,10 @@ const Results: NextPage<Foods> = ({ foods }) => {
       { Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_API}` }
   };
 
-  const getDetails = (id: string) => {
-    axios.get(`/api/yelp/?id=${id}`)
-    .then((res) => {
-      setDetails(res.data);
-      if (details) {
-        setMap(false);
-      }
-    })
-    .catch((error) => console.log(error));
-  }
+  const fetcher = (url: any) => axios.get(url).then(res => res.data);
+  const token = process.env.NEXT_PUBLIC_YELP_API;
+
+  // const { data, error } = useSWR(shouldFetch ? [`https://api.yelp.com/v3/businesses/${id}`, token]: null, fetcher);
 
   const sortingHat = (sortCategory: string, value: any) => {
     if (sortCategory === 'price') {
@@ -102,17 +94,11 @@ const Results: NextPage<Foods> = ({ foods }) => {
   const currentSelect = (insert: any): void => {
     const currentSelectedRestaurant = nameFilter(insert, original);
     const currentLoc = currentSelectedRestaurant[0].coordinates;
-    const id = currentSelectedRestaurant[0].id;
+    setId(currentSelectedRestaurant[0].id);
     setAllLocs(locationSort(currentSelectedRestaurant));
-    getDetails(id);
     setLocation({lat: currentLoc.latitude, lng: currentLoc.longitude});
   }
 
-  const mapProps = {
-    defaultZoom: zoom,
-    localRestaurants: allLocs,
-    defaultCenter: {lat: location.lat, lng: location.lng }
-  }
   return (
     <div>
       <Head>
@@ -146,7 +132,6 @@ const Results: NextPage<Foods> = ({ foods }) => {
           </div>
           <div className={styles.mapBox}>
             {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
-            {!showMap ? <BasicTabs details={details} maps={mapProps}/> : null}
           </div>
         </div>
       </div>
@@ -155,5 +140,3 @@ const Results: NextPage<Foods> = ({ foods }) => {
 };
 
 export default Results;
-
-{/* <Details details={details}/> */}

@@ -31,7 +31,6 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;400&display=swap" rel="stylesheet"></link>
           <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API}&libraries=places`}></script>
-          <script></script>
           <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet"></link>
         </Head>
         <body>
