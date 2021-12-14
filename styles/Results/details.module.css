@@ -170,10 +170,10 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Avenir";
-  width: 45%;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+}
+
+.contentContainer .cardArea .takeOut .takeOutOption .option {
+  margin-left: 10px;
 }
 
 .contentContainer .cardArea .phone {

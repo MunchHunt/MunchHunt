@@ -81,8 +81,8 @@ const Details: React.FC<ResultProps> = ({ details }) => {
               <DeliveryDiningIcon fontSize="small" />
               <p className={styles.takeOutText}>Take out options:</p>
               <div className={styles.takeOutOption}>
-                {details.transactions.map((trans: any, index: any) => (
-                  <p key={index}>{trans}</p>
+                {details.transactions.map((trans: any, index: number) => (
+                  <p className={styles.option} key={index}>{trans}</p>
                 ))}
               </div>
             </div>

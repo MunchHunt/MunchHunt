@@ -70,8 +70,10 @@
 
       .takeOutOption {
         @include flexCenter(row);
-        width: 45%;
-        justify-content: space-evenly;
+        // width: 45%;
+        .option {
+          margin-left: 10px;
+        }
       }
     }
 
