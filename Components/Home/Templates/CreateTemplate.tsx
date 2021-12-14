@@ -44,8 +44,8 @@ const CreateTemplate: React.FC<Props> = ({ currChoices }) => {
   };
 
   return (
-    <div>
-      <h3>Create Template</h3>
+    <div className={styles.createTemplate}>
+      <h3 className={styles.createTitle}>Create Template</h3>
       <form onSubmit={(e: any) => addTemplate(e)}>
         {isValid ? (
           <TextField className={styles.inputField} type="text" label="Template name" value={typed} autoComplete="off" onChange={(e: any) => changeHandler(e)} />

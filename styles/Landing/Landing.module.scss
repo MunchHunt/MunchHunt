@@ -89,7 +89,7 @@
     .locationRow {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       width: 100%;
       color: black;
 
@@ -99,7 +99,7 @@
       .startBtn {
         height: 53px;
         margin-left: 10px;
-        margin-top: -6px;
+        margin-top: -4px;
         background-color: rgb(255, 115, 0);
         color: white;
         &:hover {
