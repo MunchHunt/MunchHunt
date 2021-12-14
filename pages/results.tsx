@@ -156,4 +156,3 @@ const Results: NextPage<Foods> = ({ foods }) => {
 
 export default Results;
 
-{/* <Details details={details}/> */}

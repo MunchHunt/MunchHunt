@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Carousel from 'react-material-ui-carousel';
-import Image from 'next/image';
+import Image from 'next/Image';
 import { AnyMxRecord } from 'dns';
 import moment from 'moment';
 import styles from '../../../styles/Results/details.module.css';
@@ -63,7 +63,7 @@ const Details: React.FC<ResultProps> = ({ details }) => {
             <Typography className={styles.addressCont}>
               <HomeIcon fontSize="small" />
               <div className={styles.addressText}>
-                <p className={styles.addy}>{details.location.address1}</p> 
+                <p className={styles.addy}>{details.location.address1}</p>
                 <p className={styles.addy}> {details.location.city}</p>
                 <p className={styles.addy}>{details.location.state}</p>
               </div>
