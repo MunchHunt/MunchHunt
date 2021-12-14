@@ -1,0 +1,127 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  font-family: "Avenir";
+}
+
+
+
+.contentContainer {
+  @include flexCenter(column);
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.5em;
+  width: 100%;
+
+  .cardArea {
+    width: 100%;
+    height: 100%;
+
+    .detailTitleCont {
+      width: 90%;
+      @include flexCenter(row);
+      justify-content: space-between;
+
+      .detailTitle {
+        font-size: 1.7em;
+        font-weight: bold;
+        color: orange;
+      }
+    }
+
+    .price {
+      width: 90%;
+      @include flexCenter(row);
+      justify-content: flex-start;
+
+      .dollars {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: rgb(120, 120, 120);
+        font-family:Arial, Helvetica, sans-serif
+      }
+    }
+
+    .addressCont {
+      @include flexCenter(row);
+      justify-content: flex-start;
+      width: auto;
+      color: rgb(38, 38, 38);
+
+      .addressText {
+        @include flexCenter(row);
+        justify-content: flex-start;
+        width: 100%;
+
+        .addy {
+          margin-left: 7px;
+        }
+      }
+    }
+
+    .takeOut {
+      @include flexCenter(row);
+      width: 50%;
+      justify-content: flex-start;
+
+      .takeOutText {
+        margin-left: 8px;
+      }
+
+      .takeOutOption {
+        @include flexCenter(row);
+        width: 45%;
+        justify-content: space-evenly;
+      }
+
+    }
+
+    .phone {
+      @include flexCenter(row);
+      width: 25%;
+      justify-content: flex-start;
+
+      .phoneNum {
+        font-size: 1em;
+        font-weight: bold;
+        margin-left: 8px;
+      }
+    }
+
+    .closingTime {
+      @include flexCenter(row);
+      width: 35%;
+      justify-content: flex-start;
+
+      .close {
+        margin-left: 8px;
+      }
+
+      .time {
+        font-weight: bold;
+        margin-left: 5px;
+      }
+    }
+  }
+
+   .yelpUrl {
+     margin-top: 2px;
+     width: 90%;
+     @include flexCenter(row);
+     justify-content: flex-end;
+
+     .yelpLink {
+       text-decoration: none;
+       color: rgba(233, 141, 29, 0.947);
+       font-size: 1em;
+
+       &:hover {
+         cursor: pointer;
+         color: rgb(255, 19, 15);
+       }
+     }
+   }
+
+}

@@ -1,10 +1,44 @@
+.cardResult {
+  height: 100%;
+}
+
 .cardResult:hover {
   outline: 2px solid orange;
   color: orange;
 }
 
+.cardResult .cardArea {
+  height: 45%;
+}
+
 .cardResult .cardContent {
   width: 90%;
+  height: 100%;
+}
+
+.cardResult .cardContent .cardOrganizer {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Avenir";
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .cardResult .cardContent .cardName {
@@ -50,5 +84,6 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 100%;
 }
 /*# sourceMappingURL=cards.module.css.map */
