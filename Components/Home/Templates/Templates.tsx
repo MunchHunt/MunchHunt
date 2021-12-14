@@ -5,11 +5,6 @@ import { Card, Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import { MunchContext } from '../../Contexts/MunchContext';
 
-interface Coords {
-  lat: string;
-  long: string;
-}
-
 interface Props {
   currChoices: string[];
   setCurrChoices: Function;
