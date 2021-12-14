@@ -1,0 +1,38 @@
+.navOuterContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // padding-top: 20px;
+  // background-color: burlywood;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: 20px;
+    .navbarLogoContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .munchHuntTitle {
+        font-size: 30px;
+        margin-left: 10px;
+        cursor: default;
+      }
+    }
+    .navbarLinkContainer {
+      .navLinks {
+        text-decoration: none;
+        color: black;
+        margin-left: 20px;
+        font-size: 25px;
+        &:hover {
+          color: rgb(197, 95, 0);
+        }
+      }
+    }
+  }
+}

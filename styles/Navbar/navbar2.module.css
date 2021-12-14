@@ -1,0 +1,64 @@
+.navOuterContainer {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.navOuterContainer .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  padding: 20px;
+}
+
+.navOuterContainer .navbar .navbarLogoContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navOuterContainer .navbar .navbarLogoContainer .munchHuntTitle {
+  font-size: 30px;
+  margin-left: 10px;
+  cursor: default;
+}
+
+.navOuterContainer .navbar .navbarLinkContainer .navLinks {
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+  font-size: 25px;
+}
+
+.navOuterContainer .navbar .navbarLinkContainer .navLinks:hover {
+  color: #c55f00;
+}
+/*# sourceMappingURL=navbar2.module.css.map */
