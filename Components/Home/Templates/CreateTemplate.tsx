@@ -7,6 +7,7 @@ interface Props {
   currChoices: string[];
   setSelectedTemplate: Function;
 }
+
 const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
@@ -23,6 +24,10 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
         setIsValid(false);
         return false;
       }
+    }
+    if (currCoords === { lat: '', long: '' } || typed === '' || currChoices.length < 1) {
+      setIsValid(false);
+      return false;
     }
 
     setIsValid(true);
@@ -52,7 +57,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
         {isValid ? (
           <TextField className={styles.inputField} type="text" label="Template name" value={typed} autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         ) : (
-          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Template name already exists." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
+          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Invalid entry." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         )}
         <Button className={styles.createBtn} variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
       </form>
