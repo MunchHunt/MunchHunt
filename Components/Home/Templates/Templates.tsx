@@ -49,10 +49,6 @@ const Templates: React.FC<Props> = ({
     }
   };
 
-  const deleteTemplate = (): void => {
-
-  }
-
   return (
     <Card className={styles.container}>
       <div className={styles.innerContainer}>

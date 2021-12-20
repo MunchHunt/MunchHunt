@@ -32,6 +32,7 @@ const Home: React.FC = () => {
           currChoices={currChoices}
           setCurrChoices={setCurrChoices}
           selectedTemplate={selectedTemplate}
+          setSelectedTemplate={setSelectedTemplate}
         />
       </div>
     </div>

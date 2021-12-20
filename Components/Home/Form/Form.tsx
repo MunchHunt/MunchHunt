@@ -2,18 +2,21 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from "./Location";
 import { TextField, Button, Card, CircularProgress } from "@mui/material";
+
 import { MunchContext } from "../../Contexts/MunchContext";
 import { choices } from './Choices';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import AreYouSure from './AreYouSure';
 
 interface Props {
   currChoices: string[];
   setCurrChoices: Function;
   selectedTemplate: string;
+  setSelectedTemplate: Function;
 }
 
-const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }) => {
+const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, setSelectedTemplate }) => {
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
   const [input3, setInput3] = useState<string>("");
@@ -22,10 +25,14 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
   const [input6, setInput6] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
   const {
     result,
     setResult,
     currAddress,
+    tempTemplates,
+    setTempTemplates,
+    currCoords
   } = useContext(MunchContext);
 
   const inputRef1 = useRef<any>(null);
@@ -167,15 +174,52 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
     }
   }, [result]);
 
+  const getIndex = (): number => {
+    for (let i = 0; i < tempTemplates.length; i++) {
+      if (tempTemplates[i].name === selectedTemplate) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  const updateTemplate = (e: any): void => {
+    e.preventDefault();
+    let index = getIndex();
+    let temp: any = tempTemplates.slice(0);
+    let data = {
+      name: selectedTemplate,
+      location: currCoords,
+      choices: currChoices,
+    }
+    temp[index] = data;
+    setTempTemplates(temp);
+    console.log('Updated!');
+  };
+
+  const areYouSure = (e: any): void => {
+    e.preventDefault();
+    setOpenDialog(true);
+  }
+
+  const deleteTemplate = (): void => {
+    let index = getIndex();
+    let temp = tempTemplates.slice(0);
+    temp.splice(index, 1);
+    setTempTemplates(temp);
+    setSelectedTemplate('');
+  };
+
   return (
     <Card className={styles.container}>
+      <AreYouSure open={openDialog} setOpenDialog={setOpenDialog} deleteTemplate={deleteTemplate} />
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? (
           <div className={styles.templateTitleDiv}>
             <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
             <div className={styles.templateBtnDiv}>
-              <Button size="small" variant="outlined" className={styles.btn}>Update Template</Button>
-              <Button size="small" variant="outlined" className={styles.btn}>Delete Template</Button>
+              <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => updateTemplate(e)}>Update Template</Button>
+              <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => areYouSure(e)}>Delete Template</Button>
             </div>
           </div>
         ) : (
