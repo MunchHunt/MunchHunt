@@ -50,13 +50,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 10px;
 }
 
 .container .innerContainer .templateTitleDiv .formTitle {
@@ -70,10 +71,27 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.container .innerContainer .templateTitleDiv .templateBtnDiv Button {
+  margin-left: 10px;
+}
+
+.container .innerContainer .templateTitleDiv .templateBtnDiv .btn {
+  color: #ff7300;
+  border: 0.5px solid #ff7300;
+}
+
+.container .innerContainer .templateTitleDiv .templateBtnDiv .btn:hover {
+  background-color: rgba(255, 115, 0, 0.116);
+}
+
+.container .innerContainer .templateTitleDiv .updatingMsg {
+  margin-top: 10px;
 }
 
 .container .innerContainer .desc {
@@ -99,7 +117,7 @@
 }
 
 .chooseBtn {
-  margin-top: 10px;
+  margin-top: 20px;
   background-color: #ff7300;
   color: white;
 }
@@ -183,7 +201,7 @@
           justify-content: center;
 }
 
-.formContainer .form .findBtn {
+.findBtn {
   height: 46px;
   width: 200px;
   margin-top: -3px;
@@ -192,26 +210,26 @@
   font-size: 20px;
 }
 
-.formContainer .form .findBtn:hover {
+.findBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
 @media screen and (max-width: 878px) {
-  .formContainer .form .findBtn {
+  .findBtn {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .formContainer .form .findBtn {
+  .findBtn {
     width: 95%;
     margin-left: 0;
   }
 }
 
-.formContainer .form .findBtn .icon {
+.findBtn .icon {
   margin-left: 5px;
 }
 /*# sourceMappingURL=Form.module.css.map */
