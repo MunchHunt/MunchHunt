@@ -34,10 +34,19 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
     return true;
   };
 
+  useEffect(() => {
+    if (!isValid) {
+      setTimeout(() => {
+        setIsValid(true);
+      }, 3500)
+    }
+  }, [isValid])
+
   const addTemplate = (e: any): void => {
     e.preventDefault();
     if (validator()) {
       let temp: any = tempTemplates.slice(0);
+      // console.log(currChoices);
       let data = {
         name: typed,
         location: currCoords,

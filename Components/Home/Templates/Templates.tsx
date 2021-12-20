@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from "../../../styles/Home/Templates.module.css";
 import { Card, Button } from "@mui/material";
@@ -6,19 +6,12 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Props {
-  currChoices: string[];
-  setCurrChoices: Function;
   selectedTemplate: string;
   setSelectedTemplate: Function;
 }
 
-const Templates: React.FC<Props> = ({
-  currChoices,
-  setCurrChoices,
-  selectedTemplate,
-  setSelectedTemplate,
-}) => {
-  const { isLoggedIn, setCoords, tempTemplates } = useContext(MunchContext);
+const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
+  const { isLoggedIn, setCoords, tempTemplates, currChoices, setCurrChoices } = useContext(MunchContext);
   const [active, setActive] = useState<string>('');
 
   const selectTemplate = (e: any, i: number): void => {
@@ -49,9 +42,14 @@ const Templates: React.FC<Props> = ({
     }
   };
 
-  const deleteTemplate = (): void => {
-
-  }
+  useEffect(() => {
+    if (selectedTemplate === '') {
+      for (let i = 0; i < tempTemplates.length; i++) {
+        let template = document.getElementById('template' + i.toString());
+        template?.classList.remove('activeTemplate');
+      }
+    }
+  }, [selectedTemplate])
 
   return (
     <Card className={styles.container}>
@@ -78,7 +76,7 @@ const Templates: React.FC<Props> = ({
                 ))}
               </>
             ) : (
-              <div>No templates! Create a new template below</div>
+              <div>No templates! Fill out the fields and create a new template below.</div>
             )}
             <CreateTemplate currChoices={currChoices} setSelectedTemplate={setSelectedTemplate} />
           </div>

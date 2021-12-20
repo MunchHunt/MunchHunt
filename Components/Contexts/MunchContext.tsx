@@ -26,6 +26,8 @@ export const MunchContext = createContext(
     setTempTemplates: (templates: any) => { },
     result: '',
     setResult: (result: string) => { },
+    currChoices: ['', '', '', '', '', ''],
+    setCurrChoices: (choices: string[]) => { },
   });
 
 export const MunchProvider: React.FC = ({ children }) => {
@@ -34,6 +36,7 @@ export const MunchProvider: React.FC = ({ children }) => {
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
   const [tempTemplates, setTempTemplates] = useState<any>([]);
   const [result, setResult] = useState<string>("");
+  const [currChoices, setCurrChoices] = useState<string[]>(['', '', '', '', '', '']);
 
   const store = {
     isLoggedIn: isLoggedIn,
@@ -56,6 +59,10 @@ export const MunchProvider: React.FC = ({ children }) => {
     result: result,
     setResult: (result: string): void => {
       setResult(result);
+    },
+    currChoices: currChoices,
+    setCurrChoices: (choices: string[]): void => {
+      setCurrChoices(choices);
     }
   };
 
