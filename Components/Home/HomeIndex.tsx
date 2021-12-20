@@ -7,7 +7,6 @@ import { MunchContext } from "../Contexts/MunchContext";
 
 const Home: React.FC = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
-  const [currChoices, setCurrChoices] = useState<string[]>([]);
 
   const {
     setTempTemplates,
@@ -23,14 +22,10 @@ const Home: React.FC = () => {
       {/* {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>} */}
       <div className={styles.findContainer}>
         <Templates
-          currChoices={currChoices}
-          setCurrChoices={setCurrChoices}
           selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
         />
         <Form
-          currChoices={currChoices}
-          setCurrChoices={setCurrChoices}
           selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
         />

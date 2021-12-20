@@ -38,6 +38,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
     e.preventDefault();
     if (validator()) {
       let temp: any = tempTemplates.slice(0);
+      console.log(currChoices);
       let data = {
         name: typed,
         location: currCoords,

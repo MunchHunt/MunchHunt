@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from "./Location";
 import { TextField, Button, Card, CircularProgress } from "@mui/material";
-
 import { MunchContext } from "../../Contexts/MunchContext";
 import { choices } from './Choices';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
@@ -10,13 +9,11 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import AreYouSure from './AreYouSure';
 
 interface Props {
-  currChoices: string[];
-  setCurrChoices: Function;
   selectedTemplate: string;
   setSelectedTemplate: Function;
 }
 
-const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, setSelectedTemplate }) => {
+const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const [input1, setInput1] = useState<string>("");
   const [input2, setInput2] = useState<string>("");
   const [input3, setInput3] = useState<string>("");
@@ -32,15 +29,10 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
     currAddress,
     tempTemplates,
     setTempTemplates,
-    currCoords
+    currCoords,
+    currChoices,
+    setCurrChoices
   } = useContext(MunchContext);
-
-  const inputRef1 = useRef<any>(null);
-  const inputRef2 = useRef<any>(null);
-  const inputRef3 = useRef<any>(null);
-  const inputRef4 = useRef<any>(null);
-  const inputRef5 = useRef<any>(null);
-  const inputRef6 = useRef<any>(null);
 
   useEffect(() => {
     if (currChoices.length) {
@@ -75,13 +67,14 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
 
   const submitHandler = (e: any) => {
     e.preventDefault();
+    // updateChoices();
     let arr = [
-      inputRef1.current?.["value"],
-      inputRef2.current?.["value"],
-      inputRef3.current?.["value"],
-      inputRef4.current?.["value"],
-      inputRef5.current?.["value"],
-      inputRef6.current?.["value"],
+      input1,
+      input2,
+      input3,
+      input4,
+      input5,
+      input6
     ];
     arr = arr.filter((input) => input !== "");
     if (choicesAreValid(arr) && locationIsValid()) {
@@ -90,44 +83,46 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
     }
   };
 
-  const changeHandler = () => {
-    let temp = [];
-    if (inputRef1.current?.value.length) {
-      temp.push(inputRef1.current?.value);
-    } else {
-      temp.push('');
-    }
-    if (inputRef2.current?.value.length) {
-      temp.push(inputRef2.current?.value);
-    } else {
-      temp.push('');
-    }
-    if (inputRef3.current?.value.length) {
-      temp.push(inputRef3.current?.value);
-    } else {
-      temp.push('');
-    }
-    if (inputRef4.current?.value.length) {
-      temp.push(inputRef4.current?.value);
-    } else {
-      temp.push('');
-    }
-    if (inputRef5.current?.value.length) {
-      temp.push(inputRef5.current?.value);
-    } else {
-      temp.push('');
-    }
-    if (inputRef6.current?.value.length) {
-      temp.push(inputRef6.current?.value);
-    } else {
-      temp.push('');
-    }
-    temp = temp.sort((a, b) => (b.length - a.length));
-    setCurrChoices(temp);
-  };
+  // const updateChoices = () => {
+  //   let temp = [];
+  //   if (input1.length) {
+  //     temp.push(input1);
+  //   } else {
+  //     temp.push('');
+  //   }
+  //   if (input2.length) {
+  //     temp.push(input2);
+  //   } else {
+  //     temp.push('');
+  //   }
+  //   if (input3.length) {
+  //     temp.push(input3);
+  //   } else {
+  //     temp.push('');
+  //   }
+  //   if (input4.length) {
+  //     temp.push(input4);
+  //   } else {
+  //     temp.push('');
+  //   }
+  //   if (input5.length) {
+  //     temp.push(input5);
+  //   } else {
+  //     temp.push('');
+  //   }
+  //   if (input6.length) {
+  //     temp.push(input6);
+  //   } else {
+  //     temp.push('');
+  //   }
+  //   // temp = temp.sort((a, b) => (b.length - a.length));
+  //   console.log(temp)
+  //   setCurrChoices(temp);
+  // };
 
   const randomAutoFill = () => {
     setLoading(true);
+    setSelectedTemplate('');
 
     setTimeout(() => {
       setLoading(false);
@@ -157,15 +152,13 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
       index = Math.floor(Math.random() * choices.length);
       setInput6(choices[index]);
       choices.splice(choices.indexOf(choices[index]), 1);
-
-      changeHandler();
     }, 2000);
   };
 
-  useEffect(() => {
-    changeHandler();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input1, input2, input3, input4, input5, input6]);
+  // useEffect(() => {
+  //   updateChoices();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [input1, input2, input3, input4, input5, input6]);
 
   useEffect(() => {
     if (result && result !== "") {
@@ -190,11 +183,20 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
     let data = {
       name: selectedTemplate,
       location: currCoords,
-      choices: currChoices,
+      choices: [
+        input1,
+        input2,
+        input3,
+        input4,
+        input5,
+        input6
+      ],
     }
+    data.choices = data.choices.sort((a, b) => (b.length - a.length));
+    console.log(data.choices);
     temp[index] = data;
+    setCurrChoices(data.choices);
     setTempTemplates(temp);
-    console.log('Updated!');
   };
 
   const areYouSure = (e: any): void => {
@@ -252,7 +254,6 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
             <TextField
               autoComplete="off"
               className={styles.inputField}
-              inputRef={inputRef1}
               placeholder="Enter cuisine"
               value={input1}
               // onChange={changeHandler}
@@ -262,7 +263,6 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
             <TextField
               autoComplete="off"
               className={styles.inputField}
-              inputRef={inputRef2}
               placeholder="Enter cuisine"
               value={input2}
               // onChange={changeHandler}
@@ -272,7 +272,6 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
             <TextField
               autoComplete="off"
               className={styles.inputField}
-              inputRef={inputRef3}
               placeholder="Enter cuisine"
               value={input3}
               // onChange={changeHandler}
@@ -282,7 +281,6 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
             <TextField
               autoComplete="off"
               className={styles.inputField}
-              inputRef={inputRef4}
               placeholder="Enter cuisine"
               value={input4}
               // onChange={changeHandler}
@@ -292,7 +290,6 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
             <TextField
               autoComplete="off"
               className={styles.inputField}
-              inputRef={inputRef5}
               placeholder="Enter cuisine"
               value={input5}
               // onChange={changeHandler}
@@ -302,7 +299,6 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate, 
             <TextField
               autoComplete="off"
               className={styles.inputField}
-              inputRef={inputRef6}
               placeholder="Enter cuisine"
               value={input6}
               // onChange={changeHandler}

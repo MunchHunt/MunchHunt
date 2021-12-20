@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { MunchContext } from "../../Contexts/MunchContext";
+
 
 interface Props {
   open: boolean;
@@ -13,6 +15,7 @@ interface Props {
 }
 
 const AreYouSure: React.FC<Props> = ({ open, setOpenDialog, deleteTemplate }) => {
+  const { setCurrChoices } = useContext(MunchContext);
 
   const handleClose = () => {
     setOpenDialog(false);
@@ -20,6 +23,7 @@ const AreYouSure: React.FC<Props> = ({ open, setOpenDialog, deleteTemplate }) =>
 
   const deleteHandler = () => {
     deleteTemplate();
+    setCurrChoices(['', '', '', '', '', ''])
     handleClose();
   }
 
