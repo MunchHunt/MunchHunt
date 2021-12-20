@@ -15,6 +15,7 @@ interface Foods {
   foods: any
   select: any
   random: number
+  active: boolean
 }
 
 interface CardProps {
@@ -83,7 +84,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
   )
 }
 
-const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
+const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
   const [current, setCurrent] = React.useState<string>('');
   const [selected, setSelected] = React.useState<any>();
   const [prevSelected, setCurrentSelected] = React.useState<string>('');
@@ -98,6 +99,14 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random }) => {
     setCurrentSelected('#rest' + id);
     select(name);
   }
+
+  React.useEffect(() => {
+    if (active === true) {
+      let prev = document.querySelector(prevSelected);
+      prev?.classList.remove('active');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 
   return (
     <div>

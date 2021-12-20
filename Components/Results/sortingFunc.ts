@@ -61,7 +61,7 @@ const locationSort = (arr: any) => {
   const newArr: any= [];
 
   arr.forEach((rest: any) => {
-    newArr.push({lat: rest.coordinates.latitude, lng: rest.coordinates.longitude, name: rest.name, address: rest.location.address1, pic: rest.image_url})
+    newArr.push({lat: rest.coordinates.latitude, lng: rest.coordinates.longitude, name: rest.name, address: rest.location.address1, city: rest.location.city, state: rest.location.state, pic: rest.image_url})
   })
 
   return newArr;

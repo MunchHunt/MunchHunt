@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
+import styles from '../../../styles/Results/maps.module.css';
 
 const containerStyle = {
   width: '100%',
@@ -65,10 +66,11 @@ function GoogleMaps(props: any) {
             setSelectedRest(null)
           }}
         >
-          <div>
-            <div>restaurant details</div>
-            <h3>{selectedRest.name}</h3>
-            <p>{selectedRest.address}</p>
+          <div className={styles.indoWindow}>
+            <h3 className={styles.title}>{selectedRest.name}</h3>
+            <p className={styles.paragraphs}>{selectedRest.address}</p>
+            <p className={styles.paragraphs}>{selectedRest.city}</p>
+            <p className={styles.paragraphs}>{selectedRest.state}</p>
           </div>
         </InfoWindow>
       )}

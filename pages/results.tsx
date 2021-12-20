@@ -9,7 +9,8 @@ import Head from 'next/head';
 import SortButtons from '../Components/Results/Buttons/SortButtons';
 import RandomDecide from '../Components/Results/Buttons/RandomDecide';
 import GoogleMaps from '../Components/Results/Map/GoogleMaps';
-import Details from '../Components/Results/results/Details';
+import LoadingResults from '../Components/Results/loading/Loading';
+import LoadingMap from '../Components/Results/loading/LoadingMap';
 import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
 import BasicTabs from '../Components/Results/results/Tab';
 
@@ -40,12 +41,20 @@ const Results: NextPage<Foods> = ({ foods }) => {
   const [random, setRandom] = React.useState<number>(280);
   const [zoom, setZoom] = React.useState<number | undefined>(13);
   const [details, setDetails] = React.useState<any>([]);
+  const [active, setActive] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useEffect(() => {
     setYelp(foods);
     setOriginal(foods);
     setAllLocs(locationSort(foods));
   }, [foods]);
+
+  React.useEffect(() => {
+    if (yelpResult.length && allLocs.length) {
+      setLoading(false);
+    }
+  }, [yelpResult, allLocs])
 
   const config = {
     headers:
@@ -97,6 +106,8 @@ const Results: NextPage<Foods> = ({ foods }) => {
     setLocation({ lat: original[0].coordinates.latitude, lng: original[0].coordinates.longitude });
     setZoom(13);
     setAllLocs(locationSort(original));
+    setMap(true);
+    setActive(true);
   }
 
   const currentSelect = (insert: any): void => {
@@ -106,6 +117,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
     setAllLocs(locationSort(currentSelectedRestaurant));
     getDetails(id);
     setLocation({ lat: currentLoc.latitude, lng: currentLoc.longitude });
+    setActive(false);
   }
 
   const mapProps = {
@@ -142,11 +154,18 @@ const Results: NextPage<Foods> = ({ foods }) => {
       <div className={styles.outterBox}>
         <div className={styles.innerBox}>
           <div className={styles.resultsColumns}>
-            <FoodResults foods={yelpResult} select={currentSelect} random={random} />
+            {loading ? <LoadingResults /> : <FoodResults foods={yelpResult} select={currentSelect} random={random} active={active} />}
           </div>
           <div className={styles.mapBox}>
-            {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
-            {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
+            {loading ? <LoadingMap /> : (
+              <div>
+                {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
+                {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
+              </div>
+            )}
+
+            {/* {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
+            {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null} */}
           </div>
         </div>
       </div>

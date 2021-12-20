@@ -55,7 +55,7 @@ const Details: React.FC<ResultProps> = ({ details }) => {
               price: {details.price}
             </Typography>
           </div>
-          <div>
+          <div className={styles.detailContainer}>
             <Typography className={styles.addressCont}>
               <HomeIcon fontSize="small" />
               <div className={styles.addressText}>

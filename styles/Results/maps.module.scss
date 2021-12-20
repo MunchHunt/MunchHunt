@@ -1,0 +1,25 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  font-family: "Avenir";
+}
+
+.indoWindow {
+  min-width: 130px;
+  height: 100%;
+  @include flexCenter(column);
+  align-items: flex-start;
+  justify-self: flex-start;
+
+  .title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .paragraphs {
+    margin: 0;
+    padding: 0;
+  }
+}
