@@ -195,7 +195,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       ],
     }
     data.choices = data.choices.sort((a, b) => (b.length - a.length));
-    console.log(data.choices);
+    // console.log(data.choices);
     temp[index] = data;
     setCurrChoices(data.choices);
     setTempTemplates(temp);
