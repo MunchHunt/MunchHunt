@@ -5,6 +5,7 @@ import { TextField, Button, Card, CircularProgress } from "@mui/material";
 import { MunchContext } from "../../Contexts/MunchContext";
 import { choices } from './Choices';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 
 interface Props {
   currChoices: string[];
@@ -86,22 +87,35 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
     let temp = [];
     if (inputRef1.current?.value.length) {
       temp.push(inputRef1.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef2.current?.value.length) {
       temp.push(inputRef2.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef3.current?.value.length) {
       temp.push(inputRef3.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef4.current?.value.length) {
       temp.push(inputRef4.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef5.current?.value.length) {
       temp.push(inputRef5.current?.value);
+    } else {
+      temp.push('');
     }
     if (inputRef6.current?.value.length) {
       temp.push(inputRef6.current?.value);
+    } else {
+      temp.push('');
     }
+    temp = temp.sort((a, b) => (b.length - a.length));
     setCurrChoices(temp);
   };
 
@@ -142,6 +156,11 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
   };
 
   useEffect(() => {
+    changeHandler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input1, input2, input3, input4, input5, input6]);
+
+  useEffect(() => {
     if (result && result !== "") {
       // window.open("/results", "_self");
       console.log("Result:", result);
@@ -152,7 +171,13 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
     <Card className={styles.container}>
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? (
-          <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
+          <div className={styles.templateTitleDiv}>
+            <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
+            <div className={styles.templateBtnDiv}>
+              <Button>Update Template</Button>
+              <Button>Delete Template</Button>
+            </div>
+          </div>
         ) : (
           <h3 className={styles.formTitle}>Lets get started!</h3>
         )}
@@ -241,7 +266,9 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
           </form>
           <br />
         </div>
-        <label>Update Location</label>
+        <label className={styles.updateLabel}>
+          Update Location
+        </label>
         <Location
           invalidLocation={invalidLocation}
           setInvalidLocation={setInvalidLocation}
@@ -255,6 +282,7 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
             onClick={(e: any) => submitHandler(e)}
           >
             Find!
+            <RestaurantIcon className={styles.icon} />
           </Button>
         </div>
       </div>

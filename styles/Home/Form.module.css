@@ -15,7 +15,7 @@
           flex-direction: column;
 }
 
-.innerContainer {
+.container .innerContainer {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,33 +30,72 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 50px 0 50px;
+  margin: 80px 0 80px;
   padding-bottom: 50px;
 }
 
 @media screen and (max-width: 704px) {
-  .innerContainer {
-    width: 90%;
+  .container .innerContainer {
     padding-bottom: 100px;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .innerContainer {
-    width: 90%;
-    margin: 15px;
+  .container .innerContainer {
+    margin: 10px;
   }
 }
 
-.formTitle {
-  font-size: 40px;
+.container .innerContainer .templateTitleDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .innerContainer .templateTitleDiv .formTitle {
+  font-size: 50px;
   margin-top: 0px;
   margin-bottom: 10px;
   text-align: center;
 }
 
-.desc {
+.container .innerContainer .templateTitleDiv .templateBtnDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .innerContainer .desc {
   text-align: center;
+  font-size: 20px;
+}
+
+.container .innerContainer .loading {
+  position: relative;
+  top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .innerContainer .loading .loadingText {
+  margin-right: 5px;
+}
+
+.container .innerContainer .updateLabel {
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .chooseBtn {
@@ -77,24 +116,6 @@
   top: -1px;
 }
 
-.loading {
-  position: absolute;
-  top: 130px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media screen and (max-width: 878px) {
-  .loading {
-    top: 150px;
-  }
-}
-
-.loadingText {
-  margin-right: 5px;
-}
-
 .formContainer {
   width: 100%;
   display: -webkit-box;
@@ -112,7 +133,7 @@
           flex-direction: column;
 }
 
-.form {
+.formContainer .form {
   width: 100%;
   margin-top: 15px;
   display: -webkit-box;
@@ -134,24 +155,25 @@
 }
 
 @media screen and (max-width: 878px) {
-  .form {
+  .formContainer .form {
     margin-top: 30px;
+    width: 95%;
   }
 }
 
-.inputField {
+.formContainer .form .inputField {
   width: 200px;
   margin: 20px;
 }
 
 @media screen and (max-width: 878px) {
-  .inputField {
+  .formContainer .form .inputField {
     width: 100%;
     margin: 5px 0 5px 0;
   }
 }
 
-.submitDiv {
+.formContainer .form .submitDiv {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -161,30 +183,35 @@
           justify-content: center;
 }
 
-.findBtn {
+.formContainer .form .findBtn {
   height: 46px;
   width: 200px;
   margin-top: -3px;
   background-color: #ff7300;
   color: white;
+  font-size: 20px;
 }
 
-.findBtn:hover {
+.formContainer .form .findBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
 @media screen and (max-width: 878px) {
-  .findBtn {
+  .formContainer .form .findBtn {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .findBtn {
-    width: 100%;
+  .formContainer .form .findBtn {
+    width: 95%;
     margin-left: 0;
   }
+}
+
+.formContainer .form .findBtn .icon {
+  margin-left: 5px;
 }
 /*# sourceMappingURL=Form.module.css.map */

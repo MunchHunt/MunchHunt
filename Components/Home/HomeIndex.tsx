@@ -25,6 +25,7 @@ const Home: React.FC = () => {
         <Templates
           currChoices={currChoices}
           setCurrChoices={setCurrChoices}
+          selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
         />
         <Form

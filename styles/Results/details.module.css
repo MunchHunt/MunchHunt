@@ -170,10 +170,10 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Avenir";
-  width: 45%;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+}
+
+.contentContainer .cardArea .takeOut .takeOutOption .option {
+  margin-left: 10px;
 }
 
 .contentContainer .cardArea .phone {
@@ -191,7 +191,6 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Avenir";
-  width: 25%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -218,7 +217,6 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: "Avenir";
-  width: 35%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;

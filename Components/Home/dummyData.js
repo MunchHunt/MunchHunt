@@ -20,12 +20,12 @@ export const templates = [
       long: '-73.9947334'
     },
     choices: [
-      'American',
-      'Sushi',
-      'Burgers',
       'Indian',
-      'Gyro',
-      'Healthy'
+      'Mediterranean',
+      'Diner',
+      'Breakfast',
+      'Thai',
+      ''
     ]
   }, {
     name: "Friends",
@@ -34,8 +34,12 @@ export const templates = [
       long: '-73.9947334'
     },
     choices: [
-      'American',
-      'Sushi',
+      'Halal',
+      'Vegan',
+      '',
+      '',
+      '',
+      ''
     ]
   }, {
     name: "Munchies",
@@ -44,12 +48,12 @@ export const templates = [
       long: '-73.9947334'
     },
     choices: [
-      'American',
-      'Sushi',
+      'Mexican',
       'Burgers',
-      'Indian',
-      'Gyro',
-      'Healthy'
+      'Junk',
+      'Takeout',
+      'Snack',
+      'Fries'
     ]
   }
 ]

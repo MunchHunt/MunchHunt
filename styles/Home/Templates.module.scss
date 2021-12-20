@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 300px;
   margin-right: 30px;
-  padding: 0 5px 15px 5px;
+  padding: 10px 5px 35px 5px;
   height: 100%;
 }
 
@@ -16,12 +16,19 @@
       cursor: pointer;
       width: fit-content;
       padding-bottom: 5px;
-      transition: 0.2s ease-in;
+      transition: 0.2s ease-in-out;
+      font-size: 20px;
       &:hover {
         font-weight: bold;
         text-decoration: underline;
       }
     }
+  }
+}
+.createTemplate {
+  margin-top: 15px;
+  .createTitle {
+    font-size: 20px;
   }
   .createBtn {
     background-color: rgb(255, 115, 0);
@@ -32,10 +39,9 @@
       outline: none;
     }
   }
-}
-
-.inputField {
-  margin: -10px 0 10px;
+  .inputField {
+    margin: -10px 0 10px;
+  }
 }
 
 .loginText {

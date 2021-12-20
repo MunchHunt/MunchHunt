@@ -1,12 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { TextField, Button } from "@mui/material";
 import styles from '../../../styles/Home/Templates.module.css';
 import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Props {
   currChoices: string[];
+  setSelectedTemplate: Function;
 }
-const CreateTemplate: React.FC<Props> = ({ currChoices }) => {
+
+const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
   const { tempTemplates, setTempTemplates, currCoords } = useContext(MunchContext);
@@ -22,6 +24,10 @@ const CreateTemplate: React.FC<Props> = ({ currChoices }) => {
         setIsValid(false);
         return false;
       }
+    }
+    if (currCoords === { lat: '', long: '' } || typed === '' || currChoices.length < 1) {
+      setIsValid(false);
+      return false;
     }
 
     setIsValid(true);
@@ -39,18 +45,19 @@ const CreateTemplate: React.FC<Props> = ({ currChoices }) => {
       }
       temp.push(data);
       setTempTemplates(temp);
+      setSelectedTemplate(typed);
       setTyped('');
     }
   };
 
   return (
-    <div>
-      <h3>Create Template</h3>
+    <div className={styles.createTemplate}>
+      <h3 className={styles.createTitle}>Create Template</h3>
       <form onSubmit={(e: any) => addTemplate(e)}>
         {isValid ? (
           <TextField className={styles.inputField} type="text" label="Template name" value={typed} autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         ) : (
-          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Template name already exists." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
+          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Invalid entry." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         )}
         <Button className={styles.createBtn} variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
       </form>

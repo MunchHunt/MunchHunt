@@ -1,6 +1,7 @@
 .container {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,6 +82,8 @@
   text-align: left;
   font-size: 150px;
   line-height: 85%;
+  margin-bottom: 20px;
+  font-family: "Raleway", sans-serif;
 }
 
 @media screen and (max-width: 900px) {
@@ -91,15 +94,18 @@
 
 @media screen and (max-width: 700px) {
   .contentContainer .top .leftSide .title {
-    font-size: 100px;
+    font-size: 75px;
     text-align: center;
   }
 }
 
 .contentContainer .top .leftSide .desc {
+  position: relative;
+  left: 10px;
   margin-bottom: 50px;
   font-size: 25px;
   text-align: left;
+  font-family: "Raleway", sans-serif;
 }
 
 @media screen and (max-width: 900px) {
@@ -111,7 +117,9 @@
 @media screen and (max-width: 700px) {
   .contentContainer .top .leftSide .desc {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    left: 0;
+    font-size: 17px;
   }
 }
 
@@ -129,10 +137,12 @@
 
 .contentContainer .bottom .start {
   font-size: 40px;
+  margin-bottom: 15px;
 }
 
 .contentContainer .bottom label {
   font-size: 23px;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 560px) {
@@ -148,6 +158,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  color: black;
 }
 
 @media screen and (max-width: 700px) {
@@ -159,29 +177,31 @@
   }
 }
 
-.contentContainer .bottom .findBtn {
-  height: 56px;
-  margin-top: 3px;
+.contentContainer .bottom .locationRow .startBtn {
+  height: 53px;
+  margin-left: 10px;
+  margin-top: -4px;
   background-color: #ff7300;
   color: white;
 }
 
-.contentContainer .bottom .findBtn:hover {
+.contentContainer .bottom .locationRow .startBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
 @media screen and (max-width: 878px) {
-  .contentContainer .bottom .findBtn {
+  .contentContainer .bottom .locationRow .startBtn {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .bottom .findBtn {
-    width: 100%;
+  .contentContainer .bottom .locationRow .startBtn {
+    width: 95%;
     margin-left: 0;
+    margin-top: 30px;
   }
 }
 /*# sourceMappingURL=Landing.module.css.map */
