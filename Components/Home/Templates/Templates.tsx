@@ -21,7 +21,7 @@ const Templates: React.FC<Props> = ({
   const { isLoggedIn, setCoords, tempTemplates } = useContext(MunchContext);
   const [active, setActive] = useState<string>('');
 
-  const selectTemplate = (e: any, i: number) => {
+  const selectTemplate = (e: any, i: number): void => {
     e.preventDefault();
     const templateName = e.target.innerHTML;
     if (templateName === 'No template') {
@@ -49,6 +49,10 @@ const Templates: React.FC<Props> = ({
     }
   };
 
+  const deleteTemplate = (): void => {
+
+  }
+
   return (
     <Card className={styles.container}>
       <div className={styles.innerContainer}>
@@ -60,9 +64,7 @@ const Templates: React.FC<Props> = ({
                 <div
                   className={styles.template}
                   onClick={(e: any) => selectTemplate(e, 1)}
-                  id='noTemplate'
-                >
-
+                  id='noTemplate'>
                   No template
                 </div>
                 {tempTemplates.map((temp: any, i: number) => (
@@ -70,8 +72,7 @@ const Templates: React.FC<Props> = ({
                     key={temp.name}
                     className={styles.template}
                     onClick={(e: any) => selectTemplate(e, i)}
-                    id={'template' + i.toString()}
-                  >
+                    id={'template' + i.toString()}>
                     {temp.name}
                   </div>
                 ))}
