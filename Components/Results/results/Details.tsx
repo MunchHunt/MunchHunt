@@ -70,26 +70,26 @@ const Details: React.FC<ResultProps> = ({ details }) => {
             </Typography>
             <Typography className={styles.phone}>
               <LocalPhoneIcon fontSize='small' />
-              <p className={styles.phoneNum}> {details.display_phone}</p>
+              <p className={styles.phoneNum}>{details.display_phone}</p>
             </Typography>
             <div className={styles.closingTime}>
               <AccessTimeIcon fontSize="small" />
-              <p className={styles.close}>Closes at :</p>
+              <p className={styles.close}>Closes today at :</p>
               <p className={styles.time}>{moment(details.hours[0].open[0].end, ['HH.mm']).format("hh:mm a")}</p>
             </div>
             <div className={styles.takeOut}>
               <DeliveryDiningIcon fontSize="small" />
               <p className={styles.takeOutText}>Take out options:</p>
               <div className={styles.takeOutOption}>
-                {details.transactions.map((trans: any, index: any) => (
-                  <p key={index}>{trans}</p>
+                {details.transactions.map((trans: any, index: number) => (
+                  <p className={styles.option} key={index}>{trans}</p>
                 ))}
               </div>
             </div>
           </div>
           <div className={styles.yelpUrl}>
             <Typography>
-              <a className={styles.yelpLink} target="_blank" href={details.url} rel="noopener noreferrer">Visit their Yelp page</a>
+              <a className={styles.yelpLink} target="_blank" href={details.url} rel="noopener noreferrer">Visit Yelp Page</a>
             </Typography>
           </div>
         </CardContent>

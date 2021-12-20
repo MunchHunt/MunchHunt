@@ -8,7 +8,7 @@
           flex-direction: column;
   width: 300px;
   margin-right: 30px;
-  padding: 0 5px 15px 5px;
+  padding: 10px 5px 35px 5px;
   height: 100%;
 }
 
@@ -29,8 +29,9 @@
   width: -moz-fit-content;
   width: fit-content;
   padding-bottom: 5px;
-  -webkit-transition: 0.2s ease-in;
-  transition: 0.2s ease-in;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  font-size: 20px;
 }
 
 .innerContainer .templateColumn .template:hover {
@@ -38,18 +39,26 @@
   text-decoration: underline;
 }
 
-.innerContainer .createBtn {
+.createTemplate {
+  margin-top: 15px;
+}
+
+.createTemplate .createTitle {
+  font-size: 20px;
+}
+
+.createTemplate .createBtn {
   background-color: #ff7300;
   color: white;
 }
 
-.innerContainer .createBtn:hover {
+.createTemplate .createBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
-.inputField {
+.createTemplate .inputField {
   margin: -10px 0 10px;
 }
 

@@ -9,6 +9,7 @@ import PlacesAutocomplete, {
 import { CircularProgress, List, ListItem, Divider } from '@mui/material';
 import CurrentLocation from './CurrentLocation';
 import { MunchContext } from '../../Contexts/MunchContext';
+import Head from 'next/head'
 
 interface Props {
   invalidLocation: boolean;
@@ -76,7 +77,6 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   useEffect(() => {
     if (locationInput.length) {
       setCurrAddress(locationInput);
-      console.log('update address')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationInput]);
@@ -84,13 +84,15 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   useEffect(() => {
     if (currAddress.length) {
       setLocationInput(currAddress);
-      console.log(currAddress)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className={styles.locationContainer}>
+      <Head>
+        <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API}&libraries=places`}></script>
+      </Head>
       <br />
       <section className={styles.container}>
         <PlacesAutocomplete
@@ -100,23 +102,21 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div className={styles.inputDiv}>
               <span className={styles.inputGroup}>
-                <div className={styles.inputTop}>
-                  {!invalidLocation ? (
-                    <div className={styles.inputRow}>
-                      <div className={styles.inputRowInner}>
-                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} placeholder="Enter address or zip code" value={locationInput} />
-                        <CurrentLocation getCurrentPosition={getCurrentPosition} />
-                      </div>
+                {!invalidLocation ? (
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputRowInner}>
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} placeholder="Enter address or zip code" value={locationInput} />
+                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
-                  ) : (
-                    <div className={styles.inputRowInvalid}>
-                      <div className={styles.inputRowInner}>
-                        <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
-                        <CurrentLocation getCurrentPosition={getCurrentPosition} />
-                      </div>
+                  </div>
+                ) : (
+                  <div className={styles.inputRowInvalid}>
+                    <div className={styles.inputRowInner}>
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                      <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </span>
               <div className={styles.messagesDiv}>
                 {showLoad ? (

@@ -2,11 +2,17 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Mukta', sans-serif, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Mukta", sans-serif, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+  background-color: rgb(236, 228, 211);
 }
 
 .active {
   outline: 2px solid orange;
   color: orange;
+}
+
+.activeTemplate {
+  font-weight: bold;
+  text-decoration: underline;
 }

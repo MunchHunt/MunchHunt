@@ -1,10 +1,9 @@
 .locationContainer {
-  width: 100%;
   margin-top: -30px;
+  width: 95%;
 }
 
-.container {
-  width: 100%;
+.locationContainer .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,28 +19,19 @@
           align-items: center;
 }
 
-.inputDiv {
+.locationContainer .container .inputDiv {
   position: relative;
   width: 100%;
 }
 
-.inputGroup {
+.locationContainer .container .inputDiv .inputGroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   width: 100%;
-}
-
-.inputTop {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -55,7 +45,7 @@
 }
 
 @media screen and (max-width: 878px) {
-  .inputTop {
+  .locationContainer .container .inputDiv .inputGroup {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -63,7 +53,7 @@
   }
 }
 
-.inputRow {
+.locationContainer .container .inputDiv .inputRow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,25 +64,42 @@
   border: 1px solid rgba(80, 80, 80, 0.377);
   border-radius: 5px;
   background-color: white;
-  margin: 0 10px 10px 0;
   width: 400px;
 }
 
-.inputRow:hover {
+.locationContainer .container .inputDiv .inputRow:hover {
   border: 1px solid black;
 }
 
-.inputRow:focus-within {
+.locationContainer .container .inputDiv .inputRow:focus-within {
   border: 1px solid #156ff5;
 }
 
 @media screen and (max-width: 878px) {
-  .inputRow {
+  .locationContainer .container .inputDiv .inputRow {
     width: 100%;
   }
 }
 
-.inputRowInvalid {
+.locationContainer .container .inputDiv .inputRow .inputRowInner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 7px 15px 7px 15px;
+  width: 100%;
+}
+
+.locationContainer .container .inputDiv .inputRow .inputRowInner .input {
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+
+.locationContainer .container .inputDiv .inputRowInvalid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,35 +113,17 @@
   width: 400px;
 }
 
-.inputRowInvalid:focus-within {
+.locationContainer .container .inputDiv .inputRowInvalid:focus-within {
   border: 1px solid #fa5252;
 }
 
 @media screen and (max-width: 878px) {
-  .inputRowInvalid {
+  .locationContainer .container .inputDiv .inputRowInvalid {
     width: 100%;
   }
 }
 
-.inputRowInner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 7px 15px 7px 15px;
-  width: 100%;
-}
-
-.input {
-  width: 100%;
-  font-size: 16px;
-  border: none;
-  outline: none;
-}
-
-.suggestionBox {
+.locationContainer .container .inputDiv .suggestionBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -149,27 +138,31 @@
   position: relative;
 }
 
-.suggestionBox .suggestions {
+.locationContainer .container .inputDiv .suggestionBox .suggestions {
   position: absolute;
   z-index: 2;
   width: 400px;
-  top: -18px;
-  margin-left: -10px;
+  top: -17px;
 }
 
 @media screen and (max-width: 878px) {
-  .suggestionBox .suggestions {
+  .locationContainer .container .inputDiv .suggestionBox .suggestions {
     margin-left: 0;
     bottom: 15px;
     width: 100%;
   }
 }
 
-.currLocationBtn {
+.locationContainer .container .inputDiv .suggestionBox .suggestions .suggestion {
+  border: 1px solid black;
+  margin-top: -1px;
+}
+
+.locationContainer .container .inputDiv .currLocationBtn {
   font-size: 16px;
 }
 
-.updateBtn {
+.locationContainer .container .inputDiv .updateBtn {
   height: 56px;
   background-color: #fff;
   color: #ff7300;
@@ -177,18 +170,18 @@
 }
 
 @media screen and (max-width: 878px) {
-  .updateBtn {
+  .locationContainer .container .inputDiv .updateBtn {
     height: 40px;
     width: 100%;
   }
 }
 
-.updateBtn:hover {
+.locationContainer .container .inputDiv .updateBtn:hover {
   background-color: whitesmoke;
   border: 0.5px solid #ee6b00;
 }
 
-.messagesDiv {
+.locationContainer .container .inputDiv .messagesDiv {
   position: relative;
   width: 100%;
   display: -webkit-box;
@@ -204,11 +197,10 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-top: 10px;
 }
 
-.message {
-  position: absolute;
-  top: -5px;
+.locationContainer .container .inputDiv .message {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -221,7 +213,7 @@
           justify-content: center;
 }
 
-.message .text {
+.locationContainer .container .inputDiv .message .text {
   margin-right: 5px;
 }
 /*# sourceMappingURL=Location.module.css.map */

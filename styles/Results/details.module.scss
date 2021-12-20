@@ -6,8 +6,6 @@
   font-family: "Avenir";
 }
 
-
-
 .contentContainer {
   @include flexCenter(column);
   justify-content: flex-start;
@@ -40,7 +38,7 @@
         font-size: 1.2em;
         font-weight: bold;
         color: rgb(120, 120, 120);
-        font-family:Arial, Helvetica, sans-serif
+        font-family: Arial, Helvetica, sans-serif;
       }
     }
 
@@ -72,15 +70,16 @@
 
       .takeOutOption {
         @include flexCenter(row);
-        width: 45%;
-        justify-content: space-evenly;
+        // width: 45%;
+        .option {
+          margin-left: 10px;
+        }
       }
-
     }
 
     .phone {
       @include flexCenter(row);
-      width: 25%;
+      // width: 25%;
       justify-content: flex-start;
 
       .phoneNum {
@@ -92,7 +91,7 @@
 
     .closingTime {
       @include flexCenter(row);
-      width: 35%;
+      // width: 35%;
       justify-content: flex-start;
 
       .close {
@@ -106,22 +105,21 @@
     }
   }
 
-   .yelpUrl {
-     margin-top: 2px;
-     width: 90%;
-     @include flexCenter(row);
-     justify-content: flex-end;
+  .yelpUrl {
+    margin-top: 2px;
+    width: 90%;
+    @include flexCenter(row);
+    justify-content: flex-end;
 
-     .yelpLink {
-       text-decoration: none;
-       color: rgba(233, 141, 29, 0.947);
-       font-size: 1em;
+    .yelpLink {
+      text-decoration: none;
+      color: rgba(233, 141, 29, 0.947);
+      font-size: 1em;
 
-       &:hover {
-         cursor: pointer;
-         color: rgb(255, 19, 15);
-       }
-     }
-   }
-
+      &:hover {
+        cursor: pointer;
+        color: rgb(255, 19, 15);
+      }
+    }
+  }
 }

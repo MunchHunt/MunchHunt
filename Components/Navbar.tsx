@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/Navbar/navbar.module.css';
+import styles2 from '../styles/Navbar/navbar2.module.css'
 import Image from 'next/Image';
 
 const myLoader = ({ src, width, quality }: any) => {
@@ -13,9 +14,9 @@ const Navbar = () => {
   }
 
   return (
-    <div className={styles.navOutterContainer}>
-      <nav className={styles.navbar}>
-        <div className={styles.navbarLogoContainer} onClick={goHome}>
+    <div className={styles2.navOuterContainer}>
+      <nav className={styles2.navbar}>
+        <div className={styles2.navbarLogoContainer} onClick={goHome}>
           <Image
             loader={myLoader}
             src="/Y8KaQBX.png"
@@ -23,12 +24,12 @@ const Navbar = () => {
             width={70}
             height={70}
           />
-          <div className={styles.munchHuntTitle}>MUNCH HUNT</div>
+          <div className={styles2.munchHuntTitle}>MUNCH HUNT</div>
         </div>
-        <div className={styles.navbarLinkContainer}>
-          <Link href="/find"><a className={styles.navLinks}>Find</a></Link>
-          <Link href="/results"><a className={styles.navLinks}>Results</a></Link>
-          <Link href="/"><a className={styles.navLinks}>Logout</a></Link>
+        <div className={styles2.navbarLinkContainer}>
+          <Link href="/find"><a className={styles2.navLinks}>Find</a></Link>
+          <Link href="/results"><a className={styles2.navLinks}>Results</a></Link>
+          <Link href="/"><a className={styles2.navLinks}>Logout</a></Link>
         </div>
       </nav>
     </div>
