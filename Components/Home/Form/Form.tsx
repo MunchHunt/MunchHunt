@@ -174,12 +174,14 @@ const Form: React.FC<Props> = ({ currChoices, setCurrChoices, selectedTemplate }
           <div className={styles.templateTitleDiv}>
             <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
             <div className={styles.templateBtnDiv}>
-              <Button>Update Template</Button>
-              <Button>Delete Template</Button>
+              <Button size="small" variant="outlined" className={styles.btn}>Update Template</Button>
+              <Button size="small" variant="outlined" className={styles.btn}>Delete Template</Button>
             </div>
           </div>
         ) : (
-          <h3 className={styles.formTitle}>Lets get started!</h3>
+          <div className={styles.templateTitleDiv}>
+            <h3 className={styles.formTitle}>Lets get started!</h3>
+          </div>
         )}
         <div className={styles.desc}>
           List up to 6 possible cuisines or categories you would want to eat.
