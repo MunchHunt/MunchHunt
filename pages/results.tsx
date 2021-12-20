@@ -36,10 +36,9 @@ const Results: NextPage<Foods> = ({ foods }) => {
   const [original, setOriginal] = React.useState<any>([]);
   const [location, setLocation] = React.useState<any>({ lat: 37.786882, lng: -122.399972 });
   const [allLocs, setAllLocs] = React.useState<any>([]);
-  const [showMap, setMap] = React.useState<boolean>(false);
+  const [showMap, setMap] = React.useState<boolean>(true);
   const [random, setRandom] = React.useState<number>(280);
   const [zoom, setZoom] = React.useState<number | undefined>(13);
-  const [shouldFetch, setFetch] = React.useState<boolean>(true);
   const [details, setDetails] = React.useState<any>([]);
 
   React.useEffect(() => {
@@ -107,7 +106,6 @@ const Results: NextPage<Foods> = ({ foods }) => {
     setAllLocs(locationSort(currentSelectedRestaurant));
     getDetails(id);
     setLocation({ lat: currentLoc.latitude, lng: currentLoc.longitude });
-    setMap(false);
   }
 
   const mapProps = {
