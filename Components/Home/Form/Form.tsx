@@ -23,6 +23,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [showUpdating, setShowUpdating] = useState<boolean>(false);
+
   const {
     result,
     setResult,
@@ -197,7 +199,16 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     temp[index] = data;
     setCurrChoices(data.choices);
     setTempTemplates(temp);
+    setShowUpdating(true);
   };
+
+  useEffect(() => {
+    if (showUpdating) {
+      setTimeout(() => {
+        setShowUpdating(false);
+      }, 2000)
+    }
+  }, [showUpdating])
 
   const areYouSure = (e: any): void => {
     e.preventDefault();
@@ -223,6 +234,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => updateTemplate(e)}>Update Template</Button>
               <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => areYouSure(e)}>Delete Template</Button>
             </div>
+            {showUpdating ? <div className={styles.updatingMsg}>Updated!</div> : null}
           </div>
         ) : (
           <div className={styles.templateTitleDiv}>

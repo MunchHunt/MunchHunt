@@ -90,6 +90,10 @@
   background-color: rgba(255, 115, 0, 0.116);
 }
 
+.container .innerContainer .templateTitleDiv .updatingMsg {
+  margin-top: 10px;
+}
+
 .container .innerContainer .desc {
   text-align: center;
   font-size: 20px;

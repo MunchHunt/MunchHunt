@@ -34,6 +34,14 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
     return true;
   };
 
+  useEffect(() => {
+    if (!isValid) {
+      setTimeout(() => {
+        setIsValid(true);
+      }, 3500)
+    }
+  }, [isValid])
+
   const addTemplate = (e: any): void => {
     e.preventDefault();
     if (validator()) {

@@ -36,7 +36,6 @@
 
 .innerContainer .templateColumn .template:hover {
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .createTemplate {
