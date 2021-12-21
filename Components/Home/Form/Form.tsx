@@ -165,8 +165,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   useEffect(() => {
     if (result && result !== "") {
       setTimeout(() => {
-        window.open("/results", "_self");
-      }, 3000)
+        window.open(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`, "_self");
+      }, 2000)
       console.log("Result:", result);
     }
   }, [result]);

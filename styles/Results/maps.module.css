@@ -30,4 +30,8 @@
   margin: 0;
   padding: 0;
 }
+
+.indoWindow .link {
+  text-decoration: none;
+}
 /*# sourceMappingURL=maps.module.css.map */

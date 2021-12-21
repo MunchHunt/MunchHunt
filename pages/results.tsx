@@ -16,23 +16,37 @@ import BasicTabs from '../Components/Results/results/Tab';
 
 type Foods = {
   foods: any
+  choice: any
+  latitude: any
+  longitude: any
 }
 
-export async function getServerSideProps() {
+
+export async function getServerSideProps(context: any) {
+  const { params, res, req, query } = context;
+
+  let currentResult = query.result || 'deli';
+  let currentLat = query.lat || '37.786882';
+  let currentLong = query.long || '-122.399972';
+
   const config = {
     headers:
       { Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_API}` }
   }
-  const data = await axios.get('https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972&radius=40000&limit=50', config)
+  const data = await axios.get(`https://api.yelp.com/v3/businesses/search?term=${currentResult}&latitude=${currentLat}&longitude=${currentLong}&radius=40000&limit=50`, config)
 
   return {
     props: {
-      foods: data.data.businesses
+      foods: data.data.businesses,
+      choice: currentResult,
+      latitude: currentLat,
+      longitude: currentLong
     }
   }
 }
 
-const Results: NextPage<Foods> = ({ foods }) => {
+const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
+  const [grub, setGrub] = React.useState<string>('');
   const [yelpResult, setYelp] = React.useState<any>([]);
   const [original, setOriginal] = React.useState<any>([]);
   const [location, setLocation] = React.useState<any>({ lat: 37.786882, lng: -122.399972 });
@@ -49,8 +63,11 @@ const Results: NextPage<Foods> = ({ foods }) => {
       setYelp(foods);
       setOriginal(foods);
       setAllLocs(locationSort(foods));
+      setLocation({ lat: Number(latitude), lng: Number(longitude)})
+      setGrub(choice);
     }, 1000)
-  }, [foods]);
+  }, [foods, choice, latitude, longitude]);
+
 
   React.useEffect(() => {
     if (yelpResult.length && allLocs.length) {
@@ -142,7 +159,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
             <h4>Munch Hunt chose:</h4>
           </div>
           <div className={styles.foodChoiceResult}>
-            American (Fast Food)
+            {choice}
           </div>
         </div>
       </div>

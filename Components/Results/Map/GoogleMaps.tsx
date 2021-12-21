@@ -71,6 +71,7 @@ function GoogleMaps(props: any) {
             <p className={styles.paragraphs}>{selectedRest.address}</p>
             <p className={styles.paragraphs}>{selectedRest.city}</p>
             <p className={styles.paragraphs}>{selectedRest.state}</p>
+            <a className={styles.link} target="_blank" href={`https://www.google.com/maps/place/${selectedRest.address}, ${selectedRest.city}/@${selectedRest.lat},${selectedRest.lng}/`} rel="noopener noreferrer">Get directions</a>
           </div>
         </InfoWindow>
       )}

@@ -21,7 +21,7 @@ interface ResultProps {
 
 const Details: React.FC<ResultProps> = ({ details }) => {
   return (
-    <Card sx={{ minWidth: "100%", minHeight: 350 }}>
+    <Card sx={{ minWidth: "100%", minHeight: 300 }}>
       <Carousel>
         {details.photos.map((pics: any, index: any) => (
           <CardMedia
