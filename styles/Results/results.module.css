@@ -46,11 +46,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #ff7300;
+  color: #32302f;
   font-weight: bold;
+  font-size: 1em;
   width: 300px;
   height: 45px;
   margin-left: 10px;
+  letter-spacing: 2px;
 }
 
 .foodChoiceResult {
@@ -65,15 +67,16 @@
           align-items: center;
   width: 300px;
   height: 30px;
-  font-size: 1.5em;
+  font-size: 1.7em;
   font-weight: bold;
-  color: #3c3c3c;
+  letter-spacing: 2px;
+  color: white;
   padding: 0.5em;
   border-radius: 20px;
-  background-color: white;
-  outline: 2px solid orange;
-  -webkit-box-shadow: rgba(255, 89, 0, 0.3) 0px 1px 2px 0px, rgba(254, 111, 1, 0.15) 0px 1px 3px 1px;
-          box-shadow: rgba(255, 89, 0, 0.3) 0px 1px 2px 0px, rgba(254, 111, 1, 0.15) 0px 1px 3px 1px;
+  background-color: #353535;
+  outline: 3px solid #f58428;
+  -webkit-box-shadow: rgba(48, 48, 48, 0.3) 0px 1px 2px 0px, rgba(29, 29, 29, 0.15) 0px 1px 3px 1px;
+          box-shadow: rgba(48, 48, 48, 0.3) 0px 1px 2px 0px, rgba(29, 29, 29, 0.15) 0px 1px 3px 1px;
 }
 
 .outterBox {

@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/Navbar/navbar.module.css';
-import styles2 from '../styles/Navbar/navbar2.module.css'
+import styles2 from '../styles/Navbar/navbar2.module.css';
+import SearchIcon from '@mui/icons-material/Search';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Image from 'next/Image';
 
 const myLoader = ({ src, width, quality }: any) => {
@@ -29,7 +31,7 @@ const Navbar = () => {
         <div className={styles2.navbarLinkContainer}>
           <Link href="/find"><a className={styles2.navLinks}>Find</a></Link>
           <Link href="/results"><a className={styles2.navLinks}>Results</a></Link>
-          <Link href="/"><a className={styles2.navLinks}>Logout</a></Link>
+          <Link href="/"><a className={styles2.navLinks}>Logout <LogoutIcon fontSize='small'/> </a></Link>
         </div>
       </nav>
     </div>
