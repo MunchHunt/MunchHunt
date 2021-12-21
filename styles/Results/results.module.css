@@ -1,3 +1,25 @@
+.omegaDiv {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Avenir";
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
 .foodChoiceDiv {
   width: 100%;
   height: auto;
@@ -55,7 +77,7 @@
 }
 
 .outterBox {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -69,6 +91,12 @@
           justify-content: center;
 }
 
+@media screen and (max-width: 1250px) {
+  .outterBox {
+    width: 100%;
+  }
+}
+
 .outterBox .innerBox {
   width: 90%;
   height: 100%;
@@ -78,6 +106,12 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media screen and (max-width: 1250px) {
+  .outterBox .innerBox {
+    width: 95%;
+  }
 }
 
 .outterBox .innerBox .resultsColumns {
@@ -91,6 +125,12 @@
           justify-content: center;
 }
 
+@media screen and (max-width: 1200px) {
+  .outterBox .innerBox .resultsColumns {
+    width: 45%;
+  }
+}
+
 .outterBox .innerBox .mapBox {
   width: 45%;
   height: 100%;
@@ -102,9 +142,15 @@
   top: 40px;
 }
 
+@media screen and (max-width: 1200px) {
+  .outterBox .innerBox .mapBox {
+    width: 50%;
+  }
+}
+
 .sortBy {
-  width: 95%;
-  height: 60px;
+  width: 90%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -125,6 +171,58 @@
   margin-bottom: 5px;
 }
 
+@media screen and (max-width: 1250px) {
+  .sortBy {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .sortBy {
+    width: 95%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: "Avenir";
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .sortBy {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: "Avenir";
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
 .sortBy .sortByTextCont {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,15 +239,58 @@
           flex-direction: row;
   font-family: "Avenir";
   width: 47%;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (max-width: 1400px) {
+  .sortBy .sortByTextCont {
+    width: 52%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .sortBy .sortByTextCont {
+    width: 57%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .sortBy .sortByTextCont {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: "Avenir";
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
 }
 
 .sortBy .sortByTextCont .sortByText {
   font-size: 1em;
   font-weight: bold;
   color: #616161;
+}
+
+@media screen and (max-width: 1200px) {
+  .sortBy .sortByTextCont .sortByText {
+    padding-left: 30px;
+  }
 }
 
 .sortButtonContainer {
@@ -162,6 +303,34 @@
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .sortButtonContainer {
+    width: 60%;
+    padding-left: 10px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .sortButtonContainer {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .sortButtonContainer {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .sortButtonContainer {
+    width: 90%;
+  }
 }
 
 .sortButtonContainer .sortButtons {
@@ -186,6 +355,13 @@
 
 .randomizeButtonContainer {
   height: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .randomizeButtonContainer {
+    margin-top: 16px;
+    margin-left: 36px;
+  }
 }
 
 .randomizeButton {

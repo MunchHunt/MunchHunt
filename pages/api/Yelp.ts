@@ -13,5 +13,6 @@ export default async function handler(req: any, res: any) {
     res.send(data.data);
   } catch (error) {
     console.log(error);
+    res.status(405).end();
   }
 }

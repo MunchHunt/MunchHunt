@@ -84,6 +84,7 @@
   line-height: 85%;
   margin-bottom: 20px;
   font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 900px) {

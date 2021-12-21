@@ -79,7 +79,7 @@
 .contentContainer .cardArea .price .dollars {
   font-size: 1.2em;
   font-weight: bold;
-  color: #146cfad4;
+  color: #3c3c3cd4;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -107,6 +107,13 @@
   padding: 0;
   margin: 0;
   height: 200px;
+}
+
+.contentContainer .cardArea .detailContainer .ulOrganizer {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  padding-left: 0.5em;
 }
 
 .contentContainer .cardArea .addressCont {
@@ -261,7 +268,7 @@
 }
 
 .contentContainer .yelpUrl {
-  margin-top: 2px;
+  margin-top: 20px;
   width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;

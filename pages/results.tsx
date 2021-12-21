@@ -45,9 +45,11 @@ const Results: NextPage<Foods> = ({ foods }) => {
   const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useEffect(() => {
-    setYelp(foods);
-    setOriginal(foods);
-    setAllLocs(locationSort(foods));
+    setTimeout(() => {
+      setYelp(foods);
+      setOriginal(foods);
+      setAllLocs(locationSort(foods));
+    }, 1000)
   }, [foods]);
 
   React.useEffect(() => {
@@ -70,6 +72,18 @@ const Results: NextPage<Foods> = ({ foods }) => {
         }
       })
       .catch((error) => console.log(error));
+  }
+
+  const reset = () => {
+    setYelp(original);
+    setRandom(280);
+    setLocation({ lat: original[0].coordinates.latitude, lng: original[0].coordinates.longitude });
+    setZoom(13);
+    setAllLocs(locationSort(original));
+    setMap(true);
+    if (active === false) {
+      setActive(true);
+    }
   }
 
   const sortingHat = (sortCategory: string, value: any) => {
@@ -100,16 +114,6 @@ const Results: NextPage<Foods> = ({ foods }) => {
     setYelp(randArr);
   }
 
-  const reset = () => {
-    setYelp(original);
-    setRandom(280);
-    setLocation({ lat: original[0].coordinates.latitude, lng: original[0].coordinates.longitude });
-    setZoom(13);
-    setAllLocs(locationSort(original));
-    setMap(true);
-    setActive(true);
-  }
-
   const currentSelect = (insert: any): void => {
     const currentSelectedRestaurant = nameFilter(insert, original);
     const currentLoc = currentSelectedRestaurant[0].coordinates;
@@ -126,7 +130,7 @@ const Results: NextPage<Foods> = ({ foods }) => {
     defaultCenter: { lat: location.lat, lng: location.lng }
   }
   return (
-    <div>
+    <div className={styles.omegaDiv}>
       <Head>
         <title>Munch Hunt: restaurant results</title>
         <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
@@ -163,9 +167,6 @@ const Results: NextPage<Foods> = ({ foods }) => {
                 {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
               </div>
             )}
-
-            {/* {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
-            {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null} */}
           </div>
         </div>
       </div>
@@ -175,3 +176,5 @@ const Results: NextPage<Foods> = ({ foods }) => {
 
 export default Results;
 
+{/* {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
+            {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null} */}

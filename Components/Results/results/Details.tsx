@@ -36,52 +36,62 @@ const Details: React.FC<ResultProps> = ({ details }) => {
       <div className={styles.contentContainer}>
         <CardContent className={styles.cardArea} >
           <div className={styles.detailTitleCont}>
-            <Typography className={styles.detailTitle}>
+            <div className={styles.detailTitle}>
               {details.name}
-            </Typography>
+            </div>
             <div className={styles.rating}>
-              <Typography>
+              <div>
                 <Rating
                   name="read-only"
                   size="medium"
                   precision={0.5}
                   value={details.rating}
                   readOnly />
-              </Typography>
+              </div>
             </div>
           </div>
           <div className={styles.price}>
-            <Typography className={styles.dollars}>
+            <div className={styles.dollars}>
               price: {details.price}
-            </Typography>
+            </div>
           </div>
           <div className={styles.detailContainer}>
-            <Typography className={styles.addressCont}>
-              <HomeIcon fontSize="small" />
-              <div className={styles.addressText}>
-                <p className={styles.addy}>{details.location.address1}</p>
-                <p className={styles.addy}> {details.location.city}</p>
-                <p className={styles.addy}>{details.location.state}</p>
-              </div>
-            </Typography>
-            <Typography className={styles.phone}>
-              <LocalPhoneIcon fontSize='small' />
-              <p className={styles.phoneNum}>{details.display_phone}</p>
-            </Typography>
-            <div className={styles.closingTime}>
-              <AccessTimeIcon fontSize="small" />
-              <p className={styles.close}>Closes today at :</p>
-              <p className={styles.time}>{moment(details.hours[0].open[0].end, ['HH.mm']).format("hh:mm a")}</p>
-            </div>
-            <div className={styles.takeOut}>
-              <DeliveryDiningIcon fontSize="small" />
-              <p className={styles.takeOutText}>Take out options:</p>
-              <div className={styles.takeOutOption}>
-                {details.transactions.map((trans: any, index: number) => (
-                  <p className={styles.option} key={index}>{trans}</p>
-                ))}
-              </div>
-            </div>
+            <ul className={styles.ulOrganizer}>
+              <li>
+                <div className={styles.addressCont}>
+                  <HomeIcon fontSize="small" />
+                  <div className={styles.addressText}>
+                    <p className={styles.addy}>{details.location.address1}</p>
+                    <p className={styles.addy}> {details.location.city}</p>
+                    <p className={styles.addy}>{details.location.state}</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className={styles.phone}>
+                  <LocalPhoneIcon fontSize='small' />
+                  <p className={styles.phoneNum}>{details.display_phone}</p>
+                </div>
+              </li>
+              <li>
+                <div className={styles.closingTime}>
+                  <AccessTimeIcon fontSize="small" />
+                  <p className={styles.close}>Closes today at :</p>
+                  <p className={styles.time}>{moment(details.hours[0].open[0].end, ['HH.mm']).format("hh:mm a")}</p>
+                </div>
+              </li>
+              <li>
+                <div className={styles.takeOut}>
+                  <DeliveryDiningIcon fontSize="small" />
+                  <p className={styles.takeOutText}>Take out options:</p>
+                  <div className={styles.takeOutOption}>
+                    {details.transactions.map((trans: any, index: number) => (
+                      <p className={styles.option} key={index}>{trans}</p>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
           <div className={styles.yelpUrl}>
             <Typography>
@@ -95,4 +105,3 @@ const Details: React.FC<ResultProps> = ({ details }) => {
 }
 
 export default Details;
-
