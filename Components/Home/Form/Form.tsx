@@ -54,7 +54,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     if (arr.length) {
       return true;
     } else {
-      // window.alert("No choices entered!");
       setOpenInvalid(true);
       return false;
     }
@@ -66,7 +65,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       return true;
     } else {
       setInvalidLocation(true);
-      // window.alert("No location entered!");
       setOpenInvalid(true);
       return false;
     }
@@ -74,7 +72,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   const submitHandler = (e: any) => {
     e.preventDefault();
-    // updateChoices();
     let arr = [
       input1,
       input2,
@@ -160,7 +157,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       ],
     }
     data.choices = data.choices.sort((a, b) => (b.length - a.length));
-    // console.log(data.choices);
     temp[index] = data;
     setCurrChoices(data.choices);
     setTempTemplates(temp);
@@ -255,7 +251,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               className={styles.inputField}
               placeholder="Enter cuisine"
               value={input1}
-              // onChange={changeHandler}
               onChange={(e: any) => setInput1(e.target.value)}
               variant="outlined"
             />
@@ -264,7 +259,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               className={styles.inputField}
               placeholder="Enter cuisine"
               value={input2}
-              // onChange={changeHandler}
               onChange={(e: any) => setInput2(e.target.value)}
               variant="outlined"
             />
@@ -273,7 +267,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               className={styles.inputField}
               placeholder="Enter cuisine"
               value={input3}
-              // onChange={changeHandler}
               onChange={(e: any) => setInput3(e.target.value)}
               variant="outlined"
             />
@@ -282,7 +275,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               className={styles.inputField}
               placeholder="Enter cuisine"
               value={input4}
-              // onChange={changeHandler}
               onChange={(e: any) => setInput4(e.target.value)}
               variant="outlined"
             />
@@ -291,7 +283,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               className={styles.inputField}
               placeholder="Enter cuisine"
               value={input5}
-              // onChange={changeHandler}
               onChange={(e: any) => setInput5(e.target.value)}
               variant="outlined"
             />
@@ -300,7 +291,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               className={styles.inputField}
               placeholder="Enter cuisine"
               value={input6}
-              // onChange={changeHandler}
               onChange={(e: any) => setInput6(e.target.value)}
               variant="outlined"
             />
