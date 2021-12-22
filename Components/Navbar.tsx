@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/Navbar/navbar.module.css';
 import styles2 from '../styles/Navbar/navbar2.module.css';
-import SearchIcon from '@mui/icons-material/Search';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Image from 'next/Image';
+import GoogleLogin, { GoogleLogout } from 'react-google-login';
 
 const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
@@ -30,7 +30,7 @@ const Navbar = () => {
         </div>
         <div className={styles2.navbarLinkContainer}>
           <Link href=""><a className={styles2.navLinks} onClick={() => window.open('/find', '_self')}>Find</a></Link>
-          {/* <Link href="/results"><a className={styles2.navLinks}>Results</a></Link> */}
+          <Link href="/results"><a className={styles2.navLinks}>Results</a></Link>
           <Link href="/"><a className={styles2.navLinks}>Logout <LogoutIcon fontSize='small' /> </a></Link>
         </div>
       </nav>
