@@ -7,11 +7,6 @@ import LogoutIcon from '@mui/icons-material/Logout';
 const Login: React.FC = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(MunchContext);
 
-  const logout = () => {
-    setIsLoggedIn(false);
-    console.log('Logout success.');
-  };
-
   const responseSuccess = (res: any) => {
     setIsLoggedIn(true);
     console.log('Login success:', res.profileObj);
@@ -21,12 +16,18 @@ const Login: React.FC = () => {
     console.log('Login failed');
   }
 
+  const logout = () => {
+    setIsLoggedIn(false);
+    console.log('Logout success.');
+  };
+
+
   return (
     <div className={styles.container}>
       {isLoggedIn ? (
         <div className={styles.login}>
           <GoogleLogout
-            clientId="265112883039-uk4smktdnujvrnhjr5reu74ld3rq251o.apps.googleusercontent.com"
+            clientId={JSON.stringify(process.env.NEXT_PUBLIC_CLIENT_ID)}
             buttonText="Logout"
             onLogoutSuccess={logout}
             className={styles.logoutBtn}
@@ -42,7 +43,7 @@ const Login: React.FC = () => {
         <div className={styles.login}>
           <GoogleLogin
             className={styles.loginBtn}
-            clientId='265112883039-uk4smktdnujvrnhjr5reu74ld3rq251o.apps.googleusercontent.com'
+            clientId={JSON.stringify(process.env.NEXT_PUBLIC_CLIENT_ID)}
             buttonText='Login'
             onSuccess={responseSuccess}
             onFailure={responseFailure}
