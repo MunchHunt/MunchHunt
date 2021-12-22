@@ -21,7 +21,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/api/GMap.ts",
-    "pages/_document.js"
+    "pages/_document.js",
+    "src"
   ],
   "exclude": ["node_modules"]
 }

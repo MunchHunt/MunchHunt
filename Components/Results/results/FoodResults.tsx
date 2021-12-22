@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import styles2 from '../../../styles/Results/cards.module.css';
-import Image from 'next/Image';
+import Image from 'next/image';
 import { CardActionArea } from '@mui/material';
 
 interface Foods {
