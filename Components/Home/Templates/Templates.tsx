@@ -82,7 +82,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
           </div>
         ) : (
           <div>
-            <h4>Login to create and use templates.</h4>
+            <p>Login to create and use templates.</p>
           </div>
         )}
       </div>

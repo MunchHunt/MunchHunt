@@ -13,7 +13,7 @@ const Home: React.FC = () => {
   } = useContext(MunchContext);
 
   useEffect(() => {
-    setTempTemplates(templates);
+    // setTempTemplates(templates);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
