@@ -29,9 +29,9 @@ const Navbar = () => {
           <div className={styles2.munchHuntTitle}>MUNCH HUNT</div>
         </div>
         <div className={styles2.navbarLinkContainer}>
-          <Link href="/find"><a className={styles2.navLinks}>Find</a></Link>
-          <Link href="/results"><a className={styles2.navLinks}>Results</a></Link>
-          <Link href="/"><a className={styles2.navLinks}>Logout <LogoutIcon fontSize='small'/> </a></Link>
+          <Link href=""><a className={styles2.navLinks} onClick={() => window.open('/find', '_self')}>Find</a></Link>
+          {/* <Link href="/results"><a className={styles2.navLinks}>Results</a></Link> */}
+          <Link href="/"><a className={styles2.navLinks}>Logout <LogoutIcon fontSize='small' /> </a></Link>
         </div>
       </nav>
     </div>
