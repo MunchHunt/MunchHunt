@@ -48,6 +48,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
         template?.classList.remove('activeTemplate');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTemplate])
 
   return (
