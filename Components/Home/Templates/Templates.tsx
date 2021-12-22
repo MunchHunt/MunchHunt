@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from "../../../styles/Home/Templates.module.css";
-import { Card, Button } from "@mui/material";
-import GoogleIcon from "@mui/icons-material/Google";
+import { Card } from "@mui/material";
 import { MunchContext } from '../../Contexts/MunchContext';
-import Login from '../../Login';
 
 interface Props {
   selectedTemplate: string;
