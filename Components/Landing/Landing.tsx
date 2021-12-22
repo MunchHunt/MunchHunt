@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Landing/Landing.module.css';
-import Image from 'next/Image';
+import Image from 'next/image';
 
 import Location from '../Home/Form/Location';
 import { Button } from '@mui/material';
