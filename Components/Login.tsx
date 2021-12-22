@@ -9,10 +9,12 @@ const Login: React.FC = () => {
 
   const logout = () => {
     setIsLoggedIn(false);
+    console.log('Logout success.');
   };
 
-  const responseSuccess = () => {
+  const responseSuccess = (res: any) => {
     setIsLoggedIn(true);
+    console.log('Login success:', res.profileObj);
   }
 
   const responseFailure = () => {

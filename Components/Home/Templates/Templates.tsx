@@ -4,6 +4,7 @@ import styles from "../../../styles/Home/Templates.module.css";
 import { Card, Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import { MunchContext } from '../../Contexts/MunchContext';
+import Login from '../../Login';
 
 interface Props {
   selectedTemplate: string;
@@ -82,11 +83,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
           </div>
         ) : (
           <div>
-            <p>Login to create and use templates.</p>
-            <Button>
-              <div className={styles.loginText}>Login with Google</div>
-              <GoogleIcon />
-            </Button>
+            <h4>Login to create and use templates.</h4>
           </div>
         )}
       </div>
