@@ -17,6 +17,7 @@
   border: none;
   background: none;
   cursor: pointer;
+  color: black;
 }
 
 .login .logoutBtn:hover {
@@ -38,6 +39,7 @@
   border: none;
   background: none;
   cursor: pointer;
+  color: black;
 }
 
 .login .loginBtn:hover {
