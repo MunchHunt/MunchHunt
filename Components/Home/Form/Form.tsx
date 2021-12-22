@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import styles from "../../../styles/Home/Form.module.css";
 import Location from "./Location";
-import { TextField, Button, Card, CircularProgress } from "@mui/material";
+import { TextField, Button, Card, CircularProgress, Box, Alert, IconButton, Collapse } from "@mui/material";
 import { MunchContext } from "../../Contexts/MunchContext";
 import { choices } from './Choices';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import CloseIcon from '@mui/icons-material/Close';
 import AreYouSure from './AreYouSure';
 
 interface Props {
@@ -25,6 +26,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [showUpdating, setShowUpdating] = useState<boolean>(false);
   const [showSpinner, setShowSpinner] = useState<boolean>(false);
+  const [openInvalid, setOpenInvalid] = useState<boolean>(false);
 
   const {
     result,
@@ -52,7 +54,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     if (arr.length) {
       return true;
     } else {
-      window.alert("No choices entered!");
+      // window.alert("No choices entered!");
+      setOpenInvalid(true);
       return false;
     }
   };
@@ -63,7 +66,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       return true;
     } else {
       setInvalidLocation(true);
-      window.alert("No location entered!");
+      // window.alert("No location entered!");
+      setOpenInvalid(true);
       return false;
     }
   };
@@ -81,6 +85,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     ];
     arr = arr.filter((input) => input !== "");
     if (choicesAreValid(arr) && locationIsValid()) {
+      setOpenInvalid(false);
       let randIndex = Math.floor(Math.random() * arr.length);
       setResult(arr[randIndex]!);
       setShowSpinner(true);
@@ -124,9 +129,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   useEffect(() => {
     if (result && result !== "") {
-      setTimeout(() => {
-        window.open(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`, "_self");
-      }, 2000)
+      window.open(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`, "_self");
       console.log("Result:", result);
     }
   }, [result]);
@@ -187,6 +190,28 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   return (
     <Card className={styles.container}>
+      <Box sx={{ width: '100%' }}>
+        <Collapse in={openInvalid}>
+          <Alert
+            severity="warning"
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpenInvalid(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            Please check inputs below and try again.
+          </Alert>
+        </Collapse>
+      </Box>
       <AreYouSure open={openDialog} setOpenDialog={setOpenDialog} deleteTemplate={deleteTemplate} />
       <div className={styles.innerContainer}>
         {selectedTemplate.length ? (
