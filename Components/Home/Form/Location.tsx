@@ -90,9 +90,9 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
 
   return (
     <div className={styles.locationContainer}>
-      <Head>
+      {/* <Head>
         <script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API}&libraries=places`}></script>
-      </Head>
+      </Head> */}
       <br />
       <section className={styles.container}>
         <PlacesAutocomplete

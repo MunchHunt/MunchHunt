@@ -4,6 +4,7 @@ import Templates from "./Templates/Templates";
 import styles from "../../styles/Home/Home.module.css";
 import { templates } from "./dummyData";
 import { MunchContext } from "../Contexts/MunchContext";
+import Head from "next/head";
 
 const Home: React.FC = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
@@ -19,7 +20,11 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* {isLoggedIn ? <button onClick={() => setIsLoggedIn(false)}>Log out</button> : <button onClick={() => setIsLoggedIn(true)}>Log in</button>} */}
+      <Head>
+        <title>Munch Hunt: Find</title>
+        <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
+        <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
+      </Head>
       <div className={styles.findContainer}>
         <Templates
           selectedTemplate={selectedTemplate}

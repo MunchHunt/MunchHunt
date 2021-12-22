@@ -63,7 +63,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
       setYelp(foods);
       setOriginal(foods);
       setAllLocs(locationSort(foods));
-      setLocation({ lat: Number(latitude), lng: Number(longitude)})
+      setLocation({ lat: Number(latitude), lng: Number(longitude) })
       setGrub(choice);
     }, 1000)
   }, [foods, choice, latitude, longitude]);
