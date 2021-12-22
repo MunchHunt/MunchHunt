@@ -201,7 +201,20 @@
           justify-content: center;
 }
 
-.findBtn {
+.submitDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.submitDiv .findBtn {
   height: 46px;
   width: 200px;
   margin-top: -3px;
@@ -210,26 +223,31 @@
   font-size: 20px;
 }
 
-.findBtn:hover {
+.submitDiv .findBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
 @media screen and (max-width: 878px) {
-  .findBtn {
+  .submitDiv .findBtn {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .findBtn {
+  .submitDiv .findBtn {
     width: 95%;
     margin-left: 0;
   }
 }
 
-.findBtn .icon {
+.submitDiv .findBtn .icon {
   margin-left: 5px;
+}
+
+.submitDiv .spinner {
+  position: absolute;
+  margin-top: 70px;
 }
 /*# sourceMappingURL=Form.module.css.map */

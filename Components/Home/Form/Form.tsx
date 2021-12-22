@@ -24,6 +24,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [showUpdating, setShowUpdating] = useState<boolean>(false);
+  const [showSpinner, setShowSpinner] = useState<boolean>(false);
 
   const {
     result,
@@ -82,45 +83,9 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     if (choicesAreValid(arr) && locationIsValid()) {
       let randIndex = Math.floor(Math.random() * arr.length);
       setResult(arr[randIndex]!);
+      setShowSpinner(true);
     }
   };
-
-  // const updateChoices = () => {
-  //   let temp = [];
-  //   if (input1.length) {
-  //     temp.push(input1);
-  //   } else {
-  //     temp.push('');
-  //   }
-  //   if (input2.length) {
-  //     temp.push(input2);
-  //   } else {
-  //     temp.push('');
-  //   }
-  //   if (input3.length) {
-  //     temp.push(input3);
-  //   } else {
-  //     temp.push('');
-  //   }
-  //   if (input4.length) {
-  //     temp.push(input4);
-  //   } else {
-  //     temp.push('');
-  //   }
-  //   if (input5.length) {
-  //     temp.push(input5);
-  //   } else {
-  //     temp.push('');
-  //   }
-  //   if (input6.length) {
-  //     temp.push(input6);
-  //   } else {
-  //     temp.push('');
-  //   }
-  //   // temp = temp.sort((a, b) => (b.length - a.length));
-  //   console.log(temp)
-  //   setCurrChoices(temp);
-  // };
 
   const randomAutoFill = () => {
     setLoading(true);
@@ -156,11 +121,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       choices.splice(choices.indexOf(choices[index]), 1);
     }, 2000);
   };
-
-  // useEffect(() => {
-  //   updateChoices();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [input1, input2, input3, input4, input5, input6]);
 
   useEffect(() => {
     if (result && result !== "") {
@@ -340,6 +300,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
             Find!
             <RestaurantIcon className={styles.icon} />
           </Button>
+          {showSpinner ? <CircularProgress size={20} className={styles.spinner} /> : null}
         </div>
       </div>
     </Card>
