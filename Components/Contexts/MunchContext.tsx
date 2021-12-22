@@ -31,7 +31,7 @@ export const MunchContext = createContext(
   });
 
 export const MunchProvider: React.FC = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [currAddress, setCurrAddress] = useState<string>('');
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
   const [tempTemplates, setTempTemplates] = useState<any>([]);

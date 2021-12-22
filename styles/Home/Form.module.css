@@ -116,19 +116,19 @@
   margin-bottom: 15px;
 }
 
-.chooseBtn {
+.container .innerContainer .chooseBtn {
   margin-top: 20px;
   background-color: #ff7300;
   color: white;
 }
 
-.chooseBtn:hover {
+.container .innerContainer .chooseBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
-.chooseBtn .shuffle {
+.container .innerContainer .chooseBtn .shuffle {
   margin-left: 5px;
   position: relative;
   top: -1px;
