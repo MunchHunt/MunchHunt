@@ -1,0 +1,28 @@
+@mixin center() {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  &:hover {
+    color: rgb(197, 95, 0);
+  }
+}
+
+.container {
+  margin-left: 20px;
+}
+
+.login {
+  .logoutBtn {
+    @include center();
+  }
+  .loginBtn {
+    @include center();
+  }
+  .icon {
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,50 @@
+.container {
+  margin-left: 20px;
+}
+
+.login .logoutBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.login .logoutBtn:hover {
+  color: #c55f00;
+}
+
+.login .loginBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.login .loginBtn:hover {
+  color: #c55f00;
+}
+
+.login .icon {
+  margin-left: 5px;
+}
+/*# sourceMappingURL=Login.module.css.map */
