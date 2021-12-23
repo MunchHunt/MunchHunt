@@ -31,7 +31,7 @@
   color: rgb(50, 48, 47);
   font-weight: bold;
   font-size: 1em;
-  width: 300px;
+  min-width: 300px;
   height: 45px;
   margin-left: 10px;
   letter-spacing: 2px;
@@ -41,7 +41,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  min-width: 300px;
   height: 30px;
   font-size: 1.7em;
   font-weight: bold;
@@ -85,6 +85,13 @@
 
       @media screen and (max-width: 1200px) {
         width: 45%;
+      }
+
+      .noMatchTitle {
+        color: rgb(52, 52, 52);
+        position: absolute;
+        font-size: 1.3em;
+        font-weight: bold;
       }
     }
 
@@ -224,4 +231,9 @@
     border: none;
     outline: none;
   }
+}
+
+
+.tabContainer {
+  background-color: white;
 }

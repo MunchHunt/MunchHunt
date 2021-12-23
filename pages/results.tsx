@@ -11,6 +11,7 @@ import RandomDecide from '../Components/Results/Buttons/RandomDecide';
 import GoogleMaps from '../Components/Results/Map/GoogleMaps';
 import LoadingResults from '../Components/Results/loading/Loading';
 import LoadingMap from '../Components/Results/loading/LoadingMap';
+import Image from 'next/image';
 import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
 import BasicTabs from '../Components/Results/results/Tab';
 
@@ -57,9 +58,14 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [details, setDetails] = React.useState<any>([]);
   const [active, setActive] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const [noMatch, setNoMatch] = React.useState<boolean>(false);
+  const [refresh, setRefresh] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     setTimeout(() => {
+      if (foods.length === 0) {
+        setNoMatch(true);
+      }
       setYelp(foods);
       setOriginal(foods);
       setAllLocs(locationSort(foods));
@@ -98,12 +104,14 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     setZoom(13);
     setAllLocs(locationSort(original));
     setMap(true);
+    setRefresh(true);
     if (active === false) {
       setActive(true);
     }
   }
 
   const sortingHat = (sortCategory: string, value: any) => {
+    setRefresh(false);
     if (sortCategory === 'price') {
       const result = priceSort(value, original);
       setAllLocs(locationSort(result));
@@ -141,6 +149,10 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     setActive(false);
   }
 
+  const myLoader = ({ src, width, quality }: any) => {
+    return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
+  }
+
   const mapProps = {
     defaultZoom: zoom,
     localRestaurants: allLocs,
@@ -164,27 +176,48 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
         </div>
       </div>
       <div className={styles.sortBy}>
-        <div className={styles.sortByTextCont}>
+        {noMatch ? null : (<div className={styles.sortByTextCont}>
           <p className={styles.sortByText}>Sort by:</p>
-          <SortButtons sortingHat={sortingHat} reset={reset} />
-        </div>
-        <div className={styles.randomizeButtonContainer}>
+          <SortButtons sortingHat={sortingHat} reset={reset} refresh={refresh} />
+        </div>)}
+        {noMatch ? null : (<div className={styles.randomizeButtonContainer}>
           <RandomDecide yelpResult={randomeChoice} reset={reset} />
-        </div>
+        </div>)}
       </div>
       <div className={styles.outterBox}>
         <div className={styles.innerBox}>
-          <div className={styles.resultsColumns}>
+          {noMatch ? (<div className={styles.resultsColumns}>
+            <h3 className={styles.noMatchTitle}>No matches found...</h3>
+            <Image
+              loader={myLoader}
+              src="/PrdSEho.png"
+              alt="hungry kid, empty plate in front holding knife and fork in hand"
+              width={450}
+              height={450}
+              placeholder="blur"
+              blurDataURL="/iqrmXmz.png"
+            />
+          </div>) : (<div className={styles.resultsColumns}>
             {loading ? <LoadingResults /> : <FoodResults foods={yelpResult} select={currentSelect} random={random} active={active} />}
-          </div>
-          <div className={styles.mapBox}>
+          </div>)}
+          {noMatch ? (<div className={styles.mapBox}>
+            <Image
+              loader={myLoader}
+              src="/zgJAFK5.jpg"
+              alt="hungry kid, empty plate in front holding knife and fork in hand"
+              width={400}
+              height={200}
+              placeholder="blur"
+              blurDataURL="/iqrmXmz.png"
+            />
+          </div>) : (<div className={styles.mapBox}>
             {loading ? <LoadingMap /> : (
               <div>
                 {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
                 {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
               </div>
             )}
-          </div>
+          </div>)}
         </div>
       </div>
     </div>

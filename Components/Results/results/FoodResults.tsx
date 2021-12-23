@@ -48,7 +48,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
       <CardActionArea className={styles2.cardArea}>
         <CardMedia
           component="img"
-          height="140"
+          height="157"
           image={image}
           alt="yelp restaurant result"
         />

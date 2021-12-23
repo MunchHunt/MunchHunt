@@ -298,5 +298,7 @@
 .contentContainer .yelpUrl .yelpLink:hover {
   cursor: pointer;
   color: #ff130f;
+  font-weight: bold;
+  font-size: 0.97em;
 }
 /*# sourceMappingURL=details.module.css.map */

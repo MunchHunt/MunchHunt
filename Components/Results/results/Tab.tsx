@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Details from '../results/Details';
 import GoogleMaps from '../Map/GoogleMaps';
+import styles from '../../../styles/Results/results.module.css';
 
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
@@ -48,7 +49,7 @@ export default function BasicTabs(props: any) {
   };
 
   return (
-    <Box sx={{ width: '100%'}}>
+    <Box  className={styles.tabContainer} sx={{ width: '100%'}}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Map" {...a11yProps(0)} />

@@ -13,9 +13,10 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 interface Sort {
   sortingHat: any
   reset: any
+  refresh: boolean
 }
 
-const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
+const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
   const [price, setPrice] = React.useState('');
   const [dist, setDistance] = React.useState('');
   const [rate, setRate] = React.useState('');
@@ -31,6 +32,19 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
   React.useEffect(() => {
     sortingHat('rating', rate)
   }, [rate]);
+
+  // React.useEffect(() => {
+  //   if (refresh === false) {
+
+  //   }
+  // }, [price, dist, rate, refresh])
+
+
+  // React.useEffect(() => {
+  //     setPrice('');
+  //     setDistance('');
+  //     setRate('');
+  // }, [refresh])
 
   const handleChangePrice = (event: any) => {
     setPrice(event.target.value);
@@ -54,6 +68,8 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
             label="price"
             onChange={handleChangePrice}
           >
+            <MenuItem value={''}>
+            </MenuItem>
             <MenuItem value={'$'}>
               <AttachMoneyIcon fontSize="small" />
             </MenuItem>
@@ -88,6 +104,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
             label="distance"
             onChange={handleChangeDistance}
           >
+            <MenuItem value={''}></MenuItem>
             <MenuItem value={0.9}>&lt; 1 mi</MenuItem>
             <MenuItem value={1}>1 mi</MenuItem>
             <MenuItem value={5}>5 mi</MenuItem>
@@ -107,6 +124,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
             label="rating"
             onChange={handleChangeRating}
           >
+            <MenuItem value={''}></MenuItem>
             <MenuItem value={1}>1 star</MenuItem>
             <MenuItem value={2}>2 stars</MenuItem>
             <MenuItem value={3}>3 stars</MenuItem>
@@ -118,10 +136,10 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset }) => {
       </div>
       <div>
         <Button
-        variant="outlined"
-        size="large"
-        className={styles.resetButton}
-        onClick={() => reset()}
+          variant="outlined"
+          size="large"
+          className={styles.resetButton}
+          onClick={() => reset()}
         >Reset</Button>
       </div>
     </div>
