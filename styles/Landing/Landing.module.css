@@ -19,7 +19,7 @@
   color: white;
 }
 
-.contentContainer {
+.container .contentContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,18 +39,18 @@
 }
 
 @media screen and (max-width: 1250px) {
-  .contentContainer {
+  .container .contentContainer {
     width: 95%;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer {
+  .container .contentContainer {
     margin: 100px 0 100px;
   }
 }
 
-.contentContainer .top {
+.container .contentContainer .top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,7 +60,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .top {
+  .container .contentContainer .top {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -68,7 +68,7 @@
   }
 }
 
-.contentContainer .top .leftSide {
+.container .contentContainer .top .leftSide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,7 +78,7 @@
           flex-direction: column;
 }
 
-.contentContainer .top .leftSide .title {
+.container .contentContainer .top .leftSide .title {
   text-align: left;
   font-size: 150px;
   line-height: 85%;
@@ -88,19 +88,19 @@
 }
 
 @media screen and (max-width: 900px) {
-  .contentContainer .top .leftSide .title {
+  .container .contentContainer .top .leftSide .title {
     font-size: 100px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .top .leftSide .title {
+  .container .contentContainer .top .leftSide .title {
     font-size: 75px;
     text-align: center;
   }
 }
 
-.contentContainer .top .leftSide .desc {
+.container .contentContainer .top .leftSide .desc {
   position: relative;
   left: 10px;
   margin-bottom: 50px;
@@ -110,13 +110,13 @@
 }
 
 @media screen and (max-width: 900px) {
-  .contentContainer .top .leftSide .desc {
+  .container .contentContainer .top .leftSide .desc {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .top .leftSide .desc {
+  .container .contentContainer .top .leftSide .desc {
     text-align: center;
     margin-bottom: 20px;
     left: 0;
@@ -124,7 +124,7 @@
   }
 }
 
-.contentContainer .bottom {
+.container .contentContainer .bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,18 +136,59 @@
   top: 30px;
 }
 
-.contentContainer .bottom .start {
-  font-size: 40px;
+.container .contentContainer .bottom .startDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 15px;
 }
 
-.contentContainer .bottom label {
+.container .contentContainer .bottom .startDiv .start {
+  font-size: 40px;
+}
+
+.container .contentContainer .bottom .startDiv .loginBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 20px;
+  font-size: 20px;
+  padding: 5px;
+  background-color: white;
+  color: #ee6b00;
+}
+
+.container .contentContainer .bottom .startDiv .loginBtn:hover {
+  background-color: #f1f1f1;
+  border: none;
+  outline: none;
+}
+
+.container .contentContainer .bottom .startDiv .loginBtn .btnText {
+  margin-right: 5px;
+}
+
+.container .contentContainer .bottom label {
   font-size: 23px;
   margin-bottom: 10px;
 }
 
 @media screen and (max-width: 560px) {
-  .contentContainer .bottom {
+  .container .contentContainer .bottom {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -155,7 +196,7 @@
   }
 }
 
-.contentContainer .bottom .locationRow {
+.container .contentContainer .bottom .locationRow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,7 +211,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .bottom .locationRow {
+  .container .contentContainer .bottom .locationRow {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -178,7 +219,7 @@
   }
 }
 
-.contentContainer .bottom .locationRow .startBtn {
+.container .contentContainer .bottom .locationRow .startBtn {
   height: 53px;
   margin-left: 10px;
   margin-top: -4px;
@@ -186,20 +227,20 @@
   color: white;
 }
 
-.contentContainer .bottom .locationRow .startBtn:hover {
+.container .contentContainer .bottom .locationRow .startBtn:hover {
   background-color: #ee6b00;
   border: none;
   outline: none;
 }
 
 @media screen and (max-width: 878px) {
-  .contentContainer .bottom .locationRow .startBtn {
+  .container .contentContainer .bottom .locationRow .startBtn {
     margin-left: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .contentContainer .bottom .locationRow .startBtn {
+  .container .contentContainer .bottom .locationRow .startBtn {
     width: 95%;
     margin-left: 0;
     margin-top: 30px;
