@@ -2,7 +2,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import styles from '../../../styles/Results/results.module.css';
+import styles from '../../../styles/Results/buttons.module.css';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -22,29 +22,29 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
   const [rate, setRate] = React.useState('');
 
   React.useEffect(() => {
-    sortingHat('price', price)
+    if (price !== "") {
+      sortingHat('price', price)
+    }
   }, [price]);
 
   React.useEffect(() => {
-    sortingHat('distance', dist)
+    if (dist !== "") {
+      sortingHat('distance', dist)
+    }
   }, [dist]);
 
   React.useEffect(() => {
-    sortingHat('rating', rate)
+    if (rate !== "") {
+      sortingHat('rating', rate)
+    }
   }, [rate]);
 
-  // React.useEffect(() => {
-  //   if (refresh === false) {
 
-  //   }
-  // }, [price, dist, rate, refresh])
-
-
-  // React.useEffect(() => {
-  //     setPrice('');
-  //     setDistance('');
-  //     setRate('');
-  // }, [refresh])
+  React.useEffect(() => {
+      setPrice('');
+      setDistance('');
+      setRate('');
+  }, [refresh])
 
   const handleChangePrice = (event: any) => {
     setPrice(event.target.value);

@@ -104,14 +104,13 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     setZoom(13);
     setAllLocs(locationSort(original));
     setMap(true);
-    setRefresh(true);
+    setRefresh(!refresh);
     if (active === false) {
       setActive(true);
     }
   }
 
   const sortingHat = (sortCategory: string, value: any) => {
-    setRefresh(false);
     if (sortCategory === 'price') {
       const result = priceSort(value, original);
       setAllLocs(locationSort(result));
@@ -135,7 +134,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     randArr.push(original[rand]);
     setAllLocs(locationSort(randArr));
     setLocation({ lat: randArr[0].coordinates.latitude, lng: randArr[0].coordinates.longitude });
-    setRandom(650);
+    setRandom(450);
     setYelp(randArr);
   }
 
@@ -171,7 +170,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
             <h4>Munch Hunt chose:</h4>
           </div>
           <div className={styles.foodChoiceResult}>
-            {choice}
+            {grub}
           </div>
         </div>
       </div>

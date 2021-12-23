@@ -127,8 +127,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   useEffect(() => {
     if (result && result !== "") {
-      Router.push(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`, "_self");
-      console.log("Result:", result);
+      Router.push(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`);
+      // console.log("Result:", result);
       setResult('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

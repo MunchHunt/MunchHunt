@@ -29,7 +29,7 @@ const Navbar = () => {
           <div className={styles2.munchHuntTitle}>MUNCH HUNT</div>
         </div>
         <div className={styles2.navbarLinkContainer}>
-          <a className={styles2.navLinks} onClick={() => Router.push('/find', '_self')}>Find</a>
+          <a className={styles2.navLinks} onClick={() => Router.push('/find')}>Find</a>
           {/* <Link href="/results"><a className={styles2.navLinks}>Results</a></Link> */}
           {/* <Link href="/"><a className={styles2.navLinks}>Logout  </a></Link> */}
           <Login />

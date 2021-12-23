@@ -20,7 +20,7 @@
           justify-content: space-evenly;
 }
 
-.foodChoiceDiv {
+.omegaDiv .foodChoiceDiv {
   width: 100%;
   height: auto;
   display: -webkit-box;
@@ -35,11 +35,11 @@
           justify-content: center;
 }
 
-.foodChoiceBox {
+.omegaDiv .foodChoiceDiv .foodChoiceBox {
   padding: 1.3em;
 }
 
-.foodChoiceTitle {
+.omegaDiv .foodChoiceDiv .foodChoiceBox .foodChoiceTitle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,7 +55,7 @@
   letter-spacing: 2px;
 }
 
-.foodChoiceResult {
+.omegaDiv .foodChoiceDiv .foodChoiceBox .foodChoiceResult {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,86 +79,7 @@
           box-shadow: rgba(48, 48, 48, 0.3) 0px 1px 2px 0px, rgba(29, 29, 29, 0.15) 0px 1px 3px 1px;
 }
 
-.outterBox {
-  width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-@media screen and (max-width: 1250px) {
-  .outterBox {
-    width: 100%;
-  }
-}
-
-.outterBox .innerBox {
-  width: 90%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-@media screen and (max-width: 1250px) {
-  .outterBox .innerBox {
-    width: 95%;
-  }
-}
-
-.outterBox .innerBox .resultsColumns {
-  width: 52%;
-  padding: 0.6em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-@media screen and (max-width: 1200px) {
-  .outterBox .innerBox .resultsColumns {
-    width: 45%;
-  }
-}
-
-.outterBox .innerBox .resultsColumns .noMatchTitle {
-  color: #343434;
-  position: absolute;
-  font-size: 1.3em;
-  font-weight: bold;
-}
-
-.outterBox .innerBox .mapBox {
-  width: 45%;
-  height: 100%;
-  margin-top: 15px;
-  -webkit-box-shadow: rgba(92, 92, 92, 0.3) 0px 1px 2px 0px, rgba(67, 67, 67, 0.15) 0px 1px 3px 1px;
-          box-shadow: rgba(92, 92, 92, 0.3) 0px 1px 2px 0px, rgba(67, 67, 67, 0.15) 0px 1px 3px 1px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 40px;
-}
-
-@media screen and (max-width: 1200px) {
-  .outterBox .innerBox .mapBox {
-    width: 50%;
-  }
-}
-
-.sortBy {
+.omegaDiv .sortBy {
   width: 90%;
   height: auto;
   display: -webkit-box;
@@ -182,13 +103,13 @@
 }
 
 @media screen and (max-width: 1250px) {
-  .sortBy {
+  .omegaDiv .sortBy {
     width: 95%;
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .sortBy {
+  .omegaDiv .sortBy {
     width: 95%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -211,7 +132,7 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .sortBy {
+  .omegaDiv .sortBy {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -233,7 +154,7 @@
   }
 }
 
-.sortBy .sortByTextCont {
+.omegaDiv .sortBy .sortByTextCont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -249,24 +170,25 @@
           flex-direction: row;
   font-family: "Avenir";
   width: 47%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 @media screen and (max-width: 1400px) {
-  .sortBy .sortByTextCont {
+  .omegaDiv .sortBy .sortByTextCont {
     width: 52%;
   }
 }
 
 @media screen and (max-width: 1300px) {
-  .sortBy .sortByTextCont {
+  .omegaDiv .sortBy .sortByTextCont {
     width: 57%;
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .sortBy .sortByTextCont {
+  .omegaDiv .sortBy .sortByTextCont {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -291,72 +213,95 @@
   }
 }
 
-.sortBy .sortByTextCont .sortByText {
+.omegaDiv .sortBy .sortByTextCont .sortByText {
   font-size: 1em;
   font-weight: bold;
   color: #616161;
 }
 
 @media screen and (max-width: 1200px) {
-  .sortBy .sortByTextCont .sortByText {
+  .omegaDiv .sortBy .sortByTextCont .sortByText {
     padding-left: 30px;
   }
 }
 
-.sortButtonContainer {
-  width: 40%;
-  height: 40px;
+.omegaDiv .outterBox {
+  width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  margin-left: 20px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 1250px) {
+  .omegaDiv .outterBox {
+    width: 100%;
+  }
+}
+
+.omegaDiv .outterBox .innerBox {
+  width: 90%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 1250px) {
+  .omegaDiv .outterBox .innerBox {
+    width: 95%;
+  }
+}
+
+.omegaDiv .outterBox .innerBox .resultsColumns {
+  width: 52%;
+  padding: 0.6em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media screen and (max-width: 1200px) {
-  .sortButtonContainer {
-    width: 60%;
-    padding-left: 10px;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+  .omegaDiv .outterBox .innerBox .resultsColumns {
+    width: 45%;
   }
 }
 
-@media screen and (max-width: 760px) {
-  .sortButtonContainer {
-    width: 65%;
+.omegaDiv .outterBox .innerBox .resultsColumns .noMatchTitle {
+  color: #343434;
+  position: absolute;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.omegaDiv .outterBox .innerBox .mapBox {
+  width: 45%;
+  height: 100%;
+  margin-top: 15px;
+  -webkit-box-shadow: rgba(92, 92, 92, 0.3) 0px 1px 2px 0px, rgba(67, 67, 67, 0.15) 0px 1px 3px 1px;
+          box-shadow: rgba(92, 92, 92, 0.3) 0px 1px 2px 0px, rgba(67, 67, 67, 0.15) 0px 1px 3px 1px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .omegaDiv .outterBox .innerBox .mapBox {
+    width: 50%;
   }
-}
-
-@media screen and (max-width: 660px) {
-  .sortButtonContainer {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .sortButtonContainer {
-    width: 90%;
-  }
-}
-
-.sortButtonContainer .sortButtons {
-  height: 30px;
-  margin-right: 10px;
-}
-
-.sortButtonContainer .resetButton {
-  outline: 1px solid #ff8400;
-  color: orange;
-  border: none;
-}
-
-.sortButtonContainer .resetButton:hover {
-  background-color: orange;
-  color: white;
 }
 
 .formControls {
@@ -372,19 +317,6 @@
     margin-top: 16px;
     margin-left: 36px;
   }
-}
-
-.randomizeButton {
-  height: 40px;
-  font-size: 1em;
-  background-color: #ff7300;
-  color: white;
-}
-
-.randomizeButton:hover {
-  background-color: #d56103;
-  border: none;
-  outline: none;
 }
 
 .tabContainer {

@@ -118,7 +118,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
       {foods.length > 0 ? (<Box p={0.5}>
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
-            <Grid key={index} item xs={12} sm={12} md={11} lg={6} xl={4}>
+            <Grid key={index} item xs={12} sm={12} md={11} lg={5.5} xl={5.8}>
               <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
             </Grid>
           ))}
@@ -142,14 +142,3 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
 };
 
 export default FoodResults;
-
-
-{/* <Box p={0.5}>
-<Grid container spacing={5}>
-  {foods.map((rest: any, index: number) => (
-    <Grid key={index} item xs={12} sm={12} md={6} lg={6} xl={4}>
-      <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
-    </Grid>
-  ))}
-</Grid>
-</Box> */}

@@ -1,0 +1,62 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  font-family: "Avenir";
+}
+
+.sortButtonContainer {
+  width: 75%;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 20px;
+
+  @media screen and (max-width: 1200px) {
+    width: 60%;
+    padding-left: 10px;
+    justify-content: flex-start;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 65%;
+  }
+  @media screen and (max-width: 660px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 560px) {
+    width: 90%;
+  }
+
+  .sortButtons {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .resetButton {
+    outline: 1px solid rgb(255, 132, 0);
+    color: orange;
+    border: none;
+
+    &:hover {
+      background-color: orange;
+      color: white;
+    }
+  }
+}
+
+
+.randomizeButton {
+  height: 40px;
+  font-size: 1em;
+
+  background-color: rgb(255, 115, 0);
+  color: white;
+  &:hover {
+    background-color: rgb(213, 97, 3);
+    border: none;
+    outline: none;
+  }
+}

@@ -42,9 +42,11 @@
 }
 
 .cardResult .cardContent .cardName {
+  min-width: 100%;
   text-align: left;
   font-size: 1.2em;
   font-weight: bold;
+  margin: 0;
 }
 
 .cardResult .cardContent .cardText {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../../styles/Results/results.module.css';
+import styles from '../../../styles/Results/buttons.module.css';
 import Button from '@mui/material/Button';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
