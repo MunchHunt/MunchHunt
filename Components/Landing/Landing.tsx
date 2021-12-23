@@ -4,9 +4,10 @@ import Image from 'next/image';
 import { MunchContext } from '../Contexts/MunchContext';
 import Location from '../Home/Form/Location';
 import { Button } from '@mui/material';
-import GoogleLogin from 'react-google-login';
+import GoogleLogin, { GoogleLogout } from 'react-google-login';
 import GoogleIcon from '@mui/icons-material/Google';
 import Router from 'next/router'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
@@ -35,11 +36,16 @@ const Landing: React.FC = () => {
     }
   }, [width])
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      Router.push('/find');
-    }
-  }, [isLoggedIn])
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     Router.push('/find');
+  //   }
+  // }, [isLoggedIn])
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    console.log('Logout success.');
+  };
 
   const responseSuccess = (res: any) => {
     setIsLoggedIn(true);
@@ -61,7 +67,6 @@ const Landing: React.FC = () => {
           <div className={styles.logo}>
             <Image
               loader={myLoader}
-              // src="/Y8KaQBX.png"
               src="/iqrmXmz.png"
               alt="Munch Hunt logo"
               width={imageSize}
@@ -74,20 +79,30 @@ const Landing: React.FC = () => {
         <div className={styles.bottom}>
           <div className={styles.startDiv}>
             <div className={styles.start}>Get started now!</div>
-            <GoogleLogin
-              clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
-              buttonText='Login'
-              onSuccess={responseSuccess}
-              onFailure={responseFailure}
-              className={styles.loginBtn}
-              cookiePolicy={'single_host_origin'}
-              render={(renderProps) => (
-                <Button variant="contained" onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
-                  <div className={styles.btnText}>Login with</div>
-                  <GoogleIcon />
-                </Button>
-              )}
-            />
+            {isLoggedIn ?
+              <GoogleLogout
+                clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
+                buttonText="Logout"
+                onLogoutSuccess={logout}
+                render={(renderProps) => (
+                  <Button variant="contained" onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
+                    Logout
+                    <LogoutIcon fontSize='small' className={styles.icon} />
+                  </Button>
+                )}
+              /> : <GoogleLogin
+                clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
+                buttonText='Login'
+                onSuccess={responseSuccess}
+                onFailure={responseFailure}
+                cookiePolicy={'single_host_origin'}
+                render={(renderProps) => (
+                  <Button variant="contained" onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
+                    <div className={styles.btnText}>Login with</div>
+                    <GoogleIcon />
+                  </Button>
+                )}
+              />}
           </div>
           <label htmlFor="Location">Enter Location</label>
           <div className={styles.locationRow}>
@@ -95,7 +110,7 @@ const Landing: React.FC = () => {
               invalidLocation={invalidLocation}
               setInvalidLocation={setInvalidLocation}
             />
-            <Button className={styles.startBtn} variant="contained" onClick={() => { window.open('/find', '_self') }}>Start</Button>
+            <Button className={styles.startBtn} variant="contained" onClick={() => { Router.push('/find'); }}>Start</Button>
           </div>
         </div>
       </div>
