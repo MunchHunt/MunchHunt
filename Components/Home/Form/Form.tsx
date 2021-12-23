@@ -8,6 +8,7 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import CloseIcon from '@mui/icons-material/Close';
 import AreYouSure from './AreYouSure';
+import Router from 'next/router'
 
 interface Props {
   selectedTemplate: string;
@@ -126,9 +127,11 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   useEffect(() => {
     if (result && result !== "") {
-      window.open(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`, "_self");
+      Router.push(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`, "_self");
       console.log("Result:", result);
+      setResult('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
   const getIndex = (): number => {

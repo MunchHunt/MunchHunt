@@ -11,110 +11,133 @@
   position: absolute;
   top: 0;
   color: white;
-}
-
-.contentContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 1200px;
-  position: relative;
-  top: -30px;
-  @media screen and (max-width: 1250px) {
-    width: 95%;
-  }
-  @media screen and (max-width: 700px) {
-    margin: 100px 0 100px;
-  }
-
-  .top {
+  .contentContainer {
     display: flex;
+    justify-content: center;
     align-items: center;
-    @media screen and (max-width: 700px) {
-      flex-direction: column;
-    }
-    .leftSide {
-      display: flex;
-      flex-direction: column;
-      .title {
-        text-align: left;
-        font-size: 150px;
-        line-height: 85%;
-        margin-bottom: 20px;
-        font-family: "Raleway", sans-serif;
-        font-weight: bold;
-        @media screen and (max-width: 900px) {
-          font-size: 100px;
-        }
-        @media screen and (max-width: 700px) {
-          font-size: 75px;
-          text-align: center;
-        }
-      }
-      .desc {
-        position: relative;
-        left: 10px;
-        margin-bottom: 50px;
-        font-size: 25px;
-        text-align: left;
-        font-family: "Raleway", sans-serif;
-        @media screen and (max-width: 900px) {
-          font-size: 20px;
-        }
-        @media screen and (max-width: 700px) {
-          text-align: center;
-          margin-bottom: 20px;
-          left: 0;
-          font-size: 17px;
-        }
-      }
-    }
-  }
-  .bottom {
-    display: flex;
     flex-direction: column;
+    width: 1200px;
     position: relative;
-    top: 30px;
-    .start {
-      font-size: 40px;
-      margin-bottom: 15px;
+    top: -30px;
+    @media screen and (max-width: 1250px) {
+      width: 95%;
     }
-    label {
-      font-size: 23px;
-      margin-bottom: 10px;
+    @media screen and (max-width: 700px) {
+      margin: 100px 0 100px;
     }
-    @media screen and (max-width: 560px) {
-      flex-direction: column;
-    }
-    .locationRow {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      width: 100%;
-      color: black;
 
+    .top {
+      display: flex;
+      align-items: center;
       @media screen and (max-width: 700px) {
         flex-direction: column;
       }
-      .startBtn {
-        height: 53px;
-        margin-left: 10px;
-        margin-top: -4px;
-        background-color: rgb(255, 115, 0);
-        color: white;
-        &:hover {
-          background-color: rgb(238, 107, 0);
-          border: none;
-          outline: none;
+      .leftSide {
+        display: flex;
+        flex-direction: column;
+        .title {
+          text-align: left;
+          font-size: 150px;
+          line-height: 85%;
+          margin-bottom: 20px;
+          font-family: "Raleway", sans-serif;
+          font-weight: bold;
+          @media screen and (max-width: 900px) {
+            font-size: 100px;
+          }
+          @media screen and (max-width: 700px) {
+            font-size: 75px;
+            text-align: center;
+          }
         }
-        @media screen and (max-width: 878px) {
+        .desc {
+          position: relative;
+          left: 10px;
+          margin-bottom: 50px;
+          font-size: 25px;
+          text-align: left;
+          font-family: "Raleway", sans-serif;
+          @media screen and (max-width: 900px) {
+            font-size: 20px;
+          }
+          @media screen and (max-width: 700px) {
+            text-align: center;
+            margin-bottom: 20px;
+            left: 0;
+            font-size: 17px;
+          }
+        }
+      }
+    }
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      top: 30px;
+      .startDiv {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px;
+        .start {
+          font-size: 40px;
+        }
+        .loginBtn {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
           margin-left: 20px;
+          font-size: 20px;
+          padding: 5px;
+          background-color: white;
+          color: rgb(238, 107, 0);
+          // color: white;
+          &:hover {
+            background-color: rgb(241, 241, 241);
+            border: none;
+            outline: none;
+          }
+          .btnText {
+            margin-right: 5px;
+          }
         }
+      }
+      label {
+        font-size: 23px;
+        margin-bottom: 10px;
+      }
+      @media screen and (max-width: 560px) {
+        flex-direction: column;
+      }
+      .locationRow {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        color: black;
+
         @media screen and (max-width: 700px) {
-          width: 95%;
-          margin-left: 0;
-          margin-top: 30px;
+          flex-direction: column;
+        }
+        .startBtn {
+          height: 53px;
+          margin-left: 10px;
+          margin-top: -4px;
+          background-color: rgb(255, 115, 0);
+          color: white;
+          &:hover {
+            background-color: rgb(238, 107, 0);
+            border: none;
+            outline: none;
+          }
+          @media screen and (max-width: 878px) {
+            margin-left: 20px;
+          }
+          @media screen and (max-width: 700px) {
+            width: 95%;
+            margin-left: 0;
+            margin-top: 30px;
+          }
         }
       }
     }

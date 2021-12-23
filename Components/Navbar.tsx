@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import Link from 'next/link';
 import styles from '../styles/Navbar/navbar.module.css';
 import styles2 from '../styles/Navbar/navbar2.module.css';
 import Image from 'next/image';
 import Login from './Login';
+import Router from 'next/router'
 
 const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
@@ -12,7 +12,7 @@ const myLoader = ({ src, width, quality }: any) => {
 const Navbar = () => {
 
   const goHome = () => {
-    window.open('/', '_self');
+    Router.push('/');
   }
 
   return (
@@ -29,7 +29,7 @@ const Navbar = () => {
           <div className={styles2.munchHuntTitle}>MUNCH HUNT</div>
         </div>
         <div className={styles2.navbarLinkContainer}>
-          <a className={styles2.navLinks} onClick={() => window.open('/find', '_self')}>Find</a>
+          <a className={styles2.navLinks} onClick={() => Router.push('/find', '_self')}>Find</a>
           {/* <Link href="/results"><a className={styles2.navLinks}>Results</a></Link> */}
           {/* <Link href="/"><a className={styles2.navLinks}>Logout  </a></Link> */}
           <Login />

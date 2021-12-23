@@ -30,6 +30,10 @@
   .createTitle {
     font-size: 20px;
   }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
   .createBtn {
     background-color: rgb(255, 115, 0);
     color: white;

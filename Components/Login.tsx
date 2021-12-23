@@ -41,11 +41,11 @@ const Login: React.FC = () => {
       ) :
         <div className={styles.login}>
           <GoogleLogin
-            className={styles.loginBtn}
             clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
             buttonText='Login'
             onSuccess={responseSuccess}
             onFailure={responseFailure}
+            className={styles.loginBtn}
             cookiePolicy={'single_host_origin'}
             render={(renderProps) => (
               <button onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
