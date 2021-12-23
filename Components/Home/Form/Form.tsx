@@ -29,11 +29,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const [showSpinner, setShowSpinner] = useState<boolean>(false);
   const [openInvalid, setOpenInvalid] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setResult('');
-  //   console.log(result);
-  // }, [])
-
   const {
     result,
     setResult,
@@ -136,6 +131,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       console.log("Result:", result);
       setResult('');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
   const getIndex = (): number => {

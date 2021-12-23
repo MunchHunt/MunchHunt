@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Link from 'next/link';
 import styles from '../styles/Navbar/navbar.module.css';
 import styles2 from '../styles/Navbar/navbar2.module.css';
 import Image from 'next/image';
