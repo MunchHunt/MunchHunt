@@ -21,13 +21,12 @@ const Login: React.FC = () => {
     console.log('Logout success.');
   };
 
-
   return (
     <div className={styles.container}>
       {isLoggedIn ? (
         <div className={styles.login}>
           <GoogleLogout
-            clientId={JSON.stringify(process.env.NEXT_PUBLIC_CLIENT_ID)}
+            clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
             buttonText="Logout"
             onLogoutSuccess={logout}
             className={styles.logoutBtn}
@@ -43,7 +42,7 @@ const Login: React.FC = () => {
         <div className={styles.login}>
           <GoogleLogin
             className={styles.loginBtn}
-            clientId={JSON.stringify(process.env.NEXT_PUBLIC_CLIENT_ID)}
+            clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
             buttonText='Login'
             onSuccess={responseSuccess}
             onFailure={responseFailure}

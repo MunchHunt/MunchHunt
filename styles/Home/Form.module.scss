@@ -76,22 +76,22 @@
       font-size: 20px;
       margin-bottom: 15px;
     }
-  }
-}
 
-.chooseBtn {
-  margin-top: 20px;
-  background-color: rgb(255, 115, 0);
-  color: white;
-  &:hover {
-    background-color: rgb(238, 107, 0);
-    border: none;
-    outline: none;
-  }
-  .shuffle {
-    margin-left: 5px;
-    position: relative;
-    top: -1px;
+    .chooseBtn {
+      margin-top: 20px;
+      background-color: rgb(255, 115, 0);
+      color: white;
+      &:hover {
+        background-color: rgb(238, 107, 0);
+        border: none;
+        outline: none;
+      }
+      .shuffle {
+        margin-left: 5px;
+        position: relative;
+        top: -1px;
+      }
+    }
   }
 }
 

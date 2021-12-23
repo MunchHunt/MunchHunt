@@ -12,6 +12,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
   const { tempTemplates, setTempTemplates, currCoords } = useContext(MunchContext);
+  const [invalidMsg, setInvalidMsg] = useState<string>('Invalid Entry');
 
   const changeHandler = (e: any): void => {
     e.preventDefault();
@@ -22,14 +23,20 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
     for (let i = 0; i < tempTemplates.length; i++) {
       if (tempTemplates[i].name.toLowerCase() === typed.toLowerCase()) {
         setIsValid(false);
+        setInvalidMsg('Template name already exists.')
         return false;
       }
     }
-    if (currCoords === { lat: '', long: '' } || typed === '' || currChoices.length < 1) {
+    if (typed === '') {
       setIsValid(false);
+      setInvalidMsg('Invalid template name.');
       return false;
     }
-
+    if (currCoords === { lat: '', long: '' }) {
+      setIsValid(false);
+      setInvalidMsg('Location not set.');
+      return false;
+    }
     setIsValid(true);
     return true;
   };
@@ -59,6 +66,15 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
     }
   };
 
+  useEffect(() => {
+    for (let i = 0; i < tempTemplates.length; i++) {
+      let template = document.getElementById('template' + i.toString());
+      template?.classList.remove('activeTemplate');
+    }
+    let template = document.getElementById('template' + (tempTemplates.length - 1).toString());
+    template?.classList.add('activeTemplate');
+  }, [tempTemplates])
+
   return (
     <div className={styles.createTemplate}>
       <h3 className={styles.createTitle}>Create Template</h3>
@@ -66,7 +82,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
         {isValid ? (
           <TextField className={styles.inputField} type="text" label="Template name" value={typed} autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         ) : (
-          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText="Invalid entry." autoComplete="off" onChange={(e: any) => changeHandler(e)} />
+          <TextField error className={styles.inputField} type="text" label="Template name" value={typed} helperText={invalidMsg} autoComplete="off" onChange={(e: any) => changeHandler(e)} />
         )}
         <Button className={styles.createBtn} variant="contained" onClick={(e: any) => addTemplate(e)}>Create</Button>
       </form>
