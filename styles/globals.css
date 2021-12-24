@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Mukta", sans-serif, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
-    Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Mukta", sans-serif, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: rgb(249, 247, 244);
 }
 
@@ -15,4 +14,18 @@ body {
 .activeTemplate {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.button {
+  height: 40px;
+  font-size: 1em;
+
+  background-color: rgb(255, 115, 0);
+  color: white;
+}
+
+.button:hover {
+  background-color: rgb(213, 97, 3);
+  border: none;
+  outline: none;
 }
