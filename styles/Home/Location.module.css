@@ -75,7 +75,7 @@
   border: 1px solid #156ff5;
 }
 
-@media screen and (max-width: 878px) {
+@media screen and (max-width: 550px) {
   .locationContainer .container .inputDiv .inputRow {
     width: 100%;
   }
