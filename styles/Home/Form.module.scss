@@ -32,6 +32,8 @@
     .topText {
       display: flex;
       flex-direction: row;
+      justify-content: center;
+      width: 95%;
       .formTitle {
         display: flex;
         align-items: center;
@@ -150,6 +152,9 @@
     .inputField {
       width: 200px;
       margin: 20px;
+      @media screen and (max-width: 1054px) {
+        margin: 10px;
+      }
       @media screen and (max-width: 878px) {
         width: 100%;
         margin: 5px 0 5px 0;

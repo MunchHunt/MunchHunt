@@ -24,36 +24,32 @@ const Login: React.FC = () => {
   return (
     <div className={styles.container}>
       {isLoggedIn ? (
-        <div className={styles.login}>
-          <GoogleLogout
-            clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
-            buttonText="Logout"
-            onLogoutSuccess={logout}
-            className={styles.logoutBtn}
-            render={(renderProps) => (
-              <button onClick={renderProps.onClick} className={styles.logoutBtn} disabled={renderProps.disabled}>
-                Logout
-                <LogoutIcon fontSize='small' className={styles.icon} />
-              </button>
-            )}
-          />
-        </div>
+        <GoogleLogout
+          clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
+          buttonText="Logout"
+          onLogoutSuccess={logout}
+          className={styles.logoutBtn}
+          render={(renderProps) => (
+            <button onClick={renderProps.onClick} className={styles.logoutBtn} disabled={renderProps.disabled}>
+              Logout
+              <LogoutIcon fontSize='small' className={styles.icon} />
+            </button>
+          )}
+        />
       ) :
-        <div className={styles.login}>
-          <GoogleLogin
-            clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
-            buttonText='Login'
-            onSuccess={responseSuccess}
-            onFailure={responseFailure}
-            className={styles.loginBtn}
-            cookiePolicy={'single_host_origin'}
-            render={(renderProps) => (
-              <button onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
-                Login
-              </button>
-            )}
-          />
-        </div>
+        <GoogleLogin
+          clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}
+          buttonText='Login'
+          onSuccess={responseSuccess}
+          onFailure={responseFailure}
+          className={styles.loginBtn}
+          cookiePolicy={'single_host_origin'}
+          render={(renderProps) => (
+            <button onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
+              Login
+            </button>
+          )}
+        />
       }
     </div>
   );

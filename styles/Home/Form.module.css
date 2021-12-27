@@ -57,6 +57,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95%;
 }
 
 .container .innerContainer .topText .formTitle {
@@ -257,6 +261,12 @@
 .formContainer .form .inputField {
   width: 200px;
   margin: 20px;
+}
+
+@media screen and (max-width: 1054px) {
+  .formContainer .form .inputField {
+    margin: 10px;
+  }
 }
 
 @media screen and (max-width: 878px) {
