@@ -10,13 +10,17 @@ interface Props {
 const CurrentLocation: React.FC<Props> = ({ getCurrentPosition }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
+
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    setTimeout(() => {
+      handlePopoverClose();
+    }, 2000)
+  };
+
 
   const open = Boolean(anchorEl);
 
