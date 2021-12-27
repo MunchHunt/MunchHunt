@@ -29,7 +29,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const [showUpdating, setShowUpdating] = useState<boolean>(false);
   const [showSpinner, setShowSpinner] = useState<boolean>(false);
   const [openInvalid, setOpenInvalid] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const {
     result,
@@ -39,7 +38,9 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     setTempTemplates,
     currCoords,
     currChoices,
-    setCurrChoices
+    setCurrChoices,
+    isDrawerOpen,
+    setIsDrawerOpen
   } = useContext(MunchContext);
 
   useEffect(() => {
@@ -190,7 +191,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   };
 
   const openTemplates = () => {
-    setIsOpen(true);
+    setIsDrawerOpen(true);
   };
 
   return (
@@ -225,8 +226,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               <div className={styles.templateTitleDiv}>
                 <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
                 <div className={styles.templateBtnDiv}>
-                  <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => updateTemplate(e)}>Update Template</Button>
-                  <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => areYouSure(e)}>Delete Template</Button>
+                  <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => updateTemplate(e)}>Update</Button>
+                  <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => areYouSure(e)}>Delete</Button>
                 </div>
                 {showUpdating ? <div className={styles.updatingMsg}>Updated!</div> : null}
               </div>
@@ -330,7 +331,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
           {showSpinner ? <CircularProgress size={20} className={styles.spinner} /> : null}
         </div>
       </div>
-      <TemplatesDrawer isOpen={isOpen} setIsOpen={setIsOpen} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
+      <TemplatesDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
     </Card>
   );
 };

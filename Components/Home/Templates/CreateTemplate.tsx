@@ -11,7 +11,7 @@ interface Props {
 const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
-  const { tempTemplates, setTempTemplates, currCoords } = useContext(MunchContext);
+  const { tempTemplates, setTempTemplates, currCoords, setIsDrawerOpen } = useContext(MunchContext);
   const [invalidMsg, setInvalidMsg] = useState<string>('Invalid Entry');
 
   const changeHandler = (e: any): void => {
@@ -63,6 +63,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
       setTempTemplates(temp);
       setSelectedTemplate(typed);
       setTyped('');
+      setIsDrawerOpen(false);
     }
   };
 

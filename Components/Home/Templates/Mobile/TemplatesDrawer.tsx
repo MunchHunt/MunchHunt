@@ -3,12 +3,12 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Templates from '../Templates';
 
 interface Props {
-  isOpen: boolean;
-  setIsOpen: Function;
+  isDrawerOpen: boolean;
+  setIsDrawerOpen: Function;
   selectedTemplate: string;
   setSelectedTemplate: Function;
 }
-const TemplatesDrawer: React.FC<Props> = ({ isOpen, setIsOpen, selectedTemplate, setSelectedTemplate }) => {
+const TemplatesDrawer: React.FC<Props> = ({ isDrawerOpen, setIsDrawerOpen, selectedTemplate, setSelectedTemplate }) => {
 
   const toggleDrawer = (open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -20,14 +20,14 @@ const TemplatesDrawer: React.FC<Props> = ({ isOpen, setIsOpen, selectedTemplate,
       ) {
         return;
       }
-      setIsOpen(open);
+      setIsDrawerOpen(open);
     };
 
   return (
     <div>
       <SwipeableDrawer
         anchor={'bottom'}
-        open={isOpen}
+        open={isDrawerOpen}
         onClose={toggleDrawer(false)}
         onOpen={toggleDrawer(true)}
       >
