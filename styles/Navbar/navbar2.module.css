@@ -29,8 +29,15 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 80%;
+  width: 90%;
   padding: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .navOuterContainer .navbar {
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 .navOuterContainer .navbar .navbarLogoContainer {
@@ -53,6 +60,13 @@
   font-weight: bold;
   color: #3a3a3a;
   cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .navOuterContainer .navbar .navbarLogoContainer .munchHuntTitle {
+    font-size: 20px;
+    margin-left: 5px;
+  }
 }
 
 .navOuterContainer .navbar .navbarLinkContainer {
@@ -78,5 +92,11 @@
 
 .navOuterContainer .navbar .navbarLinkContainer .navLinks:hover {
   color: #c55f00;
+}
+
+@media screen and (max-width: 700px) {
+  .navOuterContainer .navbar .navbarLinkContainer .navLinks {
+    font-size: 20px;
+  }
 }
 /*# sourceMappingURL=navbar2.module.css.map */

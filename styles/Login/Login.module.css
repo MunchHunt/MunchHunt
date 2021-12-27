@@ -24,6 +24,12 @@
   color: #c55f00;
 }
 
+@media screen and (max-width: 700px) {
+  .login .logoutBtn {
+    font-size: 20px;
+  }
+}
+
 .login .loginBtn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,6 +50,12 @@
 
 .login .loginBtn:hover {
   color: #c55f00;
+}
+
+@media screen and (max-width: 700px) {
+  .login .loginBtn {
+    font-size: 20px;
+  }
 }
 
 .login .icon {
