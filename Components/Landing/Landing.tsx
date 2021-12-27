@@ -41,6 +41,7 @@ const Landing: React.FC = () => {
     } else {
       setImageSize(800);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width])
 
   const logout = () => {
