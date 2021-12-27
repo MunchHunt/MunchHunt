@@ -16,20 +16,18 @@
   margin-left: 20px;
 }
 
-.login {
-  .logoutBtn {
-    @include center();
-    @media screen and (max-width: 700px) {
-      font-size: 20px;
-    }
+.logoutBtn {
+  @include center();
+  @media screen and (max-width: 700px) {
+    font-size: 20px;
   }
-  .loginBtn {
-    @include center();
-    @media screen and (max-width: 700px) {
-      font-size: 20px;
-    }
+}
+.loginBtn {
+  @include center();
+  @media screen and (max-width: 700px) {
+    font-size: 20px;
   }
-  .icon {
-    margin-left: 5px;
-  }
+}
+.icon {
+  margin-left: 5px;
 }

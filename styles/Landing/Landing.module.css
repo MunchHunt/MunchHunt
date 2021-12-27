@@ -228,6 +228,10 @@
   }
 }
 
+.container .contentContainer .bottom .startDiv .icon {
+  margin-left: 5px;
+}
+
 .container .contentContainer .bottom label {
   font-size: 23px;
   margin-bottom: 10px;
