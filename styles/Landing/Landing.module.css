@@ -17,6 +17,15 @@
   position: absolute;
   top: 0;
   color: white;
+  overflow: scroll;
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
 }
 
 .container .contentContainer {
@@ -35,7 +44,6 @@
           flex-direction: column;
   width: 1200px;
   position: relative;
-  top: -30px;
 }
 
 @media screen and (max-width: 1250px) {
@@ -47,6 +55,12 @@
 @media screen and (max-width: 700px) {
   .container .contentContainer {
     margin: 100px 0 100px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container .contentContainer {
+    margin-top: 50px;
   }
 }
 
@@ -68,7 +82,7 @@
   }
 }
 
-.container .contentContainer .top .leftSide {
+.container .contentContainer .top .textDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,7 +92,7 @@
           flex-direction: column;
 }
 
-.container .contentContainer .top .leftSide .title {
+.container .contentContainer .top .textDiv .title {
   text-align: left;
   font-size: 150px;
   line-height: 85%;
@@ -88,19 +102,25 @@
 }
 
 @media screen and (max-width: 900px) {
-  .container .contentContainer .top .leftSide .title {
+  .container .contentContainer .top .textDiv .title {
     font-size: 100px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .container .contentContainer .top .leftSide .title {
+  .container .contentContainer .top .textDiv .title {
     font-size: 75px;
     text-align: center;
   }
 }
 
-.container .contentContainer .top .leftSide .desc {
+@media screen and (max-width: 450px) {
+  .container .contentContainer .top .textDiv .title {
+    font-size: 55px;
+  }
+}
+
+.container .contentContainer .top .textDiv .desc {
   position: relative;
   left: 10px;
   margin-bottom: 50px;
@@ -110,17 +130,17 @@
 }
 
 @media screen and (max-width: 900px) {
-  .container .contentContainer .top .leftSide .desc {
+  .container .contentContainer .top .textDiv .desc {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .container .contentContainer .top .leftSide .desc {
+  .container .contentContainer .top .textDiv .desc {
     text-align: center;
     margin-bottom: 20px;
     left: 0;
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 
@@ -154,6 +174,12 @@
   font-size: 40px;
 }
 
+@media screen and (max-width: 450px) {
+  .container .contentContainer .bottom .startDiv .start {
+    font-size: 25px;
+  }
+}
+
 .container .contentContainer .bottom .startDiv .loginBtn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -180,6 +206,12 @@
 
 .container .contentContainer .bottom .startDiv .loginBtn .btnText {
   margin-right: 5px;
+}
+
+@media screen and (max-width: 450px) {
+  .container .contentContainer .bottom .startDiv .loginBtn {
+    font-size: 15px;
+  }
 }
 
 .container .contentContainer .bottom label {
@@ -244,6 +276,12 @@
     width: 95%;
     margin-left: 0;
     margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container .contentContainer .bottom .locationRow .startBtn {
+    margin-top: 0;
   }
 }
 /*# sourceMappingURL=Landing.module.css.map */

@@ -11,6 +11,11 @@
   position: absolute;
   top: 0;
   color: white;
+  overflow: scroll;
+  @media screen and (max-width: 450px) {
+    align-items: flex-start;
+  }
+
   .contentContainer {
     display: flex;
     justify-content: center;
@@ -18,12 +23,14 @@
     flex-direction: column;
     width: 1200px;
     position: relative;
-    top: -30px;
     @media screen and (max-width: 1250px) {
       width: 95%;
     }
     @media screen and (max-width: 700px) {
       margin: 100px 0 100px;
+    }
+    @media screen and (max-width: 450px) {
+      margin-top: 50px;
     }
 
     .top {
@@ -32,7 +39,7 @@
       @media screen and (max-width: 700px) {
         flex-direction: column;
       }
-      .leftSide {
+      .textDiv {
         display: flex;
         flex-direction: column;
         .title {
@@ -49,6 +56,9 @@
             font-size: 75px;
             text-align: center;
           }
+          @media screen and (max-width: 450px) {
+            font-size: 55px;
+          }
         }
         .desc {
           position: relative;
@@ -64,7 +74,7 @@
             text-align: center;
             margin-bottom: 20px;
             left: 0;
-            font-size: 17px;
+            font-size: 15px;
           }
         }
       }
@@ -81,6 +91,9 @@
         margin-bottom: 15px;
         .start {
           font-size: 40px;
+          @media screen and (max-width: 450px) {
+            font-size: 25px;
+          }
         }
         .loginBtn {
           display: flex;
@@ -100,6 +113,9 @@
           .btnText {
             margin-right: 5px;
           }
+          @media screen and (max-width: 450px) {
+            font-size: 15px;
+          }
         }
       }
       label {
@@ -115,7 +131,6 @@
         align-items: flex-start;
         width: 100%;
         color: black;
-
         @media screen and (max-width: 700px) {
           flex-direction: column;
         }
@@ -137,6 +152,9 @@
             width: 95%;
             margin-left: 0;
             margin-top: 30px;
+          }
+          @media screen and (max-width: 450px) {
+            margin-top: 0;
           }
         }
       }
