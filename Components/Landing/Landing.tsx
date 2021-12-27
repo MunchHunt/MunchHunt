@@ -16,31 +16,32 @@ const myLoader = ({ src, width, quality }: any) => {
 const Landing: React.FC = () => {
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
   const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
   const [imageSize, setImageSize] = useState<number>(800);
   const { isLoggedIn, setIsLoggedIn } = useContext(MunchContext);
 
   useEffect(() => {
     setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
     window.addEventListener('resize', () => {
       setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
     })
   }, [])
 
   useEffect(() => {
     if (width < 400) {
-      setImageSize(180);
+      if (height > 700) {
+        setImageSize(300);
+      } else {
+        setImageSize(200);
+      }
     } else if (width < 700) {
       setImageSize(250);
     } else {
       setImageSize(800);
     }
   }, [width])
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     Router.push('/find');
-  //   }
-  // }, [isLoggedIn])
 
   const logout = () => {
     setIsLoggedIn(false);
@@ -60,7 +61,7 @@ const Landing: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.contentContainer}>
         <div className={styles.top}>
-          <div className={styles.leftSide}>
+          <div className={styles.textDiv}>
             <div className={styles.title}>Munch Hunt</div>
             <div className={styles.desc}>Struggling to choose a restaurant? Date night? Just hungry? Lets find the right place for you.</div>
           </div>
