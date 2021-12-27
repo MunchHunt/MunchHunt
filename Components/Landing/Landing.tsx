@@ -34,10 +34,10 @@ const Landing: React.FC = () => {
       if (height > 700) {
         setImageSize(300);
       } else {
-        setImageSize(200);
+        setImageSize(250);
       }
     } else if (width < 700) {
-      setImageSize(250);
+      setImageSize(300);
     } else {
       setImageSize(800);
     }
@@ -80,7 +80,7 @@ const Landing: React.FC = () => {
         </div>
         <div className={styles.bottom}>
           <div className={styles.startDiv}>
-            <div className={styles.start}>Get started now!</div>
+            <div className={styles.start}>Get started!</div>
             {isLoggedIn ?
               <GoogleLogout
                 clientId={`${process.env.NEXT_PUBLIC_CLIENT_ID}`}

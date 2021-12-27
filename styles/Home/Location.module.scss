@@ -11,7 +11,6 @@
     .inputDiv {
       position: relative;
       width: 100%;
-
       .inputGroup {
         display: flex;
         align-items: center;
@@ -39,7 +38,7 @@
         &:focus-within {
           border: 1px solid rgb(21, 111, 245);
         }
-        @media screen and (max-width: 878px) {
+        @media screen and (max-width: 550px) {
           width: 100%;
         }
 
@@ -82,15 +81,15 @@
         .suggestions {
           position: absolute;
           z-index: 2;
-          width: 400px;
-          top: -17px;
+          width: 402px;
+          top: -20px;
           @media screen and (max-width: 878px) {
             margin-left: 0;
             bottom: 15px;
             width: 100%;
           }
           .suggestion {
-            border: 1px solid black;
+            border: 1px solid rgb(129, 129, 129);
             margin-top: -1px;
           }
         }

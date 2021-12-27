@@ -44,7 +44,7 @@
 @media screen and (max-width: 704px) {
   .container .innerContainer {
     width: 95%;
-    padding-bottom: 150px;
+    padding-bottom: 80px;
     margin-top: 20px;
   }
 }
