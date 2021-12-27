@@ -15,6 +15,13 @@
           flex-direction: column;
 }
 
+@media screen and (max-width: 700px) {
+  .container {
+    width: 100%;
+    background-color: #f9f7f4;
+  }
+}
+
 .container .innerContainer {
   position: relative;
   display: -webkit-box;
@@ -36,38 +43,13 @@
 
 @media screen and (max-width: 704px) {
   .container .innerContainer {
-    padding-bottom: 100px;
+    width: 95%;
+    padding-bottom: 150px;
+    margin-top: 20px;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .container .innerContainer {
-    margin: 10px;
-  }
-}
-
-.container .innerContainer .templateTitleDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 10px;
-}
-
-.container .innerContainer .templateTitleDiv .formTitle {
-  font-size: 50px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.container .innerContainer .templateTitleDiv .templateBtnDiv {
+.container .innerContainer .topText {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,26 +59,107 @@
           flex-direction: row;
 }
 
-.container .innerContainer .templateTitleDiv .templateBtnDiv Button {
-  margin-left: 10px;
+.container .innerContainer .topText .formTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 50px;
+  margin: 0 0 10px;
+  text-align: center;
 }
 
-.container .innerContainer .templateTitleDiv .templateBtnDiv .btn {
+@media screen and (max-width: 700px) {
+  .container .innerContainer .topText .formTitle {
+    font-size: 35px;
+  }
+}
+
+.container .innerContainer .topText .updatingMsg {
+  margin: 10px 0 10px;
+  text-align: center;
+}
+
+.container .innerContainer .topText .templateBtnDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+}
+
+.container .innerContainer .topText .templateBtnDiv :nth-child(1) {
+  margin-right: 15px;
+}
+
+.container .innerContainer .topText .templateBtnDiv .btn {
   color: #ff7300;
   border: 0.5px solid #ff7300;
 }
 
-.container .innerContainer .templateTitleDiv .templateBtnDiv .btn:hover {
+.container .innerContainer .topText .templateBtnDiv .btn:hover {
   background-color: rgba(255, 115, 0, 0.116);
 }
 
-.container .innerContainer .templateTitleDiv .updatingMsg {
-  margin-top: 10px;
+.container .innerContainer .topText .templatesBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ff7300;
+  color: white;
+  height: 50%;
+  width: 50%;
 }
 
-.container .innerContainer .desc {
+.container .innerContainer .topText .templatesBtn:hover {
+  background-color: #ee6b00;
+  border: none;
+  outline: none;
+}
+
+@media screen and (min-width: 700px) {
+  .container .innerContainer .topText .templatesBtn {
+    display: none;
+  }
+}
+
+.container .innerContainer .topText .leftSide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 10px;
+}
+
+.container .innerContainer .topText .desc {
   text-align: center;
   font-size: 20px;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .container .innerContainer .topText .desc {
+    font-size: 15px;
+    width: 90%;
+  }
 }
 
 .container .innerContainer .loading {
@@ -116,6 +179,12 @@
   margin-bottom: 15px;
 }
 
+@media screen and (max-width: 700px) {
+  .container .innerContainer .updateLabel {
+    font-size: 15px;
+  }
+}
+
 .container .innerContainer .chooseBtn {
   margin-top: 20px;
   background-color: #ff7300;
@@ -132,6 +201,12 @@
   margin-left: 5px;
   position: relative;
   top: -1px;
+}
+
+@media screen and (max-width: 700px) {
+  .container .innerContainer .chooseBtn {
+    width: 95%;
+  }
 }
 
 .formContainer {
@@ -214,6 +289,13 @@
           align-items: center;
 }
 
+@media screen and (max-width: 700px) {
+  .submitDiv {
+    width: 95%;
+    margin-left: 0;
+  }
+}
+
 .submitDiv .findBtn {
   height: 46px;
   width: 200px;
@@ -237,7 +319,7 @@
 
 @media screen and (max-width: 700px) {
   .submitDiv .findBtn {
-    width: 95%;
+    width: 100%;
     margin-left: 0;
   }
 }

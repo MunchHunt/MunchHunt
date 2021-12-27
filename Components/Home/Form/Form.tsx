@@ -9,6 +9,7 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import CloseIcon from '@mui/icons-material/Close';
 import AreYouSure from './AreYouSure';
 import Router from 'next/router'
+import TemplatesDrawer from "../Templates/Mobile/TemplatesDrawer";
 
 interface Props {
   selectedTemplate: string;
@@ -37,7 +38,9 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     setTempTemplates,
     currCoords,
     currChoices,
-    setCurrChoices
+    setCurrChoices,
+    isDrawerOpen,
+    setIsDrawerOpen
   } = useContext(MunchContext);
 
   useEffect(() => {
@@ -187,6 +190,10 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     setSelectedTemplate('');
   };
 
+  const openTemplates = () => {
+    setIsDrawerOpen(true);
+  };
+
   return (
     <Card className={styles.container}>
       <Box sx={{ width: '100%' }}>
@@ -213,23 +220,26 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       </Box>
       <AreYouSure open={openDialog} setOpenDialog={setOpenDialog} deleteTemplate={deleteTemplate} />
       <div className={styles.innerContainer}>
-        {selectedTemplate.length ? (
-          <div className={styles.templateTitleDiv}>
-            <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
-            <div className={styles.templateBtnDiv}>
-              <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => updateTemplate(e)}>Update Template</Button>
-              <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => areYouSure(e)}>Delete Template</Button>
+        <div className={styles.topText}>
+          <div className={styles.leftSide}>
+            {selectedTemplate.length ? (
+              <div className={styles.templateTitleDiv}>
+                <h3 className={styles.formTitle}>Template: {selectedTemplate}</h3>
+                <div className={styles.templateBtnDiv}>
+                  <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => updateTemplate(e)}>Update</Button>
+                  <Button size="small" variant="outlined" className={styles.btn} onClick={(e: any) => areYouSure(e)}>Delete</Button>
+                </div>
+                {showUpdating ? <div className={styles.updatingMsg}>Updated!</div> : null}
+              </div>
+            ) : (
+              <h3 className={styles.formTitle}>Lets get started!</h3>
+            )}
+            <div className={styles.desc}>
+              List up to 6 possible cuisines or categories you would want to eat.
+              (At least 1 required)
             </div>
-            {showUpdating ? <div className={styles.updatingMsg}>Updated!</div> : null}
           </div>
-        ) : (
-          <div className={styles.templateTitleDiv}>
-            <h3 className={styles.formTitle}>Lets get started!</h3>
-          </div>
-        )}
-        <div className={styles.desc}>
-          List up to 6 possible cuisines or categories you would want to eat.
-          (At least 1 required)
+          <Button variant="contained" className={styles.templatesBtn} onClick={(e: any) => { openTemplates() }}>Templates</Button>
         </div>
         <Button
           className={styles.chooseBtn}
@@ -321,6 +331,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
           {showSpinner ? <CircularProgress size={20} className={styles.spinner} /> : null}
         </div>
       </div>
+      <TemplatesDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
     </Card>
   );
 };

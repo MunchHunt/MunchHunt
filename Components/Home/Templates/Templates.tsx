@@ -52,41 +52,39 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
   }, [selectedTemplate])
 
   return (
-    <Card className={styles.container}>
-      <div className={styles.innerContainer}>
-        <h2>My Templates</h2>
-        {isLoggedIn ? (
-          <div className={styles.templateColumn}>
-            {tempTemplates.length ? (
-              <>
+    <div className={styles.innerContainer}>
+      <h2>My Templates</h2>
+      {isLoggedIn ? (
+        <div className={styles.templateColumn}>
+          {tempTemplates.length ? (
+            <>
+              <div
+                className={styles.template}
+                onClick={(e: any) => selectTemplate(e, 1)}
+                id='noTemplate'>
+                No template
+              </div>
+              {tempTemplates.map((temp: any, i: number) => (
                 <div
+                  key={temp.name}
                   className={styles.template}
-                  onClick={(e: any) => selectTemplate(e, 1)}
-                  id='noTemplate'>
-                  No template
+                  onClick={(e: any) => selectTemplate(e, i)}
+                  id={'template' + i.toString()}>
+                  {temp.name}
                 </div>
-                {tempTemplates.map((temp: any, i: number) => (
-                  <div
-                    key={temp.name}
-                    className={styles.template}
-                    onClick={(e: any) => selectTemplate(e, i)}
-                    id={'template' + i.toString()}>
-                    {temp.name}
-                  </div>
-                ))}
-              </>
-            ) : (
-              <div>No templates! Fill out the fields and create a new template below.</div>
-            )}
-            <CreateTemplate currChoices={currChoices} setSelectedTemplate={setSelectedTemplate} />
-          </div>
-        ) : (
-          <div>
-            <p>Login to create and use templates.</p>
-          </div>
-        )}
-      </div>
-    </Card>
+              ))}
+            </>
+          ) : (
+            <div>No templates! Fill out the fields and create a new template below.</div>
+          )}
+          <CreateTemplate currChoices={currChoices} setSelectedTemplate={setSelectedTemplate} />
+        </div>
+      ) : (
+        <div>
+          <p>Login to create and use templates.</p>
+        </div>
+      )}
+    </div>
   );
 };
 

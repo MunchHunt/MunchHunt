@@ -28,6 +28,8 @@ export const MunchContext = createContext(
     setResult: (result: string) => { },
     currChoices: ['', '', '', '', '', ''],
     setCurrChoices: (choices: string[]) => { },
+    isDrawerOpen: false,
+    setIsDrawerOpen: (bool: boolean) => { }
   });
 
 export const MunchProvider: React.FC = ({ children }) => {
@@ -37,6 +39,7 @@ export const MunchProvider: React.FC = ({ children }) => {
   const [tempTemplates, setTempTemplates] = useState<any>([]);
   const [result, setResult] = useState<string>("");
   const [currChoices, setCurrChoices] = useState<string[]>(['', '', '', '', '', '']);
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
   const store = {
     isLoggedIn: isLoggedIn,
@@ -63,6 +66,10 @@ export const MunchProvider: React.FC = ({ children }) => {
     currChoices: currChoices,
     setCurrChoices: (choices: string[]): void => {
       setCurrChoices(choices);
+    },
+    isDrawerOpen: isDrawerOpen,
+    setIsDrawerOpen: (bool: boolean): void => {
+      setIsDrawerOpen(bool);
     }
   };
 
