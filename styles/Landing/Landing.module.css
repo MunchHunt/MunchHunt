@@ -48,13 +48,14 @@
 
 @media screen and (max-width: 1250px) {
   .container .contentContainer {
-    width: 95%;
+    width: 85%;
   }
 }
 
 @media screen and (max-width: 700px) {
   .container .contentContainer {
     margin: 100px 0 100px;
+    width: 95%;
   }
 }
 
@@ -101,7 +102,7 @@
   font-weight: bold;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
   .container .contentContainer .top .textDiv .title {
     font-size: 100px;
   }

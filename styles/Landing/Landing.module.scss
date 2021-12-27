@@ -24,10 +24,11 @@
     width: 1200px;
     position: relative;
     @media screen and (max-width: 1250px) {
-      width: 95%;
+      width: 85%;
     }
     @media screen and (max-width: 700px) {
       margin: 100px 0 100px;
+      width: 95%;
     }
     @media screen and (max-width: 450px) {
       margin-top: 50px;
@@ -49,9 +50,12 @@
           margin-bottom: 20px;
           font-family: "Raleway", sans-serif;
           font-weight: bold;
-          @media screen and (max-width: 900px) {
+          @media screen and (max-width: 1024px) {
             font-size: 100px;
           }
+          // @media screen and (max-width: 900px) {
+          //   font-size: 100px;
+          // }
           @media screen and (max-width: 700px) {
             font-size: 75px;
             text-align: center;

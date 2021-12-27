@@ -38,6 +38,8 @@ const Landing: React.FC = () => {
       }
     } else if (width < 700) {
       setImageSize(300);
+    } else if (width < 1025) {
+      setImageSize(400);
     } else {
       setImageSize(800);
     }
