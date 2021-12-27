@@ -278,4 +278,10 @@
     margin-top: 30px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .container .contentContainer .bottom .locationRow .startBtn {
+    margin-top: 0;
+  }
+}
 /*# sourceMappingURL=Landing.module.css.map */
