@@ -5,6 +5,7 @@ import styles from "../../styles/Home/Home.module.css";
 import { templates } from "./dummyData";
 import { MunchContext } from "../Contexts/MunchContext";
 import Head from "next/head";
+import { Card } from "@mui/material";
 
 const Home: React.FC = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
@@ -26,10 +27,12 @@ const Home: React.FC = () => {
         <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
       </Head>
       <div className={styles.findContainer}>
-        <Templates
-          selectedTemplate={selectedTemplate}
-          setSelectedTemplate={setSelectedTemplate}
-        />
+        <Card className={styles.templatesCard}>
+          <Templates
+            selectedTemplate={selectedTemplate}
+            setSelectedTemplate={setSelectedTemplate}
+          />
+        </Card>
         <Form
           selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
