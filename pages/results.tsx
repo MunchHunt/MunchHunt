@@ -14,6 +14,7 @@ import LoadingMap from '../Components/Results/loading/LoadingMap';
 import Image from 'next/image';
 import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
 import BasicTabs from '../Components/Results/results/Tab';
+import { FormatColorResetOutlined } from '@mui/icons-material';
 
 type Foods = {
   foods: any
@@ -53,7 +54,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [location, setLocation] = React.useState<any>({ lat: 37.786882, lng: -122.399972 });
   const [allLocs, setAllLocs] = React.useState<any>([]);
   const [showMap, setMap] = React.useState<boolean>(true);
-  const [random, setRandom] = React.useState<number>(280);
+  const [random, setRandom] = React.useState<boolean>(false);
   const [zoom, setZoom] = React.useState<number | undefined>(13);
   const [details, setDetails] = React.useState<any>([]);
   const [active, setActive] = React.useState<boolean>(false);
@@ -99,7 +100,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
 
   const reset = () => {
     setYelp(original);
-    setRandom(280);
+    setRandom(false);
     setLocation({ lat: original[0].coordinates.latitude, lng: original[0].coordinates.longitude });
     setZoom(13);
     setAllLocs(locationSort(original));
@@ -134,7 +135,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     randArr.push(original[rand]);
     setAllLocs(locationSort(randArr));
     setLocation({ lat: randArr[0].coordinates.latitude, lng: randArr[0].coordinates.longitude });
-    setRandom(450);
+    setRandom(true);
     setYelp(randArr);
   }
 

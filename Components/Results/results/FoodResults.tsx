@@ -15,7 +15,7 @@ import { CardActionArea } from '@mui/material';
 interface Foods {
   foods: any
   select: any
-  random: number
+  random: boolean
   active: boolean
 }
 
@@ -31,20 +31,22 @@ interface CardProps {
   handleClick: any,
   current: string,
   selected: any,
-  random: number
+  random: boolean
+  width: number
 }
 
 const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
 }
 
-function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random }: CardProps) {
+function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random, width }: CardProps) {
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
     return miles;
   }
+
   return (
-    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: random, minHeight: 350 }} onClick={(id) => handleClick(id)}>
+    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: 350 }} onClick={(id) => handleClick(id)}>
       <CardActionArea className={styles2.cardArea}>
         <CardMedia
           component="img"
@@ -93,6 +95,9 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
   const [current, setCurrent] = React.useState<string>('');
   const [selected, setSelected] = React.useState<any>();
   const [prevSelected, setCurrentSelected] = React.useState<string>('');
+  const [width, setWidth] = React.useState<number>(280);
+  const [size, setSize] = React.useState<number>(0);
+  const [single, setSingle] = React.useState<number>(480);
 
   const handleClick = (event: any, id: number, name: string) => {
     let card = document.querySelector('#rest' + id);
@@ -106,6 +111,20 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
   }
 
   React.useEffect(() => {
+    window.addEventListener('resize', () => {
+      setSize(window.innerWidth)
+    })
+  }, []);
+
+  React.useEffect(() => {
+    if (size <= 500) {
+      setSingle(350);
+    } else if (size > 500) {
+      setSingle (480);
+    }
+  }, [size]);
+
+  React.useEffect(() => {
     if (active === true && prevSelected) {
       let prev = document.querySelector(prevSelected);
       prev?.classList.remove('active');
@@ -113,13 +132,21 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
+  React.useEffect(() => {
+    if (random === true) {
+      setWidth(single);
+    } else {
+      setWidth(280)
+    }
+  }, [random])
+
   return (
     <div>
       {foods.length > 0 ? (<Box p={0.5}>
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
             <Grid key={index} item xs={12} sm={12} md={11} lg={5.5} xl={5.8}>
-              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
+              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} width={width} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
             </Grid>
           ))}
         </Grid>

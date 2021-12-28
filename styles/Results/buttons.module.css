@@ -38,9 +38,28 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .sortButtonContainer {
+    width: 100%;
+    margin-left: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: auto;
+    padding-left: 3px;
+  }
+}
+
 .sortButtonContainer .sortButtons {
   height: 30px;
   margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .sortButtonContainer .sortButtons {
+    height: 25px;
+    margin-right: 9px;
+  }
 }
 
 .sortButtonContainer .resetButton {

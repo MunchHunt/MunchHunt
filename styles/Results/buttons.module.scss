@@ -30,9 +30,22 @@
     width: 90%;
   }
 
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+    height: auto;
+    padding-left: 3px;
+  }
+
   .sortButtons {
     height: 30px;
     margin-right: 10px;
+
+    @media screen and (max-width: 500px) {
+      height: 25px;
+      margin-right: 9px;
+    }
   }
 
   .resetButton {
@@ -51,12 +64,13 @@
 .randomizeButton {
   height: 40px;
   font-size: 1em;
-
-  background-color: rgb(255, 115, 0);
+  background-color: #ff7300;
   color: white;
   &:hover {
-    background-color: rgb(213, 97, 3);
+    background-color: #d56103;
     border: none;
     outline: none;
   }
+
 }
+

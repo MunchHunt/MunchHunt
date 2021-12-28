@@ -20,6 +20,20 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
   const [price, setPrice] = React.useState('');
   const [dist, setDistance] = React.useState('');
   const [rate, setRate] = React.useState('');
+  const [width, setWidth] = React.useState(0);
+  const [size, setSize] = React.useState<number>(120);
+
+  React.useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth)
+    })
+  }, []);
+
+  React.useEffect(() => {
+    if (width <= 500) {
+      setSize(90);
+    }
+  }, [width])
 
   React.useEffect(() => {
     if (price !== "") {
@@ -59,7 +73,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
   return (
     <div className={styles.sortButtonContainer}>
       <div className={styles.sortButtons}>
-        <FormControl sx={{ minWidth: 120, }} size="small">
+        <FormControl sx={{ minWidth: size, }} size="small">
           <InputLabel id="select-helper-label-price">Price</InputLabel>
           <Select
             labelId="select-helper-label-price"
@@ -95,7 +109,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
         </FormControl>
       </div>
       <div className={styles.sortButtons}>
-        <FormControl sx={{ minWidth: 120 }} size="small">
+        <FormControl sx={{ minWidth: size }} size="small">
           <InputLabel id="select-helper-label-distance">Distance</InputLabel>
           <Select
             labelId="select-helper-label-distance"
@@ -115,7 +129,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
         </FormControl>
       </div>
       <div className={styles.sortButtons}>
-        <FormControl sx={{ minWidth: 120 }} size="small">
+        <FormControl sx={{ minWidth: size }} size="small">
           <InputLabel id="select-helper-label-rating">Rating</InputLabel>
           <Select
             labelId="select-helper-label-rating"

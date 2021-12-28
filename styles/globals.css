@@ -16,16 +16,3 @@ body {
   text-decoration: underline;
 }
 
-.button {
-  height: 40px;
-  font-size: 1em;
-
-  background-color: rgb(255, 115, 0);
-  color: white;
-}
-
-.button:hover {
-  background-color: rgb(213, 97, 3);
-  border: none;
-  outline: none;
-}
