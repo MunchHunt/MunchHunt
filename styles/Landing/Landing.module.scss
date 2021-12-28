@@ -45,7 +45,7 @@
         flex-direction: column;
         .title {
           text-align: left;
-          font-size: 150px;
+          font-size: 120px;
           line-height: 85%;
           margin-bottom: 20px;
           font-family: "Raleway", sans-serif;
@@ -53,9 +53,6 @@
           @media screen and (max-width: 1024px) {
             font-size: 100px;
           }
-          // @media screen and (max-width: 900px) {
-          //   font-size: 100px;
-          // }
           @media screen and (max-width: 700px) {
             font-size: 75px;
             text-align: center;
