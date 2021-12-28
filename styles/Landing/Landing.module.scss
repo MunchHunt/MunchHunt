@@ -12,6 +12,11 @@
   top: 0;
   color: white;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @media screen and (max-width: 450px) {
     align-items: flex-start;
   }
