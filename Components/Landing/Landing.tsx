@@ -41,7 +41,7 @@ const Landing: React.FC = () => {
     } else if (width < 1025) {
       setImageSize(400);
     } else {
-      setImageSize(800);
+      setImageSize(500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width])
