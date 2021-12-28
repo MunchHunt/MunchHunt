@@ -47,25 +47,30 @@
   font-size: 1.2em;
   font-weight: bold;
   margin: 0;
+  color: #353535;
 }
 
 .cardResult .cardContent .cardText {
   margin-bottom: 3px;
+  color: #222222;
 }
 
 .cardResult .cardContent .cardStars {
   text-align: right;
+  color: #292929;
 }
 
 .cardResult .cardContent .cardPrice {
   margin-bottom: 3px;
   font-weight: bold;
+  color: #434242;
 }
 
 .cardResult .cardContent .cardDistance {
   margin-bottom: 3px;
   font-size: 0.9em;
   font-style: italic;
+  color: #222222;
 }
 
 .cardResult .cardContent .bottomCardBox {

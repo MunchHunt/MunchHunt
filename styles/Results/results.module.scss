@@ -70,6 +70,8 @@
         @media screen and (max-width: 500px) {
           min-width: 350px;
           font-size: 2em;
+          border-radius: 20px;
+          outline: 3px solid rgb(245, 132, 40);
         }
       }
     }

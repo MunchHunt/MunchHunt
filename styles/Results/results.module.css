@@ -119,6 +119,8 @@
   .omegaDiv .foodChoiceDiv .foodChoiceBox .foodChoiceResult {
     min-width: 350px;
     font-size: 2em;
+    border-radius: 20px;
+    outline: 3px solid #f58428;
   }
 }
 
