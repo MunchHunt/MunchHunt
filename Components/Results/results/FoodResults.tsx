@@ -83,26 +83,26 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
         />
         <ThemeProvider theme={textTheme}>
           <CardContent className={styles2.cardContent}>
-            <Typography className={styles2.cardName} gutterBottom variant="body1" component="div">
+            <div className={styles2.cardName}>
               {name}
-            </Typography>
+            </div>
             <div className={styles2.cardOrganizer}>
-              <div>
-                <Typography className={styles2.cardText} variant="body1" color="primary" >
+              <div className={styles2.cardOrgSub}>
+                <div className={styles2.cardText} >
                   {address}
-                </Typography>
-                <Typography className={styles2.cardText} variant="body1">
+                </div>
+                <div className={styles2.cardText}>
                   {city}
-                </Typography>
-                <Typography className={styles2.cardPrice} variant="body1">
+                </div>
+                <div className={styles2.cardPrice}>
                   {price}
-                </Typography>
+                </div>
               </div>
               <div className={styles2.bottomCardBox}>
-                <Typography className={styles2.cardDistance} variant="body2">
+                <div className={styles2.cardDistance}>
                   {getMiles(distance)} miles away
-                </Typography>
-                <Typography className={styles2.cardStars} variant="body2">
+                </div>
+                <div className={styles2.cardStars}>
                   <Rating
                     name="read-only"
                     size="small"
@@ -110,7 +110,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
                     value={rating}
                     readOnly
                   />
-                </Typography>
+                </div>
               </div>
             </div>
           </CardContent>
