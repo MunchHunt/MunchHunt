@@ -3,14 +3,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: $direction;
-  font-family: "Avenir";
 }
 
 .cardResult {
   height: 100%;
 
   &:hover {
-    outline: 2px solid orange;
+    outline: 2px solid #ffa500;
     color: orange;
   }
 
@@ -36,30 +35,30 @@
       font-size: 1.2em;
       font-weight: bold;
       margin: 0;
-      color: rgb(53, 53, 53);
+      // color: rgb(53, 53, 53);
     }
 
     .cardText {
       margin-bottom: 3px;
-      color: rgb(34, 34, 34);
+      // color: #222222;
     }
 
     .cardStars {
       text-align: right;
-      color: rgb(41, 41, 41);
+      // color: rgb(41, 41, 41);
     }
 
     .cardPrice {
       margin-bottom: 3px;
       font-weight: bold;
-      color: rgb(67, 66, 66);
+      // color: rgb(67, 66, 66);
     }
 
     .cardDistance {
       margin-bottom: 3px;
       font-size: 0.9em;
       font-style: italic;
-      color: rgb(34, 34, 34);
+      // color: rgb(34, 34, 34);
     }
 
     .bottomCardBox {

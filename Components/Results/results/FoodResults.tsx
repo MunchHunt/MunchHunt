@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -11,6 +9,10 @@ import Rating from '@mui/material/Rating';
 import styles2 from '../../../styles/Results/cards.module.css';
 import Image from 'next/image';
 import { CardActionArea } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+// import { createMuiTheme } from '@material-ui/core';
 
 interface Foods {
   foods: any
@@ -41,6 +43,29 @@ const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
 }
 
+const textTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#222222',
+    },
+  },
+  typography: {
+    fontFamily: [
+      'Mukta',
+      'Arial',
+      'sans-serif',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+},
+});
+
+
 function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random, width, height, imgSize }: CardProps) {
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
@@ -56,38 +81,40 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
           image={image}
           alt="yelp restaurant result"
         />
-        <CardContent className={styles2.cardContent}>
-          <Typography color="common.black" className={styles2.cardName} gutterBottom variant="body1" component="div">
-            {name}
-          </Typography>
-          <div className={styles2.cardOrganizer}>
-            <div>
-              <Typography className={styles2.cardText} variant="body1" >
-                {address}
-              </Typography>
-              <Typography className={styles2.cardText} variant="body1">
-                {city}
-              </Typography>
-              <Typography className={styles2.cardPrice} variant="body1">
-                {price}
-              </Typography>
+        <ThemeProvider theme={textTheme}>
+          <CardContent className={styles2.cardContent}>
+            <Typography className={styles2.cardName} gutterBottom variant="body1" component="div">
+              {name}
+            </Typography>
+            <div className={styles2.cardOrganizer}>
+              <div>
+                <Typography className={styles2.cardText} variant="body1" color="primary" >
+                  {address}
+                </Typography>
+                <Typography className={styles2.cardText} variant="body1">
+                  {city}
+                </Typography>
+                <Typography className={styles2.cardPrice} variant="body1">
+                  {price}
+                </Typography>
+              </div>
+              <div className={styles2.bottomCardBox}>
+                <Typography className={styles2.cardDistance} variant="body2">
+                  {getMiles(distance)} miles away
+                </Typography>
+                <Typography className={styles2.cardStars} variant="body2">
+                  <Rating
+                    name="read-only"
+                    size="small"
+                    precision={0.5}
+                    value={rating}
+                    readOnly
+                  />
+                </Typography>
+              </div>
             </div>
-            <div className={styles2.bottomCardBox}>
-              <Typography className={styles2.cardDistance} variant="body2">
-                {getMiles(distance)} miles away
-              </Typography>
-              <Typography className={styles2.cardStars} variant="body2">
-                <Rating
-                  name="read-only"
-                  size="small"
-                  precision={0.5}
-                  value={rating}
-                  readOnly
-                />
-              </Typography>
-            </div>
-          </div>
-        </CardContent>
+          </CardContent>
+        </ThemeProvider>
       </CardActionArea>
     </Card>
   )
@@ -128,7 +155,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
         setHeight(250);
         setImgSize("115");
       } else if (size > 500) {
-        setSingle (480);
+        setSingle(480);
         setHeight(350);
         setImgSize("157");
       }
@@ -149,7 +176,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
     } else {
       setWidth(280)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [random])
 
   return (
@@ -166,13 +193,13 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
         <Box p={0.5}>
           <h3 className={styles2.noMatch}>No matches found...</h3>
           <Image
-          loader={myLoader}
-          src="/PrdSEho.png"
-          alt="hungry kid, empty plate in front holding knife and fork in hand"
-          width={400}
-          height={400}
-          placeholder="blur"
-          blurDataURL="/iqrmXmz.png"
+            loader={myLoader}
+            src="/PrdSEho.png"
+            alt="hungry kid, empty plate in front holding knife and fork in hand"
+            width={400}
+            height={400}
+            placeholder="blur"
+            blurDataURL="/iqrmXmz.png"
           />
         </Box>
       )}

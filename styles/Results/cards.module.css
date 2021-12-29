@@ -3,7 +3,7 @@
 }
 
 .cardResult:hover {
-  outline: 2px solid orange;
+  outline: 2px solid #ffa500;
   color: orange;
 }
 
@@ -32,7 +32,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: "Avenir";
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -47,30 +46,25 @@
   font-size: 1.2em;
   font-weight: bold;
   margin: 0;
-  color: #353535;
 }
 
 .cardResult .cardContent .cardText {
   margin-bottom: 3px;
-  color: #222222;
 }
 
 .cardResult .cardContent .cardStars {
   text-align: right;
-  color: #292929;
 }
 
 .cardResult .cardContent .cardPrice {
   margin-bottom: 3px;
   font-weight: bold;
-  color: #434242;
 }
 
 .cardResult .cardContent .cardDistance {
   margin-bottom: 3px;
   font-size: 0.9em;
   font-style: italic;
-  color: #222222;
 }
 
 .cardResult .cardContent .bottomCardBox {
@@ -87,7 +81,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-family: "Avenir";
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
