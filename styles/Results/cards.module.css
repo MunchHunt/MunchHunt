@@ -1,5 +1,7 @@
 .cardResult {
   height: 100%;
+  color: #0b0b0b;
+  background-color: white;
 }
 
 .cardResult:hover {
@@ -9,11 +11,13 @@
 
 .cardResult .cardArea {
   height: 45%;
+  background-color: transparent;
 }
 
 .cardResult .cardContent {
   width: 90%;
   height: 100%;
+  background-color: transparent;
 }
 
 .cardResult .cardContent .cardOrganizer {
@@ -38,6 +42,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background-color: transparent;
 }
 
 .cardResult .cardContent .cardOrganizer .cardOrgSub {
