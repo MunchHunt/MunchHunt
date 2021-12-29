@@ -63,22 +63,24 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: "Avenir";
-  justify-content: center;
-  position: absolute;
-  top: 50px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: 100%;
   width: 100%;
+  margin-top: 10px;
 }
 
 .omegaDiv .gMapMobile .mobileMapReturnIcon {
   width: 40%;
-  height: 50px;
-  margin-top: 15px;
+  height: 40px;
+  margin: 5px 0 10px 0;
+  right: 24%;
   font-size: 0.85em;
   color: white;
   background-color: #262626;
   border-radius: 10px;
-  outline: 2px solid orange;
+  border: 2px solid orange;
 }
 
 .omegaDiv .mobileMapDiv {
@@ -106,13 +108,13 @@
 }
 
 .omegaDiv .mobileMapDiv .mobileMapIcon {
-  width: 110px;
+  width: 120px;
   margin: 0;
   font-size: 0.85em;
   color: white;
   background-color: #262626;
   border-radius: 10px;
-  outline: 2px solid orange;
+  border: 2px solid orange;
 }
 
 .omegaDiv .foodChoiceDiv {
@@ -202,14 +204,19 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Avenir";
   min-width: 300px;
   height: 30px;
   font-size: 1.7em;
   font-weight: bold;
   letter-spacing: 2px;
   color: white;
-  padding: 0.5em;
   border-radius: 20px;
+  padding: 0.5em;
   background-color: #353535;
   outline: 3px solid #f58428;
   -webkit-box-shadow: rgba(48, 48, 48, 0.3) 0px 1px 2px 0px, rgba(29, 29, 29, 0.15) 0px 1px 3px 1px;
@@ -220,8 +227,11 @@
   .omegaDiv .foodChoiceDiv .foodChoiceBox .foodChoiceResult {
     min-width: 350px;
     font-size: 2em;
+    outline: none;
     border-radius: 20px;
-    outline: 3px solid #f58428;
+    border: 3px solid #f58428;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 
@@ -303,6 +313,14 @@
         -ms-flex-align: start;
             align-items: flex-start;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .omegaDiv .sortBy {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
@@ -441,6 +459,14 @@
 @media screen and (max-width: 1250px) {
   .omegaDiv .outterBox .innerBox {
     width: 95%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .omegaDiv .outterBox .innerBox {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
 }
 

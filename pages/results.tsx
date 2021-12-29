@@ -68,13 +68,28 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [mobile, setMobile] = React.useState<boolean>(false);
   const [mobileMap, setMobileMap] = React.useState<boolean>(false);
   const [desktop, setDesktop] = React.useState<boolean>(true);
-  const [width, setWidth] = React.useState<undefined | number>();
+  const [width, setWidth] = React.useState<number>(0);
 
   React.useEffect(() => {
+    setWidth(window.innerWidth);
     window.addEventListener('resize', () => {
       setWidth(window.innerWidth)
     })
+  }, [])
 
+  React.useEffect(() => {
+    if (width) {
+      if (width < 500) {
+        setMobile(true);
+        setDesktop(false);
+      } else if (width > 500) {
+        setMobile(false);
+        setDesktop(true);
+      }
+    }
+  }, [width]);
+
+  React.useEffect(() => {
     setTimeout(() => {
       if (foods.length === 0) {
         setNoMatch(true);
@@ -94,18 +109,6 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
       setLoading(false);
     }
   }, [yelpResult, allLocs]);
-
-  React.useEffect(() => {
-    if (width) {
-      if (width < 500) {
-        setMobile(true);
-        setDesktop(false);
-      } else if (width > 500) {
-        setMobile(false);
-        setDesktop(true);
-      }
-    }
-  }, [width]);
 
   const config = {
     headers:
@@ -200,10 +203,10 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
         <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
       </Head>
       {(mobile && mobileMap) ? (<div className={styles.gMapMobile}>
-        <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} />
         <Button className={styles.mobileMapReturnIcon}
           onClick={() => handleClick()}
           variant="text"><ArrowBackIcon fontSize="small" />Result Feed</Button>
+        <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} />
       </div>) : null}
       {(mobile && !mobileMap) ? (<div className={styles.switchDiv} ><div className={styles.foodChoiceDiv}>
         <div className={styles.foodChoiceBox}>
@@ -263,12 +266,6 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
               variant="text"><MapOutlinedIcon fontSize="small" />Map view</Button></div>) : null}
           </div>
         </div></div>) : null}
-        {(mobile && mobileMap) ? (<div className={styles.gMapMobile}>
-        <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} />
-        <Button className={styles.mobileMapReturnIcon}
-          onClick={() => handleClick()}
-          variant="text"><ArrowBackIcon fontSize="small" />Result Feed</Button>
-      </div>) : null}
       {(desktop) ? (<div className={styles.switchDiv}><div className={styles.foodChoiceDiv}>
         <div className={styles.foodChoiceBox}>
           <div className={styles.foodChoiceTitle}>

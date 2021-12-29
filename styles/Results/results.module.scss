@@ -25,21 +25,21 @@
 
   .gMapMobile {
     @include flexCenter(column);
-    justify-content: center;
-    position: absolute;
-    top: 50px;
+    justify-content: flex-start;
     height: 100%;
     width: 100%;
+    margin-top: 10px;
 
     .mobileMapReturnIcon {
       width: 40%;
-      height: 50px;
-      margin-top: 15px;
+      height: 40px;
+      margin: 5px 0 10px 0;
+      right: 24%;
       font-size: 0.85em;
       color: rgb(255, 255, 255);
       background-color: rgb(38, 38, 38);
       border-radius: 10px;
-      outline: 2px solid orange;
+      border: 2px solid orange;
     }
   }
 
@@ -51,13 +51,13 @@
     width: 95%;
 
     .mobileMapIcon {
-      width: 110px;
+      width: 120px;
       margin: 0;
       font-size: 0.85em;
       color: rgb(255, 255, 255);
       background-color: rgb(38, 38, 38);
       border-radius: 10px;
-      outline: 2px solid orange;
+      border: 2px solid orange;
     }
   }
 
@@ -100,27 +100,26 @@
       }
 
       .foodChoiceResult {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter(row);
         min-width: 300px;
         height: 30px;
         font-size: 1.7em;
         font-weight: bold;
         letter-spacing: 2px;
         color: white;
-        padding: 0.5em;
         border-radius: 20px;
+        padding: 0.5em;
         background-color: rgb(53, 53, 53);
         outline: 3px solid rgb(245, 132, 40);
         box-shadow: rgba(48, 48, 48, 0.3) 0px 1px 2px 0px, rgba(29, 29, 29, 0.15) 0px 1px 3px 1px;
 
-
         @media screen and (max-width: 500px) {
           min-width: 350px;
           font-size: 2em;
+          outline: none;
           border-radius: 20px;
-          outline: 3px solid rgb(245, 132, 40);
+          border: 3px solid rgb(245, 132, 40);
+          box-shadow: none;
         }
       }
     }
@@ -152,6 +151,10 @@
       @include flexCenter(column);
       align-items: flex-start;
       width: 100%;
+    }
+
+    @media screen and (max-width: 500px) {
+      align-items: center;
     }
 
     .sortByTextCont {
@@ -214,6 +217,10 @@
 
       @media screen and (max-width: 1250px) {
         width: 95%;
+      }
+
+      @media screen and (max-width: 1200px) {
+        justify-content: space-evenly;
       }
 
       @media screen and (max-width: 500px) {

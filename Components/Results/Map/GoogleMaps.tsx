@@ -19,7 +19,9 @@ function GoogleMaps(props: any) {
   const defaultZoom = props.defaultZoom || 10;
   const defaultCenter = props.defaultCenter || { lat: 39.8283, lng: -98.5795 };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
+    setWidth(window.innerWidth)
     window.addEventListener('resize', () => {
       setWidth(window.innerWidth)
     })

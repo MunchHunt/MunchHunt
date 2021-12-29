@@ -7,7 +7,8 @@ body {
 }
 
 .active {
-  outline: 2px solid orange;
+  /* outline: 2px solid orange; */
+  border: 1px solid orange;
   color: orange;
 }
 

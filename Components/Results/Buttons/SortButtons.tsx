@@ -24,6 +24,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
   const [size, setSize] = React.useState<number>(120);
 
   React.useEffect(() => {
+    setWidth(window.innerWidth)
     window.addEventListener('resize', () => {
       setWidth(window.innerWidth)
     })
@@ -55,9 +56,9 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
 
 
   React.useEffect(() => {
-      setPrice('');
-      setDistance('');
-      setRate('');
+    setPrice('');
+    setDistance('');
+    setRate('');
   }, [refresh])
 
   const handleChangePrice = (event: any) => {
@@ -82,6 +83,8 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
             label="price"
             onChange={handleChangePrice}
           >
+            <MenuItem value={''}>
+            </MenuItem>
             <MenuItem value={'$'}>
               <AttachMoneyIcon fontSize="small" />
             </MenuItem>
@@ -108,7 +111,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
       </div>
       <div className={styles.sortButtons}>
         <FormControl sx={{ minWidth: size }} size="small">
-          <InputLabel id="select-helper-label-distance">Distance</InputLabel>
+          <InputLabel id="select-helper-label-distance">Dist</InputLabel>
           <Select
             labelId="select-helper-label-distance"
             id="select-helper-distance"
@@ -116,6 +119,8 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
             label="distance"
             onChange={handleChangeDistance}
           >
+            <MenuItem value={''}>
+            </MenuItem>
             <MenuItem value={0.9}>&lt; 1 mi</MenuItem>
             <MenuItem value={1}>1 mi</MenuItem>
             <MenuItem value={5}>5 mi</MenuItem>
@@ -135,6 +140,8 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
             label="rating"
             onChange={handleChangeRating}
           >
+            <MenuItem value={''}>
+            </MenuItem>
             <MenuItem value={1}>1 star</MenuItem>
             <MenuItem value={2}>2 stars</MenuItem>
             <MenuItem value={3}>3 stars</MenuItem>
@@ -144,14 +151,13 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
           </Select>
         </FormControl>
       </div>
-      <div>
-        <Button
-          variant="outlined"
-          size="large"
-          className={styles.resetButton}
-          onClick={() => reset()}
-        >Reset</Button>
-      </div>
+      <Button
+        variant="outlined"
+        size="large"
+        className={styles.resetButton}
+        onClick={() => reset()}
+      >Reset</Button>
+
     </div>
   )
 }

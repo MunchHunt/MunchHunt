@@ -57,26 +57,26 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
           alt="yelp restaurant result"
         />
         <CardContent className={styles2.cardContent}>
-          <Typography className={styles2.cardName} gutterBottom variant="body1" component="div">
+          <Typography color="common.black" className={styles2.cardName} gutterBottom variant="body1" component="div">
             {name}
           </Typography>
           <div className={styles2.cardOrganizer}>
             <div>
-              <Typography className={styles2.cardText} variant="body1" color="text.secondary">
+              <Typography className={styles2.cardText} variant="body1" >
                 {address}
               </Typography>
-              <Typography className={styles2.cardText} variant="body1" color="text.secondary">
+              <Typography className={styles2.cardText} variant="body1">
                 {city}
               </Typography>
-              <Typography className={styles2.cardPrice} variant="body1" color="text.secondary">
+              <Typography className={styles2.cardPrice} variant="body1">
                 {price}
               </Typography>
             </div>
             <div className={styles2.bottomCardBox}>
-              <Typography className={styles2.cardDistance} variant="body2" color="text.secondary">
+              <Typography className={styles2.cardDistance} variant="body2">
                 {getMiles(distance)} miles away
               </Typography>
-              <Typography className={styles2.cardStars} variant="body2" color="text.secondary">
+              <Typography className={styles2.cardStars} variant="body2">
                 <Rating
                   name="read-only"
                   size="small"
@@ -115,6 +115,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
   }
 
   React.useEffect(() => {
+    setSize(window.innerWidth)
     window.addEventListener('resize', () => {
       setSize(window.innerWidth)
     })
@@ -156,7 +157,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
       {foods.length > 0 ? (<Box p={0.5}>
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
-            <Grid key={index} item xs={12} sm={12} md={11} lg={5.5} xl={5.8}>
+            <Grid key={index} item xs={12} sm={12} md={10} lg={5.5} xl={5.8}>
               <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} width={width} height={height} imgSize={imgSize} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
             </Grid>
           ))}
