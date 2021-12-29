@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Details from '../results/Details';
 import GoogleMaps from '../Map/GoogleMaps';
-import styles from '../../../styles/Results/results.module.css';
+import styles from '../../../styles/Results/tabs.module.css';
 
 function TabPanel(props: any) {
   const { children, value, index, ...other } = props;

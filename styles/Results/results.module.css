@@ -20,19 +20,119 @@
           justify-content: space-evenly;
 }
 
+@media screen and (max-width: 500px) {
+  .omegaDiv {
+    width: 100vw;
+  }
+}
+
+.omegaDiv .switchDiv {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Avenir";
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.omegaDiv .gMapMobile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Avenir";
+  justify-content: center;
+  position: absolute;
+  top: 50px;
+  height: 100%;
+  width: 100%;
+}
+
+.omegaDiv .gMapMobile .mobileMapReturnIcon {
+  width: 40%;
+  height: 50px;
+  margin-top: 15px;
+  font-size: 0.85em;
+  color: white;
+  background-color: #262626;
+  border-radius: 10px;
+  outline: 2px solid orange;
+}
+
+.omegaDiv .mobileMapDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: "Avenir";
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 50px;
+  width: 95%;
+}
+
+.omegaDiv .mobileMapDiv .mobileMapIcon {
+  width: 110px;
+  margin: 0;
+  font-size: 0.85em;
+  color: white;
+  background-color: #262626;
+  border-radius: 10px;
+  outline: 2px solid orange;
+}
+
 .omegaDiv .foodChoiceDiv {
   width: 100%;
   height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  font-family: "Avenir";
+  justify-content: center;
 }
 
 .omegaDiv .foodChoiceDiv .foodChoiceBox {
@@ -82,12 +182,13 @@
 
 @media screen and (max-width: 500px) {
   .omegaDiv .foodChoiceDiv .foodChoiceBox .foodChoiceTitle {
-    min-width: 350px;
+    width: 100%;
     font-size: 1.2em;
     margin-bottom: 10px;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    letter-spacing: 1px;
   }
 }
 
@@ -125,8 +226,6 @@
 }
 
 .omegaDiv .sortBy {
-  width: 90%;
-  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,18 +243,25 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 1300px;
+  height: auto;
   margin-bottom: 5px;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 2000px) {
   .omegaDiv .sortBy {
-    width: 95%;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .omegaDiv .sortBy {
+    width: 91%;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .omegaDiv .sortBy {
-    width: 95%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -173,12 +279,12 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    width: 95%;
   }
 }
 
 @media screen and (max-width: 1100px) {
   .omegaDiv .sortBy {
-    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -196,6 +302,7 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    width: 100%;
   }
 }
 
@@ -215,6 +322,7 @@
           flex-direction: row;
   font-family: "Avenir";
   width: 47%;
+  padding-left: 3em;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
@@ -255,6 +363,34 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
+    padding-left: 0.5em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .omegaDiv .sortBy .sortByTextCont {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: "Avenir";
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 100%;
+    padding: 0;
   }
 }
 
@@ -347,7 +483,7 @@
 
 @media screen and (max-width: 500px) {
   .omegaDiv .outterBox .innerBox .resultsColumns {
-    width: 85%;
+    width: 90%;
   }
 }
 
@@ -371,13 +507,14 @@
 
 @media screen and (max-width: 1200px) {
   .omegaDiv .outterBox .innerBox .mapBox {
-    width: 50%;
+    width: 45%;
   }
 }
 
 @media screen and (max-width: 500px) {
   .omegaDiv .outterBox .innerBox .mapBox {
     width: 80%;
+    display: none;
   }
 }
 
@@ -396,7 +533,26 @@
   }
 }
 
-.tabContainer {
-  background-color: white;
+@media screen and (max-width: 500px) {
+  .randomizeButtonContainer {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    font-family: "Avenir";
+    justify-content: center;
+    margin-top: 13px;
+    margin-left: 2px;
+  }
 }
 /*# sourceMappingURL=results.module.css.map */

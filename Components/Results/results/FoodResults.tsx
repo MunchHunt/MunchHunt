@@ -31,26 +31,28 @@ interface CardProps {
   handleClick: any,
   current: string,
   selected: any,
-  random: boolean
-  width: number
+  random: boolean,
+  width: number,
+  height: number,
+  imgSize: string,
 }
 
 const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
 }
 
-function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random, width }: CardProps) {
+function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random, width, height, imgSize }: CardProps) {
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
     return miles;
   }
 
   return (
-    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: 350 }} onClick={(id) => handleClick(id)}>
+    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
       <CardActionArea className={styles2.cardArea}>
         <CardMedia
           component="img"
-          height="157"
+          height={imgSize}
           image={image}
           alt="yelp restaurant result"
         />
@@ -96,7 +98,9 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
   const [selected, setSelected] = React.useState<any>();
   const [prevSelected, setCurrentSelected] = React.useState<string>('');
   const [width, setWidth] = React.useState<number>(280);
-  const [size, setSize] = React.useState<number>(0);
+  const [height, setHeight] = React.useState<number>(350);
+  const [imgSize, setImgSize] = React.useState<string>("157");
+  const [size, setSize] = React.useState<number | undefined>();
   const [single, setSingle] = React.useState<number>(480);
 
   const handleClick = (event: any, id: number, name: string) => {
@@ -117,10 +121,16 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
   }, []);
 
   React.useEffect(() => {
-    if (size <= 500) {
-      setSingle(350);
-    } else if (size > 500) {
-      setSingle (480);
+    if (size) {
+      if (size <= 500) {
+        setSingle(350);
+        setHeight(250);
+        setImgSize("115");
+      } else if (size > 500) {
+        setSingle (480);
+        setHeight(350);
+        setImgSize("157");
+      }
     }
   }, [size]);
 
@@ -138,6 +148,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
     } else {
       setWidth(280)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [random])
 
   return (
@@ -146,7 +157,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
         <Grid container spacing={5}>
           {foods.map((rest: any, index: number) => (
             <Grid key={index} item xs={12} sm={12} md={11} lg={5.5} xl={5.8}>
-              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} width={width} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
+              <Cards id={'rest' + index} handleClick={(event: any) => handleClick(event, index, rest.name)} width={width} height={height} imgSize={imgSize} name={rest.name} address={rest.location.address1} image={rest.image_url} city={rest.location.city} price={rest.price} rating={rest.rating} distance={rest.distance} current={current} selected={selected} random={random} />
             </Grid>
           ))}
         </Grid>

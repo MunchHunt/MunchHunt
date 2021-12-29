@@ -16,3 +16,6 @@ body {
   text-decoration: underline;
 }
 
+.activeMap {
+  display: block;
+}

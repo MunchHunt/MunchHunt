@@ -1,0 +1,43 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+  font-family: "Avenir";
+}
+
+.tabPageContainer {
+  @include flexCenter(column);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+
+  .backBtnCont {
+    @include flexCenter(row);
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    width: 90%;
+    height: 60px;
+
+    .backBtn {
+      background-color: rgba(237, 106, 6, 0.954);
+    }
+  }
+
+  .innerTabs {
+    width: 95%;
+    height: 100%;
+  }
+
+}
+
+
+.tabContainer {
+  background-color: white;
+
+  @media screen and (max-width: 500px) {
+    height: 100%;
+  }
+}
+

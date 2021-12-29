@@ -2,10 +2,7 @@ import React from 'react'
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 import styles from '../../../styles/Results/maps.module.css';
 
-const containerStyle = {
-  width: '100%',
-  height: '400px'
-};
+
 
 function GoogleMaps(props: any) {
   let token = process.env.NEXT_PUBLIC_GOOGLE_API || ''
@@ -16,9 +13,30 @@ function GoogleMaps(props: any) {
 
   const [map, setMap] = React.useState(null);
   const [selectedRest, setSelectedRest] = React.useState<any>(null);
+  const [width, setWidth] = React.useState<number>(0);
+  const [height, setHeight] = React.useState<string>("400px");
   const localRestaurants = props.localRestaurants || null;
   const defaultZoom = props.defaultZoom || 10;
   const defaultCenter = props.defaultCenter || { lat: 39.8283, lng: -98.5795 };
+
+  React.useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth)
+    })
+  })
+
+  React.useEffect(() => {
+    if (width <= 500) {
+      setHeight("620px");
+    } else if (width > 500) {
+      setHeight("350px");
+    }
+  }, [width])
+
+  const containerStyle = {
+    width: '100%',
+    height: height
+  };
 
   const onLoad = React.useCallback(function callback(map) {
     // const bounds = new window.google.maps.LatLngBounds();

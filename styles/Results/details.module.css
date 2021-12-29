@@ -49,10 +49,38 @@
           justify-content: space-between;
 }
 
+@media screen and (max-width: 500px) {
+  .contentContainer .cardArea .detailTitleCont {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: "Avenir";
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
 .contentContainer .cardArea .detailTitleCont .detailTitle {
   font-size: 1.7em;
   font-weight: bold;
   color: orange;
+}
+
+@media screen and (max-width: 500px) {
+  .contentContainer .cardArea .detailTitleCont .detailTitle {
+    margin-bottom: 10px;
+  }
 }
 
 .contentContainer .cardArea .price {
@@ -74,6 +102,12 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+@media screen and (max-width: 500px) {
+  .contentContainer .cardArea .price {
+    margin-top: 5px;
+  }
 }
 
 .contentContainer .cardArea .price .dollars {
@@ -185,6 +219,12 @@
           justify-content: flex-start;
 }
 
+@media screen and (max-width: 500px) {
+  .contentContainer .cardArea .takeOut {
+    width: 80%;
+  }
+}
+
 .contentContainer .cardArea .takeOut .takeOutText {
   margin-left: 8px;
 }
@@ -229,6 +269,12 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
   margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .contentContainer .cardArea .phone {
+    width: 80%;
+  }
 }
 
 .contentContainer .cardArea .phone .phoneNum {
@@ -287,6 +333,12 @@
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+@media screen and (max-width: 500px) {
+  .contentContainer .yelpUrl {
+    margin-top: 60px;
+  }
 }
 
 .contentContainer .yelpUrl .yelpLink {

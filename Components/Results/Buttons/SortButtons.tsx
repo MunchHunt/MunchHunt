@@ -82,8 +82,6 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
             label="price"
             onChange={handleChangePrice}
           >
-            <MenuItem value={''}>
-            </MenuItem>
             <MenuItem value={'$'}>
               <AttachMoneyIcon fontSize="small" />
             </MenuItem>
@@ -118,7 +116,6 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
             label="distance"
             onChange={handleChangeDistance}
           >
-            <MenuItem value={''}></MenuItem>
             <MenuItem value={0.9}>&lt; 1 mi</MenuItem>
             <MenuItem value={1}>1 mi</MenuItem>
             <MenuItem value={5}>5 mi</MenuItem>
@@ -138,7 +135,6 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
             label="rating"
             onChange={handleChangeRating}
           >
-            <MenuItem value={''}></MenuItem>
             <MenuItem value={1}>1 star</MenuItem>
             <MenuItem value={2}>2 stars</MenuItem>
             <MenuItem value={3}>3 stars</MenuItem>

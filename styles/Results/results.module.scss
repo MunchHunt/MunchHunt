@@ -12,11 +12,59 @@
   @include flexCenter(column);
   justify-content: space-evenly;
 
+  @media screen and (max-width: 500px) {
+   width: 100vw;
+  }
+
+  .switchDiv {
+    height: 100%;
+    width: 100%;
+    @include flexCenter(column);
+    justify-content: space-evenly;
+  }
+
+  .gMapMobile {
+    @include flexCenter(column);
+    justify-content: center;
+    position: absolute;
+    top: 50px;
+    height: 100%;
+    width: 100%;
+
+    .mobileMapReturnIcon {
+      width: 40%;
+      height: 50px;
+      margin-top: 15px;
+      font-size: 0.85em;
+      color: rgb(255, 255, 255);
+      background-color: rgb(38, 38, 38);
+      border-radius: 10px;
+      outline: 2px solid orange;
+    }
+  }
+
+  .mobileMapDiv {
+    @include flexCenter(row);
+    justify-content: flex-end;
+    position: sticky;
+    bottom: 50px;
+    width: 95%;
+
+    .mobileMapIcon {
+      width: 110px;
+      margin: 0;
+      font-size: 0.85em;
+      color: rgb(255, 255, 255);
+      background-color: rgb(38, 38, 38);
+      border-radius: 10px;
+      outline: 2px solid orange;
+    }
+  }
+
   .foodChoiceDiv {
     width: 100%;
     height: auto;
-    display: flex;
-    flex-direction: row;
+    @include flexCenter(row);
     justify-content: center;
 
     .foodChoiceBox {
@@ -42,10 +90,11 @@
         letter-spacing: 2px;
 
         @media screen and (max-width: 500px) {
-          min-width: 350px;
+          width: 100%;
           font-size: 1.2em;
           margin-bottom: 10px;
           justify-content: flex-start;
+          letter-spacing: 1px;
           // position: absolute;
         }
       }
@@ -78,31 +127,37 @@
   }
 
   .sortBy {
-    width: 90%;
-    height: auto;
     @include flexCenter(row);
     justify-content: space-between;
+    width: 1300px;
+    height: auto;
     margin-bottom: 5px;
 
-    @media screen and (max-width: 1250px) {
-      width: 95%;
+    @media screen and (max-width: 2000px) {
+      width: 90%;
     }
 
+    @media screen and (max-width: 1500px) {
+      width: 91%;
+    }
+
+
     @media screen and (max-width: 1200px) {
-      width: 95%;
       @include flexCenter(column);
       align-items: flex-start;
+      width: 95%;
     }
 
     @media screen and (max-width: 1100px) {
-      width: 100%;
       @include flexCenter(column);
       align-items: flex-start;
+      width: 100%;
     }
 
     .sortByTextCont {
       @include flexCenter(row);
       width: 47%;
+      padding-left: 3em;
       justify-content: flex-start;
 
       @media screen and (max-width: 1400px) {
@@ -117,7 +172,17 @@
         @include flexCenter(column);
         justify-content: flex-start;
         align-items: flex-start;
+        padding-left: 0.5em;
       }
+
+      @media screen and (max-width: 500px) {
+        @include flexCenter(column);
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        padding: 0;
+      }
+
 
       .sortByText {
         font-size: 1em;
@@ -168,7 +233,7 @@
 
 
         @media screen and (max-width: 500px) {
-          width: 85%;
+          width: 90%;
         }
 
         .noMatchTitle {
@@ -188,20 +253,18 @@
         top: 40px;
 
         @media screen and (max-width: 1200px) {
-          width: 50%;
+          width: 45%;
         }
 
         @media screen and (max-width: 500px) {
           width: 80%;
+          display: none;
         }
-
-
       }
+
     }
   }
 }
-
-
 
 
 .formControls {
@@ -215,10 +278,14 @@
     margin-top: 16px;
     margin-left: 36px;
   }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    @include flexCenter(row);
+    justify-content: center;
+    margin-top: 13px;
+    margin-left: 2px;
+  }
 }
 
-
-.tabContainer {
-  background-color: white;
-}
 

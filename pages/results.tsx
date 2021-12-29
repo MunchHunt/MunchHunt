@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import axios from 'axios';
-import useSWR from 'swr';
 import type { NextPage } from 'next'
+import Router from 'next/router';
 import styles from '../styles/Results/results.module.css';
 import FoodResults from '../Components/Results/results/FoodResults';
 import Head from 'next/head';
@@ -14,7 +14,11 @@ import LoadingMap from '../Components/Results/loading/LoadingMap';
 import Image from 'next/image';
 import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
 import BasicTabs from '../Components/Results/results/Tab';
-import { FormatColorResetOutlined } from '@mui/icons-material';
+import Button from '@mui/material/Button';
+import MobileResults from '../Components/Results/results/MobileResults';
+import DesktopResults from '../Components/Results/results/DesktopResults';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 type Foods = {
   foods: any
@@ -61,8 +65,16 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [loading, setLoading] = React.useState<boolean>(true);
   const [noMatch, setNoMatch] = React.useState<boolean>(false);
   const [refresh, setRefresh] = React.useState<boolean>(false);
+  const [mobile, setMobile] = React.useState<boolean>(false);
+  const [mobileMap, setMobileMap] = React.useState<boolean>(false);
+  const [desktop, setDesktop] = React.useState<boolean>(true);
+  const [width, setWidth] = React.useState<undefined | number>();
 
   React.useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth)
+    })
+
     setTimeout(() => {
       if (foods.length === 0) {
         setNoMatch(true);
@@ -72,7 +84,8 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
       setAllLocs(locationSort(foods));
       setLocation({ lat: Number(latitude), lng: Number(longitude) })
       setGrub(choice);
-    }, 1000)
+    }, 1000);
+
   }, [foods, choice, latitude, longitude]);
 
 
@@ -80,7 +93,19 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     if (yelpResult.length && allLocs.length) {
       setLoading(false);
     }
-  }, [yelpResult, allLocs])
+  }, [yelpResult, allLocs]);
+
+  React.useEffect(() => {
+    if (width) {
+      if (width < 500) {
+        setMobile(true);
+        setDesktop(false);
+      } else if (width > 500) {
+        setMobile(false);
+        setDesktop(true);
+      }
+    }
+  }, [width]);
 
   const config = {
     headers:
@@ -88,14 +113,18 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   };
 
   const getDetails = (id: string) => {
-    axios.get(`/api/yelp/?id=${id}`)
-      .then((res) => {
-        setDetails(res.data);
-        if (details) {
-          setMap(false);
-        }
-      })
-      .catch((error) => console.log(error));
+    if (mobile) {
+      Router.push(`/mobileTabs?id=${id}`);
+    } else {
+      axios.get(`/api/yelp/?id=${id}`)
+        .then((res) => {
+          setDetails(res.data);
+          if (details) {
+            setMap(false);
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }
 
   const reset = () => {
@@ -149,6 +178,11 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
     setActive(false);
   }
 
+  const handleClick = () => {
+    console.log('clicky')
+    setMobileMap(!mobileMap);
+  }
+
   const myLoader = ({ src, width, quality }: any) => {
     return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
   }
@@ -165,7 +199,13 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
         <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
         <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
       </Head>
-      <div className={styles.foodChoiceDiv}>
+      {(mobile && mobileMap) ? (<div className={styles.gMapMobile}>
+        <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} />
+        <Button className={styles.mobileMapReturnIcon}
+          onClick={() => handleClick()}
+          variant="text"><ArrowBackIcon fontSize="small" />Result Feed</Button>
+      </div>) : null}
+      {(mobile && !mobileMap) ? (<div className={styles.switchDiv} ><div className={styles.foodChoiceDiv}>
         <div className={styles.foodChoiceBox}>
           <div className={styles.foodChoiceTitle}>
             <h4>Munch Hunt chose:</h4>
@@ -175,56 +215,123 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
           </div>
         </div>
       </div>
-      <div className={styles.sortBy}>
-        {noMatch ? null : (<div className={styles.sortByTextCont}>
-          <p className={styles.sortByText}>Sort by:</p>
-          <SortButtons sortingHat={sortingHat} reset={reset} refresh={refresh} />
-        </div>)}
-        {noMatch ? null : (<div className={styles.randomizeButtonContainer}>
-          <RandomDecide yelpResult={randomeChoice} reset={reset} />
-        </div>)}
-      </div>
-      <div className={styles.outterBox}>
-        <div className={styles.innerBox}>
-          {noMatch ? (<div className={styles.resultsColumns}>
-            <h3 className={styles.noMatchTitle}>No matches found...</h3>
-            <Image
-              loader={myLoader}
-              src="/PrdSEho.png"
-              alt="hungry kid, empty plate in front holding knife and fork in hand"
-              width={450}
-              height={450}
-              placeholder="blur"
-              blurDataURL="/iqrmXmz.png"
-            />
-          </div>) : (<div className={styles.resultsColumns}>
-            {loading ? <LoadingResults /> : <FoodResults foods={yelpResult} select={currentSelect} random={random} active={active} />}
+        <div className={styles.sortBy}>
+          {noMatch ? null : (<div className={styles.sortByTextCont}>
+            <p className={styles.sortByText}>Sort by:</p>
+            <SortButtons sortingHat={sortingHat} reset={reset} refresh={refresh} />
           </div>)}
-          {noMatch ? (<div className={styles.mapBox}>
-            <Image
-              loader={myLoader}
-              src="/zgJAFK5.jpg"
-              alt="hungry kid, empty plate in front holding knife and fork in hand"
-              width={400}
-              height={200}
-              placeholder="blur"
-              blurDataURL="/iqrmXmz.png"
-            />
-          </div>) : (<div className={styles.mapBox}>
-            {loading ? <LoadingMap /> : (
-              <div>
-                {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
-                {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
-              </div>
-            )}
+          {noMatch ? null : (<div className={styles.randomizeButtonContainer}>
+            <RandomDecide yelpResult={randomeChoice} reset={reset} />
           </div>)}
         </div>
+        <div className={styles.outterBox}>
+          <div className={styles.innerBox}>
+            {noMatch ? (<div className={styles.resultsColumns}>
+              <h3 className={styles.noMatchTitle}>No matches found...</h3>
+              <Image
+                loader={myLoader}
+                src="/PrdSEho.png"
+                alt="hungry kid, empty plate in front holding knife and fork in hand"
+                width={450}
+                height={450}
+                placeholder="blur"
+                blurDataURL="/iqrmXmz.png"
+              />
+            </div>) : (<div className={styles.resultsColumns}>
+              {loading ? <LoadingResults /> : <FoodResults foods={yelpResult} select={currentSelect} random={random} active={active} />}
+            </div>)}
+            {noMatch ? (<div className={styles.mapBox}>
+              <Image
+                loader={myLoader}
+                src="/zgJAFK5.jpg"
+                alt="hungry kid, empty plate in front holding knife and fork in hand"
+                width={400}
+                height={200}
+                placeholder="blur"
+                blurDataURL="/iqrmXmz.png"
+              />
+            </div>) : (<div className={styles.mapBox}>
+              {loading ? <LoadingMap /> : (
+                <div>
+                  {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
+                  {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
+                </div>
+              )}
+            </div>)}
+            {mobile ? (<div className={styles.mobileMapDiv}><Button className={styles.mobileMapIcon}
+              onClick={() => handleClick()}
+              variant="text"><MapOutlinedIcon fontSize="small" />Map view</Button></div>) : null}
+          </div>
+        </div></div>) : null}
+        {(mobile && mobileMap) ? (<div className={styles.gMapMobile}>
+        <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} />
+        <Button className={styles.mobileMapReturnIcon}
+          onClick={() => handleClick()}
+          variant="text"><ArrowBackIcon fontSize="small" />Result Feed</Button>
+      </div>) : null}
+      {(desktop) ? (<div className={styles.switchDiv}><div className={styles.foodChoiceDiv}>
+        <div className={styles.foodChoiceBox}>
+          <div className={styles.foodChoiceTitle}>
+            <h4>Munch Hunt chose:</h4>
+          </div>
+          <div className={styles.foodChoiceResult}>
+            {grub}
+          </div>
+        </div>
       </div>
+        <div className={styles.sortBy}>
+          {noMatch ? null : (<div className={styles.sortByTextCont}>
+            <p className={styles.sortByText}>Sort by:</p>
+            <SortButtons sortingHat={sortingHat} reset={reset} refresh={refresh} />
+          </div>)}
+          {noMatch ? null : (<div className={styles.randomizeButtonContainer}>
+            <RandomDecide yelpResult={randomeChoice} reset={reset} />
+          </div>)}
+        </div>
+        <div className={styles.outterBox}>
+          <div className={styles.innerBox}>
+            {noMatch ? (<div className={styles.resultsColumns}>
+              <h3 className={styles.noMatchTitle}>No matches found...</h3>
+              <Image
+                loader={myLoader}
+                src="/PrdSEho.png"
+                alt="hungry kid, empty plate in front holding knife and fork in hand"
+                width={450}
+                height={450}
+                placeholder="blur"
+                blurDataURL="/iqrmXmz.png"
+              />
+            </div>) : (<div className={styles.resultsColumns}>
+              {loading ? <LoadingResults /> : <FoodResults foods={yelpResult} select={currentSelect} random={random} active={active} />}
+            </div>)}
+            {noMatch ? (<div className={styles.mapBox}>
+              <Image
+                loader={myLoader}
+                src="/zgJAFK5.jpg"
+                alt="hungry kid, empty plate in front holding knife and fork in hand"
+                width={400}
+                height={200}
+                placeholder="blur"
+                blurDataURL="/iqrmXmz.png"
+              />
+            </div>) : (<div className={styles.mapBox}>
+              {loading ? <LoadingMap /> : (
+                <div>
+                  {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
+                  {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
+                </div>
+              )}
+            </div>)}
+            {mobile ? (<div className={styles.mobileMapDiv}><Button className={styles.mobileMapIcon}
+              onClick={() => handleClick()}
+              variant="text"><MapOutlinedIcon fontSize="small" />Map view</Button></div>) : null}
+          </div>
+        </div></div>) : null}
     </div>
   );
 };
 
 export default Results;
 
-{/* {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null}
-            {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null} */}
+
+    // {mobile ? <MobileResults grub={grub} yelpResult={yelpResult} original={original} location={location} allLocs={allLocs} showMap={showMap} random={random} zoom={zoom} details={details} active={active} noMatch={noMatch} loading={loading} sortingHat={sortingHat} refresh={refresh} reset={reset} randomeChoice={randomeChoice} currentSelect={currentSelect} /> : <DesktopResults grub={grub} yelpResult={yelpResult} original={original} location={location} allLocs={allLocs} showMap={showMap} random={random} zoom={zoom} details={details} active={active} noMatch={noMatch} loading={loading} sortingHat={sortingHat} refresh={refresh} reset={reset} randomeChoice={randomeChoice} currentSelect={currentSelect} />}
