@@ -33,12 +33,6 @@
   width: 90%;
 }
 
-@media screen and (min-width: 1600px) {
-  .navOuterContainer .navbar {
-    width: 1500px;
-  }
-}
-
 @media screen and (max-width: 700px) {
   .navOuterContainer .navbar {
     width: 100%;

@@ -13,7 +13,7 @@
   justify-content: space-evenly;
 
   @media screen and (max-width: 500px) {
-   width: 100vw;
+    width: 100vw;
   }
 
   .switchDiv {
@@ -75,7 +75,7 @@
         justify-content: space-evenly;
         height: 90px;
         padding: 1em;
-        margin-bottom: 10px;;
+        margin-bottom: 10px;
       }
 
       .foodChoiceTitle {
@@ -128,7 +128,8 @@
   .sortBy {
     @include flexCenter(row);
     justify-content: space-between;
-    width: 1300px;
+    // width: 1300px;
+    width: 90%;
     height: auto;
     margin-bottom: 5px;
 
@@ -139,7 +140,6 @@
     @media screen and (max-width: 1500px) {
       width: 91%;
     }
-
 
     @media screen and (max-width: 1200px) {
       @include flexCenter(column);
@@ -185,7 +185,6 @@
         width: 100%;
         padding: 0;
       }
-
 
       .sortByText {
         font-size: 1em;
@@ -238,7 +237,6 @@
           width: 45%;
         }
 
-
         @media screen and (max-width: 500px) {
           width: 90%;
         }
@@ -268,11 +266,9 @@
           display: none;
         }
       }
-
     }
   }
 }
-
 
 .formControls {
   height: 30px;
@@ -294,5 +290,3 @@
     margin-left: 2px;
   }
 }
-
-
