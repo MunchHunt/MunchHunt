@@ -62,7 +62,14 @@ const textTheme = createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
-},
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: false,
+      },
+    },
+  },
 });
 
 
@@ -73,15 +80,15 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
   }
 
   return (
-    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
-      <CardActionArea className={styles2.cardArea}>
-        <CardMedia
-          component="img"
-          height={imgSize}
-          image={image}
-          alt="yelp restaurant result"
-        />
-        <ThemeProvider theme={textTheme}>
+    <ThemeProvider theme={textTheme}>
+      <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
+        <CardActionArea className={styles2.cardArea}>
+          <CardMedia
+            component="img"
+            height={imgSize}
+            image={image}
+            alt="yelp restaurant result"
+          />
           <CardContent className={styles2.cardContent}>
             <div className={styles2.cardName}>
               {name}
@@ -114,9 +121,9 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
               </div>
             </div>
           </CardContent>
-        </ThemeProvider>
-      </CardActionArea>
-    </Card>
+        </CardActionArea>
+      </Card>
+    </ThemeProvider>
   )
 }
 
