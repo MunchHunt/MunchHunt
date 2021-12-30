@@ -88,6 +88,8 @@
 .container .innerContainer .topText .updatingMsg {
   margin: 10px 0 10px;
   text-align: center;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .container .innerContainer .topText .templateBtnDiv {
