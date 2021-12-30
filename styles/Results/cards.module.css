@@ -1,19 +1,27 @@
 .cardResult {
   height: 100%;
+  color: #0b0b0b;
+  background-color: white;
 }
 
 .cardResult:hover {
-  outline: 2px solid orange;
+  outline: 2px solid #ffa500;
   color: orange;
-}
-
-.cardResult .cardArea {
-  height: 45%;
 }
 
 .cardResult .cardContent {
   width: 90%;
-  height: 100%;
+  height: 50%;
+  background-color: transparent;
+}
+
+.cardResult .cardContent .cardName {
+  min-width: 100%;
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  color: #353535;
 }
 
 .cardResult .cardContent .cardOrganizer {
@@ -32,45 +40,49 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: "Avenir";
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background-color: transparent;
 }
 
-.cardResult .cardContent .cardName {
-  min-width: 100%;
-  text-align: left;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0;
-  color: #353535;
+.cardResult .cardContent .cardOrganizer .cardOrgSub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  height: 60%;
 }
 
-.cardResult .cardContent .cardText {
+.cardResult .cardContent .cardOrganizer .cardOrgSub .cardText {
   margin-bottom: 3px;
+  font-size: 1.2em;
   color: #222222;
 }
 
-.cardResult .cardContent .cardStars {
-  text-align: right;
-  color: #292929;
-}
-
-.cardResult .cardContent .cardPrice {
+.cardResult .cardContent .cardOrganizer .cardOrgSub .cardPrice {
   margin-bottom: 3px;
   font-weight: bold;
   color: #434242;
-}
-
-.cardResult .cardContent .cardDistance {
-  margin-bottom: 3px;
-  font-size: 0.9em;
-  font-style: italic;
-  color: #222222;
 }
 
 .cardResult .cardContent .bottomCardBox {
@@ -87,12 +99,29 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-family: "Avenir";
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
   margin-bottom: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .cardResult .cardContent .bottomCardBox {
+    margin-bottom: 10px;
+  }
+}
+
+.cardResult .cardContent .bottomCardBox .cardDistance {
+  margin-bottom: 3px;
+  font-size: 0.9em;
+  font-style: italic;
+  color: #222222;
+}
+
+.cardResult .cardContent .bottomCardBox .cardStars {
+  text-align: right;
+  color: #292929;
 }
 
 .noMatch {

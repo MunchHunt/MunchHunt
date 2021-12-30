@@ -45,7 +45,10 @@
 }
 
 .tabPageContainer .backBtnCont .backBtn {
-  background-color: rgba(237, 106, 6, 0.954);
+  color: white;
+  background-color: #262626;
+  border-radius: 10px;
+  border: 2px solid orange;
 }
 
 .tabPageContainer .innerTabs {

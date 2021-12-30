@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -11,6 +9,10 @@ import Rating from '@mui/material/Rating';
 import styles2 from '../../../styles/Results/cards.module.css';
 import Image from 'next/image';
 import { CardActionArea } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+// import { createMuiTheme } from '@material-ui/core';
 
 interface Foods {
   foods: any
@@ -41,6 +43,31 @@ const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
 }
 
+const textTheme = createTheme({
+  typography: {
+    fontFamily: [
+      'Mukta',
+      'Arial',
+      'sans-serif',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+  },
+});
+
+
 function Cards({ id, name, image, address, city, price, distance, rating, handleClick, selected, random, width, height, imgSize }: CardProps) {
   const getMiles = (i: number) => {
     const miles = (i * 0.000621371192).toFixed(2);
@@ -48,8 +75,8 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
   }
 
   return (
-    <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
-      <CardActionArea className={styles2.cardArea}>
+    <ThemeProvider theme={textTheme}>
+      <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
         <CardMedia
           component="img"
           height={imgSize}
@@ -57,26 +84,26 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
           alt="yelp restaurant result"
         />
         <CardContent className={styles2.cardContent}>
-          <Typography color="common.black" className={styles2.cardName} gutterBottom variant="body1" component="div">
+          <Typography className={styles2.cardName}>
             {name}
           </Typography>
           <div className={styles2.cardOrganizer}>
-            <div>
-              <Typography className={styles2.cardText} variant="body1" >
+            <div className={styles2.cardOrgSub}>
+              <Typography className={styles2.cardText} >
                 {address}
               </Typography>
-              <Typography className={styles2.cardText} variant="body1">
+              <Typography className={styles2.cardText}>
                 {city}
               </Typography>
-              <Typography className={styles2.cardPrice} variant="body1">
+              <Typography className={styles2.cardPrice}>
                 {price}
               </Typography>
             </div>
             <div className={styles2.bottomCardBox}>
-              <Typography className={styles2.cardDistance} variant="body2">
+              <Typography className={styles2.cardDistance}>
                 {getMiles(distance)} miles away
               </Typography>
-              <Typography className={styles2.cardStars} variant="body2">
+              <Typography className={styles2.cardStars}>
                 <Rating
                   name="read-only"
                   size="small"
@@ -88,8 +115,8 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
             </div>
           </div>
         </CardContent>
-      </CardActionArea>
-    </Card>
+      </Card>
+    </ThemeProvider>
   )
 }
 
@@ -128,7 +155,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
         setHeight(250);
         setImgSize("115");
       } else if (size > 500) {
-        setSingle (480);
+        setSingle(480);
         setHeight(350);
         setImgSize("157");
       }
@@ -149,7 +176,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
     } else {
       setWidth(280)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [random])
 
   return (
@@ -166,13 +193,13 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
         <Box p={0.5}>
           <h3 className={styles2.noMatch}>No matches found...</h3>
           <Image
-          loader={myLoader}
-          src="/PrdSEho.png"
-          alt="hungry kid, empty plate in front holding knife and fork in hand"
-          width={400}
-          height={400}
-          placeholder="blur"
-          blurDataURL="/iqrmXmz.png"
+            loader={myLoader}
+            src="/PrdSEho.png"
+            alt="hungry kid, empty plate in front holding knife and fork in hand"
+            width={400}
+            height={400}
+            placeholder="blur"
+            blurDataURL="/iqrmXmz.png"
           />
         </Box>
       )}
