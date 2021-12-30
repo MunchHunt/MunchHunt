@@ -16,18 +16,13 @@
   color: orange;
 }
 
-.cardResult .cardArea {
-  height: 45%;
-  background-color: transparent;
-}
-
-.cardResult .cardArea .cardContent {
+.cardResult .cardContent {
   width: 90%;
-  height: 100%;
+  height: 50%;
   background-color: transparent;
 }
 
-.cardResult .cardArea .cardContent .cardName {
+.cardResult .cardContent .cardName {
   min-width: 100%;
   text-align: left;
   font-size: 1.2em;
@@ -37,12 +32,12 @@
 }
 
 @media screen and (max-width: 500px) {
-  .cardResult .cardArea .cardContent .cardName {
+  .cardResult .cardContent .cardName {
     color: white;
   }
 }
 
-.cardResult .cardArea .cardContent .cardOrganizer {
+.cardResult .cardContent .cardOrganizer {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -67,7 +62,7 @@
   background-color: transparent;
 }
 
-.cardResult .cardArea .cardContent .cardOrganizer .cardOrgSub {
+.cardResult .cardContent .cardOrganizer .cardOrgSub {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,31 +86,31 @@
   height: 60%;
 }
 
-.cardResult .cardArea .cardContent .cardOrganizer .cardOrgSub .cardText {
+.cardResult .cardContent .cardOrganizer .cardOrgSub .cardText {
   margin-bottom: 3px;
   font-size: 1.2em;
   color: #222222;
 }
 
 @media screen and (max-width: 500px) {
-  .cardResult .cardArea .cardContent .cardOrganizer .cardOrgSub .cardText {
+  .cardResult .cardContent .cardOrganizer .cardOrgSub .cardText {
     color: white;
   }
 }
 
-.cardResult .cardArea .cardContent .cardOrganizer .cardOrgSub .cardPrice {
+.cardResult .cardContent .cardOrganizer .cardOrgSub .cardPrice {
   margin-bottom: 3px;
   font-weight: bold;
   color: #434242;
 }
 
 @media screen and (max-width: 500px) {
-  .cardResult .cardArea .cardContent .cardOrganizer .cardOrgSub .cardPrice {
+  .cardResult .cardContent .cardOrganizer .cardOrgSub .cardPrice {
     color: white;
   }
 }
 
-.cardResult .cardArea .cardContent .bottomCardBox {
+.cardResult .cardContent .bottomCardBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,20 +131,20 @@
   margin-bottom: 5px;
 }
 
-.cardResult .cardArea .cardContent .bottomCardBox .cardDistance {
+.cardResult .cardContent .bottomCardBox .cardDistance {
   margin-bottom: 3px;
   font-size: 0.9em;
   font-style: italic;
   color: #222222;
 }
 
-.cardResult .cardArea .cardContent .bottomCardBox .cardStars {
+.cardResult .cardContent .bottomCardBox .cardStars {
   text-align: right;
   color: #292929;
 }
 
 @media screen and (max-width: 500px) {
-  .cardResult .cardArea .cardContent .bottomCardBox .cardStars {
+  .cardResult .cardContent .bottomCardBox .cardStars {
     color: #989898;
   }
 }

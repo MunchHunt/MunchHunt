@@ -81,7 +81,6 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
 
   return (
       <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
-        <CardActionArea className={styles2.cardArea}>
           <CardMedia
             component="img"
             height={imgSize}
@@ -120,7 +119,6 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
               </div>
             </div>
           </CardContent>
-        </CardActionArea>
       </Card>
   )
 }
