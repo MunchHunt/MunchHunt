@@ -59,6 +59,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       return true;
     } else {
       setOpenInvalid(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return false;
     }
   };
@@ -70,6 +71,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     } else {
       setInvalidLocation(true);
       setOpenInvalid(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return false;
     }
   };
