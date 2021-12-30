@@ -4,13 +4,6 @@
   background-color: white;
 }
 
-@media screen and (max-width: 500px) {
-  .cardResult {
-    color: white;
-    background-color: #242424;
-  }
-}
-
 .cardResult:hover {
   outline: 2px solid #ffa500;
   color: orange;
@@ -29,12 +22,6 @@
   font-weight: bold;
   margin: 0;
   color: #353535;
-}
-
-@media screen and (max-width: 500px) {
-  .cardResult .cardContent .cardName {
-    color: white;
-  }
 }
 
 .cardResult .cardContent .cardOrganizer {
@@ -92,22 +79,10 @@
   color: #222222;
 }
 
-@media screen and (max-width: 500px) {
-  .cardResult .cardContent .cardOrganizer .cardOrgSub .cardText {
-    color: white;
-  }
-}
-
 .cardResult .cardContent .cardOrganizer .cardOrgSub .cardPrice {
   margin-bottom: 3px;
   font-weight: bold;
   color: #434242;
-}
-
-@media screen and (max-width: 500px) {
-  .cardResult .cardContent .cardOrganizer .cardOrgSub .cardPrice {
-    color: white;
-  }
 }
 
 .cardResult .cardContent .bottomCardBox {
@@ -141,12 +116,6 @@
 .cardResult .cardContent .bottomCardBox .cardStars {
   text-align: right;
   color: #292929;
-}
-
-@media screen and (max-width: 500px) {
-  .cardResult .cardContent .bottomCardBox .cardStars {
-    color: #989898;
-  }
 }
 
 .noMatch {
