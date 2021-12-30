@@ -29,7 +29,7 @@ const Login: React.FC = () => {
       })
   }
 
-  const responseSuccess = ({ profileObj, accessToken }: any) => {
+  const responseSuccess = ({ profileObj }: any) => {
     setIsLoggedIn(true);
     console.log('Login success:', profileObj.email);
     setUserEmail(profileObj.email);
