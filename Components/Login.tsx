@@ -10,7 +10,7 @@ const {
 } = require('../pages/api/userAuth');
 
 const Login: React.FC = () => {
-  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail } = useContext(MunchContext);
+  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail, setCurrChoices, setSelectedTemplate } = useContext(MunchContext);
 
   const getData = (email: string, name: string) => {
     GetUserData(email)
@@ -44,6 +44,8 @@ const Login: React.FC = () => {
   const logout = () => {
     setIsLoggedIn(false);
     console.log('Logout success.');
+    setCurrChoices(['', '', '', '', '', '']);
+    setSelectedTemplate('');
   };
 
   return (

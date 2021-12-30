@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import Form from "./Form/Form";
 import Templates from "./Templates/Templates";
 import styles from "../../styles/Home/Home.module.css";
@@ -8,10 +8,9 @@ import Head from "next/head";
 import { Card } from "@mui/material";
 
 const Home: React.FC = () => {
-  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
-
   const {
-    setUserTemplates,
+    selectedTemplate,
+    setSelectedTemplate
   } = useContext(MunchContext);
 
   useEffect(() => {

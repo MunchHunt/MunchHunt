@@ -31,7 +31,9 @@ export const MunchContext = createContext(
     isDrawerOpen: false,
     setIsDrawerOpen: (bool: boolean) => { },
     userEmail: '',
-    setUserEmail: (email: string) => { }
+    setUserEmail: (email: string) => { },
+    selectedTemplate: '',
+    setSelectedTemplate: (template: string) => { }
   });
 
 const {
@@ -48,6 +50,7 @@ export const MunchProvider: React.FC = ({ children }) => {
   const [currChoices, setCurrChoices] = useState<string[]>(['', '', '', '', '', '']);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [userEmail, setUserEmail] = useState<string>('');
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
 
   useEffect(() => {
     if (userEmail.length && userTemplates.length) {
@@ -94,6 +97,10 @@ export const MunchProvider: React.FC = ({ children }) => {
     userEmail: userEmail,
     setUserEmail: (email: string): void => {
       setUserEmail(email);
+    },
+    selectedTemplate: selectedTemplate,
+    setSelectedTemplate: (template: string): void => {
+      setSelectedTemplate(template)
     }
   };
 
