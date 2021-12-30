@@ -46,7 +46,7 @@ const myLoader = ({ src, width, quality }: any) => {
 const textTheme = createTheme({
   palette: {
     primary: {
-      main: '#222222',
+      main: '#ffffff',
     },
   },
   typography: {
@@ -80,7 +80,6 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
   }
 
   return (
-    <ThemeProvider theme={textTheme}>
       <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
         <CardActionArea className={styles2.cardArea}>
           <CardMedia
@@ -90,26 +89,26 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
             alt="yelp restaurant result"
           />
           <CardContent className={styles2.cardContent}>
-            <div className={styles2.cardName}>
+            <Typography color="primary" className={styles2.cardName}>
               {name}
-            </div>
+            </Typography>
             <div className={styles2.cardOrganizer}>
               <div className={styles2.cardOrgSub}>
-                <div className={styles2.cardText} >
+                <Typography color="primary" className={styles2.cardText} >
                   {address}
-                </div>
-                <div className={styles2.cardText}>
+                </Typography>
+                <Typography color="primary" className={styles2.cardText}>
                   {city}
-                </div>
-                <div className={styles2.cardPrice}>
+                </Typography>
+                <Typography color="primary" className={styles2.cardPrice}>
                   {price}
-                </div>
+                </Typography>
               </div>
               <div className={styles2.bottomCardBox}>
-                <div className={styles2.cardDistance}>
+                <Typography color="primary" className={styles2.cardDistance}>
                   {getMiles(distance)} miles away
-                </div>
-                <div className={styles2.cardStars}>
+                </Typography>
+                <Typography className={styles2.cardStars}>
                   <Rating
                     name="read-only"
                     size="small"
@@ -117,13 +116,12 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
                     value={rating}
                     readOnly
                   />
-                </div>
+                </Typography>
               </div>
             </div>
           </CardContent>
         </CardActionArea>
       </Card>
-    </ThemeProvider>
   )
 }
 
