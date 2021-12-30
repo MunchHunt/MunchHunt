@@ -18,73 +18,71 @@
   .cardArea {
     height: 45%;
     background-color: transparent;
-  }
 
-  .cardContent {
-    width: 90%;
-    height: 100%;
-    background-color: transparent;
-
-    .cardOrganizer {
-      width: 100%;
+    .cardContent {
+      width: 90%;
       height: 100%;
-      @include flexCenter(column);
-      justify-content: space-evenly;
-      align-items: flex-start;
       background-color: transparent;
 
-
-      .cardOrgSub {
-        @include flexCenter(column);
-        align-items: flex-start;
-        justify-content: space-evenly;
-        width: 100%;
-        height: 60%;
+      .cardName {
+        min-width: 100%;
+        text-align: left;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 0;
+        color: rgb(53, 53, 53);
       }
-    }
 
-    .cardName {
-      min-width: 100%;
-      text-align: left;
-      font-size: 1.2em;
-      font-weight: bold;
-      margin: 0;
-      color: rgb(53, 53, 53);
-    }
+      .cardOrganizer {
+        width: 100%;
+        height: 100%;
+        @include flexCenter(column);
+        justify-content: space-evenly;
+        align-items: flex-start;
+        background-color: transparent;
 
-    .cardText {
-      margin-bottom: 3px;
-      font-size: 1.2em;
-      color: #222222;
-    }
+        .cardOrgSub {
+          @include flexCenter(column);
+          align-items: flex-start;
+          justify-content: space-evenly;
+          width: 100%;
+          height: 60%;
 
-    .cardStars {
-      text-align: right;
-      color: rgb(41, 41, 41);
-    }
+          .cardText {
+            margin-bottom: 3px;
+            font-size: 1.2em;
+            color: #222222;
+          }
 
-    .cardPrice {
-      margin-bottom: 3px;
-      font-weight: bold;
-      color: rgb(67, 66, 66);
-    }
+          .cardPrice {
+            margin-bottom: 3px;
+            font-weight: bold;
+            color: rgb(67, 66, 66);
+          }
+        }
+      }
 
-    .cardDistance {
-      margin-bottom: 3px;
-      font-size: 0.9em;
-      font-style: italic;
-      color: rgb(34, 34, 34);
-    }
+      .bottomCardBox {
+        @include flexCenter(row);
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 5px;
 
-    .bottomCardBox {
-      @include flexCenter(row);
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 5px;
+        .cardDistance {
+          margin-bottom: 3px;
+          font-size: 0.9em;
+          font-style: italic;
+          color: rgb(34, 34, 34);
+        }
+
+        .cardStars {
+          text-align: right;
+          color: rgb(41, 41, 41);
+        }
+      }
     }
   }
 }
-
 
 .noMatch {
   width: 100%;
