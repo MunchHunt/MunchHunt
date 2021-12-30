@@ -29,11 +29,11 @@ const Login: React.FC = () => {
       })
   }
 
-  const responseSuccess = (res: any) => {
+  const responseSuccess = ({ profileObj, accessToken }: any) => {
     setIsLoggedIn(true);
-    console.log('Login success:', res.profileObj.email);
-    setUserEmail(res.profileObj.email);
-    getData(res.profileObj.email, res.profileObj.name,);
+    console.log('Login success:', profileObj.email);
+    setUserEmail(profileObj.email);
+    getData(profileObj.email, profileObj.name,);
   }
 
   const responseFailure = (res: any) => {
@@ -71,6 +71,7 @@ const Login: React.FC = () => {
           onFailure={responseFailure}
           className={styles.loginBtn}
           cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
           render={(renderProps) => (
             <button onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
               Login

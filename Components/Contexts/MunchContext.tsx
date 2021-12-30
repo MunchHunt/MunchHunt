@@ -33,7 +33,7 @@ export const MunchContext = createContext(
     userEmail: '',
     setUserEmail: (email: string) => { },
     selectedTemplate: '',
-    setSelectedTemplate: (template: string) => { }
+    setSelectedTemplate: (template: string) => { },
   });
 
 const {
@@ -45,12 +45,24 @@ export const MunchProvider: React.FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [currAddress, setCurrAddress] = useState<string>('');
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
-  const [userTemplates, setUserTemplates] = useState<any>([]);
   const [result, setResult] = useState<string>("");
   const [currChoices, setCurrChoices] = useState<string[]>(['', '', '', '', '', '']);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [userEmail, setUserEmail] = useState<string>('');
+  const [userTemplates, setUserTemplates] = useState<any>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
+
+  useEffect(() => {
+    // let login = localStorage.getItem('munchLogin');
+    // let templates = localStorage.getItem('userTemplates');
+
+    // if (login) {
+    //   setIsLoggedIn(JSON.parse(login));
+    // }
+    // if (templates) {
+    //   setUserTemplates(JSON.parse(templates));
+    // }
+  }, [])
 
   useEffect(() => {
     if (userEmail.length && userTemplates.length) {
@@ -81,6 +93,7 @@ export const MunchProvider: React.FC = ({ children }) => {
     userTemplates: userTemplates,
     setUserTemplates: (templates: any): void => {
       setUserTemplates(templates);
+      // localStorage.setItem('userTemplates', JSON.stringify(templates));
     },
     result: result,
     setResult: (result: string): void => {

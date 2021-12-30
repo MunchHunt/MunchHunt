@@ -13,12 +13,17 @@ const myLoader = ({ src, width, quality }: any) => {
   return `https://i.imgur.com/${src}?w=${width}&q=${quality || 75}`
 }
 
+const {
+  GetUserData,
+  AddNewUser,
+} = require('../../pages/api/userAuth');
+
 const Landing: React.FC = () => {
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [imageSize, setImageSize] = useState<number>(800);
-  const { isLoggedIn, setIsLoggedIn } = useContext(MunchContext);
+  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail, setCurrChoices, setSelectedTemplate } = useContext(MunchContext);
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -51,15 +56,34 @@ const Landing: React.FC = () => {
     console.log('Logout success.');
   };
 
-  const responseSuccess = (res: any) => {
+  const getData = (email: string, name: string) => {
+    GetUserData(email)
+      .then((res: any) => {
+        if (res) {
+          console.log('User exists!', res);
+          if (res.templates) {
+            setUserTemplates(JSON.parse(res.templates));
+          }
+        } else {
+          AddNewUser(email, name)
+            .then((res2: any) => {
+              console.log('New user created!', res2);
+            })
+        }
+      })
+  }
+
+  const responseSuccess = ({ profileObj, accessToken }: any) => {
     setIsLoggedIn(true);
-    console.log('Login success:', res.profileObj);
+    console.log('Login success:', profileObj.email);
+    setUserEmail(profileObj.email);
+    getData(profileObj.email, profileObj.name,);
   }
 
-  const responseFailure = () => {
+  const responseFailure = (res: any) => {
     console.log('Login failed');
+    console.log(res);
   }
-
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
@@ -100,6 +124,7 @@ const Landing: React.FC = () => {
                 onSuccess={responseSuccess}
                 onFailure={responseFailure}
                 cookiePolicy={'single_host_origin'}
+                isSignedIn={true}
                 render={(renderProps) => (
                   <Button variant="contained" onClick={renderProps.onClick} className={styles.loginBtn} disabled={renderProps.disabled}>
                     <div className={styles.btnText}>Login with</div>
