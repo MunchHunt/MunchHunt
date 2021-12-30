@@ -11,8 +11,9 @@ interface Props {
 const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
-  const { userTemplates, setUserTemplates, currCoords, setIsDrawerOpen } = useContext(MunchContext);
+  const { userTemplates, setUserTemplates, currCoords, setIsDrawerOpen, setCurrChoices } = useContext(MunchContext);
   const [invalidMsg, setInvalidMsg] = useState<string>('Invalid Entry');
+  const [justCreated, setJustCreated] = useState<boolean>(false);
 
   const changeHandler = (e: any): void => {
     e.preventDefault();
@@ -53,7 +54,6 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
     e.preventDefault();
     if (validator()) {
       let temp: any = userTemplates.slice(0);
-      // console.log(currChoices);
       let data = {
         name: typed,
         location: currCoords,
@@ -64,17 +64,22 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
       setSelectedTemplate(typed);
       setTyped('');
       setIsDrawerOpen(false);
+      setJustCreated(true);
     }
   };
 
   useEffect(() => {
-    for (let i = 0; i < userTemplates.length; i++) {
-      let template = document.getElementById('template' + i.toString());
-      template?.classList.remove('activeTemplate');
+    if (justCreated) {
+      console.log('Just created!');
+      for (let i = 0; i < userTemplates.length; i++) {
+        let template = document.getElementById('template' + i.toString());
+        template?.classList.remove('activeTemplate');
+      }
+      let template = document.getElementById('template' + (userTemplates.length - 1).toString());
+      template?.classList.add('activeTemplate');
+      setJustCreated(false);
     }
-    let template = document.getElementById('template' + (userTemplates.length - 1).toString());
-    template?.classList.add('activeTemplate');
-  }, [userTemplates])
+  }, [justCreated])
 
   return (
     <div className={styles.createTemplate}>
