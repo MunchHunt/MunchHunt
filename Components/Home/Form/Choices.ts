@@ -35,7 +35,5 @@ export const choices = [
   "Bar",
   "Sports bar",
   "Diner",
-  "Classy",
   "Filipino",
-  "KBBQ",
 ];
