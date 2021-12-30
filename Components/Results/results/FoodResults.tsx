@@ -44,11 +44,6 @@ const myLoader = ({ src, width, quality }: any) => {
 }
 
 const textTheme = createTheme({
-  palette: {
-    primary: {
-      main: '#ffffff',
-    },
-  },
   typography: {
     fontFamily: [
       'Mukta',
@@ -80,46 +75,48 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
   }
 
   return (
+    <ThemeProvider theme={textTheme}>
       <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
-          <CardMedia
-            component="img"
-            height={imgSize}
-            image={image}
-            alt="yelp restaurant result"
-          />
-          <CardContent className={styles2.cardContent}>
-            <Typography color="primary" className={styles2.cardName}>
-              {name}
-            </Typography>
-            <div className={styles2.cardOrganizer}>
-              <div className={styles2.cardOrgSub}>
-                <Typography color="primary" className={styles2.cardText} >
-                  {address}
-                </Typography>
-                <Typography color="primary" className={styles2.cardText}>
-                  {city}
-                </Typography>
-                <Typography color="primary" className={styles2.cardPrice}>
-                  {price}
-                </Typography>
-              </div>
-              <div className={styles2.bottomCardBox}>
-                <Typography color="primary" className={styles2.cardDistance}>
-                  {getMiles(distance)} miles away
-                </Typography>
-                <Typography className={styles2.cardStars}>
-                  <Rating
-                    name="read-only"
-                    size="small"
-                    precision={0.5}
-                    value={rating}
-                    readOnly
-                  />
-                </Typography>
-              </div>
+        <CardMedia
+          component="img"
+          height={imgSize}
+          image={image}
+          alt="yelp restaurant result"
+        />
+        <CardContent className={styles2.cardContent}>
+          <Typography className={styles2.cardName}>
+            {name}
+          </Typography>
+          <div className={styles2.cardOrganizer}>
+            <div className={styles2.cardOrgSub}>
+              <Typography className={styles2.cardText} >
+                {address}
+              </Typography>
+              <Typography className={styles2.cardText}>
+                {city}
+              </Typography>
+              <Typography className={styles2.cardPrice}>
+                {price}
+              </Typography>
             </div>
-          </CardContent>
+            <div className={styles2.bottomCardBox}>
+              <Typography className={styles2.cardDistance}>
+                {getMiles(distance)} miles away
+              </Typography>
+              <Typography className={styles2.cardStars}>
+                <Rating
+                  name="read-only"
+                  size="small"
+                  precision={0.5}
+                  value={rating}
+                  readOnly
+                />
+              </Typography>
+            </div>
+          </div>
+        </CardContent>
       </Card>
+    </ThemeProvider>
   )
 }
 
