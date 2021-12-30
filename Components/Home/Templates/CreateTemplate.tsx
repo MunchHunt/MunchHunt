@@ -11,7 +11,7 @@ interface Props {
 const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
-  const { tempTemplates, setTempTemplates, currCoords, setIsDrawerOpen } = useContext(MunchContext);
+  const { userTemplates, setUserTemplates, currCoords, setIsDrawerOpen } = useContext(MunchContext);
   const [invalidMsg, setInvalidMsg] = useState<string>('Invalid Entry');
 
   const changeHandler = (e: any): void => {
@@ -20,8 +20,8 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
   };
 
   const validator = (): boolean => {
-    for (let i = 0; i < tempTemplates.length; i++) {
-      if (tempTemplates[i].name.toLowerCase() === typed.toLowerCase()) {
+    for (let i = 0; i < userTemplates.length; i++) {
+      if (userTemplates[i].name.toLowerCase() === typed.toLowerCase()) {
         setIsValid(false);
         setInvalidMsg('Template name already exists.')
         return false;
@@ -52,7 +52,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
   const addTemplate = (e: any): void => {
     e.preventDefault();
     if (validator()) {
-      let temp: any = tempTemplates.slice(0);
+      let temp: any = userTemplates.slice(0);
       // console.log(currChoices);
       let data = {
         name: typed,
@@ -60,7 +60,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
         choices: currChoices,
       }
       temp.push(data);
-      setTempTemplates(temp);
+      setUserTemplates(temp);
       setSelectedTemplate(typed);
       setTyped('');
       setIsDrawerOpen(false);
@@ -68,13 +68,13 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
   };
 
   useEffect(() => {
-    for (let i = 0; i < tempTemplates.length; i++) {
+    for (let i = 0; i < userTemplates.length; i++) {
       let template = document.getElementById('template' + i.toString());
       template?.classList.remove('activeTemplate');
     }
-    let template = document.getElementById('template' + (tempTemplates.length - 1).toString());
+    let template = document.getElementById('template' + (userTemplates.length - 1).toString());
     template?.classList.add('activeTemplate');
-  }, [tempTemplates])
+  }, [userTemplates])
 
   return (
     <div className={styles.createTemplate}>

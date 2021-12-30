@@ -4,16 +4,41 @@ import { MunchContext } from './Contexts/MunchContext';
 import styles from '../styles/Login/Login.module.css';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+const {
+  GetUserData,
+  AddNewUser,
+} = require('../pages/api/userAuth');
+
 const Login: React.FC = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(MunchContext);
+  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail } = useContext(MunchContext);
+
+  const getData = (email: string, name: string) => {
+    GetUserData(email)
+      .then((res: any) => {
+        if (res) {
+          console.log('User exists!', res);
+          if (res.templates) {
+            setUserTemplates(JSON.parse(res.templates));
+          }
+        } else {
+          AddNewUser(email, name)
+            .then((res2: any) => {
+              console.log('New user created!', res2);
+            })
+        }
+      })
+  }
 
   const responseSuccess = (res: any) => {
     setIsLoggedIn(true);
-    console.log('Login success:', res.profileObj);
+    console.log('Login success:', res.profileObj.email);
+    setUserEmail(res.profileObj.email);
+    getData(res.profileObj.email, res.profileObj.name,);
   }
 
-  const responseFailure = () => {
+  const responseFailure = (res: any) => {
     console.log('Login failed');
+    console.log(res);
   }
 
   const logout = () => {

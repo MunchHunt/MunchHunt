@@ -11,11 +11,11 @@ const Home: React.FC = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
 
   const {
-    setTempTemplates,
+    setUserTemplates,
   } = useContext(MunchContext);
 
   useEffect(() => {
-    // setTempTemplates(templates);
+    // setUserTemplates(templates);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

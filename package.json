@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@astrajs/collections": "^0.3.2",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@material-ui/icons": "^4.11.2",
@@ -32,7 +33,7 @@
     "@types/react": "17.0.37",
     "@types/react-places-autocomplete": "^7.2.9",
     "eslint": "7.32.0",
-    "eslint-config-next": "12.0.4",
+    "netlify-cli": "^8.6.0",
     "typescript": "4.5.2"
   }
 }

@@ -13,7 +13,7 @@ export const MunchContext = createContext(
     setCurrAddress: (location: string) => { },
     currCoords: { lat: '', long: '' },
     setCoords: (coords: Coords) => { },
-    tempTemplates: [{
+    userTemplates: [{
       name: '',
       location: {
         lat: '',
@@ -23,23 +23,43 @@ export const MunchContext = createContext(
         ''
       ]
     }],
-    setTempTemplates: (templates: any) => { },
+    setUserTemplates: (templates: any) => { },
     result: '',
     setResult: (result: string) => { },
     currChoices: ['', '', '', '', '', ''],
     setCurrChoices: (choices: string[]) => { },
     isDrawerOpen: false,
-    setIsDrawerOpen: (bool: boolean) => { }
+    setIsDrawerOpen: (bool: boolean) => { },
+    userEmail: '',
+    setUserEmail: (email: string) => { }
   });
+
+const {
+  UpdateUserData,
+
+} = require('../../pages/api/userAuth');
 
 export const MunchProvider: React.FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [currAddress, setCurrAddress] = useState<string>('');
   const [currCoords, setCoords] = useState<Coords>({ lat: '', long: '' });
-  const [tempTemplates, setTempTemplates] = useState<any>([]);
+  const [userTemplates, setUserTemplates] = useState<any>([]);
   const [result, setResult] = useState<string>("");
   const [currChoices, setCurrChoices] = useState<string[]>(['', '', '', '', '', '']);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [userEmail, setUserEmail] = useState<string>('');
+
+  useEffect(() => {
+    if (userEmail.length && userTemplates.length) {
+      UpdateUserData(userEmail, userTemplates)
+        .then((res: any) => {
+          console.log('Templates updated on database', res);
+        })
+        .catch((err: any) => {
+          console.log('Failed to update templates on database', err);
+        })
+    }
+  }, [userTemplates])
 
   const store = {
     isLoggedIn: isLoggedIn,
@@ -55,9 +75,9 @@ export const MunchProvider: React.FC = ({ children }) => {
       setCoords(coords);
       localStorage.setItem('location', JSON.stringify(coords));
     },
-    tempTemplates: tempTemplates,
-    setTempTemplates: (templates: any): void => {
-      setTempTemplates(templates);
+    userTemplates: userTemplates,
+    setUserTemplates: (templates: any): void => {
+      setUserTemplates(templates);
     },
     result: result,
     setResult: (result: string): void => {
@@ -70,6 +90,10 @@ export const MunchProvider: React.FC = ({ children }) => {
     isDrawerOpen: isDrawerOpen,
     setIsDrawerOpen: (bool: boolean): void => {
       setIsDrawerOpen(bool);
+    },
+    userEmail: userEmail,
+    setUserEmail: (email: string): void => {
+      setUserEmail(email);
     }
   };
 

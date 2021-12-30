@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
-  const { isLoggedIn, setCoords, tempTemplates, currChoices, setCurrChoices } = useContext(MunchContext);
+  const { isLoggedIn, setCoords, userTemplates, currChoices, setCurrChoices } = useContext(MunchContext);
   const [active, setActive] = useState<string>('');
 
   const selectTemplate = (e: any, i: number): void => {
@@ -23,7 +23,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
       let template = document.getElementById(active);
       template?.classList.remove('activeTemplate');
     } else {
-      let newChoices: any = tempTemplates.filter(
+      let newChoices: any = userTemplates.filter(
         (each: any) => each.name === templateName
       );
       setCurrChoices(newChoices[0].choices);
@@ -43,7 +43,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
 
   useEffect(() => {
     if (selectedTemplate === '') {
-      for (let i = 0; i < tempTemplates.length; i++) {
+      for (let i = 0; i < userTemplates.length; i++) {
         let template = document.getElementById('template' + i.toString());
         template?.classList.remove('activeTemplate');
       }
@@ -56,7 +56,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
       <h2>My Templates</h2>
       {isLoggedIn ? (
         <div className={styles.templateColumn}>
-          {tempTemplates.length ? (
+          {userTemplates.length ? (
             <>
               <div
                 className={styles.template}
@@ -64,7 +64,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
                 id='noTemplate'>
                 No template
               </div>
-              {tempTemplates.map((temp: any, i: number) => (
+              {userTemplates.map((temp: any, i: number) => (
                 <div
                   key={temp.name}
                   className={styles.template}

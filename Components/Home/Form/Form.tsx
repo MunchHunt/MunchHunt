@@ -34,8 +34,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     result,
     setResult,
     currAddress,
-    tempTemplates,
-    setTempTemplates,
+    userTemplates,
+    setUserTemplates,
     currCoords,
     currChoices,
     setCurrChoices,
@@ -131,15 +131,14 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   useEffect(() => {
     if (result && result !== "") {
       Router.push(`/results?result=${result}&lat=${currCoords.lat}&long=${currCoords.long}`);
-      // console.log("Result:", result);
       setResult('');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
   const getIndex = (): number => {
-    for (let i = 0; i < tempTemplates.length; i++) {
-      if (tempTemplates[i].name === selectedTemplate) {
+    for (let i = 0; i < userTemplates.length; i++) {
+      if (userTemplates[i].name === selectedTemplate) {
         return i;
       }
     }
@@ -149,7 +148,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
   const updateTemplate = (e: any): void => {
     e.preventDefault();
     let index = getIndex();
-    let temp: any = tempTemplates.slice(0);
+    let temp: any = userTemplates.slice(0);
     let data = {
       name: selectedTemplate,
       location: currCoords,
@@ -165,7 +164,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     data.choices = data.choices.sort((a, b) => (b.length - a.length));
     temp[index] = data;
     setCurrChoices(data.choices);
-    setTempTemplates(temp);
+    setUserTemplates(temp);
     setShowUpdating(true);
   };
 
@@ -184,9 +183,9 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   const deleteTemplate = (): void => {
     let index = getIndex();
-    let temp = tempTemplates.slice(0);
+    let temp = userTemplates.slice(0);
     temp.splice(index, 1);
-    setTempTemplates(temp);
+    setUserTemplates(temp);
     setSelectedTemplate('');
   };
 
