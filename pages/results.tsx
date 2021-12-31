@@ -329,6 +329,3 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
 };
 
 export default Results;
-
-
-    // {mobile ? <MobileResults grub={grub} yelpResult={yelpResult} original={original} location={location} allLocs={allLocs} showMap={showMap} random={random} zoom={zoom} details={details} active={active} noMatch={noMatch} loading={loading} sortingHat={sortingHat} refresh={refresh} reset={reset} randomeChoice={randomeChoice} currentSelect={currentSelect} /> : <DesktopResults grub={grub} yelpResult={yelpResult} original={original} location={location} allLocs={allLocs} showMap={showMap} random={random} zoom={zoom} details={details} active={active} noMatch={noMatch} loading={loading} sortingHat={sortingHat} refresh={refresh} reset={reset} randomeChoice={randomeChoice} currentSelect={currentSelect} />}

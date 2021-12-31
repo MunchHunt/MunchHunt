@@ -7,6 +7,7 @@ import styles from '../styles/Results/tabs.module.css';
 import Button from '@mui/material/Button';
 import { locationSort } from '../Components/Results/sortingFunc';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { ConstructionOutlined } from '@mui/icons-material';
 
 export async function getServerSideProps(context: any) {
   const { params, res, req, query } = context;
@@ -38,19 +39,18 @@ const MobileTabs: NextPage<Foods> = ({ foods }) => {
   const [location, setLocation] = React.useState<any>({ lat: 37.786882, lng: -122.399972 });
   const [allLocs, setAllLocs] = React.useState<any>([]);
   const [zoom, setZoom] = React.useState<number | undefined>(13);
-  const [details, setDetails] = React.useState<any>([]);
-  const [tempArr, setTemp] = React.useState<any>([]);
+  const [details, setDetails] = React.useState<any>();
+
 
   React.useEffect(() => {
+    const tempArr: any = [];
     tempArr.push(foods);
     const lat = foods.coordinates.latitude;
     const lng = foods.coordinates.longitude;
-    setTimeout(() => {
-      setYelp(foods);
-      setAllLocs(locationSort(tempArr));
-      setLocation({ lat: lat, lng: lng });
-      setDetails(foods);
-    }, 1000)
+    setDetails(foods);
+    setAllLocs(locationSort(tempArr));
+    setLocation({ lat: lat, lng: lng });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [foods]);
 
@@ -65,17 +65,18 @@ const MobileTabs: NextPage<Foods> = ({ foods }) => {
   return (
     <div className={styles.tabPageContainer}>
       <div className={styles.backBtnCont}>
-      <Button
-        className={styles.backBtn}
-        variant="contained"
-        size="medium"
-        onClick={() => router.back()}
-      >
-        <ArrowBackIcon fontSize='small' />
-        Back to results</Button>
+        <Button
+          className={styles.backBtn}
+          variant="contained"
+          size="medium"
+          onClick={() => router.back()}
+        >
+          <ArrowBackIcon fontSize='small' />
+          Back to results</Button>
       </div>
       <div className={styles.innerTabs}>
-        <BasicTabs details={details} maps={mapProps} />
+        {details ? <BasicTabs details={details} maps={mapProps} /> : null }
+        {/* <BasicTabs details={details} maps={mapProps} /> */}
       </div>
     </div>
   )

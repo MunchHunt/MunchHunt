@@ -63,9 +63,8 @@
 }
 
 .sortButtonContainer .resetButton {
-  outline: 1px solid #ff8400;
+  border: 1px solid #ff8400;
   color: orange;
-  border: none;
 }
 
 .sortButtonContainer .resetButton:hover {

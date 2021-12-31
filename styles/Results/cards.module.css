@@ -1,12 +1,12 @@
 .cardResult {
   height: 100%;
   color: #0b0b0b;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .cardResult:hover {
-  outline: 2px solid #ffa500;
-  color: orange;
+  outline: 1px solid #ffa500;
+  color: #ffa500;
 }
 
 .cardResult .cardContent {
