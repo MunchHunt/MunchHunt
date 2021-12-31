@@ -64,11 +64,44 @@
       margin: 0;
       height: 200px;
 
+      @media screen and (max-width: 1500px) {
+        height: 130px;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      @media screen and (max-width: 500px) {
+        @include flexCenter(column);
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: auto;
+        width: 100%;
+      }
+
       .ulOrganizer {
         width: 100%;
         list-style-type: none;
         padding: 0;
         padding-left: 0.5em;
+
+        @media screen and (max-width: 1500px) {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          grid-column-gap: 0px;
+          grid-row-gap: 0px;
+          height: 50%;
+          width: 90%;
+        }
+
+        @media screen and (max-width: 500px) {
+          @include flexCenter(column);
+          justify-content: flex-start;
+          align-items: flex-start;
+          width: 100%;
+          padding-left: 0em;
+        }
       }
     }
 
@@ -86,6 +119,7 @@
 
         .addy {
           margin-left: 7px;
+          width: auto;
         }
       }
     }
@@ -95,13 +129,17 @@
       width: 50%;
       justify-content: flex-start;
 
+      @media screen and (max-width: 1500px) {
+        width: auto;
+      }
 
-    @media screen and (max-width: 500px) {
-      width: 80%;
-    }
+      @media screen and (max-width: 500px) {
+        width: 100%;
+      }
 
       .takeOutText {
         margin-left: 8px;
+
       }
 
       .takeOutOption {
@@ -120,7 +158,7 @@
       margin: 0;
 
       @media screen and (max-width: 500px) {
-        width: 80%;
+        width: 100%;
       }
 
       .phoneNum {
@@ -148,13 +186,14 @@
   }
 
   .yelpUrl {
-    margin-top: 20px;
     width: 90%;
     @include flexCenter(row);
     justify-content: flex-end;
+    margin-top: 30px;
+    margin-bottom: 0;
 
     @media screen and (max-width: 500px) {
-      margin-top: 60px;
+      margin-top: 40px;
     }
 
     .yelpLink {

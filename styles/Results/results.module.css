@@ -456,6 +456,13 @@
           justify-content: space-between;
 }
 
+@media screen and (max-width: 3000px) {
+  .omegaDiv .outterBox .innerBox {
+    height: 60%;
+    margin-bottom: 10px;
+  }
+}
+
 @media screen and (max-width: 1250px) {
   .omegaDiv .outterBox .innerBox {
     width: 95%;
@@ -487,6 +494,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
     font-family: "Avenir";
+    margin-bottom: 0;
   }
 }
 
@@ -531,9 +539,9 @@
   top: 40px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
   .omegaDiv .outterBox .innerBox .mapBox {
-    width: 45%;
+    width: 55%;
   }
 }
 
