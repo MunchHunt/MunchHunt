@@ -1,0 +1,61 @@
+.closeBtn {
+  color: black;
+}
+
+.closeBtn:hover {
+  background-color: #ff73000e;
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .name {
+    font-size: 15px;
+  }
+}
+
+.button {
+  color: #ff7300;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #ff73000e;
+}
+/*# sourceMappingURL=infoModal.module.css.map */

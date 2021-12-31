@@ -51,5 +51,34 @@
         }
       }
     }
+    .infoContainer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 70px 70px 0;
+      border-color: transparent #ff7300 transparent transparent;
+      display: flex;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        border-color: transparent #f06c00 transparent transparent;
+      }
+      .i {
+        position: relative;
+        top: 10px;
+        right: -36px;
+        color: white;
+        @media screen and (max-width: 770px) {
+          top: 2px;
+          right: -19px;
+        }
+      }
+      @media screen and (max-width: 770px) {
+        border-width: 0 40px 40px 0;
+      }
+    }
   }
 }
