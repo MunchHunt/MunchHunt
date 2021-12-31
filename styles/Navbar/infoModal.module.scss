@@ -1,0 +1,39 @@
+.closeBtn {
+  color: black;
+  &:hover {
+    background-color: #ff73000e;
+  }
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+  @media screen and (max-width: 500px) {
+    font-size: 15px;
+  }
+}
+
+.button {
+  color: #ff7300;
+  margin-right: 10px;
+  &:hover {
+    background-color: #ff73000e;
+  }
+}
