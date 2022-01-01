@@ -17,12 +17,6 @@ interface Props {
 }
 
 const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
-  const [input1, setInput1] = useState<string>("");
-  const [input2, setInput2] = useState<string>("");
-  const [input3, setInput3] = useState<string>("");
-  const [input4, setInput4] = useState<string>("");
-  const [input5, setInput5] = useState<string>("");
-  const [input6, setInput6] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [invalidLocation, setInvalidLocation] = useState<boolean>(false);
   const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -40,7 +34,19 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     currChoices,
     setCurrChoices,
     isDrawerOpen,
-    setIsDrawerOpen
+    setIsDrawerOpen,
+    input1,
+    setInput1,
+    input2,
+    setInput2,
+    input3,
+    setInput3,
+    input4,
+    setInput4,
+    input5,
+    setInput5,
+    input6,
+    setInput6,
   } = useContext(MunchContext);
 
   useEffect(() => {
@@ -53,10 +59,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
       setInput6(currChoices[5]);
     }
   }, [currChoices]);
-
-  useEffect(() => {
-    setCurrChoices([input1, input2, input3, input4, input5, input6]);
-  }, [input1, input2, input3, input4, input5, input6])
 
   const choicesAreValid = (arr: string[]): boolean => {
     if (arr.length) {
@@ -101,7 +103,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   const randomAutoFill = () => {
     setLoading(true);
-    setSelectedTemplate('');
+    // setSelectedTemplate('');
 
     setTimeout(() => {
       setLoading(false);
@@ -169,7 +171,6 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     }
     data.choices = data.choices.sort((a, b) => (b.length - a.length));
     temp[index] = data;
-    console.log('Form:', data.choices);
     setCurrChoices(data.choices);
     setUserTemplates(temp);
     setShowUpdating(true);

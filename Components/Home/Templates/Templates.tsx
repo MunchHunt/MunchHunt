@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import CreateTemplate from "./CreateTemplate";
 import styles from "../../../styles/Home/Templates.module.css";
-import { Card } from "@mui/material";
 import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Props {
@@ -77,7 +76,7 @@ const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) =
           ) : (
             <div>No templates! Fill out the fields and create a new template below.</div>
           )}
-          <CreateTemplate currChoices={currChoices} setSelectedTemplate={setSelectedTemplate} />
+          <CreateTemplate setSelectedTemplate={setSelectedTemplate} setActive={setActive} />
         </div>
       ) : (
         <div>

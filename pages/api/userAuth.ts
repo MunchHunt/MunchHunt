@@ -1,7 +1,6 @@
 import axios from "axios";
 
 async function GetUserData(email: string) {
-  console.log("[userAuth] Get user data:", email);
   return await axios
     .get(".netlify/functions/getUserData", {
       params: {
@@ -17,7 +16,6 @@ async function GetUserData(email: string) {
 }
 
 async function AddNewUser(email: string, name: string) {
-  console.log("[userAuth] Add new user");
   return await axios
     .get(".netlify/functions/addNewUser", {
       params: {
@@ -34,7 +32,6 @@ async function AddNewUser(email: string, name: string) {
 }
 
 async function UpdateUserData(email: string, userTemplates: any) {
-  console.log("[userAuth] Update user data");
   return await axios
     .get(".netlify/functions/updateUserData", {
       params: {

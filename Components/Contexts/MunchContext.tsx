@@ -34,6 +34,18 @@ export const MunchContext = createContext(
     setUserEmail: (email: string) => { },
     selectedTemplate: '',
     setSelectedTemplate: (template: string) => { },
+    input1: '',
+    setInput1: (input: string) => { },
+    input2: '',
+    setInput2: (input: string) => { },
+    input3: '',
+    setInput3: (input: string) => { },
+    input4: '',
+    setInput4: (input: string) => { },
+    input5: '',
+    setInput5: (input: string) => { },
+    input6: '',
+    setInput6: (input: string) => { },
   });
 
 const {
@@ -51,6 +63,12 @@ export const MunchProvider: React.FC = ({ children }) => {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userTemplates, setUserTemplates] = useState<any>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
+  const [input1, setInput1] = useState<string>("");
+  const [input2, setInput2] = useState<string>("");
+  const [input3, setInput3] = useState<string>("");
+  const [input4, setInput4] = useState<string>("");
+  const [input5, setInput5] = useState<string>("");
+  const [input6, setInput6] = useState<string>("");
 
   useEffect(() => {
     // let login = localStorage.getItem('munchLogin');
@@ -113,8 +131,32 @@ export const MunchProvider: React.FC = ({ children }) => {
     },
     selectedTemplate: selectedTemplate,
     setSelectedTemplate: (template: string): void => {
-      setSelectedTemplate(template)
-    }
+      setSelectedTemplate(template);
+    },
+    input1: input1,
+    setInput1: (input: string): void => {
+      setInput1(input);
+    },
+    input2: input2,
+    setInput2: (input: string): void => {
+      setInput2(input);
+    },
+    input3: input3,
+    setInput3: (input: string): void => {
+      setInput3(input);
+    },
+    input4: input4,
+    setInput4: (input: string): void => {
+      setInput4(input);
+    },
+    input5: input5,
+    setInput5: (input: string): void => {
+      setInput5(input);
+    },
+    input6: input6,
+    setInput6: (input: string): void => {
+      setInput6(input);
+    },
   };
 
   useEffect(() => {
