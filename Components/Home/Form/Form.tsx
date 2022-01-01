@@ -54,6 +54,10 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     }
   }, [currChoices]);
 
+  useEffect(() => {
+    setCurrChoices([input1, input2, input3, input4, input5, input6]);
+  }, [input1, input2, input3, input4, input5, input6])
+
   const choicesAreValid = (arr: string[]): boolean => {
     if (arr.length) {
       return true;
@@ -165,6 +169,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
     }
     data.choices = data.choices.sort((a, b) => (b.length - a.length));
     temp[index] = data;
+    console.log('Form:', data.choices);
     setCurrChoices(data.choices);
     setUserTemplates(temp);
     setShowUpdating(true);

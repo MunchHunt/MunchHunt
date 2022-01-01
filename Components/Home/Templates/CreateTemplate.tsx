@@ -65,6 +65,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
       setTyped('');
       setIsDrawerOpen(false);
       setJustCreated(true);
+      console.log('Current choices:', currChoices);
     }
   };
 
