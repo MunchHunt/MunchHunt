@@ -61,9 +61,9 @@ const Details: React.FC<ResultProps> = ({ details }) => {
                 <div className={styles.addressCont}>
                   <HomeIcon fontSize="small" />
                   <div className={styles.addressText}>
-                    <p className={styles.addy}>{details.location.address1}
-                    &nbsp; {details.location.city}
-                    &nbsp; {details.location.state}
+                    <p className={styles.addy}>{details.location.address1},
+                      &nbsp; {details.location.city},
+                      &nbsp; {details.location.state}
                     </p>
                   </div>
                 </div>
