@@ -25,7 +25,7 @@
           align-items: center;
 }
 
-.person {
+.buttons .person {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,24 +38,24 @@
           align-items: center;
 }
 
-.name {
+.buttons .person .name {
   font-size: 18px;
   font-weight: bold;
   margin-right: 10px;
 }
 
 @media screen and (max-width: 500px) {
-  .name {
+  .buttons .person .name {
     font-size: 15px;
   }
 }
 
-.button {
+.buttons .person .button {
   color: #ff7300;
   margin-right: 10px;
 }
 
-.button:hover {
+.buttons .person .button:hover {
   background-color: #ff73000e;
 }
 /*# sourceMappingURL=infoModal.module.css.map */
