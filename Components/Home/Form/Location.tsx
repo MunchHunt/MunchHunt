@@ -17,6 +17,7 @@ interface Props {
 }
 
 const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
+  const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [locationInput, setLocationInput] = useState<string>("");
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
@@ -25,13 +26,11 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   const getCurrentPosition = (): void => {
     if (navigator.geolocation) {
       setShowLoad(true);
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition((position) => {
         setCoords({ lat: position.coords.latitude.toString(), long: position.coords.longitude.toString() })
-      });
-      setInvalidLocation(false);
-      setTimeout(() => {
         setUpdated(true);
-      }, 4000)
+      })
+      setInvalidLocation(false);
     } else {
       alert("Sorry, your browser does not support HTML5 geolocation.");
     }
