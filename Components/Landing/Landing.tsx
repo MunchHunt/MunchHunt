@@ -23,7 +23,7 @@ const Landing: React.FC = () => {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [imageSize, setImageSize] = useState<number>(800);
-  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail, setCurrChoices, setSelectedTemplate } = useContext(MunchContext);
+  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail } = useContext(MunchContext);
 
   useEffect(() => {
     setWidth(window.innerWidth);
