@@ -41,19 +41,18 @@
         @media screen and (max-width: 550px) {
           width: 100%;
         }
+      }
+      .inputRowInner {
+        display: flex;
+        justify-content: space-between;
+        margin: 7px 15px 7px 15px;
+        width: 100%;
 
-        .inputRowInner {
-          display: flex;
-          justify-content: space-between;
-          margin: 7px 15px 7px 15px;
+        .input {
           width: 100%;
-
-          .input {
-            width: 100%;
-            font-size: 16px;
-            border: none;
-            outline: none;
-          }
+          font-size: 16px;
+          border: none;
+          outline: none;
         }
       }
 
@@ -62,7 +61,7 @@
         flex-direction: row;
         border: 1px solid rgba(255, 59, 59, 0.377);
         border-radius: 5px;
-        margin: 0 10px 10px 0;
+        // margin: 0 10px 10px 0;
         width: 400px;
         &:focus-within {
           border: 1px solid rgb(250, 82, 82);

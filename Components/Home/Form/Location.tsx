@@ -74,9 +74,8 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   }, [locationUpdated])
 
   useEffect(() => {
-    if (locationInput.length) {
-      setCurrAddress(locationInput);
-    }
+    setCurrAddress(locationInput);
+    console.log(locationInput);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationInput]);
 
@@ -111,7 +110,7 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
                 ) : (
                   <div className={styles.inputRowInvalid}>
                     <div className={styles.inputRowInner}>
-                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} placeholder="Invalid location - please try again." />
                       <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
                   </div>

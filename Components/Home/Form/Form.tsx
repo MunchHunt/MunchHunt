@@ -72,6 +72,7 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
 
   const locationIsValid = (): boolean => {
     if (currAddress.length) {
+      console.log(currAddress, 'valid');
       setInvalidLocation(false);
       return true;
     } else {
