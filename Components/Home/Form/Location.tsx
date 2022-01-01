@@ -75,7 +75,6 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
 
   useEffect(() => {
     setCurrAddress(locationInput);
-    console.log(locationInput);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationInput]);
 
