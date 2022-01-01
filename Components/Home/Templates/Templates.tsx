@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Templates: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
-  const { isLoggedIn, setCoords, userTemplates, currChoices, setCurrChoices } = useContext(MunchContext);
+  const { isLoggedIn, setCoords, userTemplates, setCurrChoices } = useContext(MunchContext);
   const [active, setActive] = useState<string>('');
 
   const selectTemplate = (e: any, i: number): void => {

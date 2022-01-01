@@ -45,7 +45,7 @@ const CreateTemplate: React.FC<Props> = ({ setSelectedTemplate, setActive }) => 
     }
     if (userTemplates.length === 10) {
       setIsValid(false);
-      setInvalidMsg('Template limit reached.');
+      setInvalidMsg('Template limit reached (10).');
       return false;
     }
     setIsValid(true);
