@@ -49,9 +49,8 @@
   }
 
   .resetButton {
-    outline: 1px solid rgb(255, 132, 0);
+    border: 1px solid rgb(255, 132, 0);
     color: orange;
-    border: none;
 
     &:hover {
       background-color: orange;

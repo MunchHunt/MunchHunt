@@ -55,6 +55,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [grub, setGrub] = React.useState<string>('');
   const [yelpResult, setYelp] = React.useState<any>([]);
   const [original, setOriginal] = React.useState<any>([]);
+  const [prevFilter, setPrevFilt] = React.useState<any>([]);
   const [location, setLocation] = React.useState<any>({ lat: 37.786882, lng: -122.399972 });
   const [allLocs, setAllLocs] = React.useState<any>([]);
   const [showMap, setMap] = React.useState<boolean>(true);
@@ -144,6 +145,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   }
 
   const sortingHat = (sortCategory: string, value: any) => {
+
     if (sortCategory === 'price') {
       const result = priceSort(value, original);
       setAllLocs(locationSort(result));
@@ -182,7 +184,6 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   }
 
   const handleClick = () => {
-    console.log('clicky')
     setMobileMap(!mobileMap);
   }
 
@@ -329,6 +330,3 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
 };
 
 export default Results;
-
-
-    // {mobile ? <MobileResults grub={grub} yelpResult={yelpResult} original={original} location={location} allLocs={allLocs} showMap={showMap} random={random} zoom={zoom} details={details} active={active} noMatch={noMatch} loading={loading} sortingHat={sortingHat} refresh={refresh} reset={reset} randomeChoice={randomeChoice} currentSelect={currentSelect} /> : <DesktopResults grub={grub} yelpResult={yelpResult} original={original} location={location} allLocs={allLocs} showMap={showMap} random={random} zoom={zoom} details={details} active={active} noMatch={noMatch} loading={loading} sortingHat={sortingHat} refresh={refresh} reset={reset} randomeChoice={randomeChoice} currentSelect={currentSelect} />}

@@ -111,7 +111,7 @@ const SortButtons: React.FC<Sort> = ({ sortingHat, reset, refresh }) => {
       </div>
       <div className={styles.sortButtons}>
         <FormControl sx={{ minWidth: size }} size="small">
-          <InputLabel id="select-helper-label-distance">Dist</InputLabel>
+          <InputLabel id="select-helper-label-distance">Miles</InputLabel>
           <Select
             labelId="select-helper-label-distance"
             id="select-helper-distance"

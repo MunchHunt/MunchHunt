@@ -46,10 +46,6 @@ const MobileResults: React.FC<MobileProps> = ({grub, yelpResult, original, locat
     defaultCenter: { lat: location.lat, lng: location.lng }
   }
 
-  // React.useEffect(() => {
-  //   se
-  // }, [details, yelpResult])
-
   return (
     <div>
     <Head>
@@ -105,7 +101,6 @@ const MobileResults: React.FC<MobileProps> = ({grub, yelpResult, original, locat
         </div>) : (<div className={styles.mapBox}>
           {loading ? <LoadingMap /> : (
             <div>
-              {/* {showMap ? <GoogleMaps defaultZoom={zoom} localRestaurants={allLocs} defaultCenter={{ lat: location.lat, lng: location.lng }} /> : null} */}
               {!showMap ? <BasicTabs details={details} maps={mapProps} /> : null}
             </div>
           )}

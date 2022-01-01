@@ -33,6 +33,12 @@ const RandomDecide: React.FC<Random> = ({ yelpResult, reset }) => {
       fontSize: '1em',
       backgroundColor: '#ff7300',
       color: 'white',
+      border: '1px solid transparent',
+      '&:hover': {
+        backgroundColor: '#1a1a1a',
+        color: '#ffffff',
+        border: '1px solid #ffa500',
+    },
     },
   });
   const classes = theme();

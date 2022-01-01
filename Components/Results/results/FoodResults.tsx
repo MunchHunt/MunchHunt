@@ -153,7 +153,7 @@ const FoodResults: React.FC<Foods> = ({ foods, select, random, active }) => {
       if (size <= 500) {
         setSingle(350);
         setHeight(250);
-        setImgSize("115");
+        setImgSize("150");
       } else if (size > 500) {
         setSingle(480);
         setHeight(350);
