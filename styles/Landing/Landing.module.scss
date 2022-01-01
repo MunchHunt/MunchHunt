@@ -38,6 +38,9 @@
     @media screen and (min-width: 2000px) {
       transform: scale(1.3);
     }
+    @media screen and (min-width: 3000px) {
+      transform: scale(2);
+    }
     @media screen and (max-width: 1250px) {
       width: 85%;
     }

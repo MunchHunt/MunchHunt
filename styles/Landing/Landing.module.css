@@ -75,6 +75,13 @@
   }
 }
 
+@media screen and (min-width: 3000px) {
+  .container .contentContainer {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+}
+
 @media screen and (max-width: 1250px) {
   .container .contentContainer {
     width: 85%;
