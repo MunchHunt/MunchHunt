@@ -53,21 +53,18 @@ const Landing: React.FC = () => {
 
   const logout = () => {
     setIsLoggedIn(false);
-    console.log('Logout success.');
   };
 
   const getData = (email: string, name: string) => {
     GetUserData(email)
       .then((res: any) => {
         if (res) {
-          console.log('User exists!', res);
           if (res.templates) {
             setUserTemplates(JSON.parse(res.templates));
           }
         } else {
           AddNewUser(email, name)
             .then((res2: any) => {
-              console.log('New user created!', res2);
             })
         }
       })
@@ -75,14 +72,12 @@ const Landing: React.FC = () => {
 
   const responseSuccess = ({ profileObj }: any) => {
     setIsLoggedIn(true);
-    console.log('Login success:', profileObj.email);
     setUserEmail(profileObj.email);
     getData(profileObj.email, profileObj.name,);
   }
 
   const responseFailure = (res: any) => {
-    console.log('Login failed');
-    console.log(res);
+    console.error(res);
   }
   return (
     <div className={styles.container}>
