@@ -17,7 +17,6 @@ interface Props {
 }
 
 const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
-  const [initialLoad, setInitialLoad] = useState<boolean>(true);
   const [locationInput, setLocationInput] = useState<string>("");
   const [showLoad, setShowLoad] = useState<boolean>(false);
   const [locationUpdated, setUpdated] = useState<boolean>(false);
