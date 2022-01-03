@@ -23,7 +23,7 @@ const Landing: React.FC = () => {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
   const [imageSize, setImageSize] = useState<number>(800);
-  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail, setCurrChoices, setSelectedTemplate } = useContext(MunchContext);
+  const { isLoggedIn, setIsLoggedIn, setUserTemplates, setUserEmail } = useContext(MunchContext);
 
   useEffect(() => {
     setWidth(window.innerWidth);
@@ -53,21 +53,18 @@ const Landing: React.FC = () => {
 
   const logout = () => {
     setIsLoggedIn(false);
-    console.log('Logout success.');
   };
 
   const getData = (email: string, name: string) => {
     GetUserData(email)
       .then((res: any) => {
         if (res) {
-          console.log('User exists!', res);
           if (res.templates) {
             setUserTemplates(JSON.parse(res.templates));
           }
         } else {
           AddNewUser(email, name)
             .then((res2: any) => {
-              console.log('New user created!', res2);
             })
         }
       })
@@ -75,14 +72,12 @@ const Landing: React.FC = () => {
 
   const responseSuccess = ({ profileObj }: any) => {
     setIsLoggedIn(true);
-    console.log('Login success:', profileObj.email);
     setUserEmail(profileObj.email);
     getData(profileObj.email, profileObj.name,);
   }
 
   const responseFailure = (res: any) => {
-    console.log('Login failed');
-    console.log(res);
+    console.error(res);
   }
   return (
     <div className={styles.container}>
@@ -139,7 +134,7 @@ const Landing: React.FC = () => {
               invalidLocation={invalidLocation}
               setInvalidLocation={setInvalidLocation}
             />
-            <Button className={styles.startBtn} variant="contained" onClick={() => { Router.push('/find'); }}>Start</Button>
+            <Button className={styles.startBtn} variant="contained" onClick={() => { window.open('/find', '_self'); }}>Start</Button>
           </div>
         </div>
       </div>

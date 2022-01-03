@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import Form from "./Form/Form";
 import Templates from "./Templates/Templates";
 import styles from "../../styles/Home/Home.module.css";
-import { templates } from "./dummyData";
 import { MunchContext } from "../Contexts/MunchContext";
 import Head from "next/head";
 import { Card } from "@mui/material";

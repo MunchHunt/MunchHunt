@@ -4,14 +4,19 @@ import styles from '../../../styles/Home/Templates.module.css';
 import { MunchContext } from '../../Contexts/MunchContext';
 
 interface Props {
-  currChoices: string[];
   setSelectedTemplate: Function;
+  setActive: Function;
 }
 
-const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) => {
+const CreateTemplate: React.FC<Props> = ({ setSelectedTemplate, setActive }) => {
   const [typed, setTyped] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(true);
-  const { userTemplates, setUserTemplates, currCoords, setIsDrawerOpen, setCurrChoices } = useContext(MunchContext);
+  const {
+    userTemplates,
+    setUserTemplates,
+    currCoords,
+    setIsDrawerOpen,
+    input1, input2, input3, input4, input5, input6 } = useContext(MunchContext);
   const [invalidMsg, setInvalidMsg] = useState<string>('Invalid Entry');
   const [justCreated, setJustCreated] = useState<boolean>(false);
 
@@ -38,6 +43,11 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
       setInvalidMsg('Location not set.');
       return false;
     }
+    if (userTemplates.length === 10) {
+      setIsValid(false);
+      setInvalidMsg('Template limit reached (10).');
+      return false;
+    }
     setIsValid(true);
     return true;
   };
@@ -57,7 +67,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
       let data = {
         name: typed,
         location: currCoords,
-        choices: currChoices,
+        choices: [input1, input2, input3, input4, input5, input6],
       }
       temp.push(data);
       setUserTemplates(temp);
@@ -70,7 +80,7 @@ const CreateTemplate: React.FC<Props> = ({ currChoices, setSelectedTemplate }) =
 
   useEffect(() => {
     if (justCreated) {
-      console.log('Just created!');
+      setActive('template' + (userTemplates.length - 1).toString());
       for (let i = 0; i < userTemplates.length; i++) {
         let template = document.getElementById('template' + i.toString());
         template?.classList.remove('activeTemplate');

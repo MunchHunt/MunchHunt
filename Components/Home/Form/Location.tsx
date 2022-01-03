@@ -25,13 +25,11 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   const getCurrentPosition = (): void => {
     if (navigator.geolocation) {
       setShowLoad(true);
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition((position) => {
         setCoords({ lat: position.coords.latitude.toString(), long: position.coords.longitude.toString() })
-      });
-      setInvalidLocation(false);
-      setTimeout(() => {
         setUpdated(true);
-      }, 4000)
+      })
+      setInvalidLocation(false);
     } else {
       alert("Sorry, your browser does not support HTML5 geolocation.");
     }
@@ -75,9 +73,7 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   }, [locationUpdated])
 
   useEffect(() => {
-    if (locationInput.length) {
-      setCurrAddress(locationInput);
-    }
+    setCurrAddress(locationInput);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationInput]);
 
@@ -112,7 +108,7 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
                 ) : (
                   <div className={styles.inputRowInvalid}>
                     <div className={styles.inputRowInner}>
-                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} />
+                      <input className={styles.input} {...getInputProps({ label: "Update Address" })} value={locationInput} placeholder="Invalid location - please try again." />
                       <CurrentLocation getCurrentPosition={getCurrentPosition} />
                     </div>
                   </div>
