@@ -16,9 +16,9 @@ const Home: NextPage = () => {
         <meta
           name="image"
           property="og:image"
-          content="https://i.imgur.com/Gh58r7f.png"
+          content="https://i.imgur.com/jqSoz8R.png"
         />
-        <link rel="icon" href="https://i.imgur.com/jqSoz8R.png" />
+        <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
       </Head>
       <Script src={places} />
       <Landing />
