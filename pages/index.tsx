@@ -13,7 +13,12 @@ const Home: NextPage = () => {
       <Head>
         <title>Munch Hunt</title>
         <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
-        <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
+        <meta
+          name="image"
+          property="og:image"
+          content="https://i.imgur.com/Gh58r7f.png"
+        />
+        <link rel="icon" href="https://i.imgur.com/jqSoz8R.png" />
       </Head>
       <Script src={places} />
       <Landing />
