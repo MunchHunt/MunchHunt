@@ -13,6 +13,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import HomeIcon from '@mui/icons-material/Home';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import { makeStyles } from '@mui/styles';
 
 
 interface ResultProps {
@@ -20,6 +21,22 @@ interface ResultProps {
 }
 
 const Details: React.FC<ResultProps> = ({ details }) => {
+
+  const theme = makeStyles({
+    root: {
+      height: '30px',
+      fontSize: '1em',
+      backgroundColor: 'transparent',
+      color: '#e98d1df1',
+      border: '1px solid transparent',
+      '&:hover': {
+        backgroundColor: 'transparent',
+        color: '#ff130f',
+    },
+    },
+  });
+  const classes = theme();
+
   return (
     <Card sx={{ minWidth: "100%", minHeight: 300 }}>
       <Carousel>
@@ -96,9 +113,12 @@ const Details: React.FC<ResultProps> = ({ details }) => {
             </ul>
           </div>
           <div className={styles.yelpUrl}>
-            <Typography>
-              <a className={styles.yelpLink} target="_blank" href={details.url} rel="noopener noreferrer">Visit Yelp Page</a>
-            </Typography>
+              <Button
+              className={classes.root}
+              variant="text"
+              size="medium"
+              onClick={() => window.open(details.url, "_blank")}
+              >Visit Yelp page</Button>
           </div>
         </CardContent>
       </div>

@@ -434,13 +434,13 @@
 
 .contentContainer .yelpUrl .yelpLink {
   text-decoration: none;
-  color: rgba(233, 141, 29, 0.947);
+  color: #e98d1df1;
   font-size: 1em;
 }
 
 .contentContainer .yelpUrl .yelpLink:hover {
   cursor: pointer;
-  color: #ff130f;
+  color: #f56b69;
   font-weight: bold;
   font-size: 0.97em;
 }
