@@ -12,12 +12,13 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Munch Hunt</title>
-        <meta name="description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
-        <meta
-          name="image"
-          property="og:image"
-          content="https://i.imgur.com/jqSoz8R.png"
-        />
+        <meta property="og:url" content="https://munchhunt.netlify.app/" />
+        <meta property="og:title" content="Munch Hunt" />
+        <meta property="og:description" content="Munch Hunt helps you choose a restaurant when you are feeling indecisive" />
+        <meta name="image" property="og:image" content="https://i.imgur.com/jqSoz8R.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:alt" content='illustration of munch hunt mascot man' />
+        <meta name="keywords" content="Food, search food, restaurant, food, cuisine, hungry, dining, takeout" />
         <link rel="icon" href="https://i.imgur.com/Y8KaQBX.png" />
       </Head>
       <Script src={places} />
