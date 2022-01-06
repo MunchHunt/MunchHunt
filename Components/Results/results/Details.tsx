@@ -13,6 +13,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import HomeIcon from '@mui/icons-material/Home';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import { closingTimes } from '../sortingFunc';
 import { makeStyles } from '@mui/styles';
 
 
@@ -21,7 +22,7 @@ interface ResultProps {
 }
 
 const Details: React.FC<ResultProps> = ({ details }) => {
-
+  const [closing, setClosing] = React.useState<any>([]);
   const theme = makeStyles({
     root: {
       height: '30px',
@@ -36,6 +37,13 @@ const Details: React.FC<ResultProps> = ({ details }) => {
     },
   });
   const classes = theme();
+
+  React.useEffect(() => {
+    if (details.hours) {
+      const result = closingTimes(details.hours[0].open);
+      setClosing(result);
+    }
+  }, [details.hours])
 
   return (
     <Card sx={{ minWidth: "100%", minHeight: 300 }}>
@@ -95,8 +103,7 @@ const Details: React.FC<ResultProps> = ({ details }) => {
                 <div className={styles.closingTime}>
                   <AccessTimeIcon fontSize="small" />
                   <p className={styles.close}>Closes today at :</p>
-                  {details.hours.length > 0 ? <p className={styles.time}>{moment(details.hours[0].open[0].end, ['HH.mm']).format("hh:mm a")}</p> : null}
-                  {/* <p className={styles.time}>{moment(details.hours[0].open[0].end, ['HH.mm']).format("hh:mm a")}</p> */}
+                  {closing.length > 0 ? <p className={styles.time}>{moment(closing[0].end, ['HH.mm']).format("hh:mm a")}</p> : <p className={styles.time}>Closed</p>}
                 </div>
               </li>
               <li>

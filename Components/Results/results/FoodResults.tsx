@@ -74,6 +74,11 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
     return miles;
   }
 
+  const handleImageError = (e: any) => {
+    e.target.onerror = null;
+    e.target.src = "https://i.imgur.com/jqSoz8R.png/150"
+}
+
   return (
     <ThemeProvider theme={textTheme}>
       <Card id={id} style={selected} className={styles2.cardResult} sx={{ minWidth: width, minHeight: height }} onClick={(id) => handleClick(id)}>
@@ -81,6 +86,7 @@ function Cards({ id, name, image, address, city, price, distance, rating, handle
           component="img"
           height={imgSize}
           image={image}
+          onError={handleImageError}
           alt="yelp restaurant result"
         />
         <CardContent className={styles2.cardContent}>
