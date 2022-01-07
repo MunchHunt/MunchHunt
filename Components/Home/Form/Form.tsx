@@ -243,7 +243,9 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
             )}
             <div className={styles.desc}>
               List up to 6 possible cuisines or categories you would want to eat.
-              (At least 1 required)
+            </div>
+            <div className={styles.desc}>
+              Click Find to let Munch Hunt pick one of your choices below.
             </div>
           </div>
           <Button variant="contained" className={styles.templatesBtn} onClick={(e: any) => { openTemplates() }}>Templates</Button>
@@ -253,7 +255,8 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
           variant="contained"
           onClick={randomAutoFill}
         >
-          Can{"'"}t Decide? Let us decide
+          Can{"'"}t Decide?
+          Fill with random choices
           <ShuffleIcon className={styles.shuffle} />
         </Button>
         {loading ? (
