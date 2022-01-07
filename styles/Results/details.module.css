@@ -451,7 +451,6 @@
 
 .popUp {
   height: 300px;
-  width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -471,7 +470,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 3px;
+  padding: 10px 30px 15px 20px;
 }
 
 .multipleHoursDiv {
@@ -494,7 +493,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 80%;
+  width: 100%;
 }
 
 .multipleHoursDiv .multipleHours {
@@ -522,6 +521,7 @@
 
 .nameDays {
   padding: 0;
+  margin-right: 10px;
   font-weight: bold;
 }
 /*# sourceMappingURL=details.module.css.map */
