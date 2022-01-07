@@ -242,11 +242,11 @@ const Form: React.FC<Props> = ({ selectedTemplate, setSelectedTemplate }) => {
               <h3 className={styles.formTitle}>Lets get started!</h3>
             )}
             <div className={styles.desc}>
-              List up to 6 possible cuisines or categories you would want to eat.
+              List up to 6 possible cuisines or categories you would want to eat and Munch Hunt will choose one for you (e.g. Burgers, Chinese, Mexican, etc.)
             </div>
-            <div className={styles.desc}>
+            {/* <div className={styles.desc}>
               Click Find to let Munch Hunt pick one of your choices below.
-            </div>
+            </div> */}
           </div>
           <Button variant="contained" className={styles.templatesBtn} onClick={(e: any) => { openTemplates() }}>Templates</Button>
         </div>
