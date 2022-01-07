@@ -1,4 +1,5 @@
 import React from 'react';
+import Times from '../Buttons/Times';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -102,8 +103,9 @@ const Details: React.FC<ResultProps> = ({ details }) => {
               <li>
                 <div className={styles.closingTime}>
                   <AccessTimeIcon fontSize="small" />
-                  <p className={styles.close}>Closes today at :</p>
-                  {closing.length > 0 ? <p className={styles.time}>{moment(closing[0].end, ['HH.mm']).format("hh:mm a")}</p> : <p className={styles.time}>Closed</p>}
+                  <p className={styles.close}>Store hours:</p>
+                  {/* {closing.length > 0 ? <p className={styles.time}>{moment(closing[0].end, ['HH.mm']).format("hh:mm a")}</p> : <p className={styles.time}>Closed</p>} */}
+                  <Times allTimes={details.hours[0].open} />
                 </div>
               </li>
               <li>

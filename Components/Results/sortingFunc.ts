@@ -1,3 +1,4 @@
+import moment from 'moment';
 
 const priceSort = (cost: string, arr: any) => {
   if (cost === 'all') {
@@ -75,8 +76,31 @@ const closingTimes = (arr: any) => {
   const d = new Date();
   let day = d.getDay()
 
-  const newArr = arr.filter((item: any) => item.day === day);
+  let newArr = arr.filter((item: any) => item.day === day);
+  if (newArr.length > 1) {
+    newArr = newArr.sort((a: any, b: any) => {
+      return b.end - a.end
+    })
+  }
   return newArr;
 }
 
-export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom, closingTimes };
+const dayOfWeek = (arr: any) => {
+  const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let newArr: any = [{day: "Sunday"}, {day: "Monday"}, {day: "Tuesday"}, {day: "Wednesday"}, {day:"Thursday"}, {day: "Friday"}, {day: "Saturday"}];
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < newArr.length; j++) {
+      if (weekday[arr[i].day] === newArr[j].day && !newArr[j].hasOwnProperty('end')) {
+        newArr[j].start = moment(arr[i].start, ['HH.mm']).format("hh:mm a");
+        newArr[j].end = moment(arr[i].end, ['HH.mm']).format("hh:mm a");
+      } else if (weekday[arr[i].day] === newArr[j].day && newArr[j].hasOwnProperty('end')) {
+        newArr[j].start2 = moment(arr[i].start, ['HH.mm']).format("hh:mm a");
+        newArr[j].end2 = moment(arr[i].end, ['HH.mm']).format("hh:mm a");
+      }
+    }
+  }
+  return newArr;
+}
+
+export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom, closingTimes, dayOfWeek };
