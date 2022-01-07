@@ -32,7 +32,7 @@ Click here to see deployed site: https://munchhunt.netlify.app/
 
 **Server:** Next JS
 
-**Back-End:** TBD,
+**Back-End:** AstraDB,
 
 **Other**: Yelp fusion API, Google Maps API, Moment JS
 
@@ -40,5 +40,5 @@ Click here to see deployed site: https://munchhunt.netlify.app/
 
 ## Feedback
 
-If you have any feedback, please reach out to us at **! Hope you enjoy the app! :)
+If you have any feedback, please reach out to us at seijim27@gmail.com or fveranicola@gmail.com! Hope you enjoy the app! :)
 
