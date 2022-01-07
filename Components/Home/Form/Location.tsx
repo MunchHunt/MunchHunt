@@ -48,6 +48,12 @@ const Location: React.FC<Props> = ({ invalidLocation, setInvalidLocation }) => {
   }
 
   useEffect(() => {
+    if (currAddress) {
+      handleSelect(currAddress);
+    }
+  }, [])
+
+  useEffect(() => {
     if (currCoords.long.length, currCoords.lat.length) {
       setShowLoad(false);
       convertToAddress();
