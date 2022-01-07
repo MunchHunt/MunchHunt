@@ -443,6 +443,9 @@
 .popUpContainer .hourButton {
   color: #1c1c1c;
   margin-right: 3px;
+  position: relative;
+  top: 2px;
+  text-align: left;
 }
 
 .popUpContainer .hourButton:hover {
