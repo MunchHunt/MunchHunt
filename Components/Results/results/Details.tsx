@@ -34,7 +34,7 @@ const Details: React.FC<ResultProps> = ({ details }) => {
       '&:hover': {
         backgroundColor: 'transparent',
         color: '#ff130f',
-    },
+      },
     },
   });
   const classes = theme();
@@ -87,9 +87,8 @@ const Details: React.FC<ResultProps> = ({ details }) => {
                 <div className={styles.addressCont}>
                   <HomeIcon fontSize="small" />
                   <div className={styles.addressText}>
-                    <p className={styles.addy}>{details.location.address1},
-                      &nbsp; {details.location.city},
-                      &nbsp; {details.location.state}
+                    <p className={styles.addy}>
+                      {details.location.address1}, {details.location.city}, {details.location.state}
                     </p>
                   </div>
                 </div>
@@ -122,12 +121,12 @@ const Details: React.FC<ResultProps> = ({ details }) => {
             </ul>
           </div>
           <div className={styles.yelpUrl}>
-              <Button
+            <Button
               className={classes.root}
               variant="text"
               size="medium"
               onClick={() => window.open(details.url, "_blank")}
-              >Visit Yelp page</Button>
+            >Visit Yelp page</Button>
           </div>
         </CardContent>
       </div>
