@@ -68,7 +68,7 @@ const Times: React.FC<TimeProps> = ({ allTimes }) => {
         }}
         transformOrigin={{
           vertical: 'bottom',
-          horizontal: 'left',
+          horizontal: 'center',
         }}
         onClose={handleClose}
       // disableRestoreFocus
