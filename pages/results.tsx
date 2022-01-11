@@ -107,7 +107,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
 
   React.useEffect(() => {
     if (yelpResult.length && allLocs.length) {
-      setLoading(false);
+      // setLoading(false);
     }
   }, [yelpResult, allLocs]);
 
