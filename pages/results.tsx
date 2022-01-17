@@ -12,11 +12,9 @@ import GoogleMaps from '../Components/Results/Map/GoogleMaps';
 import LoadingResults from '../Components/Results/loading/Loading';
 import LoadingMap from '../Components/Results/loading/LoadingMap';
 import Image from 'next/image';
-import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom } from '../Components/Results/sortingFunc';
+import { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom, majorSort } from '../Components/Results/sortingFunc';
 import BasicTabs from '../Components/Results/results/Tab';
 import Button from '@mui/material/Button';
-import MobileResults from '../Components/Results/results/MobileResults';
-import DesktopResults from '../Components/Results/results/DesktopResults';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -55,7 +53,6 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [grub, setGrub] = React.useState<string>('');
   const [yelpResult, setYelp] = React.useState<any>([]);
   const [original, setOriginal] = React.useState<any>([]);
-  const [prevFilter, setPrevFilt] = React.useState<any>([]);
   const [location, setLocation] = React.useState<any>({ lat: 37.786882, lng: -122.399972 });
   const [allLocs, setAllLocs] = React.useState<any>([]);
   const [showMap, setMap] = React.useState<boolean>(true);
@@ -70,6 +67,7 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
   const [mobileMap, setMobileMap] = React.useState<boolean>(false);
   const [desktop, setDesktop] = React.useState<boolean>(true);
   const [width, setWidth] = React.useState<number>(0);
+  const [isSort, setSort] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     setWidth(window.innerWidth);
@@ -146,27 +144,42 @@ const Results: NextPage<Foods> = ({ foods, choice, latitude, longitude }) => {
 
   const sortingHat = (sortCategory: string, value: any) => {
 
-    if (sortCategory === 'price') {
-      const result = priceSort(value, original);
+    if (isSort && yelpResult.length > 0) {
+      const result = majorSort(sortCategory, value, yelpResult);
       setAllLocs(locationSort(result));
       setYelp(result);
-    } else if (sortCategory === 'distance') {
-      const zoomChange = sortZoom(value);
-      const result2 = distanceSort(value, original);
-      setAllLocs(locationSort(result2));
-      setZoom(zoomChange);
-      setYelp(result2);
-    } else if (sortCategory === 'rating') {
-      const result3 = ratingSort(value, original);
-      setAllLocs(locationSort(result3));
-      setYelp(result3);
+    } else if (isSort && yelpResult.length === 0) {
+      const result = majorSort(sortCategory, value, original);
+      setAllLocs(locationSort(result));
+      setYelp(result);
+    } else {
+      const result = majorSort(sortCategory, value, original);
+      setAllLocs(locationSort(result));
+      setYelp(result);
+      setSort(true);
     }
+
+    // if (sortCategory === 'price') {
+    //   const result = priceSort(value, original);
+    //   setAllLocs(locationSort(result));
+    //   setYelp(result);
+    // } else if (sortCategory === 'distance') {
+    //   const zoomChange = sortZoom(value);
+    //   const result2 = distanceSort(value, original);
+    //   setAllLocs(locationSort(result2));
+    //   setZoom(zoomChange);
+    //   setYelp(result2);
+    // } else if (sortCategory === 'rating') {
+    //   const result3 = ratingSort(value, original);
+    //   setAllLocs(locationSort(result3));
+    //   setYelp(result3);
+    // }
   }
 
   const randomeChoice = () => {
     const randArr = [];
     const rand = getRandomInt(yelpResult.length);
-    randArr.push(original[rand]);
+    randArr.push(yelpResult[rand]);
     setAllLocs(locationSort(randArr));
     setLocation({ lat: randArr[0].coordinates.latitude, lng: randArr[0].coordinates.longitude });
     setRandom(true);

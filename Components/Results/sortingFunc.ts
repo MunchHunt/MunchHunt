@@ -68,6 +68,23 @@ const locationSort = (arr: any) => {
   return newArr;
 }
 
+const majorSort = (cat: string, value: any, arr: any) => {
+  let result: any = [];
+
+  if (cat === 'price') {
+    const result1 = priceSort(value, arr);
+    result = result1;
+  } else if (cat === 'distance') {
+    const result2 = distanceSort(value, arr);
+    result = result2;
+  } else if (cat === 'rating') {
+    const result3 = ratingSort(value, arr);
+    result = result3;
+  }
+
+  return result;
+}
+
 const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max);
 }
@@ -103,4 +120,4 @@ const dayOfWeek = (arr: any) => {
   return newArr;
 }
 
-export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom, closingTimes, dayOfWeek };
+export { priceSort, distanceSort, ratingSort, locationSort, getRandomInt, nameFilter, sortZoom, closingTimes, dayOfWeek, majorSort};

@@ -116,35 +116,3 @@ const Times: React.FC<TimeProps> = ({ allTimes }) => {
 }
 
 export default Times;
-
-{/* <FormControl variant="standard" sx={{ minWidth: 100 }}>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={time}
-          onChange={handleChange}
-          label="time"
-        >
-          {hours.map((option: any, index: number) => {
-            if (option.start2) {
-              return (
-              <MenuItem key={index} value={index}>
-                {option.day} &nbsp; {option.start} - {option.end} <br /> {option.start2} - {option.end2}
-              </MenuItem>
-              )
-            } else if (!option.start && !option.end) {
-              return (
-                <MenuItem key={index} value={index}>
-                  {option.day} &nbsp; Closed
-                </MenuItem>
-                )
-            } else {
-              return (
-                <MenuItem key={index} value={index}>
-                  {option.day} &nbsp; {option.start} - {option.end}
-                </MenuItem>
-                )
-            }
-          })}
-        </Select>
-      </FormControl> */}
