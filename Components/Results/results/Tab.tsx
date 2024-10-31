@@ -24,8 +24,15 @@ const theme = createTheme({
   }
 });
 
+type TabProps = {
+  children: React.ReactNode,
+  value: number,
+  index: number
+}
 
-function TabPanel(props: any) {
+
+
+function TabPanel(props: TabProps) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -44,12 +51,6 @@ function TabPanel(props: any) {
     </div>
   );
 }
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
 function a11yProps(index: any) {
   return {
     id: `simple-tab-${index}`,
